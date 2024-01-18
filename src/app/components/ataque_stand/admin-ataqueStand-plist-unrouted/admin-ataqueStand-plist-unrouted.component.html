@@ -1,0 +1,42 @@
+<!-- admin-ataque-stand-plist-unrouted.component.html -->
+
+<div class="container mt-4">
+  <div *ngIf="oPage">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th (click)="doOrder('id')">ID</th>
+          <th (click)="doOrder('velocidad')">Velocidad</th>
+          <th (click)="doOrder('potencialDesarollo')">Potencial de Desarrollo</th>
+          <th (click)="doOrder('alcance')">Alcance</th>
+          <th (click)="doOrder('poder')">Poder</th>
+          <th (click)="doOrder('aguante')">Aguante</th>
+          <th (click)="doOrder('acierto')">Acierto</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ataque of oPage.content">
+          <td>{{ ataque.id }}</td>
+          <td>{{ ataque.velocidad }}</td>
+          <td>{{ ataque.potencialDesarollo }}</td>
+          <td>{{ ataque.alcance }}</td>
+          <td>{{ ataque.poder }}</td>
+          <td>{{ ataque.aguante }}</td>
+          <td>{{ ataque.acierto }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="doRemove(ataque)">Eliminar</button>
+            <!-- Agrega más acciones según sea necesario -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
+        [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+    </div>
+  </div>
+  <div *ngIf="status" class="alert alert-danger">
+    <p>{{ status.message }}</p>
+  </div>
+</div>

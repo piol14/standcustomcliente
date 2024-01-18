@@ -1,0 +1,36 @@
+<!-- admin-stand-plist-unrouted.component.html -->
+
+<div class="container mt-4">
+  <div *ngIf="oStandPage">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th (click)="doOrder('id')">ID</th>
+          <th (click)="doOrder('nombre')">Nombre</th>
+          <th (click)="doOrder('descripcion')">Descripción</th>
+          <!-- Agrega más encabezados según sea necesario -->
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stand of oStandPage.content">
+          <td>{{ stand.id }}</td>
+          <td>{{ stand.nombre }}</td>
+          <td>{{ stand.descripcion }}</td>
+          <!-- Agrega más columnas según sea necesario -->
+          <td>
+            <button class="btn btn-danger" (click)="doRemove(stand)">Eliminar</button>
+            <!-- Agrega más acciones según sea necesario -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <p-paginator (onPageChange)="onPageChange($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
+        [totalRecords]="oStandPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+    </div>
+  </div>
+  <div *ngIf="status" class="alert alert-danger">
+    <p>{{ status.message }}</p>
+  </div>
+</div>

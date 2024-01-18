@@ -1,0 +1,40 @@
+<!-- admin-user-plist-unrouted.component.html -->
+
+<div class="container mt-4">
+  <div *ngIf="oPage">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th (click)="doOrder('id')">ID</th>
+          <th (click)="doOrder('nombre')">Nombre</th>
+          <th (click)="doOrder('telefono')">Teléfono</th>
+          <th (click)="doOrder('email')">Email</th>
+          <th (click)="doOrder('username')">Usuario</th>
+          <th (click)="doOrder('role')">Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of oPage.content">
+          <td>{{ user.id }}</td>
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.telefono }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.role ? 'Admin' : 'Usuario' }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="doRemove(user)">Eliminar</button>
+            <!-- Agrega más acciones según sea necesario -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
+        [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+    </div>
+  </div>
+  <div *ngIf="status" class="alert alert-danger">
+    <p>{{ status.message }}</p>
+  </div>
+</div>
