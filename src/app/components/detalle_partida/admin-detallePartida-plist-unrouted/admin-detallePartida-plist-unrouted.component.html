@@ -1,3 +1,33 @@
-<p>
-  admin-detallePartida-plist-unrouted works!
-</p>
+<!-- admin-partida-plist-unrouted.component.html -->
+
+<div class="container mt-4">
+  <div *ngIf="oPage">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th (click)="doOrder('id')">ID</th>
+          <th (click)="doOrder('usuario')">Usuario</th>
+          <th (click)="doOrder('stand')">Stand</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of oPage.content">
+          <td>{{ item.id }}</td>
+          <td>{{ item.usuario.nombre }}</td>
+          <td>{{ item.stand.nombre }}</td>
+          <td>
+            <!-- Agrega botones u otras acciones según sea necesario -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
+        [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+    </div>
+  </div>
+  <div *ngIf="status" class="alert alert-danger mt-3">
+    <p>{{ status.message }}</p>
+  </div>
+</div>

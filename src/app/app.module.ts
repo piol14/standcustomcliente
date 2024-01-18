@@ -47,6 +47,8 @@ import { AdminOpinionPlistRoutedComponent } from './components/opinion/admin-opi
 import { AdminPartidaPlistRoutedComponent } from './components/partida/admin-partida-plist-routed/admin-partida-plist-routed.component';
 import { AdminPartidaPlistUnroutedComponent } from './components/partida/admin-partida-plist-unrouted/admin-partida-plist-unrouted.component';
 import { PartidaAjaxService } from './service/partida.ajax.service.service';
+import { AdminDetallePartidaPlistRoutedComponent } from './components/detalle_partida/admin-detallePartida-plist-routed/admin-detallePartida-plist-routed.component';
+import { AdminDetallePartidaPlistUnroutedComponent } from './components/detalle_partida/admin-detallePartida-plist-unrouted/admin-detallePartida-plist-unrouted.component';
 
 
 //--
@@ -72,6 +74,8 @@ import { PartidaAjaxService } from './service/partida.ajax.service.service';
    AdminOpinionPlistRoutedComponent,
    AdminPartidaPlistRoutedComponent,
    AdminPartidaPlistUnroutedComponent,
+   AdminDetallePartidaPlistRoutedComponent,
+   AdminDetallePartidaPlistUnroutedComponent
   ],
   imports: [
     
