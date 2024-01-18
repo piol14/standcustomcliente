@@ -66,7 +66,8 @@ export interface IAtaqueStand extends IEntity {
     fecha: string;
     ganador: IUser | null;
   }
-  
+  export interface IPartidaPage extends IPage<IPartida> {
+  }
   // stand.model.ts
   export interface IStand extends IEntity {
   

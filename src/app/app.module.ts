@@ -44,6 +44,9 @@ import { AdminAtaqueStandPlistRoutedComponent } from './components/ataque_stand/
 import { OpinionAjaxService } from './service/opinion.ajax.service.service';
 import { AdminOpinionPlistUnroutedComponent } from './components/opinion/admin-opinion-plist-unrouted/admin-opinion-plist-unrouted.component';
 import { AdminOpinionPlistRoutedComponent } from './components/opinion/admin-opinion-plist-routed/admin-opinion-plist-routed.component';
+import { AdminPartidaPlistRoutedComponent } from './components/partida/admin-partida-plist-routed/admin-partida-plist-routed.component';
+import { AdminPartidaPlistUnroutedComponent } from './components/partida/admin-partida-plist-unrouted/admin-partida-plist-unrouted.component';
+import { PartidaAjaxService } from './service/partida.ajax.service.service';
 
 
 //--
@@ -66,7 +69,9 @@ import { AdminOpinionPlistRoutedComponent } from './components/opinion/admin-opi
    AdminAtaqueStandPlistUnroutedComponent,
    AdminAtaqueStandPlistRoutedComponent,
    AdminOpinionPlistUnroutedComponent,
-   AdminOpinionPlistRoutedComponent
+   AdminOpinionPlistRoutedComponent,
+   AdminPartidaPlistRoutedComponent,
+   AdminPartidaPlistUnroutedComponent,
   ],
   imports: [
     
@@ -85,6 +90,7 @@ import { AdminOpinionPlistRoutedComponent } from './components/opinion/admin-opi
    StandAjaxService,
    AtaqueStandAjaxService,
    OpinionAjaxService,
+   PartidaAjaxService,
    ConfirmationService
 
   ],

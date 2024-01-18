@@ -1,0 +1,33 @@
+<!-- admin-partida-plist-unrouted.component.html -->
+
+<div class="container mt-4">
+  <div *ngIf="oPage">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th (click)="doOrder('id')">ID</th>
+          <th (click)="doOrder('fecha')">Fecha</th>
+          <th (click)="doOrder('ganador')">Ganador</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let partida of oPage.content">
+          <td>{{ partida.id }}</td>
+          <td>{{ partida.fecha }}</td>
+          <td>{{ partida.ganador ? partida.ganador.nombre : 'No disponible' }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="doRemove(partida)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
+        [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+    </div>
+  </div>
+  <div *ngIf="status" class="alert alert-danger mt-3">
+    <p>{{ status.message }}</p>
+  </div>
+</div>
