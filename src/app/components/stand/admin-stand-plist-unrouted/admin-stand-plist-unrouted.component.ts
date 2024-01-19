@@ -8,6 +8,7 @@ import { PaginatorState } from 'primeng/paginator';
 import { IStand, IStandPage } from 'src/app/model/model.interfaces';
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
 import { Subject } from 'rxjs/internal/Subject';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-stand-plist-unrouted',
@@ -24,11 +25,13 @@ export class AdminStandPlistUnroutedComponent implements OnInit {
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
   status: HttpErrorResponse | null = null;
   oStandToRemove: IStand | null = null;
+  
 
   constructor(
     private oStandAjaxService: StandAjaxService,
     public oDialogService: DialogService,
-    private oConfirmationService: ConfirmationService
+    private oConfirmationService: ConfirmationService,
+    private oMatSnackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -43,23 +46,19 @@ export class AdminStandPlistUnroutedComponent implements OnInit {
   }
 
   doRemove(stand: IStand) {
-    this.oStandToRemove = stand;
-    this.oConfirmationService.confirm({
-      accept: () => {
-        this.oStandAjaxService.removeOne(this.oStandToRemove?.id).subscribe({
-          next: () => {
-            this.getPage();
-          },
-          error: (error: HttpErrorResponse) => {
-            this.status = error;
-          }
-        });
+    this.oStandAjaxService.removeOne(stand.id).subscribe({
+      next: () => {
+        this.getPage();
+        this.oMatSnackBar.open('El elemento ha sido eliminado exitosamente', '', { duration: 2000 });
       },
-      reject: (type: ConfirmEventType) => {
-        // Handle rejection
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
+        this.oMatSnackBar.open('Error al eliminar el elemento', '', { duration: 2000 });
+        // Puedes manejar el error según tus necesidades
       }
     });
-  }
+}
+
 
   onPageChange(event: PaginatorState) {
     this.oPaginatorState.rows = event.rows;

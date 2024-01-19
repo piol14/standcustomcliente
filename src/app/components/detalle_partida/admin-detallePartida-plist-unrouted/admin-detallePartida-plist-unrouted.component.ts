@@ -1,15 +1,18 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { ConfirmEventType } from 'primeng/api/confirmaeventtype';
-import { ConfirmationService } from 'primeng/api/confirmationservice';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
-import { DialogService } from 'primeng/dynamicdialog/dialogservice';
+import { ConfirmationService, ConfirmEventType } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
-import { Subject } from 'rxjs/internal/Subject';
-import { IUsuarioStand, IUsuarioStandPage } from 'src/app/model/model.interfaces';
+import { HttpErrorResponse } from '@angular/common/http';
+
+import { IAtaqueStand, IAtaqueStandPage } from 'src/app/model/model.interfaces';
+
+import { Subject, of } from 'rxjs';
+
+
+
 import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
 import { debounceTime, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { IUsuarioStand, IUsuarioStandPage } from 'src/app/model/model.interfaces';
 @Component({
   selector: 'app-admin-detallePartida-plist-unrouted',
   templateUrl: './admin-detallePartida-plist-unrouted.component.html',
@@ -19,7 +22,7 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
 
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
 
-  oPage: IUsuarioStand | undefined;
+  oPage: IUsuarioStandPage | undefined ;
   orderField: string = "id";
   orderDirection: string = "asc";
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
@@ -71,6 +74,7 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
         );
     }
   }
+
 
   getValue(event: any): string {
     return event.target.value;

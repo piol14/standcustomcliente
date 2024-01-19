@@ -5,6 +5,7 @@ import { ConfirmationService, ConfirmEventType } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { IUser, IUserPage } from 'src/app/model/model.interfaces';
 import { UserAjaxService } from 'src/app/service/user.ajax.service.service';
@@ -29,11 +30,13 @@ export class AdminUsuarioPlistUnroutedComponent implements OnInit {
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
   status: HttpErrorResponse | null = null;
   oUserToRemove: IUser | null = null;
+ 
 
   constructor(
     private oUserAjaxService: UserAjaxService,
     public oDialogService: DialogService,
     private oCconfirmationService: ConfirmationService,
+    private snackBar: MatSnackBar
    
   ) { }
 
@@ -106,37 +109,24 @@ export class AdminUsuarioPlistUnroutedComponent implements OnInit {
 
   ref: DynamicDialogRef | undefined;
 
-  /* doView(u: IUser) {
-    this.ref = this.oDialogService.open(AdminUsuarioDetailUnroutedComponent, {
-      data: {
-        id: u.id
-      },
-   ),
-      width: '50%',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      maximizable: false
-    });
-  }
- */
-  doRemove(u: IUser) {
-    this.oUserToRemove = u;
-    this.oCconfirmationService.confirm({
-      accept: () => {
-        this.oUserAjaxService.removeOne(this.oUserToRemove?.id).subscribe({
-          next: () => {
+  doRemove(user: IUser) {
+    this.oUserAjaxService.removeOne(user.id).subscribe({
+        next: () => {
             this.getPage();
-          },
-          error: (error: any) => {
+            this.showSnackBar('Usuario eliminado exitosamente');
+        },
+        error: (error: any) => {
             console.error(error);
-            // Aquí puedes manejar el error de otra manera si es necesario
-          }
-        });
-      },
-      reject: (type: ConfirmEventType) => {
-        // Manejar el rechazo si es necesario
-      }
+            this.showSnackBar('Error al eliminar el usuario');
+        }
     });
-  }
+}
 
+private showSnackBar(message: string) {
+    this.snackBar.open(message, 'Cerrar', {
+        duration: 3000, // Duración en milisegundos
+        horizontalPosition: 'center', // Posición horizontal del Snackbar
+        verticalPosition: 'bottom' // Posición vertical del Snackbar
+    });
+}
 }

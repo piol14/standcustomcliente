@@ -49,6 +49,8 @@ import { AdminPartidaPlistUnroutedComponent } from './components/partida/admin-p
 import { PartidaAjaxService } from './service/partida.ajax.service.service';
 import { AdminDetallePartidaPlistRoutedComponent } from './components/detalle_partida/admin-detallePartida-plist-routed/admin-detallePartida-plist-routed.component';
 import { AdminDetallePartidaPlistUnroutedComponent } from './components/detalle_partida/admin-detallePartida-plist-unrouted/admin-detallePartida-plist-unrouted.component';
+import { DetallePartidaAjaxService } from './service/detallePartida.ajax.service.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 //--
@@ -82,9 +84,10 @@ import { AdminDetallePartidaPlistUnroutedComponent } from './components/detalle_
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    
-    PaginatorModule
-   
+    MatSnackBarModule,
+    PaginatorModule,
+   BrowserAnimationsModule
+
   
     
   ],
@@ -95,7 +98,8 @@ import { AdminDetallePartidaPlistUnroutedComponent } from './components/detalle_
    AtaqueStandAjaxService,
    OpinionAjaxService,
    PartidaAjaxService,
-   ConfirmationService
+   ConfirmationService,
+   DetallePartidaAjaxService,
 
   ],
   bootstrap: [AppComponent]
