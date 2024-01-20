@@ -17,7 +17,9 @@
           <td>{{ partida.fecha }}</td>
           <td>{{ partida.ganador ? partida.ganador.nombre : 'No disponible' }}</td>
           <td>
-            <button class="btn btn-danger" (click)="doRemove(partida)">Eliminar</button>
+            <button class="btn btn-danger" (click)="doRemove(partida)"><i
+              class="pi pi-trash"> </i></button>
+              <button class="btn btn-primary" (click)="doView(partida)"><i class="pi pi-arrow-circle-up"></i></button>
           </td>
         </tr>
       </tbody>

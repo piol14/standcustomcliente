@@ -12,6 +12,7 @@ import { UserAjaxService } from 'src/app/service/user.ajax.service.service';
 
 import { Subject, of } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
+import { AdminUsuarioDetailUnroutedComponent } from '../admin-usuario-detail-unrouted/admin-usuario-detail-unrouted.component';
 
 
 @Component({
@@ -82,6 +83,18 @@ export class AdminUsuarioPlistUnroutedComponent implements OnInit {
   getValue(event: any): string {
     return event.target.value;
   }
+  doView(u: IUser) {
+    this.ref = this.oDialogService.open(AdminUsuarioDetailUnroutedComponent, {
+        data: {
+            id: u.id
+        },
+        header: 'Vista Usuario', // Establece el encabezado directamente
+        width: '50%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: false
+    });
+}
 
   getPage(): void {
     this.oUserAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({

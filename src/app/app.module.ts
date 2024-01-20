@@ -51,6 +51,10 @@ import { AdminDetallePartidaPlistRoutedComponent } from './components/detalle_pa
 import { AdminDetallePartidaPlistUnroutedComponent } from './components/detalle_partida/admin-detallePartida-plist-unrouted/admin-detallePartida-plist-unrouted.component';
 import { DetallePartidaAjaxService } from './service/detallePartida.ajax.service.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { AdminAtaqueStandDetailUnroutedComponent } from './components/ataque_stand/admin-ataque_stand-detail-unrouted/admin-ataque_stand-detail-unrouted.component';
+import { AdminOpinionDetailUnroutedComponent } from './components/opinion/admin-opinion-detail-unrouted/admin-opinion-detail-unrouted.component';
+import { AdminPartidaDetailUnroutedComponent } from './components/partida/admin-partida-detail-unrouted/admin-partida-detail-unrouted.component';
+import { AdminDetallePartidaDetailUnroutedComponent } from './components/detalle_partida/admin-detallePartida-detail-unrouted/admin-detallePartida-detail-unrouted.component';
 
 
 //--
@@ -77,7 +81,11 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
    AdminPartidaPlistRoutedComponent,
    AdminPartidaPlistUnroutedComponent,
    AdminDetallePartidaPlistRoutedComponent,
-   AdminDetallePartidaPlistUnroutedComponent
+   AdminDetallePartidaPlistUnroutedComponent,
+   AdminAtaqueStandDetailUnroutedComponent,
+   AdminOpinionDetailUnroutedComponent,
+   AdminPartidaDetailUnroutedComponent,
+   AdminDetallePartidaDetailUnroutedComponent
   ],
   imports: [
     
@@ -100,6 +108,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
    PartidaAjaxService,
    ConfirmationService,
    DetallePartidaAjaxService,
+   
 
   ],
   bootstrap: [AppComponent]

@@ -21,7 +21,10 @@
           <td>{{ opinion.numero_estrellas }}</td>
           <td>{{ opinion.stand.nombre }}</td>
           <td>
-            <button class="btn btn-danger" (click)="doRemove(opinion)">Eliminar</button>
+            <button class="btn btn-danger" (click)="doRemove(opinion)"><i
+              class="pi pi-trash"> </i></button>
+              <button class="btn btn-primary" (click)="doView(opinion)"><i class="pi pi-arrow-circle-up"></i></button>
+
             <!-- Agrega más acciones según sea necesario -->
           </td>
         </tr>

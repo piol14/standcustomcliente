@@ -12,13 +12,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of oPage.content">
-          <td>{{ item.id }}</td>
-          <td>{{ item.usuario.nombre }}</td>
-          <td>{{ item.stand.nombre }}</td>
+        <tr *ngFor="let detallePartida of oPage.content">
+          <td>{{ detallePartida.id }}</td>
+          <td>{{ detallePartida.usuario.nombre }}</td>
+          <td>{{ detallePartida.stand.nombre }}</td>
           <td>
-            <!-- Agrega botones u otras acciones según sea necesario -->
-          </td>
+            <button class="btn btn-primary" (click)="doView(detallePartida)"><i class="pi pi-arrow-circle-up"></i></button>
+            <button class="btn btn-danger" (click)="doRemove(detallePartida)"><i class="pi pi-trash"></i></button>
         </tr>
       </tbody>
     </table>

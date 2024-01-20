@@ -11,6 +11,7 @@ import { OpinionAjaxService } from 'src/app/service/opinion.ajax.service.service
 
 import { Subject, of } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
+import { AdminOpinionDetailUnroutedComponent } from '../admin-opinion-detail-unrouted/admin-opinion-detail-unrouted.component';
 
 
 @Component({
@@ -106,19 +107,19 @@ export class AdminOpinionPlistUnroutedComponent implements OnInit {
 
   ref: DynamicDialogRef | undefined;
 
-  /* doView(u: IOpinion) {
-    this.ref = this.oDialogService.open(AdminUsuarioDetailUnroutedComponent, {
-      data: {
-        id: u.id
-      },
-   ),
-      width: '50%',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      maximizable: false
+  doView(u: IOpinion) {
+    this.ref = this.oDialogService.open(AdminOpinionDetailUnroutedComponent, {
+        data: {
+            id: u.id
+        },
+        header: 'Vista Opinion', // Establece el encabezado directamente
+        width: '50%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: false
     });
-  }
- */
+}
+
   doRemove(u: IOpinion) {
     this.oOpinionToRemove = u;
     this.oCconfirmationService.confirm({

@@ -11,6 +11,7 @@ import { IAtaqueStand, IAtaqueStandPage } from 'src/app/model/model.interfaces';
 import { Subject, of } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { AtaqueStandAjaxService } from 'src/app/service/ataqueStand.ajax.service.service';
+import { AdminAtaqueStandDetailUnroutedComponent } from '../admin-ataque_stand-detail-unrouted/admin-ataque_stand-detail-unrouted.component';
 
 
 @Component({
@@ -106,19 +107,19 @@ export class AdminAtaqueStandPlistUnroutedComponent implements OnInit {
 
   ref: DynamicDialogRef | undefined;
 
-  /* doView(u: IAtaqueStand) {
-    this.ref = this.oDialogService.open(AdminUsuarioDetailUnroutedComponent, {
-      data: {
-        id: u.id
-      },
-   ),
-      width: '50%',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      maximizable: false
+  doView(u: IAtaqueStand) {
+    this.ref = this.oDialogService.open(AdminAtaqueStandDetailUnroutedComponent, {
+        data: {
+            id: u.id
+        },
+        header: 'Vista Ataque Stand', // Establece el encabezado directamente
+        width: '50%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: false
     });
-  }
- */
+}
+ 
   doRemove(u: IAtaqueStand) {
     this.oAtaqueStandToRemove = u;
     this.oCconfirmationService.confirm({

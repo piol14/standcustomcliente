@@ -7,7 +7,7 @@
         <tr>
           <th (click)="doOrder('id')">ID</th>
           <th (click)="doOrder('velocidad')">Velocidad</th>
-          <th (click)="doOrder('potencialDesarollo')">Potencial de Desarrollo</th>
+
           <th (click)="doOrder('alcance')">Alcance</th>
           <th (click)="doOrder('poder')">Poder</th>
           <th (click)="doOrder('aguante')">Aguante</th>
@@ -19,13 +19,15 @@
         <tr *ngFor="let ataque of oPage.content">
           <td>{{ ataque.id }}</td>
           <td>{{ ataque.velocidad }}</td>
-          <td>{{ ataque.potencialDesarollo }}</td>
+         
           <td>{{ ataque.alcance }}</td>
           <td>{{ ataque.poder }}</td>
           <td>{{ ataque.aguante }}</td>
           <td>{{ ataque.acierto }}</td>
           <td>
-            <button class="btn btn-danger" (click)="doRemove(ataque)">Eliminar</button>
+            <button class="btn btn-danger" (click)="doRemove(ataque)"><i
+              class="pi pi-trash"> </i></button>
+              <button class="btn btn-primary" (click)="doView(ataque)"><i class="pi pi-arrow-circle-up"></i></button>
             <!-- Agrega más acciones según sea necesario -->
           </td>
         </tr>

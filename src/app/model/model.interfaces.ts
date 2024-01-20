@@ -42,7 +42,7 @@ export interface IEntity {
 export interface IAtaqueStand extends IEntity {
     
     velocidad: string;
-    potencialDesarollo: string;
+   
     alcance: string;
     poder: string;
     aguante: string;

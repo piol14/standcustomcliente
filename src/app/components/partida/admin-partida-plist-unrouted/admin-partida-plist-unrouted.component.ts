@@ -12,6 +12,7 @@ import { IPartida, IPartidaPage } from 'src/app/model/model.interfaces';
 import { Subject, of } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { PartidaAjaxService } from 'src/app/service/partida.ajax.service.service';
+import { AdminPartidaDetailUnroutedComponent } from '../admin-partida-detail-unrouted/admin-partida-detail-unrouted.component';
 
 
 
@@ -108,19 +109,19 @@ export class AdminPartidaPlistUnroutedComponent implements OnInit {
 
   ref: DynamicDialogRef | undefined;
 
-  /* doView(u: IPartida) {
-    this.ref = this.oDialogService.open(AdminUsuarioDetailUnroutedComponent, {
-      data: {
-        id: u.id
-      },
-   ),
-      width: '50%',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      maximizable: false
+  doView(u: IPartida) {
+    this.ref = this.oDialogService.open(AdminPartidaDetailUnroutedComponent, {
+        data: {
+            id: u.id
+        },
+        header: 'Vista Partida', // Establece el encabezado directamente
+        width: '50%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: false
     });
-  }
- */
+}
+
   doRemove(u: IPartida) {
     this.oPartidaToRemove = u;
     this.oCconfirmationService.confirm({

@@ -13,6 +13,7 @@ import { Subject, of } from 'rxjs';
 import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { IUsuarioStand, IUsuarioStandPage } from 'src/app/model/model.interfaces';
+import { AdminDetallePartidaDetailUnroutedComponent } from '../admin-detallePartida-detail-unrouted/admin-detallePartida-detail-unrouted.component';
 @Component({
   selector: 'app-admin-detallePartida-plist-unrouted',
   templateUrl: './admin-detallePartida-plist-unrouted.component.html',
@@ -106,19 +107,18 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
 
   ref: DynamicDialogRef | undefined;
 
-  /* doView(u: IDetallePartida) {
-    this.ref = this.oDialogService.open(AdminUsuarioDetailUnroutedComponent, {
-      data: {
-        id: u.id
-      },
-   ),
-      width: '50%',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      maximizable: false
+  doView(u: IUsuarioStand) {
+    this.ref = this.oDialogService.open(AdminDetallePartidaDetailUnroutedComponent, {
+        data: {
+            id: u.id
+        },
+        header: 'Vista Detalle Partida', // Establece el encabezado directamente
+        width: '50%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: false
     });
-  }
- */
+}
   doRemove(u: IUsuarioStand) {
     this.oDetallePartidaToRemove = u;
     this.oCconfirmationService.confirm({
