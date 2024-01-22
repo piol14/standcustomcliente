@@ -55,8 +55,17 @@ import { AdminAtaqueStandDetailUnroutedComponent } from './components/ataque_sta
 import { AdminOpinionDetailUnroutedComponent } from './components/opinion/admin-opinion-detail-unrouted/admin-opinion-detail-unrouted.component';
 import { AdminPartidaDetailUnroutedComponent } from './components/partida/admin-partida-detail-unrouted/admin-partida-detail-unrouted.component';
 import { AdminDetallePartidaDetailUnroutedComponent } from './components/detalle_partida/admin-detallePartida-detail-unrouted/admin-detallePartida-detail-unrouted.component';
-
-
+import { ConfirmEventType } from 'primeng/api'; // Importa ConfirmationService de primeng/api
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { AdminStandDetailUnroutedComponent } from './components/stand/admin-stand-detail-unrouted/admin-stand-detail-unrouted.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 //--
 @NgModule({
   declarations: [
@@ -85,7 +94,10 @@ import { AdminDetallePartidaDetailUnroutedComponent } from './components/detalle
    AdminAtaqueStandDetailUnroutedComponent,
    AdminOpinionDetailUnroutedComponent,
    AdminPartidaDetailUnroutedComponent,
-   AdminDetallePartidaDetailUnroutedComponent
+   AdminDetallePartidaDetailUnroutedComponent,
+   AdminStandDetailUnroutedComponent, 
+   AdminUsuarioViewRoutedComponent,
+   
   ],
   imports: [
     
@@ -94,10 +106,18 @@ import { AdminDetallePartidaDetailUnroutedComponent } from './components/detalle
     HttpClientModule,
     MatSnackBarModule,
     PaginatorModule,
-   BrowserAnimationsModule
-
-  
-    
+   BrowserAnimationsModule,
+   ConfirmDialogModule,
+   DynamicDialogModule,
+   FormsModule,
+   MatButtonModule,
+   MatCardModule,
+   MatInputModule,
+   MatRadioModule,
+   MatFormFieldModule,
+   MatToolbarModule,
+   MatIconModule,
+   ReactiveFormsModule
   ],
   providers: [
     DialogService,
@@ -108,7 +128,7 @@ import { AdminDetallePartidaDetailUnroutedComponent } from './components/detalle
    PartidaAjaxService,
    ConfirmationService,
    DetallePartidaAjaxService,
-   
+  
 
   ],
   bootstrap: [AppComponent]

@@ -13,6 +13,7 @@ import { AdminPartidaPlistRoutedComponent } from './components/partida/admin-par
 import { AdminDetallePartidaPlistRoutedComponent } from './components/detalle_partida/admin-detallePartida-plist-routed/admin-detallePartida-plist-routed.component';
 export const routes: Routes = [
     { path: 'admin/usuario/plist', component: AdminUsuarioPlistRoutedComponent },
+    { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
     { path: 'admin/usuario/view/:id', component: AdminUsuarioViewRoutedComponent },    
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
     { path: 'admin/usuario/edit/:id', component: AdminUsuarioEditRoutedComponent },
@@ -20,7 +21,8 @@ export const routes: Routes = [
     {path: 'admin/ataques/plist', component: AdminAtaqueStandPlistRoutedComponent},
     {path: 'admin/opinion/plist', component: AdminOpinionPlistRoutedComponent},
     {path: 'admin/partida/plist', component: AdminPartidaPlistRoutedComponent},
-    {path: 'admin/detalle_partida/plist', component: AdminDetallePartidaPlistRoutedComponent}
+    {path: 'admin/detalle_partida/plist', component: AdminDetallePartidaPlistRoutedComponent},
+      
 ] 
 
 @NgModule({

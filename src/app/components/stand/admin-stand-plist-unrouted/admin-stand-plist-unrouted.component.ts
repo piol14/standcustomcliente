@@ -3,12 +3,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ConfirmationService, ConfirmEventType } from 'primeng/api';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
 import { IStand, IStandPage } from 'src/app/model/model.interfaces';
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
 import { Subject } from 'rxjs/internal/Subject';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AdminStandDetailUnroutedComponent } from '../admin-stand-detail-unrouted/admin-stand-detail-unrouted.component';
 
 @Component({
   selector: 'app-admin-stand-plist-unrouted',
@@ -46,19 +47,36 @@ export class AdminStandPlistUnroutedComponent implements OnInit {
   }
 
   doRemove(stand: IStand) {
-    this.oStandAjaxService.removeOne(stand.id).subscribe({
-      next: () => {
-        this.getPage();
-        this.oMatSnackBar.open('El elemento ha sido eliminado exitosamente', '', { duration: 2000 });
-      },
-      error: (error: HttpErrorResponse) => {
-        this.status = error;
-        this.oMatSnackBar.open('Error al eliminar el elemento', '', { duration: 2000 });
-        // Puedes manejar el error según tus necesidades
+    this.oConfirmationService.confirm({
+      message: '¿Estás seguro de que quieres eliminar este elemento?',
+      accept: () => {
+        this.oStandAjaxService.removeOne(stand.id).subscribe({
+          next: () => {
+            this.getPage();
+            this.oMatSnackBar.open('El elemento ha sido eliminado exitosamente', '', { duration: 2000 });
+          },
+          error: (error: HttpErrorResponse) => {
+            this.status = error;
+            this.oMatSnackBar.open('Error al eliminar el elemento', '', { duration: 2000 });
+            // Puedes manejar el error según tus necesidades
+          }
+        });
       }
     });
+  }
+  ref: DynamicDialogRef | undefined;
+  doView(u: IStand) {
+    this.ref = this.oDialogService.open(AdminStandDetailUnroutedComponent, {
+        data: {
+            id: u.id
+        },
+        header: 'Vista Stand', // Establece el encabezado directamente
+        width: '50%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: false
+    });
 }
-
 
   onPageChange(event: PaginatorState) {
     this.oPaginatorState.rows = event.rows;

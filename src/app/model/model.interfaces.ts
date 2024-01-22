@@ -77,7 +77,7 @@ export interface IAtaqueStand extends IEntity {
   }
   export interface IStandPage extends IPage<IStand> {
 }
-  // user.model.ts
+export type formOperation = 'EDIT' | 'NEW';
   export interface IUser extends IEntity {
    
     nombre: string;

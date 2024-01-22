@@ -1,7 +1,7 @@
 // admin-Partida-plist-unrouted.component.ts
 
 import { Component, Input, OnInit } from '@angular/core';
-import { ConfirmationService, ConfirmEventType } from 'primeng/api';
+import { ConfirmationService, ConfirmEventType } from 'primeng/api'; // Importa ConfirmationService de primeng/api
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -33,10 +33,11 @@ export class AdminPartidaPlistUnroutedComponent implements OnInit {
   status: HttpErrorResponse | null = null;
   oPartidaToRemove: IPartida | null = null;
 
+
   constructor(
     private oPartidaAjaxService:PartidaAjaxService,
     public oDialogService: DialogService,
-    private oCconfirmationService: ConfirmationService,
+    private oConfirmationService: ConfirmationService
    
   ) { }
 
@@ -122,24 +123,28 @@ export class AdminPartidaPlistUnroutedComponent implements OnInit {
     });
 }
 
-  doRemove(u: IPartida) {
-    this.oPartidaToRemove = u;
-    this.oCconfirmationService.confirm({
-      accept: () => {
-        this.oPartidaAjaxService.removeOne(this.oPartidaToRemove?.id).subscribe({
-          next: () => {
-            this.getPage();
-          },
-          error: (error: any) => {
-            console.error(error);
-            // Aquí puedes manejar el error de otra manera si es necesario
-          }
-        });
-      },
-      reject: (type: ConfirmEventType) => {
-        // Manejar el rechazo si es necesario
-      }
-    });
-  }
+doRemove(u: IPartida) {
+  this.oPartidaToRemove = u;
+  this.oConfirmationService.confirm({
+    message: 'Are you sure you want to remove this record?',
+    accept: () => {
+      this.oPartidaAjaxService.removeOne(this.oPartidaToRemove?.id).subscribe({
+        next: () => {
+          this.getPage();
+        },
+        error: (error: any) => {
+          console.error(error);
+          // Aquí puedes manejar el error de otra manera si es necesario
+        }
+      });
+    },
+    reject: (type: ConfirmEventType) => {
+      // Manejar el rechazo si es necesario
+    }
+  });
+}
+
+// Resto del código sin cambios...
 
 }
+

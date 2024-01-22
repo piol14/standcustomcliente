@@ -36,7 +36,7 @@ export class AdminUsuarioPlistUnroutedComponent implements OnInit {
   constructor(
     private oUserAjaxService: UserAjaxService,
     public oDialogService: DialogService,
-    private oCconfirmationService: ConfirmationService,
+    private oConfirmationService: ConfirmationService,
     private snackBar: MatSnackBar
    
   ) { }
@@ -123,17 +123,23 @@ export class AdminUsuarioPlistUnroutedComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
 
   doRemove(user: IUser) {
-    this.oUserAjaxService.removeOne(user.id).subscribe({
-        next: () => {
+    this.oConfirmationService.confirm({
+      message: '¿Estás seguro de que quieres eliminar este usuario?',
+      accept: () => {
+        this.oUserAjaxService.removeOne(user.id).subscribe({
+          next: () => {
             this.getPage();
             this.showSnackBar('Usuario eliminado exitosamente');
-        },
-        error: (error: any) => {
+          },
+          error: (error: any) => {
             console.error(error);
             this.showSnackBar('Error al eliminar el usuario');
-        }
+          }
+        });
+      }
     });
-}
+  }
+  
 
 private showSnackBar(message: string) {
     this.snackBar.open(message, 'Cerrar', {
