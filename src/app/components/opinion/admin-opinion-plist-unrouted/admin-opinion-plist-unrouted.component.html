@@ -24,7 +24,8 @@
             <button class="btn btn-danger" (click)="doRemove(opinion)"><i
               class="pi pi-trash"> </i></button>
               <button class="btn btn-primary" (click)="doView(opinion)"><i class="pi pi-arrow-circle-up"></i></button>
-
+              <button class="btn btn-primary" [routerLink]="['/admin','opinion','view',opinion.id]"><i
+                class="pi pi-eye"></i></button>
             <!-- Agrega más acciones según sea necesario -->
           </td>
         </tr>

@@ -11,6 +11,10 @@ import { AdminAtaqueStandPlistRoutedComponent } from './components/ataque_stand/
 import { AdminOpinionPlistRoutedComponent } from './components/opinion/admin-opinion-plist-routed/admin-opinion-plist-routed.component';
 import { AdminPartidaPlistRoutedComponent } from './components/partida/admin-partida-plist-routed/admin-partida-plist-routed.component';
 import { AdminDetallePartidaPlistRoutedComponent } from './components/detalle_partida/admin-detallePartida-plist-routed/admin-detallePartida-plist-routed.component';
+import { AdminOpinionViewRoutedComponent } from './components/opinion/admin-opinion-view-routed/admin-opinion-view-routed.component';
+import { AdminStandViewRoutedComponent } from './components/stand/admin-stand-view-routed/admin-stand-view-routed.component';
+import { AdminPartidaViewRoutedComponent } from './components/partida/admin-partida-view-routed/admin-partida-view-routed.component';
+import { AdminDetallePartidaViewRoutedComponent } from './components/detalle_partida/admin-detallePartida-view-routed/admin-detallePartida-view-routed.component';
 export const routes: Routes = [
     { path: 'admin/usuario/plist', component: AdminUsuarioPlistRoutedComponent },
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
@@ -18,11 +22,16 @@ export const routes: Routes = [
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
     { path: 'admin/usuario/edit/:id', component: AdminUsuarioEditRoutedComponent },
     {path: 'admin/stand/plist', component: AdminStandPlistRoutedComponent},
+    {path: 'admin/stand/view/:id', component:AdminStandViewRoutedComponent},
     {path: 'admin/ataques/plist', component: AdminAtaqueStandPlistRoutedComponent},
     {path: 'admin/opinion/plist', component: AdminOpinionPlistRoutedComponent},
+    {path: 'admin/opinion/view/:id', component:AdminOpinionViewRoutedComponent},
+
     {path: 'admin/partida/plist', component: AdminPartidaPlistRoutedComponent},
-    {path: 'admin/detalle_partida/plist', component: AdminDetallePartidaPlistRoutedComponent},
-      
+    {path: 'admin/partida/view/:id', component: AdminPartidaViewRoutedComponent},
+    {path: 'admin/detallePartida/plist', component: AdminDetallePartidaPlistRoutedComponent},
+    {path: 'admin/detallePartida/view/:id', component: AdminDetallePartidaViewRoutedComponent},
+
 ] 
 
 @NgModule({

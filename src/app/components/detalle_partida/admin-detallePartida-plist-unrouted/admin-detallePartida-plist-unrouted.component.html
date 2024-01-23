@@ -19,6 +19,8 @@
           <td>
             <button class="btn btn-primary" (click)="doView(detallePartida)"><i class="pi pi-arrow-circle-up"></i></button>
             <button class="btn btn-danger" (click)="doRemove(detallePartida)"><i class="pi pi-trash"></i></button>
+            <button class="btn btn-primary" [routerLink]="['/admin','detallePartida','view',detallePartida.id]"><i
+              class="pi pi-eye"></i></button>
         </tr>
       </tbody>
     </table>

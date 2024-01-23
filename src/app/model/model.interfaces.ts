@@ -47,6 +47,7 @@ export interface IAtaqueStand extends IEntity {
     poder: string;
     aguante: string;
     acierto: string;
+    stand: number;
   }
   export interface IAtaqueStandPage extends IPage<IAtaqueStand> {
 }

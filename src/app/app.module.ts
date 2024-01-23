@@ -66,6 +66,10 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { AdminOpinionViewRoutedComponent } from './components/opinion/admin-opinion-view-routed/admin-opinion-view-routed.component';
+import { AdminStandViewRoutedComponent } from './components/stand/admin-stand-view-routed/admin-stand-view-routed.component';
+import { AdminPartidaViewRoutedComponent } from './components/partida/admin-partida-view-routed/admin-partida-view-routed.component';
+import { AdminDetallePartidaViewRoutedComponent } from './components/detalle_partida/admin-detallePartida-view-routed/admin-detallePartida-view-routed.component';
 //--
 @NgModule({
   declarations: [
@@ -97,6 +101,10 @@ import { MatIconModule } from '@angular/material/icon';
    AdminDetallePartidaDetailUnroutedComponent,
    AdminStandDetailUnroutedComponent, 
    AdminUsuarioViewRoutedComponent,
+   AdminOpinionViewRoutedComponent,
+   AdminStandViewRoutedComponent,
+   AdminPartidaViewRoutedComponent,
+   AdminDetallePartidaViewRoutedComponent,
    
   ],
   imports: [

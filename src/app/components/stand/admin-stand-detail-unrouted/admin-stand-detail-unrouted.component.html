@@ -22,8 +22,8 @@
         <td>{{ oStand.descripcion }}</td>
       </tr>
      
-      <tr>
-        <th>Stand</th>
+      <tr *ngIf="oStand.ataque">
+        <th>Ataque</th>
         <td>{{ oStand.ataque.id }}</td>
       </tr>
     </tbody>

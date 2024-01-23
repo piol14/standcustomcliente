@@ -22,7 +22,10 @@
             <button class="btn btn-danger" (click)="doRemove(stand)"><i
               class="pi pi-trash"> </i></button>
               <button class="btn btn-primary" (click)="doView(stand)"><i class="pi pi-arrow-circle-up"></i></button>
+              <button class="btn btn-primary" [routerLink]="['/admin','stand','view',stand.id]"><i
+                class="pi pi-eye"></i></button>
           </td>
+          
         </tr>
       </tbody>
     </table>
