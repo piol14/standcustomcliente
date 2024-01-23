@@ -73,6 +73,15 @@ import { AdminDetallePartidaViewRoutedComponent } from './components/detalle_par
 import { AdminStandEditRoutedComponent } from './components/stand/admin-stand-edit-routed/admin-stand-edit-routed.component';
 import { AdminStandFormUnroutedComponent } from './components/stand/admin-stand-form-unrouted/admin-stand-form-unrouted.component';
 import { AdminStandNewRoutedComponent } from './components/stand/admin-stand-new-routed/admin-stand-new-routed.component';
+import { MatOption } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { AdminPartidaNewRoutedComponent } from './components/partida/admin-partida-new-routed/admin-partida-new-routed.component';
+import { AdminPartidaEditRoutedComponent } from './components/partida/admin-partida-edit-routed/admin-partida-edit-routed.component';
+import { AdminPartidaFormUnroutedComponent } from './components/partida/admin-partida-form-unrouted/admin-partida-form-unrouted.component';
+import { AdminOpinionNewRoutedComponent } from './components/opinion/admin-opinion-new-routed/admin-opinion-new-routed.component';
+import { AdminOpinionEditRoutedComponent } from './components/opinion/admin-opinion-edit-routed/admin-opinion-edit-routed.component';
+import { AdminOpinionFormUnroutedComponent } from './components/opinion/admin-opinion-form-unrouted/admin-opinion-form-unrouted.component';
+
 //--
 @NgModule({
   declarations: [
@@ -111,6 +120,12 @@ import { AdminStandNewRoutedComponent } from './components/stand/admin-stand-new
    AdminStandEditRoutedComponent,
    AdminStandFormUnroutedComponent,
    AdminStandNewRoutedComponent,
+   AdminPartidaNewRoutedComponent,
+   AdminPartidaEditRoutedComponent,
+   AdminPartidaFormUnroutedComponent,
+   AdminOpinionNewRoutedComponent,
+   AdminOpinionEditRoutedComponent,
+   AdminOpinionFormUnroutedComponent,
   ],
   imports: [
     
@@ -130,6 +145,8 @@ import { AdminStandNewRoutedComponent } from './components/stand/admin-stand-new
    MatFormFieldModule,
    MatToolbarModule,
    MatIconModule,
+  
+   MatSelectModule,
    ReactiveFormsModule
   ],
   providers: [

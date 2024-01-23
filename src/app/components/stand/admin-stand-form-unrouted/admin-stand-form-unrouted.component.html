@@ -1,3 +1,56 @@
-<p>
-  admin-stand-form-unrouted works!
-</p>
+<div *ngIf="status != null">
+  <div class="d-flex justify-content-center my-3">
+    <div class="alert alert-danger" role="alert">
+      {{ status!.error.message }} - {{ status!.message }}
+    </div>
+  </div>
+</div>
+
+<div *ngIf="status == null">
+  <div class="col-12">
+    <div class="d-flex justify-content-center my-3">
+      <form [formGroup]="standForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <mat-form-field [style.width.px]="250" *ngIf="operation == 'EDIT'">
+            <mat-label>ID:</mat-label>
+            <input matInput formControlName="id" placeholder="ID" required readonly>
+            <mat-hint align="end">(Este número no se puede cambiar)</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field [style.width.px]="350">
+            <mat-label>Nombre:</mat-label>
+            <input matInput formControlName="nombre" placeholder="Nombre" required>
+            <mat-hint align="end">(Entre 3 y 255 caracteres)</mat-hint>
+            <mat-error *ngIf="hasError('nombre', 'required')">Nombre es obligatorio</mat-error>
+            <mat-error *ngIf="hasError('nombre', 'minlength')">El nombre debe tener al menos 3 caracteres</mat-error>
+            <mat-error *ngIf="hasError('nombre', 'maxlength')">El nombre no puede tener más de 255 caracteres</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field [style.width.px]="350">
+            <mat-label>Descripción:</mat-label>
+            <input matInput formControlName="descripcion" placeholder="Descripción" required>
+            <!-- Añade aquí cualquier validación adicional según tus necesidades -->
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field [style.width.px]="350">
+            <mat-label>Ataque:</mat-label>
+            <mat-select formControlName="ataque" placeholder="Selecciona un ataque" required>
+              
+            </mat-select>
+            <!-- Añade aquí cualquier validación adicional según tus necesidades -->
+          </mat-form-field>
+        </div>
+        
+
+        <!-- Resto de tus campos -->
+
+        <div class="text-center mt-5">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!standForm.valid">Guardar Usuario</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

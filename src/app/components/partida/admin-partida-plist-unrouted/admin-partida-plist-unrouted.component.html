@@ -22,6 +22,8 @@
               <button class="btn btn-primary" (click)="doView(partida)"><i class="pi pi-arrow-circle-up"></i></button>
               <button class="btn btn-primary" [routerLink]="['/admin','partida','view',partida.id]"><i
                 class="pi pi-eye"></i></button>
+                <button class="btn btn-warning" [routerLink]="['/admin','partida','edit',partida.id]"><i
+                  class="pi pi-pencil"></i></button>
           </td>
         </tr>
       </tbody>

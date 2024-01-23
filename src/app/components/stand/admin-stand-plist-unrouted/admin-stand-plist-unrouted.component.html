@@ -8,6 +8,7 @@
           <th (click)="doOrder('id')">ID</th>
           <th (click)="doOrder('nombre')">Nombre</th>
           <th (click)="doOrder('descripcion')">Descripción</th>
+          <th (click)="doOrder('ataque')">Ataques</th>
           <!-- Agrega más encabezados según sea necesario -->
           <th>Acciones</th>
         </tr>
@@ -17,13 +18,15 @@
           <td>{{ stand.id }}</td>
           <td>{{ stand.nombre }}</td>
           <td>{{ stand.descripcion }}</td>
-          <!-- Agrega más columnas según sea necesario -->
+          <td>{{ stand.ataque.id}}</td>
           <td>
             <button class="btn btn-danger" (click)="doRemove(stand)"><i
               class="pi pi-trash"> </i></button>
               <button class="btn btn-primary" (click)="doView(stand)"><i class="pi pi-arrow-circle-up"></i></button>
               <button class="btn btn-primary" [routerLink]="['/admin','stand','view',stand.id]"><i
                 class="pi pi-eye"></i></button>
+                <button class="btn btn-warning" [routerLink]="['/admin','stand','edit',stand.id]"><i
+                  class="pi pi-pencil"></i></button>
           </td>
           
         </tr>

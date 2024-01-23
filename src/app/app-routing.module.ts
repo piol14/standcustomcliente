@@ -16,26 +16,42 @@ import { AdminStandViewRoutedComponent } from './components/stand/admin-stand-vi
 import { AdminPartidaViewRoutedComponent } from './components/partida/admin-partida-view-routed/admin-partida-view-routed.component';
 import { AdminDetallePartidaViewRoutedComponent } from './components/detalle_partida/admin-detallePartida-view-routed/admin-detallePartida-view-routed.component';
 import { AdminStandNewRoutedComponent } from './components/stand/admin-stand-new-routed/admin-stand-new-routed.component';
+import { AdminStandEditRoutedComponent } from './components/stand/admin-stand-edit-routed/admin-stand-edit-routed.component';
+import { AdminPartidaNewRoutedComponent } from './components/partida/admin-partida-new-routed/admin-partida-new-routed.component';
+import { AdminPartidaEditRoutedComponent } from './components/partida/admin-partida-edit-routed/admin-partida-edit-routed.component';
+import { AdminPartidaFormUnroutedComponent } from './components/partida/admin-partida-form-unrouted/admin-partida-form-unrouted.component';
+import { AdminOpinionNewRoutedComponent } from './components/opinion/admin-opinion-new-routed/admin-opinion-new-routed.component';
+import { AdminOpinionEditRoutedComponent } from './components/opinion/admin-opinion-edit-routed/admin-opinion-edit-routed.component';
 export const routes: Routes = [
     { path: 'admin/usuario/plist', component: AdminUsuarioPlistRoutedComponent },
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
     { path: 'admin/usuario/view/:id', component: AdminUsuarioViewRoutedComponent },    
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
     { path: 'admin/usuario/edit/:id', component: AdminUsuarioEditRoutedComponent },
+
+
     {path: 'admin/stand/plist', component: AdminStandPlistRoutedComponent},
     {path: 'admin/stand/view/:id', component:AdminStandViewRoutedComponent},
+    {path: 'admin/stand/new', component:AdminStandNewRoutedComponent},
+    {path: 'admin/stand/edit/:id', component:AdminStandEditRoutedComponent},
+
     {path: 'admin/ataques/plist', component: AdminAtaqueStandPlistRoutedComponent},
-    {path: 'admin/ataques/new', component:AdminStandNewRoutedComponent},  
-{path: 'admin/ataques/edit/:id', component:AdminStandNewRoutedComponent},
 
     {path: 'admin/opinion/plist', component: AdminOpinionPlistRoutedComponent},
     {path: 'admin/opinion/view/:id', component:AdminOpinionViewRoutedComponent},
-
+    { path: 'admin/opinion/new', component: AdminOpinionNewRoutedComponent },
     {path: 'admin/partida/plist', component: AdminPartidaPlistRoutedComponent},
+    { path: 'admin/opinion/edit/:id', component: AdminOpinionEditRoutedComponent },
     {path: 'admin/partida/view/:id', component: AdminPartidaViewRoutedComponent},
+    { path: 'admin/partida/new', component: AdminPartidaNewRoutedComponent },
+    { path: 'admin/partida/edit/:id', component: AdminPartidaEditRoutedComponent },
+   
+
     {path: 'admin/detallePartida/plist', component: AdminDetallePartidaPlistRoutedComponent},
     {path: 'admin/detallePartida/view/:id', component: AdminDetallePartidaViewRoutedComponent},
-
+   
+   
+   
 ] 
 
 @NgModule({

@@ -1,0 +1,20 @@
+<!-- admin-user-form.component.html -->
+
+<div class="container mt-4">
+  <h2>Formulario de Partida</h2>
+  <form [formGroup]="partidaForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="fecha">Fecha:</label>
+      <input type="text" id="fecha" formControlName="fecha" class="form-control" placeholder="Ingrese la fecha" required>
+    </div>
+    <div class="form-group">
+      <label for="ganador">Ganador:</label>
+      <input type="text" id="ganador" formControlName="ganador" class="form-control" placeholder="Ingrese el ganador">
+    </div>
+    <!-- Puedes agregar más campos según sea necesario -->
+
+    <div class="text-center mt-5">
+      <button type="submit" class="btn btn-primary" [disabled]="!partidaForm.valid">Guardar</button>
+    </div>
+  </form>
+</div>
