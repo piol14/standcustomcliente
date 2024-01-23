@@ -56,13 +56,7 @@
             <mat-error *ngIf="hasError('username', 'pattern')">Caracteres no permitidos en el username</mat-error>
           </mat-form-field>
         </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Password:</mat-label>
-            <input matInput formControlName="password" placeholder="Password" type="password" required>
-            <mat-error *ngIf="hasError('password', 'required')">Password es obligatorio</mat-error>
-          </mat-form-field>
-        </div>
+    
 
         <mat-radio-group aria-label="Tipo de usuario" formControlName="role" required>
           <mat-radio-button [value]="true">Admin</mat-radio-button>

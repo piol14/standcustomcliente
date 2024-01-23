@@ -32,8 +32,8 @@ export class AdminUsuarioFormUnroutedComponent implements OnInit {
   initializeForm(oUser: IUser) {
     this.userForm = this.oFormBuilder.group({
       id: [oUser.id],
-      name: [oUser.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      surname: [oUser.telefono, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
+      nombre: [oUser.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
+      telefono: [oUser.telefono, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       email: [oUser.email, [Validators.required, Validators.email]],
       username: [oUser.username, [Validators.required, Validators.minLength(6), Validators.maxLength(15), Validators.pattern('^[a-zA-Z0-9]+$')]],
       role: [oUser.role, Validators.required]
