@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin-usuario-edit-routed',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminUsuarioEditRoutedComponent implements OnInit {
 
-  constructor() { }
+  id: number = 1;
+
+  constructor(
+    private oActivatedRoute: ActivatedRoute
+  ) {
+    this.id = parseInt(this.oActivatedRoute.snapshot.paramMap.get("id") || "1");
+  }
 
   ngOnInit() {
   }
-
 }

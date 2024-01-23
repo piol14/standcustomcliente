@@ -15,6 +15,7 @@ import { AdminOpinionViewRoutedComponent } from './components/opinion/admin-opin
 import { AdminStandViewRoutedComponent } from './components/stand/admin-stand-view-routed/admin-stand-view-routed.component';
 import { AdminPartidaViewRoutedComponent } from './components/partida/admin-partida-view-routed/admin-partida-view-routed.component';
 import { AdminDetallePartidaViewRoutedComponent } from './components/detalle_partida/admin-detallePartida-view-routed/admin-detallePartida-view-routed.component';
+import { AdminStandNewRoutedComponent } from './components/stand/admin-stand-new-routed/admin-stand-new-routed.component';
 export const routes: Routes = [
     { path: 'admin/usuario/plist', component: AdminUsuarioPlistRoutedComponent },
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
@@ -24,6 +25,9 @@ export const routes: Routes = [
     {path: 'admin/stand/plist', component: AdminStandPlistRoutedComponent},
     {path: 'admin/stand/view/:id', component:AdminStandViewRoutedComponent},
     {path: 'admin/ataques/plist', component: AdminAtaqueStandPlistRoutedComponent},
+    {path: 'admin/ataques/new', component:AdminStandNewRoutedComponent},  
+{path: 'admin/ataques/edit/:id', component:AdminStandNewRoutedComponent},
+
     {path: 'admin/opinion/plist', component: AdminOpinionPlistRoutedComponent},
     {path: 'admin/opinion/view/:id', component:AdminOpinionViewRoutedComponent},
 

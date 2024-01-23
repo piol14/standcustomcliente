@@ -70,6 +70,9 @@ import { AdminOpinionViewRoutedComponent } from './components/opinion/admin-opin
 import { AdminStandViewRoutedComponent } from './components/stand/admin-stand-view-routed/admin-stand-view-routed.component';
 import { AdminPartidaViewRoutedComponent } from './components/partida/admin-partida-view-routed/admin-partida-view-routed.component';
 import { AdminDetallePartidaViewRoutedComponent } from './components/detalle_partida/admin-detallePartida-view-routed/admin-detallePartida-view-routed.component';
+import { AdminStandEditRoutedComponent } from './components/stand/admin-stand-edit-routed/admin-stand-edit-routed.component';
+import { AdminStandFormUnroutedComponent } from './components/stand/admin-stand-form-unrouted/admin-stand-form-unrouted.component';
+import { AdminStandNewRoutedComponent } from './components/stand/admin-stand-new-routed/admin-stand-new-routed.component';
 //--
 @NgModule({
   declarations: [
@@ -105,7 +108,9 @@ import { AdminDetallePartidaViewRoutedComponent } from './components/detalle_par
    AdminStandViewRoutedComponent,
    AdminPartidaViewRoutedComponent,
    AdminDetallePartidaViewRoutedComponent,
-   
+   AdminStandEditRoutedComponent,
+   AdminStandFormUnroutedComponent,
+   AdminStandNewRoutedComponent,
   ],
   imports: [
     

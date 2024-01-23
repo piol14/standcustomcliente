@@ -28,6 +28,8 @@
             <button class="btn btn-primary" (click)="doView(user)"><i class="pi pi-arrow-circle-up"></i></button>
             <button class="btn btn-primary" [routerLink]="['/admin','usuario','view',user.id]"><i
               class="pi pi-eye"></i></button>
+              <button class="btn btn-warning" [routerLink]="['/admin','usuario','edit',user.id]"><i
+                class="pi pi-pencil"></i></button>
           </td>
         </tr>
       </tbody>

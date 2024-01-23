@@ -69,7 +69,7 @@ export class AdminUsuarioFormUnroutedComponent implements OnInit {
             this.oUser = data;
             this.initializeForm(this.oUser);
             this.oMatSnackBar.open('El usuario se ha creado correctamente', '', { duration: 2000 });
-            this.oRouter.navigate(['/admin', 'user', 'view', this.oUser]);
+            this.oRouter.navigate(['/admin', 'usuario', 'view', this.oUser]);
           },
           error: (error: HttpErrorResponse) => {
             this.status = error;
@@ -83,7 +83,7 @@ export class AdminUsuarioFormUnroutedComponent implements OnInit {
             this.oUser = data;
             this.initializeForm(this.oUser);
             this.oMatSnackBar.open('El usuario se ha actualizado correctamente', '', { duration: 2000 });
-            this.oRouter.navigate(['/admin', 'user', 'view', this.oUser.id]);
+            this.oRouter.navigate(['/admin', 'usuario', 'view', this.oUser.id]);
           },
           error: (error: HttpErrorResponse) => {
             this.status = error;
