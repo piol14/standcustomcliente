@@ -40,6 +40,14 @@ export class PartidaAjaxService {
         return this.httpClient.put<IPartida>(this.apiUrl, Partida);
     }
 
-    // Puedes agregar métodos adicionales según sea necesario
+    empty(): Observable<number> {
+        return this.httpClient.delete<number>(`${this.apiUrl}/empty`);
+    }
+
+
+    generateRandom(amount: number): Observable<number> {
+        return this.httpClient.post<number>(`${this.apiUrl}/populate/${amount}`, null);
+    }
+  
 
 }

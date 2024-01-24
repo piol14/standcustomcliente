@@ -1,3 +1,23 @@
+
+
+
+<div class="container">
+    <div *ngIf="bLoading" class="progress card m-5">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+           aria-valuenow="loadingProgress + '%'" aria-valuemin="0" aria-valuemax="100"
+           [style.width]="loadingProgress + '%'">
+        {{ loadingProgress }}%
+      </div>
+    </div>
+  
+  
+    
+      <div class="p-toolbar-group-start justify-content-center">
+        <a class="btn btn-warning mx-1" (click)="doGenerateRandom(10)">+10</a>
+        <a class="btn btn-warning mx-1" (click)="doGenerateRandom(100)">+100</a>
+        <a class="btn btn-warning mx-1" (click)="doGenerateRandom(1000)">+1000</a>
+        <a class="btn btn-danger mx-1" (click)="doEmpty($event)">Empty List</a>
+      </div>
 <a class="btn btn-primary mx-1" [routerLink]="['/admin','stand','new']">Crear Stand</a>
 
 
