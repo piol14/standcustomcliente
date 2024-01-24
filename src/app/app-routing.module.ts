@@ -22,6 +22,8 @@ import { AdminPartidaEditRoutedComponent } from './components/partida/admin-part
 import { AdminPartidaFormUnroutedComponent } from './components/partida/admin-partida-form-unrouted/admin-partida-form-unrouted.component';
 import { AdminOpinionNewRoutedComponent } from './components/opinion/admin-opinion-new-routed/admin-opinion-new-routed.component';
 import { AdminOpinionEditRoutedComponent } from './components/opinion/admin-opinion-edit-routed/admin-opinion-edit-routed.component';
+import { AdminDetallePartidaNewRoutedComponent } from './components/detalle_partida/admin-detallePartida-new-routed/admin-detallePartida-new-routed.component';
+import { AdminDetallePartidaEditRoutedComponent } from './components/detalle_partida/admin-detallePartida-edit-routed/admin-detallePartida-edit-routed.component';
 export const routes: Routes = [
     { path: 'admin/usuario/plist', component: AdminUsuarioPlistRoutedComponent },
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
@@ -49,7 +51,8 @@ export const routes: Routes = [
 
     {path: 'admin/detallePartida/plist', component: AdminDetallePartidaPlistRoutedComponent},
     {path: 'admin/detallePartida/view/:id', component: AdminDetallePartidaViewRoutedComponent},
-   
+    {path: 'admin/detallePartida/edit/:id', component: AdminDetallePartidaEditRoutedComponent},
+    {path: 'admin/detallePartida/new', component: AdminDetallePartidaNewRoutedComponent},
    
    
 ] 

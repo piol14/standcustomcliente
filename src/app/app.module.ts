@@ -1,3 +1,4 @@
+import { AdminDetallePartidaEditRoutedComponent } from './components/detalle_partida/admin-detallePartida-edit-routed/admin-detallePartida-edit-routed.component';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -81,7 +82,10 @@ import { AdminPartidaFormUnroutedComponent } from './components/partida/admin-pa
 import { AdminOpinionNewRoutedComponent } from './components/opinion/admin-opinion-new-routed/admin-opinion-new-routed.component';
 import { AdminOpinionEditRoutedComponent } from './components/opinion/admin-opinion-edit-routed/admin-opinion-edit-routed.component';
 import { AdminOpinionFormUnroutedComponent } from './components/opinion/admin-opinion-form-unrouted/admin-opinion-form-unrouted.component';
-
+import { AdminDetallePartidaFormUnroutedComponent } from './components/detalle_partida/admin-detallePartida-form-unrouted/admin-detallePartida-form-unrouted.component';
+import { AdminDetallePartidaNewRoutedComponent } from './components/detalle_partida/admin-detallePartida-new-routed/admin-detallePartida-new-routed.component';
+import { ToolbarModule } from 'primeng/toolbar';
+import { SplitButtonModule } from 'primeng/splitbutton';
 //--
 @NgModule({
   declarations: [
@@ -126,6 +130,9 @@ import { AdminOpinionFormUnroutedComponent } from './components/opinion/admin-op
    AdminOpinionNewRoutedComponent,
    AdminOpinionEditRoutedComponent,
    AdminOpinionFormUnroutedComponent,
+   AdminDetallePartidaFormUnroutedComponent,
+   AdminDetallePartidaEditRoutedComponent,
+   AdminDetallePartidaNewRoutedComponent,
   ],
   imports: [
     
@@ -145,9 +152,10 @@ import { AdminOpinionFormUnroutedComponent } from './components/opinion/admin-op
    MatFormFieldModule,
    MatToolbarModule,
    MatIconModule,
-  
+   ToolbarModule,
    MatSelectModule,
-   ReactiveFormsModule
+   ReactiveFormsModule,
+   SplitButtonModule
   ],
   providers: [
     DialogService,

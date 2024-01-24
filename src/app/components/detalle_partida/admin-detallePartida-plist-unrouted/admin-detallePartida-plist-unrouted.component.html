@@ -21,6 +21,8 @@
             <button class="btn btn-danger" (click)="doRemove(detallePartida)"><i class="pi pi-trash"></i></button>
             <button class="btn btn-primary" [routerLink]="['/admin','detallePartida','view',detallePartida.id]"><i
               class="pi pi-eye"></i></button>
+              <button class="btn btn-warning" [routerLink]="['/admin','detallePartida','edit',detallePartida.id]"><i
+                class="pi pi-pencil"></i></button>
         </tr>
       </tbody>
     </table>

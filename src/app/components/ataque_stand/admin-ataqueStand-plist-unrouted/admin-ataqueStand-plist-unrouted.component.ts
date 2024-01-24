@@ -32,7 +32,7 @@ export class AdminAtaqueStandPlistUnroutedComponent implements OnInit {
   oAtaqueStandToRemove: IAtaqueStand | null = null;
 
   constructor(
-    private oStandAjaxService: AtaqueStandAjaxService,
+    private oAtaqueStandAjaxService: AtaqueStandAjaxService,
     public oDialogService: DialogService,
     private oCconfirmationService: ConfirmationService,
    
@@ -51,7 +51,7 @@ export class AdminAtaqueStandPlistUnroutedComponent implements OnInit {
 
   search(filterValue: string): void {
     if (filterValue && filterValue.length >= 3) {
-      this.oStandAjaxService.getPage(this.oPaginatorState.rows ?? 10, this.oPaginatorState.first, 'id', 'asc')
+      this.oAtaqueStandAjaxService.getPage(this.oPaginatorState.rows ?? 10, this.oPaginatorState.first, 'id', 'asc')
         .pipe(
           debounceTime(500),
           switchMap((data: IAtaqueStandPage) => of(data))
@@ -65,7 +65,7 @@ export class AdminAtaqueStandPlistUnroutedComponent implements OnInit {
           }
         );
     } else {
-      this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.first, 'id', 'asc')
+      this.oAtaqueStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.first, 'id', 'asc')
         .subscribe(
           (data: IAtaqueStandPage) => {
             this.oPage = data;
@@ -82,10 +82,11 @@ export class AdminAtaqueStandPlistUnroutedComponent implements OnInit {
   }
 
   getPage(): void {
-    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
+    this.oAtaqueStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
       next: (data: IAtaqueStandPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
+        console.log(data);
       },
       error: (error: HttpErrorResponse) => {
         this.status = error;
@@ -124,7 +125,7 @@ export class AdminAtaqueStandPlistUnroutedComponent implements OnInit {
     this.oAtaqueStandToRemove = u;
     this.oCconfirmationService.confirm({
       accept: () => {
-        this.oStandAjaxService.removeOne(this.oAtaqueStandToRemove?.id).subscribe({
+        this.oAtaqueStandAjaxService.removeOne(this.oAtaqueStandToRemove?.id).subscribe({
           next: () => {
             this.getPage();
           },

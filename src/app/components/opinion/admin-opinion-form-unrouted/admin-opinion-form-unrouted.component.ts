@@ -19,7 +19,7 @@ export class AdminOpinionFormUnroutedComponent implements OnInit {
   @Input() operation: formOperation = 'NEW';
 
   opinionForm!: FormGroup;
-  oOpinion: any = {}; // Asegúrate de ajustar el tipo según tu modelo de opinión
+  oOpinion: IOpinion= {} as IOpinion; // Asegúrate de ajustar el tipo según tu modelo de opinión
   status: HttpErrorResponse | null = null;
 
   constructor(
@@ -33,10 +33,10 @@ export class AdminOpinionFormUnroutedComponent implements OnInit {
 
   initializeForm(oOpinion: IOpinion) {
     this.opinionForm = this.oFormBuilder.group({
-      usuario: [oOpinion.usuario.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
+      usuario: [oOpinion.usuario?.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       descripcion: [oOpinion.descripcion, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       numero_estrellas: [oOpinion.numero_estrellas, [Validators.required, Validators.min(1), Validators.max(5)]],
-      stand: [oOpinion.stand.nombre, Validators.required]
+      stand: [oOpinion.stand?.nombre, Validators.required]
     });
   }
 
