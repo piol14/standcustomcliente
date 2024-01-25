@@ -94,6 +94,7 @@ export type formOperation = 'EDIT' | 'NEW';
    
     usuario: IUser;
     stand: IStand;
+    partida: IPartida;
   }
   export interface IUsuarioStandPage extends IPage<IUsuarioStand> {
 }

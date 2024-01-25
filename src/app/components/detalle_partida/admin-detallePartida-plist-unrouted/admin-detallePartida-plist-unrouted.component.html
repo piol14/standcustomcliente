@@ -8,6 +8,7 @@
           <th (click)="doOrder('id')">ID</th>
           <th (click)="doOrder('usuario')">Usuario</th>
           <th (click)="doOrder('stand')">Stand</th>
+          <th (click)="doOrder('stand')">Partida</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -16,6 +17,7 @@
           <td>{{ detallePartida.id }}</td>
           <td>{{ detallePartida.usuario.nombre }}</td>
           <td>{{ detallePartida.stand.nombre }}</td>
+          <td>{{ detallePartida.partida.id }}</td>
           <td>
             <button class="btn btn-primary" (click)="doView(detallePartida)"><i class="pi pi-arrow-circle-up"></i></button>
             <button class="btn btn-danger" (click)="doRemove(detallePartida)"><i class="pi pi-trash"></i></button>
