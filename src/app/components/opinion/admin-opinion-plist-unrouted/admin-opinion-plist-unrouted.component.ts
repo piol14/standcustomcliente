@@ -86,6 +86,8 @@ export class AdminOpinionPlistUnroutedComponent implements OnInit {
       next: (data: IOpinionPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
+        console.log(data);
+        console.log(this.oPaginatorState)
       },
       error: (error: HttpErrorResponse) => {
         this.status = error;

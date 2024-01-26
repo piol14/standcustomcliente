@@ -101,7 +101,10 @@ export class AdminUsuarioPlistUnroutedComponent implements OnInit {
       next: (data: IUserPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
+        console.log(data);
+        console.log(this.oPaginatorState)
       },
+
       error: (error: HttpErrorResponse) => {
         this.status = error;
       }

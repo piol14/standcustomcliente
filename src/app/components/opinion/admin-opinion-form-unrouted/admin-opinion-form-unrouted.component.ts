@@ -5,8 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { IUser, IStand, formOperation, IOpinion } from 'src/app/model/model.interfaces';
 import { OpinionAjaxService } from 'src/app/service/opinion.ajax.service.service';
+import { AdminUsuarioSelectionUnroutedComponent } from '../../usuario/admin-usuario-selection-unrouted/admin-usuario-selection-unrouted.component';
 
 @Component({
   selector: 'app-admin-opinion-form-unrouted',
@@ -21,19 +23,22 @@ export class AdminOpinionFormUnroutedComponent implements OnInit {
   opinionForm!: FormGroup;
   oOpinion: IOpinion= {} as IOpinion; // Asegúrate de ajustar el tipo según tu modelo de opinión
   status: HttpErrorResponse | null = null;
-
+  oDynamicDialogRef: DynamicDialogRef | undefined;
   constructor(
     private oFormBuilder: FormBuilder,
     private oOpinionAjaxService: OpinionAjaxService, // Asegúrate de importar el servicio correcto
     private oRouter: Router,
     private oMatSnackBar: MatSnackBar,
+    public oDialogService: DialogService,
   ) {
     this.initializeForm(this.oOpinion);
   }
 
   initializeForm(oOpinion: IOpinion) {
     this.opinionForm = this.oFormBuilder.group({
-      usuario: [oOpinion.usuario?.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
+      usuario:this.oFormBuilder.group({
+        id: [oOpinion.usuario?.id, Validators.required],
+      }),
       descripcion: [oOpinion.descripcion, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       numero_estrellas: [oOpinion.numero_estrellas, [Validators.required, Validators.min(1), Validators.max(5)]],
       stand: [oOpinion.stand?.nombre, Validators.required]
@@ -92,5 +97,15 @@ export class AdminOpinionFormUnroutedComponent implements OnInit {
         })
       }
     }
+  }
+
+  onShowUsuarioSelection() {
+    this.oDynamicDialogRef = this.oDialogService.open(AdminUsuarioSelectionUnroutedComponent, {
+      header: 'Select a User', // Reemplazar con el texto deseado
+      width: '80%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true
+    });
   }
 }

@@ -1,22 +1,19 @@
-
-import { Component, Input, OnInit } from '@angular/core';
+import { UserAjaxService } from 'src/app/service/user.ajax.service.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { PaginatorState } from 'primeng/paginator';
-
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { IAtaqueStand, IAtaqueStandPage } from 'src/app/model/model.interfaces';
-import { AtaqueStandAjaxService } from 'src/app/service/ataqueStand.ajax.service.service';
+import { PaginatorState } from 'primeng/paginator';
+import { IUser, IUserPage } from 'src/app/model/model.interfaces';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+
 @Component({
-  selector: 'app-admin-ataqueStand-selection-unrouted',
-  templateUrl: './admin-ataqueStand-selection-unrouted.component.html',
-  styleUrls: ['./admin-ataqueStand-selection-unrouted.component.css']
+  selector: 'app-admin-usuario-selection-unrouted',
+  templateUrl: './admin-usuario-selection-unrouted.component.html',
+  styleUrls: ['./admin-usuario-selection-unrouted.component.css']
 })
-export class AdminAtaqueStandSelectionUnroutedComponent implements OnInit {
-
-
-  oAtaqueToRemove: IAtaqueStand | null = null;
-  oPage: IAtaqueStandPage | undefined;
+export class AdminUsuarioSelectionUnroutedComponent implements OnInit {
+  oUserToRemove: IUser | null = null;
+  oPage: IUserPage | undefined;
   orderField: string = "id";
   orderDirection: string = "asc";
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
@@ -25,7 +22,7 @@ export class AdminAtaqueStandSelectionUnroutedComponent implements OnInit {
 
   formGroup: FormGroup;
   constructor(
-    private oAtaqueStandAjaxService: AtaqueStandAjaxService,
+    private oUserAjaxService: UserAjaxService,
     public oDialogService: DialogService,
     public oDynamicDialogRef: DynamicDialogRef,
     
@@ -44,8 +41,8 @@ export class AdminAtaqueStandSelectionUnroutedComponent implements OnInit {
   
 
   getPage(): void {
-    this.oAtaqueStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
-      next: (data: IAtaqueStandPage) => {
+    this.oUserAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
+      next: (data: IUserPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
         console.log(this.oPaginatorState);
@@ -75,8 +72,8 @@ export class AdminAtaqueStandSelectionUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  onSelectThread(oAtaqueStand: IAtaqueStand) {
-    this.oDynamicDialogRef.close(oAtaqueStand);
+  onSelectUser(oUser: IUser) {
+    this.oDynamicDialogRef.close(oUser);
   }
 
 }

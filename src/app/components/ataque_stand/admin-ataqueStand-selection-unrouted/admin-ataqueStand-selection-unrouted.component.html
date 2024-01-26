@@ -1,63 +1,34 @@
-<div *ngIf="status!=null">
+<div *ngIf="status != null">
   <div class="d-flex justify-content-center my-3">
     <div class="alert alert-danger" role="alert">
-      {{status!.error.message}} - {{status!.message}}
+      {{ status!.error.message }} - {{ status!.message }}
     </div>
   </div>
 </div>
-<!-- <form [formGroup]="formGroup">
-  <div class="d-flex justify-content-center mb-3">
-    <p-autoComplete formControlName="selectedThread" [forceSelection]="true" (completeMethod)="filterThreads($event)"
-      field="name"></p-autoComplete>
-  </div>
-</form>
-<div *ngIf="status==null">
-  <div class="d-flex justify-content-between mb-3">
-    <h3 *ngIf="id_user>0">Filtered by User ({{id_user}})</h3>
-    <h3 *ngIf="!(id_user>0)">No Filter</h3>
-    <h3>Showing {{oPage?.numberOfElements}} of {{oPage?.totalElements}} Threads.</h3>
-  </div>
-  <div class="flex justify-content-center mb-3">
-    <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
-      [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
-  </div> -->
 
-  <div class="mb-5">
-    <table class="table table-bordered table-striped table-hover table-sm">
-      <thead>
-        <tr>
-          
-          <th (click)="doOrder('velocidad')">Velocidad</th>
-          <th (click)="doOrder('alcance')">Alcance</th>
-          <th (click)="doOrder('poder')">Poder</th>
-          <th (click)="doOrder('aguante')">Aguante</th>
-          <th (click)="doOrder('acierto')">Acierto</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let t of oPage?.content" class="align-middle">
-          <td class="text-end"><strong>{{t.id}}</strong></td>
-          <td>{{t.title}}</td>
-          <td>{{t.user.name}}</td>
-          <td class="text-center">{{t.replies}} </td>
-          <td class="text-center">
-            <span *ngIf="t.active==true">Enabled</span>
-            <span *ngIf="t.active==false">Disabled</span>
-          </td>
-          <td class="text-center">
-            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-              <button class="btn btn-primary" (click)="onSelectThread(t)"><i class="pi pi-plus-circle"></i></button>
-            </div>
-          </td>
-          <td>{{t.velocidad}}</td>
-          <td>{{t.alcance}}</td>
-          <td>{{t.poder}}</td>
-          <td>{{t.aguante}}</td>
-          <td>{{t.acierto}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="mb-5">
+  <table class="table table-bordered table-striped table-hover table-sm">
+    <thead>
+      <tr>
+        <th (click)="doOrder('velocidad')">Velocidad</th>
+        <th (click)="doOrder('alcance')">Alcance</th>
+        <th (click)="doOrder('poder')">Poder</th>
+        <th (click)="doOrder('aguante')">Aguante</th>
+        <th (click)="doOrder('acierto')">Acierto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of oPage?.content" class="align-middle">
+        <td class="text-end"><strong>{{ t.id }}</strong></td>
+        <!-- Otros campos -->
+        <td>{{ t.velocidad }}</td>
+        <td>{{ t.alcance }}</td>
+        <td>{{ t.poder }}</td>
+        <td>{{ t.aguante }}</td>
+        <td>{{ t.acierto }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <p-confirmDialog #cd [style]="{ width: '30vw' }">
@@ -66,7 +37,8 @@
   </ng-template>
   <ng-template pTemplate="message">
     <div class="container d-flex align-items-center justify-content-center">
-      <app-admin-thread-detail-unrouted [id]="oThreadToRemove!.id"></app-admin-thread-detail-unrouted>
+      <!-- Verifica si oAtaqueToRemove no es nulo antes de mostrar el detalle -->
+      <app-admin-ataque_stand-detail-unrouted *ngIf="oAtaqueToRemove" [id]="oAtaqueToRemove!.id"></app-admin-ataque_stand-detail-unrouted>
     </div>
   </ng-template>
   <ng-template pTemplate="footer">

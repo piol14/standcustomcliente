@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { IStand, formOperation } from 'src/app/model/model.interfaces'; // Asegúrate de importar el modelo correcto
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
+import { AdminAtaqueStandSelectionUnroutedComponent } from '../../ataque_stand/admin-ataqueStand-selection-unrouted/admin-ataqueStand-selection-unrouted.component';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-admin-stand-form-unrouted',
@@ -19,12 +21,13 @@ export class AdminStandFormUnroutedComponent implements OnInit {
   standForm!: FormGroup;
   oStand: IStand = {} as IStand;
   status: HttpErrorResponse | null = null;
-
+  oDynamicDialogRef: DynamicDialogRef | undefined;
   constructor(
     private formBuilder: FormBuilder,
     private standService: StandAjaxService, // Asegúrate de usar el servicio correcto
     private router: Router,
     private snackBar: MatSnackBar,
+    public oDialogService: DialogService,
   ) {
     this.initializeForm(this.oStand);
   }
@@ -92,4 +95,15 @@ export class AdminStandFormUnroutedComponent implements OnInit {
       }
     }
   }
+
+  onShowAtaquesSelection() {
+    this.oDynamicDialogRef = this.oDialogService.open(AdminAtaqueStandSelectionUnroutedComponent, {
+      header: 'Select a User', // Reemplazar con el texto deseado
+      width: '80%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true
+    });
+  }
+  
 }

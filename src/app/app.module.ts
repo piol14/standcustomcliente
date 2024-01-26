@@ -86,6 +86,8 @@ import { AdminDetallePartidaFormUnroutedComponent } from './components/detalle_p
 import { AdminDetallePartidaNewRoutedComponent } from './components/detalle_partida/admin-detallePartida-new-routed/admin-detallePartida-new-routed.component';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { AdminAtaqueStandSelectionUnroutedComponent } from './components/ataque_stand/admin-ataqueStand-selection-unrouted/admin-ataqueStand-selection-unrouted.component';
+import { AdminUsuarioSelectionUnroutedComponent } from './components/usuario/admin-usuario-selection-unrouted/admin-usuario-selection-unrouted.component';
 //--
 @NgModule({
   declarations: [
@@ -133,7 +135,8 @@ import { SplitButtonModule } from 'primeng/splitbutton';
    AdminDetallePartidaFormUnroutedComponent,
    AdminDetallePartidaEditRoutedComponent,
    AdminDetallePartidaNewRoutedComponent,
-  ],
+   AdminAtaqueStandSelectionUnroutedComponent,
+   AdminUsuarioSelectionUnroutedComponent],
   imports: [
     
     BrowserModule,

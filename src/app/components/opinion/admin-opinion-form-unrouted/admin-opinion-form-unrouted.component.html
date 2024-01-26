@@ -3,9 +3,20 @@
 <div class="container mt-4">
   <h2>Formulario de Opinión</h2>
   <form [formGroup]="opinionForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="nombre">Usuario:</label>
-      <input type="text" id="nombre" formControlName="usuario" class="form-control" placeholder="Ingrese el usuario" required>
+    <div formGroupName="usuario">
+      <div class="form-group">
+        <mat-form-field [style.width.px]="100">
+          <mat-label>Usuario:</mat-label>
+          <input matInput formControlName="id" placeholder="ID" required readonly>
+        </mat-form-field>
+        <button class="btn btn-primary" type="button" (click)="onShowUsuarioSelection()">
+          <i class="pi pi-search"></i> Buscar Usuario
+        </button>
+        {{oOpinion.usuario?.id}}
+      </div>
+    
+    
+      
     </div>
     <div class="form-group">
       <label for="descripcion">Descripción:</label>
