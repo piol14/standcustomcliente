@@ -88,6 +88,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { AdminAtaqueStandSelectionUnroutedComponent } from './components/ataque_stand/admin-ataqueStand-selection-unrouted/admin-ataqueStand-selection-unrouted.component';
 import { AdminUsuarioSelectionUnroutedComponent } from './components/usuario/admin-usuario-selection-unrouted/admin-usuario-selection-unrouted.component';
+import { AdminStandSelectionUnroutedComponent } from './components/stand/admin-stand-selection-unrouted/admin-stand-selection-unrouted.component';
 //--
 @NgModule({
   declarations: [
@@ -136,7 +137,9 @@ import { AdminUsuarioSelectionUnroutedComponent } from './components/usuario/adm
    AdminDetallePartidaEditRoutedComponent,
    AdminDetallePartidaNewRoutedComponent,
    AdminAtaqueStandSelectionUnroutedComponent,
-   AdminUsuarioSelectionUnroutedComponent],
+   AdminUsuarioSelectionUnroutedComponent,
+   AdminStandSelectionUnroutedComponent,
+  ],
   imports: [
     
     BrowserModule,

@@ -9,6 +9,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { IUser, IStand, formOperation, IOpinion } from 'src/app/model/model.interfaces';
 import { OpinionAjaxService } from 'src/app/service/opinion.ajax.service.service';
 import { AdminUsuarioSelectionUnroutedComponent } from '../../usuario/admin-usuario-selection-unrouted/admin-usuario-selection-unrouted.component';
+import { AdminStandSelectionUnroutedComponent } from '../../stand/admin-stand-selection-unrouted/admin-stand-selection-unrouted.component';
 
 @Component({
   selector: 'app-admin-opinion-form-unrouted',
@@ -41,7 +42,10 @@ export class AdminOpinionFormUnroutedComponent implements OnInit {
       }),
       descripcion: [oOpinion.descripcion, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       numero_estrellas: [oOpinion.numero_estrellas, [Validators.required, Validators.min(1), Validators.max(5)]],
-      stand: [oOpinion.stand?.nombre, Validators.required]
+      stand:this.oFormBuilder.group({
+        id: [oOpinion.stand?.id, Validators.required],
+      }),
+    
     });
   }
 
@@ -107,5 +111,29 @@ export class AdminOpinionFormUnroutedComponent implements OnInit {
       baseZIndex: 10000,
       maximizable: true
     });
+  
+  this.oDynamicDialogRef.onClose.subscribe((oUser: IUser) => {
+    if (oUser) {
+      this.oOpinion.usuario = oUser;
+      this.opinionForm.controls['usuario'].patchValue({ id: oUser.id })
+    }
+  });
+}
+
+onShowStandSelection() {
+  this.oDynamicDialogRef = this.oDialogService.open(AdminStandSelectionUnroutedComponent, {
+    header: 'Selecciona un stand', // Reemplazar con el texto deseado
+    width: '80%',
+    contentStyle: { overflow: 'auto' },
+    baseZIndex: 10000,
+    maximizable: true
+  });
+
+this.oDynamicDialogRef.onClose.subscribe((oStand: IStand) => {
+  if (oStand) {
+    this.oOpinion.stand = oStand;
+    this.opinionForm.controls['stand'].patchValue({ id: oStand.id })
   }
+});
+}
 }

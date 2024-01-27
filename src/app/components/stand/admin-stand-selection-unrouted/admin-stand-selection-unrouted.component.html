@@ -1,0 +1,33 @@
+<div *ngIf="status != null">
+  <div class="d-flex justify-content-center my-3">
+    <div class="alert alert-danger" role="alert">
+      {{ status!.error.message }} - {{ status!.message }}
+    </div>
+  </div>
+</div>
+
+<div class="mb-5">
+  <table class="table table-bordered table-striped table-hover table-sm">
+    <thead>
+      <tr>
+        <th (click)="doOrder('id')">Id</th>
+        <th (click)="doOrder('nombre')">Nombre</th>
+        <th (click)="doOrder('descripcion')">Descripción</th>
+        <th (click)="doOrder('ataque')">Ataque</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of oPage?.content" class="align-middle">
+        <td class="text-end"><strong>{{ item.id }}</strong></td>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.descripcion }}</td>
+        <td>{{ item.ataque.id }}</td> <!-- Asegúrate de ajustar esto según la estructura de tu modelo -->
+        <td class="text-center">
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <button class="btn btn-primary" (click)="onSelectStand(item)"><i class="pi pi-plus-circle"></i></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

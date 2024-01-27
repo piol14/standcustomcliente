@@ -1,19 +1,19 @@
-import { UserAjaxService } from 'src/app/service/user.ajax.service.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { PaginatorState } from 'primeng/paginator';
-import { IUser, IUserPage } from 'src/app/model/model.interfaces';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { PaginatorState } from 'primeng/paginator';
+import { IStand, IStandPage } from 'src/app/model/model.interfaces';
+import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
 
 @Component({
-  selector: 'app-admin-usuario-selection-unrouted',
-  templateUrl: './admin-usuario-selection-unrouted.component.html',
-  styleUrls: ['./admin-usuario-selection-unrouted.component.css']
+  selector: 'app-admin-stand-selection-unrouted',
+  templateUrl: './admin-stand-selection-unrouted.component.html',
+  styleUrls: ['./admin-stand-selection-unrouted.component.css']
 })
-export class AdminUsuarioSelectionUnroutedComponent implements OnInit {
-  oUserToRemove: IUser | null = null;
-  oPage: IUserPage | undefined;
+export class AdminStandSelectionUnroutedComponent implements OnInit {
+
+  oUserToRemove: IStand | null = null;
+  oPage: IStandPage | undefined;
   orderField: string = "id";
   orderDirection: string = "asc";
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
@@ -22,7 +22,7 @@ export class AdminUsuarioSelectionUnroutedComponent implements OnInit {
 
   
   constructor(
-    private oUserAjaxService: UserAjaxService,
+    private oStandAjaxService: StandAjaxService,
     public oDialogService: DialogService,
     public oDynamicDialogRef: DynamicDialogRef,
   
@@ -38,8 +38,8 @@ export class AdminUsuarioSelectionUnroutedComponent implements OnInit {
   
 
   getPage(): void {
-    this.oUserAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
-      next: (data: IUserPage) => {
+    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
+      next: (data: IStandPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
         console.log(this.oPaginatorState);
@@ -69,8 +69,7 @@ export class AdminUsuarioSelectionUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  onSelectUser(oUser: IUser) {
-    this.oDynamicDialogRef.close(oUser);
+  onSelectStand(oStand: IStand) {
+    this.oDynamicDialogRef.close(oStand);
   }
-
 }

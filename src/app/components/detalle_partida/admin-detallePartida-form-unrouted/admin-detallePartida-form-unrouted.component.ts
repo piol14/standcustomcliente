@@ -5,8 +5,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { IUsuarioStand, formOperation } from 'src/app/model/model.interfaces';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { IStand, IUser, IUsuarioStand, formOperation } from 'src/app/model/model.interfaces';
 import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
+import { AdminStandSelectionUnroutedComponent } from '../../stand/admin-stand-selection-unrouted/admin-stand-selection-unrouted.component';
+import { AdminUsuarioSelectionUnroutedComponent } from '../../usuario/admin-usuario-selection-unrouted/admin-usuario-selection-unrouted.component';
 
 @Component({
   selector: 'app-admin-detallePartida-form-unrouted',
@@ -21,20 +24,25 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
   detallePartidaForm!: FormGroup;
   oDetallePartida: IUsuarioStand = {} as IUsuarioStand;
   status: HttpErrorResponse | null = null;
-
+  oDynamicDialogRef: DynamicDialogRef | undefined;
   constructor(
     private oFormBuilder: FormBuilder,
     private oDetallePartidaAjaxService: DetallePartidaAjaxService,
     private oRouter: Router,
     private oMatSnackBar: MatSnackBar,
+    public oDialogService: DialogService,
   ) {
     this.initializeForm(this.oDetallePartida);
   }
 
   initializeForm(oDetallePartida: IUsuarioStand) {
     this.detallePartidaForm = this.oFormBuilder.group({
-      usuario: [oDetallePartida.usuario?.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      stand: [oDetallePartida.stand?.nombre, Validators.required]
+      usuario:this.oFormBuilder.group({
+        id: [oDetallePartida.usuario?.id, Validators.required],
+      }),
+      stand:this.oFormBuilder.group({
+        id: [oDetallePartida.stand?.id, Validators.required],
+      }),
     });
   }
 
@@ -67,7 +75,7 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
             this.oDetallePartida = data;
             this.initializeForm(this.oDetallePartida);
             this.oMatSnackBar.open('El detalle de la partida se ha creado correctamente', '', { duration: 2000 });
-            this.oRouter.navigate(['/admin', 'detalle-partida', 'view', this.oDetallePartida]);
+            this.oRouter.navigate(['/admin', 'detalle-partida', 'view',data]);
           },
           error: (error: HttpErrorResponse) => {
             this.status = error;
@@ -91,5 +99,39 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
       }
     }
   }
+
+  onShowUsuarioSelection() {
+    this.oDynamicDialogRef = this.oDialogService.open(AdminUsuarioSelectionUnroutedComponent, {
+      header: 'Selecciona un usuario', // Reemplazar con el texto deseado
+      width: '80%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true
+    });
+  
+  this.oDynamicDialogRef.onClose.subscribe((oUser: IUser) => {
+    if (oUser) {
+      this.oDetallePartida.usuario = oUser;
+      this.detallePartidaForm.controls['usuario'].patchValue({ id: oUser.id })
+    }
+  });
+}
+
+onShowStandSelection() {
+  this.oDynamicDialogRef = this.oDialogService.open(AdminStandSelectionUnroutedComponent, {
+    header: 'Selecciona un stand',
+    width: '80%',
+    contentStyle: { overflow: 'auto' },
+    baseZIndex: 10000,
+    maximizable: true
+  });
+
+this.oDynamicDialogRef.onClose.subscribe((oStand: IStand) => {
+  if (oStand) {
+    this.oDetallePartida.stand = oStand;
+    this.detallePartidaForm.controls['stand'].patchValue({ id: oStand.id })
+  }
+});
+}
 }
 

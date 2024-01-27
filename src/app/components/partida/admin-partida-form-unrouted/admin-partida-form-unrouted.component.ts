@@ -5,8 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { IPartida, formOperation } from 'src/app/model/model.interfaces';  // Asegúrate de importar el modelo correcto
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { IPartida, IUser, formOperation } from 'src/app/model/model.interfaces';  // Asegúrate de importar el modelo correcto
 import { PartidaAjaxService } from 'src/app/service/partida.ajax.service.service';
+import { AdminUsuarioSelectionUnroutedComponent } from '../../usuario/admin-usuario-selection-unrouted/admin-usuario-selection-unrouted.component';
 
 @Component({
   selector: 'app-admin-partida-form-unrouted',
@@ -21,12 +23,13 @@ export class AdminPartidaFormUnroutedComponent implements OnInit {
   partidaForm!: FormGroup;
   oPartida: IPartida = {} as IPartida;
   status: HttpErrorResponse | null = null;
-
+  oDynamicDialogRef: DynamicDialogRef | undefined;
   constructor(
     private formBuilder: FormBuilder,
     private partidaAjaxService: PartidaAjaxService,
     private router: Router,
     private matSnackBar: MatSnackBar,
+    public oDialogService: DialogService,
   ) {
     this.initializeForm(this.oPartida);
   }
@@ -34,8 +37,10 @@ export class AdminPartidaFormUnroutedComponent implements OnInit {
   initializeForm(oPartida: IPartida) {
     this.partidaForm = this.formBuilder.group({
       fecha: [oPartida.fecha, Validators.required],
-      ganador: [oPartida.ganador?.nombre],
+      usuario:this.formBuilder.group({
+        id: [oPartida.ganador?.id, Validators.required],
       // Agrega más campos según sea necesario
+    })
     });
   }
 
@@ -92,4 +97,20 @@ export class AdminPartidaFormUnroutedComponent implements OnInit {
       }
     }
   }
+  onShowUsuarioSelection() {
+    this.oDynamicDialogRef = this.oDialogService.open(AdminUsuarioSelectionUnroutedComponent, {
+      header: 'Select a User', // Reemplazar con el texto deseado
+      width: '80%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true
+    });
+  
+  this.oDynamicDialogRef.onClose.subscribe((oUser: IUser) => {
+    if (oUser) {
+      this.oPartida.ganador = oUser;
+      this.partidaForm.controls['usuario'].patchValue({ id: oUser.id })
+    }
+  });
+}
 }
