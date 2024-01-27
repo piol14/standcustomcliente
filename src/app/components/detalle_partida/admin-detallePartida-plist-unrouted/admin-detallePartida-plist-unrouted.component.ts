@@ -12,7 +12,7 @@ import { Subject, of } from 'rxjs';
 
 import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
 import { debounceTime, switchMap } from 'rxjs/operators';
-import { IUsuarioStand, IUsuarioStandPage } from 'src/app/model/model.interfaces';
+import { IDetallePartida, IDetallePartidaPage } from 'src/app/model/model.interfaces';
 import { AdminDetallePartidaDetailUnroutedComponent } from '../admin-detallePartida-detail-unrouted/admin-detallePartida-detail-unrouted.component';
 @Component({
   selector: 'app-admin-detallePartida-plist-unrouted',
@@ -23,12 +23,12 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
 
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
 
-  oPage: IUsuarioStandPage | undefined ;
+  oPage: IDetallePartidaPage | undefined ;
   orderField: string = "id";
   orderDirection: string = "asc";
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
   status: HttpErrorResponse | null = null;
-  oDetallePartidaToRemove: IUsuarioStand | null = null;
+  oDetallePartidaToRemove: IDetallePartida | null = null;
 
   constructor(
     private oDetallePartidaAjaxService: DetallePartidaAjaxService,
@@ -53,10 +53,10 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
       this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows ?? 10, this.oPaginatorState.first, 'id', 'asc')
         .pipe(
           debounceTime(500),
-          switchMap((data: IUsuarioStandPage) => of(data))
+          switchMap((data: IDetallePartidaPage) => of(data))
         )
         .subscribe(
-          (data: IUsuarioStandPage) => {
+          (data: IDetallePartidaPage) => {
             this.oPage = data;
           },
           (error: any) => {
@@ -66,7 +66,7 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
     } else {
       this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.first, 'id', 'asc')
         .subscribe(
-          (data: IUsuarioStandPage) => {
+          (data: IDetallePartidaPage) => {
             this.oPage = data;
           },
           (error: any) => {
@@ -83,7 +83,7 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
 
   getPage(): void {
     this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
-      next: (data: IUsuarioStandPage) => {
+      next: (data: IDetallePartidaPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
       },
@@ -107,7 +107,7 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
 
   ref: DynamicDialogRef | undefined;
 
-  doView(u: IUsuarioStand) {
+  doView(u: IDetallePartida) {
     this.ref = this.oDialogService.open(AdminDetallePartidaDetailUnroutedComponent, {
         data: {
             id: u.id
@@ -119,7 +119,7 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
         maximizable: false
     });
 }
-  doRemove(u: IUsuarioStand) {
+  doRemove(u: IDetallePartida) {
     this.oDetallePartidaToRemove = u;
     this.oCconfirmationService.confirm({
       accept: () => {

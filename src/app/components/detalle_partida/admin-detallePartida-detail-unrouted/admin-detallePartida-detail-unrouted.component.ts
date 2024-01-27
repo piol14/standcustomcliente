@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit, Optional } from '@angular/core';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { IUsuarioStand } from 'src/app/model/model.interfaces';
+import { IDetallePartida } from 'src/app/model/model.interfaces';
 import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class AdminDetallePartidaDetailUnroutedComponent implements OnInit {
 
   @Input() id: number = 1;
 
-  oUsuarioStand: IUsuarioStand = {} as IUsuarioStand;
+  oUsuarioStand: IDetallePartida = {} as IDetallePartida;
   status: HttpErrorResponse | null = null;
 
   constructor(
@@ -35,7 +35,7 @@ export class AdminDetallePartidaDetailUnroutedComponent implements OnInit {
 
   getOne(): void {
     this.oDetallePartidaAjaxService.getOne(this.id).subscribe({    
-      next: (data: IUsuarioStand) => {
+      next: (data: IDetallePartida) => {
         this.oUsuarioStand = data;
       },
       error: (error: HttpErrorResponse) => {

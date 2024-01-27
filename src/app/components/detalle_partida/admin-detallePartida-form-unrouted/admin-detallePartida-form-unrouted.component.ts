@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { IStand, IUser, IUsuarioStand, formOperation } from 'src/app/model/model.interfaces';
+import { IStand, IUser, IDetallePartida, formOperation } from 'src/app/model/model.interfaces';
 import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
 import { AdminStandSelectionUnroutedComponent } from '../../stand/admin-stand-selection-unrouted/admin-stand-selection-unrouted.component';
 import { AdminUsuarioSelectionUnroutedComponent } from '../../usuario/admin-usuario-selection-unrouted/admin-usuario-selection-unrouted.component';
@@ -22,7 +22,7 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
   @Input() operation: formOperation = 'NEW';
 
   detallePartidaForm!: FormGroup;
-  oDetallePartida: IUsuarioStand = {} as IUsuarioStand;
+  oDetallePartida: IDetallePartida = {} as IDetallePartida;
   status: HttpErrorResponse | null = null;
   oDynamicDialogRef: DynamicDialogRef | undefined;
   constructor(
@@ -35,7 +35,7 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
     this.initializeForm(this.oDetallePartida);
   }
 
-  initializeForm(oDetallePartida: IUsuarioStand) {
+  initializeForm(oDetallePartida: IDetallePartida) {
     this.detallePartidaForm = this.oFormBuilder.group({
       usuario:this.oFormBuilder.group({
         id: [oDetallePartida.usuario?.id, Validators.required],
@@ -49,7 +49,7 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
   ngOnInit() {
     if (this.operation == 'EDIT') {
       this.oDetallePartidaAjaxService.getOne(this.id).subscribe({
-        next: (data: IUsuarioStand) => {
+        next: (data: IDetallePartida) => {
           this.oDetallePartida = data;
           this.initializeForm(this.oDetallePartida);
         },
@@ -71,7 +71,7 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
     if (this.detallePartidaForm.valid) {
       if (this.operation == 'NEW') {
         this.oDetallePartidaAjaxService.newOne(this.detallePartidaForm.value).subscribe({
-          next: (data: IUsuarioStand) => {
+          next: (data: IDetallePartida) => {
             this.oDetallePartida = data;
             this.initializeForm(this.oDetallePartida);
             this.oMatSnackBar.open('El detalle de la partida se ha creado correctamente', '', { duration: 2000 });
@@ -85,7 +85,7 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
 
       } else {
         this.oDetallePartidaAjaxService.updateOne(this.detallePartidaForm.value).subscribe({
-          next: (data: IUsuarioStand) => {
+          next: (data: IDetallePartida) => {
             this.oDetallePartida = data;
             this.initializeForm(this.oDetallePartida);
             this.oMatSnackBar.open('El detalle de la partida se ha actualizado correctamente', '', { duration: 2000 });

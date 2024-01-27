@@ -90,11 +90,11 @@ export type formOperation = 'EDIT' | 'NEW';
   export interface IUserPage extends IPage<IUser> {
 }
   // usuario-stand.model.ts
-  export interface IUsuarioStand extends IEntity {
+  export interface IDetallePartida extends IEntity {
    
     usuario: IUser;
     stand: IStand;
     partida: IPartida;
   }
-  export interface IUsuarioStandPage extends IPage<IUsuarioStand> {
+  export interface IDetallePartidaPage extends IPage<IDetallePartida> {
 }
