@@ -7,7 +7,7 @@ import { API_URL } from '../environment/environment';
 @Injectable()
 export class DetallePartidaAjaxService {
 
-  private apiUrl: string = API_URL + '/usuarioStand';
+  private apiUrl: string = API_URL + '/detallePartida';
 
   constructor(private httpClient: HttpClient) {}
 

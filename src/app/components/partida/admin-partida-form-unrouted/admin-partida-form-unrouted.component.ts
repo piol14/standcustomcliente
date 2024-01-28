@@ -38,7 +38,7 @@ export class AdminPartidaFormUnroutedComponent implements OnInit {
     this.partidaForm = this.formBuilder.group({
       fecha: [oPartida.fecha, Validators.required],
       usuario:this.formBuilder.group({
-        id: [oPartida.ganador?.id, Validators.required],
+        id: [oPartida.usuario?.id, Validators.required],
       // Agrega más campos según sea necesario
     })
     });
@@ -108,7 +108,7 @@ export class AdminPartidaFormUnroutedComponent implements OnInit {
   
   this.oDynamicDialogRef.onClose.subscribe((oUser: IUser) => {
     if (oUser) {
-      this.oPartida.ganador = oUser;
+      this.oPartida.usuario = oUser;
       this.partidaForm.controls['usuario'].patchValue({ id: oUser.id })
     }
   });

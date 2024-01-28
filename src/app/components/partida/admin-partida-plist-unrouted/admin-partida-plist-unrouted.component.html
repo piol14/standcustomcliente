@@ -7,7 +7,7 @@
         <tr>
           <th (click)="doOrder('id')">ID</th>
           <th (click)="doOrder('fecha')">Fecha</th>
-          <th (click)="doOrder('ganador')">Ganador</th>
+          <th (click)="doOrder('usuario')">Ganador</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -15,7 +15,7 @@
         <tr *ngFor="let partida of oPage.content">
           <td>{{ partida.id }}</td>
           <td>{{ partida.fecha }}</td>
-          <td>{{ partida.ganador ? partida.ganador.nombre : 'No disponible' }}</td>
+          <td>{{ partida.usuario ? partida.usuario.nombre : 'No disponible' }}</td>
           <td>
             <button class="btn btn-danger" (click)="doRemove(partida)"><i
               class="pi pi-trash"> </i></button>

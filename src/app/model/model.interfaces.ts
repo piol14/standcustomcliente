@@ -64,7 +64,7 @@ export interface IAtaqueStand extends IEntity {
   export interface IPartida extends IEntity{
    
     fecha: string;
-    ganador: IUser | null;
+    usuario: IUser | null;
   }
   export interface IPartidaPage extends IPage<IPartida> {
   }
