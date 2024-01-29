@@ -23,13 +23,11 @@
           <td>{{ user.username }}</td>
           <td>{{ user.role ? 'Admin' : 'Usuario' }}</td>
           <td>
-            <button  class="btn btn-danger"(click)="doRemove(user)"><i
-              class="pi pi-trash"></i></button>
-            <button class="btn btn-primary" (click)="doView(user)"><i class="pi pi-arrow-circle-up"></i></button>
-            <button class="btn btn-primary" [routerLink]="['/admin','usuario','view',user.id]"><i
-              class="pi pi-eye"></i></button>
-              <button class="btn btn-warning" [routerLink]="['/admin','usuario','edit',user.id]"><i
-                class="pi pi-pencil"></i></button>
+            
+            <button class="btn btn-primary" (click)="doView(user)"><i class="fa-solid fa-circle-info"></i></button>
+            <button class="btn btn-primary" [routerLink]="['/admin','usuario','view',user.id]"><i class="fa-solid fa-eye"></i></button>
+              <button class="btn btn-warning" [routerLink]="['/admin','usuario','edit',user.id]"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button  class="btn btn-danger"(click)="doRemove(user)"><i class="fa-solid fa-trash"></i></button>
           </td>
         </tr>
       </tbody>

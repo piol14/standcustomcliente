@@ -22,6 +22,7 @@ export class AdminUsuarioPlistRoutedComponent implements OnInit {
   private oConfirmationService: ConfirmationService,
   private oMatSnackBar: MatSnackBar,
   private MessageService: MessageService,
+  
    ){}
   
  

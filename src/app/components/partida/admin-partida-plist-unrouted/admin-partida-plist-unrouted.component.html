@@ -17,13 +17,11 @@
           <td>{{ partida.fecha }}</td>
           <td>{{ partida.usuario ? partida.usuario.nombre : 'No disponible' }}</td>
           <td>
-            <button class="btn btn-danger" (click)="doRemove(partida)"><i
-              class="pi pi-trash"> </i></button>
-              <button class="btn btn-primary" (click)="doView(partida)"><i class="pi pi-arrow-circle-up"></i></button>
-              <button class="btn btn-primary" [routerLink]="['/admin','partida','view',partida.id]"><i
-                class="pi pi-eye"></i></button>
-                <button class="btn btn-warning" [routerLink]="['/admin','partida','edit',partida.id]"><i
-                  class="pi pi-pencil"></i></button>
+              <button class="btn btn-primary" (click)="doView(partida)"><i class="fa-solid fa-circle-info"></i></button>
+              <button class="btn btn-primary" [routerLink]="['/admin','partida','view',partida.id]"><i class="fa-solid fa-eye"></i></button>
+                <button class="btn btn-warning" [routerLink]="['/admin','partida','edit',partida.id]"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="btn btn-danger" (click)="doRemove(partida)"><i class="fa-solid fa-trash"> </i></button>
+
           </td>
         </tr>
       </tbody>

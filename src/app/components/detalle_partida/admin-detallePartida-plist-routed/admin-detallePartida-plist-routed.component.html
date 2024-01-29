@@ -19,5 +19,6 @@
 
 
 <a class="btn btn-primary mx-1" [routerLink]="['/admin','detallePartida','new']">Crear Detalle Partida</a>
-<app-admin-detallePartida-plist-unrouted></app-admin-detallePartida-plist-unrouted>
+<app-admin-detallePartida-plist-unrouted [forceReload]="forceReload" *ngIf="!bLoading"></app-admin-detallePartida-plist-unrouted>
 
+<p-confirmPopup></p-confirmPopup>

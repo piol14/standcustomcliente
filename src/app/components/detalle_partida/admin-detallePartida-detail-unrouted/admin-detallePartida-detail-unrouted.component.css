@@ -1,0 +1,39 @@
+/* Agrega estos estilos al archivo de estilo de tu aplicación */
+
+.table th{
+background-color: #a0ab94;
+color: white
+}
+.table td {
+  background-color: #6b9795;
+  color: #fff;
+  border: 1px solid #8a1609;
+  border-radius: 5px;
+}
+
+.custom-table {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  border: 2px solid #252527;
+  border-radius: 5px;
+}
+
+.container {
+  text-align: center;
+}
+
+.my-3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.alert {
+  background-color: #6e1538;
+  color: #fff;
+  border: 1px solid #8a1609;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}

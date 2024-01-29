@@ -1,48 +1,47 @@
 <div *ngIf="status != null">
-  <div class="d-flex justify-content-center my-3">
+    <div class="d-flex justify-content-center my-3">
       <div class="alert alert-danger" role="alert">
-          {{ status!.error.message }} - {{ status!.message }}
+        {{ status!.error.message }} - {{ status!.message }}
       </div>
+    </div>
   </div>
-</div>
-
-<div *ngIf="status == null">
-  <table class="table table-striped table-hover">
+  
+  <div *ngIf="status == null">
+    <table class="table table-striped table-hover">
       <tbody>
-          <tr>
-              <th>ID</th>
-              <td>{{ oAtaque.id }}</td>
-          </tr>
-          <tr>
-              <th>Velocidad</th>
-              <td>{{oAtaque.velocidad }}</td>
-          </tr>
-         
-          <tr>
-              <th>Alcance</th>
-              <td>{{oAtaque.alcance }}</td>
-          </tr>
-          <tr>
-              <th>Poder</th>
-              <td>{{ oAtaque.poder }}</td>
-          </tr>
-          <tr>
-              <th>Aguante</th>
-              <td>{{oAtaque.aguante }}</td>
-          </tr>
-          <tr>
-              <th>Acierto</th>
-              <td>{{oAtaque.acierto }}</td>
-          </tr>
+        <tr>
+          <th>ID</th>
+          <td>{{ oAtaque.id }}</td>
+        </tr>
+        <tr>
+          <th>Velocidad</th>
+          <td>{{oAtaque.velocidad }}</td>
+        </tr>
+        <tr>
+          <th>Alcance</th>
+          <td>{{oAtaque.alcance }}</td>
+        </tr>
+        <tr>
+          <th>Poder</th>
+          <td>{{ oAtaque.poder }}</td>
+        </tr>
+        <tr>
+          <th>Aguante</th>
+          <td>{{oAtaque.aguante }}</td>
+        </tr>
+        <tr>
+          <th>Acierto</th>
+          <td>{{oAtaque.acierto }}</td>
+        </tr>
       </tbody>
-  </table>
-</div>
-<div *ngIf="status != null">
-  <div class="d-flex justify-content-center my-3">
-      <div class="alert alert-danger" role="alert">
-          {{ status!.error.message }} - {{ status!.message }}
-      </div>
+    </table>
   </div>
-</div>
-
-
+  
+  <div *ngIf="status != null">
+    <div class="d-flex justify-content-center my-3">
+      <div class="alert alert-danger" role="alert">
+        {{ status!.error.message }} - {{ status!.message }}
+      </div>
+    </div>
+  </div>
+  

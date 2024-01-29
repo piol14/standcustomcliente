@@ -25,4 +25,5 @@
 <a class="btn btn-primary mx-1" [routerLink]="['/admin','usuario','new']">Crear Usuario</a>
 
 
-<app-admin-usuario-plist-unrouted></app-admin-usuario-plist-unrouted>
+<app-admin-usuario-plist-unrouted [forceReload]="forceReload" *ngIf="!bLoading"></app-admin-usuario-plist-unrouted>
+<p-confirmPopup></p-confirmPopup>
