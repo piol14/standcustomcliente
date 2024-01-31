@@ -71,6 +71,7 @@ export interface IAtaqueStand extends IEntity {
   // stand.model.ts
   export interface IStand extends IEntity {
   
+    usuario: IUser;
     nombre: string;
     descripcion: string;
     ataque: IAtaqueStand;
@@ -97,4 +98,15 @@ export type formOperation = 'EDIT' | 'NEW';
     partida: IPartida;
   }
   export interface IDetallePartidaPage extends IPage<IDetallePartida> {
+}
+export interface IToken {
+  jti: string;
+  iss: string;
+  iat: number;
+  exp: number;
+  name: string;
+}
+
+export interface SessionEvent {
+  type: string;
 }
