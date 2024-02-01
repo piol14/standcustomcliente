@@ -14,6 +14,12 @@
         <th (click)="doOrder('nombre')">Nombre</th>
         <th (click)="doOrder('descripcion')">Descripción</th>
         <th (click)="doOrder('ataque')">Ataque</th>
+        <th (click)="doOrder('velocidad')">Velocidad</th>
+
+          <th (click)="doOrder('alcance')">Alcance</th>
+          <th (click)="doOrder('poder')">Poder</th>
+          <th (click)="doOrder('aguante')">Aguante</th>
+          <th (click)="doOrder('acierto')">Acierto</th>
       </tr>
     </thead>
     <tbody>
@@ -21,7 +27,14 @@
         <td class="text-end"><strong>{{ item.id }}</strong></td>
         <td>{{ item.nombre }}</td>
         <td>{{ item.descripcion }}</td>
-        <td>{{ item.ataque.id }}</td> <!-- Asegúrate de ajustar esto según la estructura de tu modelo -->
+        <td>{{ item.velocidad }}</td>
+         <td>  {{item.potencial_de_desarollo}}</td>
+          <td>{{ item.alcance }}</td>
+          <td>{{ item.poder }}</td>
+          <td>{{ item.aguante }}</td>
+          <td>{{ item.acierto }}</td>
+          <td>{{ item.usuario.username}}</td>
+       <!-- Asegúrate de ajustar esto según la estructura de tu modelo -->
         <td class="text-center">
           <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
             <button class="btn btn-primary" (click)="onSelectStand(item)"><i class="pi pi-plus-circle"></i></button>

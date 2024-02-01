@@ -74,7 +74,12 @@ export interface IAtaqueStand extends IEntity {
     usuario: IUser;
     nombre: string;
     descripcion: string;
-    ataque: IAtaqueStand;
+    velocidad: string;
+    alcance: string;
+    poder: string;
+    aguante: string;
+    acierto: string;
+    potencial_de_desarollo :string;
   }
   export interface IStandPage extends IPage<IStand> {
 }

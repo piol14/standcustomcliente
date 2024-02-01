@@ -8,7 +8,12 @@
           <th (click)="doOrder('id')">ID</th>
           <th (click)="doOrder('nombre')">Nombre</th>
           <th (click)="doOrder('descripcion')">Descripción</th>
-          <th (click)="doOrder('ataque')">Ataques</th>
+          <th (click)="doOrder('velocidad')">Velocidad</th>
+          <th (click)="doOrder('alcance')">Alcance</th>
+          <th (click)="doOrder('poder')">Poder</th>
+          <th (click)="doOrder('aguante')">Aguante</th>
+          <th (click)="doOrder('acierto')">Acierto</th>
+          <th (click)="doOrder('potencial_de_desarollo')">Potencial de Desarollo</th>
           <th (click)="doOrder('usuario')">Creador</th>
           <!-- Agrega más encabezados según sea necesario -->
           <th>Acciones</th>
@@ -19,8 +24,14 @@
           <td>{{ stand.id }}</td>
           <td>{{ stand.nombre }}</td>
           <td>{{ stand.descripcion }}</td>
-          <td>{{ stand.ataque.id}}</td>
+          <td>{{ stand.velocidad }}</td>
+         <td>  {{stand.potencial_de_desarollo}}</td>
+          <td>{{ stand.alcance }}</td>
+          <td>{{ stand.poder }}</td>
+          <td>{{ stand.aguante }}</td>
+          <td>{{ stand.acierto }}</td>
           <td>{{ stand.usuario.username}}</td>
+          
           <td>
             <button class="btn btn-primary" (click)="doView(stand)"><i class="fa-solid fa-circle-info">
             </i></button>

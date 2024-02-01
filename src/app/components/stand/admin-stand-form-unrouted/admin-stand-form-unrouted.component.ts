@@ -37,7 +37,12 @@ export class AdminStandFormUnroutedComponent implements OnInit {
       id: [oStand.id],
       nombre: [oStand.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       descripcion: [oStand.descripcion, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      stand: [oStand.ataque, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]],
+      velocidad: [oStand.velocidad || 'D'], // Default value 'D' if oStand.velocidad is falsy
+      alcance: [oStand.alcance || 'D'],     // Default value 'D' if oStand.alcance is falsy
+      poder: [oStand.poder || 'D'],         // Default value 'D' if oStand.poder is falsy
+      aguante: [oStand.aguante || 'D'],     // Default value 'D' if oStand.aguante is falsy
+      acierto: [oStand.acierto || 'D'],  
+     potencial_de_desarollo: [oStand.potencial_de_desarollo || 'D']
       // Agrega aquí los demás campos según tu modelo
     });
   }

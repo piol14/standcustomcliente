@@ -22,10 +22,27 @@
         <td>{{ oStand.descripcion }}</td>
       </tr>
      
-      <tr *ngIf="oStand.ataque">
-        <th>Ataque</th>
-        <td>{{ oStand.ataque.id }}</td>
+      <tr>
+        <th>Velocidad</th>
+        <td>{{oStand.velocidad }}</td>
       </tr>
+      <tr>
+        <th>Alcance</th>
+        <td>{{oStand.alcance }}</td>
+      </tr>
+      <tr>
+        <th>Poder</th>
+        <td>{{ oStand.poder }}</td>
+      </tr>
+      <tr>
+        <th>Aguante</th>
+        <td>{{oStand.aguante }}</td>
+      </tr>
+      <tr>
+        <th>Acierto</th>
+        <td>{{oStand.acierto }}</td>
+      </tr>
+      
     </tbody>
   </table>
 </div>

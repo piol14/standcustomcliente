@@ -26,11 +26,13 @@ import { AdminDetallePartidaNewRoutedComponent } from './components/detalle_part
 import { AdminDetallePartidaEditRoutedComponent } from './components/detalle_partida/admin-detallePartida-edit-routed/admin-detallePartida-edit-routed.component';
 import { HomeRoutedComponent } from './components/shared/home-routed/home-routed.component';
 import { LoginRoutedComponent } from './components/shared/login-routed/login-routed.component';
+import { LogoutRoutedComponent } from './components/shared/logout-routed/logout-routed.component';
 export const routes: Routes = [
 
   { path: '', component: HomeRoutedComponent },
   { path: 'home', component: HomeRoutedComponent },
   { path: 'login', component: LoginRoutedComponent },
+  { path: 'logout', component: LogoutRoutedComponent },
     { path: 'admin/usuario/plist', component: AdminUsuarioPlistRoutedComponent },
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
     { path: 'admin/usuario/view/:id', component: AdminUsuarioViewRoutedComponent },    

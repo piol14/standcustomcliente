@@ -93,6 +93,7 @@ import { AdminStandSelectionUnroutedComponent } from './components/stand/admin-s
 import { LoginRoutedComponent } from './components/shared/login-routed/login-routed.component';
 import { CryptoService } from './service/crypto.service';
 import { SessionAjaxService } from './service/session.ajax.service.service';
+import { LogoutRoutedComponent } from './components/shared/logout-routed/logout-routed.component';
 //--
 @NgModule({
   declarations: [
@@ -143,7 +144,8 @@ import { SessionAjaxService } from './service/session.ajax.service.service';
    AdminAtaqueStandSelectionUnroutedComponent,
    AdminUsuarioSelectionUnroutedComponent,
    AdminStandSelectionUnroutedComponent,
-   LoginRoutedComponent
+   LoginRoutedComponent,
+   LogoutRoutedComponent
   ],
   imports: [
     
