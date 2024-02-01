@@ -16,6 +16,7 @@ export class AdminOpinionDetailUnroutedComponent implements OnInit {
   status: HttpErrorResponse | null = null;
 
   constructor(
+    
     private oOpinionAjaxService: OpinionAjaxService,
     @Optional() public ref:DynamicDialogRef,
     @Optional() public config:DynamicDialogConfig
