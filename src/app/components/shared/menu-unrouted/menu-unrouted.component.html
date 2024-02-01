@@ -23,10 +23,7 @@
           <a class="nav-link" [class.active]="strUrl.startsWith('/admin/stand')"
             routerLink="/admin/stand/plist" *ngIf="strUserName && oSessionUser?.role==false">Stand</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/ataques')"
-            routerLink="/admin/ataques/plist "*ngIf="strUserName && oSessionUser?.role==false">Ataques</a>
-        </li>
+     
         <li class="nav-item">
           <a class="nav-link" [class.active]="strUrl.startsWith('/admin/opinion')"
             routerLink="/admin/opinion/plist" *ngIf="strUserName && oSessionUser?.role==false ">Opiniones</a>

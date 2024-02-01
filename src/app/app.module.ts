@@ -40,9 +40,6 @@ import { AdminStandPlistRoutedComponent } from './components/stand/admin-stand-p
 import { AdminStandPlistUnroutedComponent } from './components/stand/admin-stand-plist-unrouted/admin-stand-plist-unrouted.component';
 import { StandAjaxService } from './service/stand.ajax.service.service';
 import { ConfirmationService } from 'primeng/api';
-import { AtaqueStandAjaxService } from './service/ataqueStand.ajax.service.service';
-import { AdminAtaqueStandPlistUnroutedComponent } from './components/ataque_stand/admin-ataqueStand-plist-unrouted/admin-ataqueStand-plist-unrouted.component';
-import { AdminAtaqueStandPlistRoutedComponent } from './components/ataque_stand/admin-ataqueStand-plist-routed/admin-ataqueStand-plist-routed.component';
 import { OpinionAjaxService } from './service/opinion.ajax.service.service';
 import { AdminOpinionPlistUnroutedComponent } from './components/opinion/admin-opinion-plist-unrouted/admin-opinion-plist-unrouted.component';
 import { AdminOpinionPlistRoutedComponent } from './components/opinion/admin-opinion-plist-routed/admin-opinion-plist-routed.component';
@@ -53,7 +50,6 @@ import { AdminDetallePartidaPlistRoutedComponent } from './components/detalle_pa
 import { AdminDetallePartidaPlistUnroutedComponent } from './components/detalle_partida/admin-detallePartida-plist-unrouted/admin-detallePartida-plist-unrouted.component';
 import { DetallePartidaAjaxService } from './service/detallePartida.ajax.service.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { AdminAtaqueStandDetailUnroutedComponent } from './components/ataque_stand/admin-ataque_stand-detail-unrouted/admin-ataque_stand-detail-unrouted.component';
 import { AdminOpinionDetailUnroutedComponent } from './components/opinion/admin-opinion-detail-unrouted/admin-opinion-detail-unrouted.component';
 import { AdminPartidaDetailUnroutedComponent } from './components/partida/admin-partida-detail-unrouted/admin-partida-detail-unrouted.component';
 import { AdminDetallePartidaDetailUnroutedComponent } from './components/detalle_partida/admin-detallePartida-detail-unrouted/admin-detallePartida-detail-unrouted.component';
@@ -87,7 +83,6 @@ import { AdminDetallePartidaFormUnroutedComponent } from './components/detalle_p
 import { AdminDetallePartidaNewRoutedComponent } from './components/detalle_partida/admin-detallePartida-new-routed/admin-detallePartida-new-routed.component';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
-import { AdminAtaqueStandSelectionUnroutedComponent } from './components/ataque_stand/admin-ataqueStand-selection-unrouted/admin-ataqueStand-selection-unrouted.component';
 import { AdminUsuarioSelectionUnroutedComponent } from './components/usuario/admin-usuario-selection-unrouted/admin-usuario-selection-unrouted.component';
 import { AdminStandSelectionUnroutedComponent } from './components/stand/admin-stand-selection-unrouted/admin-stand-selection-unrouted.component';
 import { LoginRoutedComponent } from './components/shared/login-routed/login-routed.component';
@@ -111,15 +106,15 @@ import { LogoutRoutedComponent } from './components/shared/logout-routed/logout-
     MenuUnroutedComponent,
    AdminStandPlistRoutedComponent,
    AdminStandPlistUnroutedComponent,
-   AdminAtaqueStandPlistUnroutedComponent,
-   AdminAtaqueStandPlistRoutedComponent,
+  
+  
    AdminOpinionPlistUnroutedComponent,
    AdminOpinionPlistRoutedComponent,
    AdminPartidaPlistRoutedComponent,
    AdminPartidaPlistUnroutedComponent,
    AdminDetallePartidaPlistRoutedComponent,
    AdminDetallePartidaPlistUnroutedComponent,
-   AdminAtaqueStandDetailUnroutedComponent,
+ 
    AdminOpinionDetailUnroutedComponent,
    AdminPartidaDetailUnroutedComponent,
    AdminDetallePartidaDetailUnroutedComponent,
@@ -141,7 +136,7 @@ import { LogoutRoutedComponent } from './components/shared/logout-routed/logout-
    AdminDetallePartidaFormUnroutedComponent,
    AdminDetallePartidaEditRoutedComponent,
    AdminDetallePartidaNewRoutedComponent,
-   AdminAtaqueStandSelectionUnroutedComponent,
+
    AdminUsuarioSelectionUnroutedComponent,
    AdminStandSelectionUnroutedComponent,
    LoginRoutedComponent,
@@ -175,7 +170,7 @@ import { LogoutRoutedComponent } from './components/shared/logout-routed/logout-
     DialogService,
     UserAjaxService,
    StandAjaxService,
-   AtaqueStandAjaxService,
+  
    OpinionAjaxService,
    PartidaAjaxService,
    ConfirmationService,

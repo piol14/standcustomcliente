@@ -1,3 +1,106 @@
 .fa-solid {
 color: #ffffff;
-}
+} .fa-solid {
+    color: #ffffff;
+    }
+
+    .fa-solid {
+        color: #ffffff;
+        }
+    
+        /* admin-opinion-plist-unrouted.component.css */
+    
+    .container {
+        margin-top: 4rem;
+    }
+    
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+    }
+    
+    .table th, .table td {
+        padding: 0.75rem;
+        text-align: center;
+        vertical-align: middle;
+    }
+    
+    .table th {
+        background-color: #662549;
+        color: #fff;
+        cursor: pointer;
+    }
+    .table td {
+        background-color: #ecd4d4;
+    }
+    .table th:hover {
+        background-color: rgb(124, 49, 64);
+    }
+    
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f8f9fa;
+    }
+    
+    .btn {
+        margin-right: 0.5rem;
+        transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+    
+    .alert {
+        margin-top: 1rem;
+    }
+    
+    .p-confirmDialog {
+        width: 30vw;
+    }
+    
+    .p-confirmDialog .p-dialog {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .p-confirmDialog .p-dialog-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: none;
+    }
+    
+    .p-confirmDialog .p-dialog-header h5 {
+        margin: 0;
+    }
+    
+    .p-confirmDialog .p-dialog-message {
+        text-align: center;
+    }
+    
+    .p-confirmDialog .p-dialog-footer {
+        text-align: center;
+    }
+    
+    .p-button {
+        margin: 0 0.5rem;
+    }
+    
+    .p-button-danger:hover {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+    .btn-primary {
+        background-color: #365486;
+        border-color: #365486;
+    }
+    .btn-warning{
+        background-color: #FFC436;
+        border-color: #FFC436;
+    }
+    .btn-danger{
+        background-color: #FF6868;
+        border-color: #FF6868;
+    }
+    /* Add more styles as needed */
+    
