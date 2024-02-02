@@ -1,13 +1,13 @@
-/* Agrega estos estilos al archivo de estilo de tu aplicación */
-
-.table th{
-background-color: #a0ab94;
-color: white
+/* Estilos para las tablas */
+.table th {
+  background-color: #662549;; /* Púrpura */
+  color: #ecf0f1; /* Blanco */
 }
+
 .table td {
-  background-color: #6b9795;
-  color: #fff;
-  border: 1px solid #8a1609;
+  background-color: #ecd4d4; /* Azul */
+  color: #fff; /* Blanco */
+  border: 1px solid #ecd4d4; /* Azul más oscuro */
   border-radius: 5px;
 }
 
@@ -15,23 +15,26 @@ color: white
   width: 100%;
   max-width: 600px;
   margin: auto;
-  border: 2px solid #252527;
-  border-radius: 5px;
+  border: 2px solid #34495e; /* Gris azulado */
+  border-radius: 10px;
 }
 
+/* Estilos para el contenedor */
 .container {
   text-align: center;
 }
 
+/* Espaciado */
 .my-3 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
+/* Estilos para las alertas */
 .alert {
-  background-color: #6e1538;
-  color: #fff;
-  border: 1px solid #8a1609;
+  background-color: #c0392b; /* Rojo oscuro */
+  color: #fff; /* Blanco */
+  border: 1px solid #922b21; /* Rojo más oscuro */
   border-radius: 5px;
   width: 100%;
   max-width: 600px;

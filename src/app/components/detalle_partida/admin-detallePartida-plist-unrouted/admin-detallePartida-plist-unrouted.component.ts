@@ -112,7 +112,7 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
         data: {
             id: u.id
         },
-        header: 'Vista Detalle Partida', // Establece el encabezado directamente
+        header: 'Vista Detalle Partida ' , // Establece el encabezado directamente
         width: '50%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,

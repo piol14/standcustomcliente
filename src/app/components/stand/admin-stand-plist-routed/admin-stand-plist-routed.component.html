@@ -11,14 +11,15 @@
     </div>
   
   
-    
+    <h1 class="my-5">  Stands </h1>
       <div class="p-toolbar-group-start justify-content-center">
         <a class="btn btn-warning mx-1" (click)="doGenerateRandom(10)">+10</a>
         <a class="btn btn-warning mx-1" (click)="doGenerateRandom(100)">+100</a>
         <a class="btn btn-warning mx-1" (click)="doGenerateRandom(1000)">+1000</a>
-        <a class="btn btn-danger mx-1" (click)="doEmpty($event)">Empty List</a>
+        <a class="btn btn-danger mx-1" (click)="doEmpty($event)">Borrar todo </a>
+        <a class="btn btn-primary mx-1" [routerLink]="['/admin','stand','new']">Crear Stand</a>
       </div>
-<a class="btn btn-primary mx-1" [routerLink]="['/admin','stand','new']">Crear Stand</a>
+
 
 
 

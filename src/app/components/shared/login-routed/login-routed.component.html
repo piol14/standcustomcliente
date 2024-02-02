@@ -1,42 +1,41 @@
-
+<!-- Tu código HTML existente -->
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-auto">
       <div class="d-flex justify-content-center mb-3">
-        <h1 class="my-5">Formulario del login</h1>
+        <h1 class="my-5">Login <i class="fa-solid fa-user-group"></i></h1>
       </div>
     </div>
   </div>
 </div>
 
-<div class="login-form d-flex flex-column align-items-center">
-  <div class="d-flex justify-content-center">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Username" formControlName="username">
-        <mat-error *ngIf="loginForm.get('username')?.hasError('required')">El usuario es requerido</mat-error>
-      </mat-form-field>
+<!-- Contenedor rectangular con borde azul para el formulario -->
+<div class="login-form-container d-flex justify-content-center align-items-center">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="d-flex flex-column align-items-center">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Username" formControlName="username">
+      <mat-error *ngIf="loginForm.get('username')?.hasError('required')">El usuario es requerido</mat-error>
+    </mat-form-field>
 
-      <mat-form-field class="full-width">
-        <input matInput type="password" placeholder="Password" formControlName="password">
-        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">La contraseña es requerida</mat-error>
-        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">La contraseña debe medir al menos 6 caracteres</mat-error>
-      </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput type="password" placeholder="Password" formControlName="password">
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">La contraseña es requerida</mat-error>
+      <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">La contraseña debe medir al menos 6 caracteres</mat-error>
+    </mat-form-field>
 
-      <div class="control-group text-center">
-        <button class="mx-1" mat-raised-button type="submit" color="primary">Iniciar sesión</button>
-        <button class="mx-1" mat-raised-button type="button" color="warn" (click)="onReset()">Reset</button>
-      </div>
-    </form>
-  </div>
+    <div class="control-group text-center mt-3">
+      <button id="boton1"class="mx-1" mat-raised-button type="submit" color="primary">Iniciar sesión</button>
+      <button  id="boton2"class="mx-1" mat-raised-button type="button" color="warn" (click)="onReset()">Reset</button>
+    </div>
+  </form>
+</div>
 
-  <div class="col-12 mt-5">
-    <div class="card">
-      <div class="card-body">
-        <div class="control-group text-center mt-3">
-          <button class="btn btn-danger m-2" (click)="loginAdmin()">login como admin</button>
-          <button class="btn btn-success m-2" (click)="loginUser()">login como usuario</button>
-        </div>
+<div class="col-12 mt-5">
+  <div class="card">
+    <div class="card-body">
+      <div class="control-group text-center mt-3">
+        <button class="btn btn-danger m-2" (click)="loginAdmin()">login como admin</button>
+        <button class="btn btn-success m-2" (click)="loginUser()">login como usuario</button>
       </div>
     </div>
   </div>
