@@ -27,10 +27,21 @@
             {{oDetallePartida.stand?.id}}
           </div>
         </div>
-
+        <div formGroupName="partida">
+          <div class="form-group">
+            <mat-form-field [style.width.px]="100">
+              <mat-label>Partida:</mat-label>
+              <input matInput formControlName="id" placeholder="ID" required readonly>
+            </mat-form-field>
+            <button class="btn btn-primary" type="button" (click)="onShowPartidaSelection()">
+              <i class="pi pi-search"></i> Buscar partida
+            </button>
+            {{oDetallePartida.partida?.id}}
+          </div>
         <div class="text-center mt-5">
           <button type="submit" class="btn btn-primary" [disabled]="!detallePartidaForm.valid">Guardar</button>
         </div>
+      </div>
       </div>
     </form>
   </div>

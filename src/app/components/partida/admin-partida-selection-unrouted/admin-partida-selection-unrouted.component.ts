@@ -2,18 +2,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
-import { IStand, IStandPage } from 'src/app/model/model.interfaces';
-import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
+import { IPartida, IPartidaPage } from 'src/app/model/model.interfaces';
+import { PartidaAjaxService } from 'src/app/service/partida.ajax.service.service';
 
 @Component({
-  selector: 'app-admin-stand-selection-unrouted',
-  templateUrl: './admin-stand-selection-unrouted.component.html',
-  styleUrls: ['./admin-stand-selection-unrouted.component.css']
+  selector: 'app-admin-partida-selection-unrouted',
+  templateUrl: './admin-partida-selection-unrouted.component.html',
+  styleUrls: ['./admin-partida-selection-unrouted.component.css']
 })
-export class AdminStandSelectionUnroutedComponent implements OnInit {
+export class AdminPartidaSelectionUnroutedComponent implements OnInit {
 
-  oStandToRemove: IStand | null = null;
-  oPage: IStandPage | undefined;
+  oPartidaToRemove: IPartida | null = null;
+  oPage: IPartidaPage | undefined;
   orderField: string = "id";
   orderDirection: string = "asc";
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
@@ -22,7 +22,7 @@ export class AdminStandSelectionUnroutedComponent implements OnInit {
 
   
   constructor(
-    private oStandAjaxService: StandAjaxService,
+    private oPartidaAjaxService: PartidaAjaxService,
     public oDialogService: DialogService,
     public oDynamicDialogRef: DynamicDialogRef,
   
@@ -38,8 +38,8 @@ export class AdminStandSelectionUnroutedComponent implements OnInit {
   
 
   getPage(): void {
-    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
-      next: (data: IStandPage) => {
+    this.oPartidaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
+      next: (data: IPartidaPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
         console.log(this.oPaginatorState);
@@ -69,7 +69,8 @@ export class AdminStandSelectionUnroutedComponent implements OnInit {
     this.getPage();
   }
 
-  onSelectStand(oStand: IStand) {
+  onSelectPartida(oStand: IPartida) {
     this.oDynamicDialogRef.close(oStand);
   }
+
 }

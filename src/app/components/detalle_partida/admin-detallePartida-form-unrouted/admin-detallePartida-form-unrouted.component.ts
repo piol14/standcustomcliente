@@ -6,10 +6,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { IStand, IUser, IDetallePartida, formOperation } from 'src/app/model/model.interfaces';
+import { IStand, IUser, IDetallePartida, formOperation, IPartida } from 'src/app/model/model.interfaces';
 import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
 import { AdminStandSelectionUnroutedComponent } from '../../stand/admin-stand-selection-unrouted/admin-stand-selection-unrouted.component';
 import { AdminUsuarioSelectionUnroutedComponent } from '../../usuario/admin-usuario-selection-unrouted/admin-usuario-selection-unrouted.component';
+import { AdminPartidaSelectionUnroutedComponent } from '../../partida/admin-partida-selection-unrouted/admin-partida-selection-unrouted.component';
 
 @Component({
   selector: 'app-admin-detallePartida-form-unrouted',
@@ -42,6 +43,9 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
       }),
       stand:this.oFormBuilder.group({
         id: [oDetallePartida.stand?.id, Validators.required],
+      }),
+      partida:this.oFormBuilder.group({
+        id: [oDetallePartida.partida?.id, Validators.required],
       }),
     });
   }
@@ -125,6 +129,7 @@ onShowStandSelection() {
     baseZIndex: 10000,
     maximizable: true
   });
+  
 
 this.oDynamicDialogRef.onClose.subscribe((oStand: IStand) => {
   if (oStand) {
@@ -133,5 +138,24 @@ this.oDynamicDialogRef.onClose.subscribe((oStand: IStand) => {
   }
 });
 }
+
+onShowPartidaSelection() {
+  this.oDynamicDialogRef = this.oDialogService.open(AdminPartidaSelectionUnroutedComponent, {
+    header: 'Selecciona una partida',
+    width: '80%',
+    contentStyle: { overflow: 'auto' },
+    baseZIndex: 10000,
+    maximizable: true
+  });
+  
+
+this.oDynamicDialogRef.onClose.subscribe((oPartida: IPartida) => {
+  if (oPartida) {
+    this.oDetallePartida.partida = oPartida;
+    this.detallePartidaForm.controls['partida'].patchValue({ id: oPartida.id })
+  }
+});
 }
+}
+
 

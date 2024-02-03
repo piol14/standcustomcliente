@@ -89,6 +89,7 @@ import { LoginRoutedComponent } from './components/shared/login-routed/login-rou
 import { CryptoService } from './service/crypto.service';
 import { SessionAjaxService } from './service/session.ajax.service.service';
 import { LogoutRoutedComponent } from './components/shared/logout-routed/logout-routed.component';
+import { AdminPartidaSelectionUnroutedComponent } from './components/partida/admin-partida-selection-unrouted/admin-partida-selection-unrouted.component';
 //--
 @NgModule({
   declarations: [
@@ -136,7 +137,7 @@ import { LogoutRoutedComponent } from './components/shared/logout-routed/logout-
    AdminDetallePartidaFormUnroutedComponent,
    AdminDetallePartidaEditRoutedComponent,
    AdminDetallePartidaNewRoutedComponent,
-
+   AdminPartidaSelectionUnroutedComponent,
    AdminUsuarioSelectionUnroutedComponent,
    AdminStandSelectionUnroutedComponent,
    LoginRoutedComponent,
