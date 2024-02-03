@@ -23,6 +23,9 @@
         <tr *ngFor="let stand of oStandPage.content">
           <td>{{ stand.id }}</td>
           <td>{{ stand.nombre }}</td>
+          <td>
+            <img [src]="stand.imagen" alt="Imagen del stand">
+          </td>
           <td>{{ stand.descripcion }}</td>
           <td>{{ stand.velocidad }}</td>
          <td>  {{stand.potencial_de_desarollo}}</td>
@@ -30,7 +33,7 @@
           <td>{{ stand.poder }}</td>
           <td>{{ stand.aguante }}</td>
           <td>{{ stand.acierto }}</td>
-          <td>{{ stand.usuario.username}}</td>
+          <td>{{ stand.usuario?.username}}</td>
           
           <td>
             <button class="btn btn-primary" (click)="doView(stand)"><i class="fa-solid fa-circle-info">

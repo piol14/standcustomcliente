@@ -4,7 +4,6 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { IAtaqueStand, IAtaqueStandPage } from 'src/app/model/model.interfaces';
 
 import { Subject, of } from 'rxjs';
 

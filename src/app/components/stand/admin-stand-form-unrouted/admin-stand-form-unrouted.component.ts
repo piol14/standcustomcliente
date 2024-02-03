@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { IStand, formOperation } from 'src/app/model/model.interfaces'; // Asegúrate de importar el modelo correcto
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MediaService } from 'src/app/service/media.service';
 
 @Component({
   selector: 'app-admin-stand-form-unrouted',
@@ -16,7 +17,7 @@ export class AdminStandFormUnroutedComponent implements OnInit {
 
   @Input() id: number = 1;
   @Input() operation: formOperation = 'NEW';
-
+  selectedImageUrl: string | undefined;
   standForm!: FormGroup;
   oStand: IStand = {} as IStand;
   status: HttpErrorResponse | null = null;
@@ -27,6 +28,7 @@ export class AdminStandFormUnroutedComponent implements OnInit {
     private router: Router,
     private snackBar: MatSnackBar,
     public oDialogService: DialogService,
+    private MediaService: MediaService
   ) {
     this.initializeForm(this.oStand);
   }
@@ -41,7 +43,8 @@ export class AdminStandFormUnroutedComponent implements OnInit {
       poder: [oStand.poder || 'D'],         // Default value 'D' if oStand.poder is falsy
       aguante: [oStand.aguante || 'D'],     // Default value 'D' if oStand.aguante is falsy
       acierto: [oStand.acierto || 'D'],  
-     potencial_de_desarollo: [oStand.potencial_de_desarollo || 'D']
+      imagen: [oStand.imagen, Validators.required],
+     potencial_de_desarollo: [oStand.desarollo || 'D']
       // Agrega aquí los demás campos según tu modelo
     });
   }
@@ -99,6 +102,23 @@ export class AdminStandFormUnroutedComponent implements OnInit {
       }
     }
   }
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+      this.MediaService.uploadFile(formData).subscribe({
+        next: (response) => {
+          this.selectedImageUrl = response.url; // Asignar la URL del archivo seleccionado
+          this.oStand.imagen = response.url;
+          this.standForm.controls['imagen'].patchValue(response.url);
+        },
+        error: (error: HttpErrorResponse) => {
+          this.status = error;
+          this.snackBar.open('Error al subir la imagen', '', { duration: 2000 });
+        }
+      });
 }
+  }
 
- 
+}

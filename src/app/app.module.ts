@@ -90,6 +90,7 @@ import { CryptoService } from './service/crypto.service';
 import { SessionAjaxService } from './service/session.ajax.service.service';
 import { LogoutRoutedComponent } from './components/shared/logout-routed/logout-routed.component';
 import { AdminPartidaSelectionUnroutedComponent } from './components/partida/admin-partida-selection-unrouted/admin-partida-selection-unrouted.component';
+import { MediaService } from './service/media.service';
 //--
 @NgModule({
   declarations: [
@@ -177,7 +178,8 @@ import { AdminPartidaSelectionUnroutedComponent } from './components/partida/adm
    ConfirmationService,
    DetallePartidaAjaxService,
    CryptoService,
-  SessionAjaxService
+  SessionAjaxService,
+  MediaService
 
   ],
   bootstrap: [AppComponent]

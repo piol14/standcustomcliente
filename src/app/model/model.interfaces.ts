@@ -39,17 +39,7 @@ export interface IPage<T> {
 export interface IEntity {
     id: number,
 }
-export interface IAtaqueStand extends IEntity {
-    
-    velocidad: string;
-    alcance: string;
-    poder: string;
-    aguante: string;
-    acierto: string;
-    stand: number;
-  }
-  export interface IAtaqueStandPage extends IPage<IAtaqueStand> {
-}
+
   // opinion.model.ts
   export interface IOpinion  extends IEntity {
     
@@ -73,13 +63,14 @@ export interface IAtaqueStand extends IEntity {
   
     usuario: IUser;
     nombre: string;
+    imagen:string;
     descripcion: string;
     velocidad: string;
     alcance: string;
     poder: string;
     aguante: string;
     acierto: string;
-    potencial_de_desarollo :string;
+    desarollo :string;
   }
   export interface IStandPage extends IPage<IStand> {
 }
