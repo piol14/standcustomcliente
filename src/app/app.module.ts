@@ -91,6 +91,7 @@ import { SessionAjaxService } from './service/session.ajax.service.service';
 import { LogoutRoutedComponent } from './components/shared/logout-routed/logout-routed.component';
 import { AdminPartidaSelectionUnroutedComponent } from './components/partida/admin-partida-selection-unrouted/admin-partida-selection-unrouted.component';
 import { MediaService } from './service/media.service';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 //--
 @NgModule({
   declarations: [
@@ -179,7 +180,8 @@ import { MediaService } from './service/media.service';
    DetallePartidaAjaxService,
    CryptoService,
   SessionAjaxService,
-  MediaService
+  MediaService,
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 
   ],
   bootstrap: [AppComponent]

@@ -44,7 +44,7 @@ export class AdminStandFormUnroutedComponent implements OnInit {
       aguante: [oStand.aguante || 'D'],     // Default value 'D' if oStand.aguante is falsy
       acierto: [oStand.acierto || 'D'],  
       imagen: [oStand.imagen, Validators.required],
-     potencial_de_desarollo: [oStand.desarollo || 'D']
+     desarollo: [oStand.desarollo || 'D']
       // Agrega aquí los demás campos según tu modelo
     });
   }
