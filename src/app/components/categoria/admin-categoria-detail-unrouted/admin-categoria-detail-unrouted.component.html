@@ -1,0 +1,27 @@
+<div *ngIf="status != null">
+  <div class="d-flex justify-content-center my-3">
+      <div class="alert alert-danger" role="alert">
+          {{ status!.error.message }} - {{ status!.message }}
+      </div>
+  </div>
+</div>
+
+<div *ngIf="status == null">
+  <table class="table table-striped table-hover">
+      <tbody>
+          <tr>
+              <th>ID</th>
+              <td>{{ oCategoria.id }}</td>
+          </tr>
+          <tr *ngIf="oCategoria.stands">
+              <th>  Nombre</th>
+              <td>{{ oCategoria.nombre }}</td>
+          </tr>
+          <tr>
+              <th>Stands</th>
+              <td>{{ oCategoria.stands }}</td>
+          </tr>
+       
+      </tbody>
+  </table>
+</div>

@@ -26,6 +26,9 @@ import { AdminDetallePartidaEditRoutedComponent } from './components/detalle_par
 import { HomeRoutedComponent } from './components/shared/home-routed/home-routed.component';
 import { LoginRoutedComponent } from './components/shared/login-routed/login-routed.component';
 import { LogoutRoutedComponent } from './components/shared/logout-routed/logout-routed.component';
+import { AdminCategoriaNewRoutedComponent } from './components/categoria/admin-categoria-new-routed/admin-categoria-new-routed.component';
+import { AdminCategoriaPlistRoutedComponent } from './components/categoria/admin-categoria-plist-routed/admin-categoria-plist-routed.component';
+import { AdminCategoriaViewRoutedComponent } from './components/categoria/admin-categoria-view-routed/admin-categoria-view-routed.component';
 export const routes: Routes = [
 
   { path: '', component: HomeRoutedComponent },
@@ -38,6 +41,13 @@ export const routes: Routes = [
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
     { path: 'admin/usuario/edit/:id', component: AdminUsuarioEditRoutedComponent },
 
+
+
+
+    {path: 'admin/categoria/plist', component: AdminCategoriaPlistRoutedComponent},
+    {path: 'admin/categoria/view/:id', component:AdminCategoriaViewRoutedComponent},
+    {path: 'admin/categoria/new', component:AdminCategoriaNewRoutedComponent},
+    {path: 'admin/categoria/edit/:id', component:AdminStandEditRoutedComponent},
 
     {path: 'admin/stand/plist', component: AdminStandPlistRoutedComponent},
     {path: 'admin/stand/view/:id', component:AdminStandViewRoutedComponent},

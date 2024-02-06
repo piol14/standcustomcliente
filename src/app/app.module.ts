@@ -39,7 +39,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { AdminStandPlistRoutedComponent } from './components/stand/admin-stand-plist-routed/admin-stand-plist-routed.component';
 import { AdminStandPlistUnroutedComponent } from './components/stand/admin-stand-plist-unrouted/admin-stand-plist-unrouted.component';
 import { StandAjaxService } from './service/stand.ajax.service.service';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { OpinionAjaxService } from './service/opinion.ajax.service.service';
 import { AdminOpinionPlistUnroutedComponent } from './components/opinion/admin-opinion-plist-unrouted/admin-opinion-plist-unrouted.component';
 import { AdminOpinionPlistRoutedComponent } from './components/opinion/admin-opinion-plist-routed/admin-opinion-plist-routed.component';
@@ -92,6 +92,13 @@ import { LogoutRoutedComponent } from './components/shared/logout-routed/logout-
 import { AdminPartidaSelectionUnroutedComponent } from './components/partida/admin-partida-selection-unrouted/admin-partida-selection-unrouted.component';
 import { MediaService } from './service/media.service';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { CategoriaAjaxService } from './service/categoria.ajax.service.service';
+import { AdminCategoriaDetailUnroutedComponent } from './components/categoria/admin-categoria-detail-unrouted/admin-categoria-detail-unrouted.component';
+import { AdminCategoriaPlistUnroutedComponent } from './components/categoria/admin-categoria-plist-unrouted/admin-categoria-plist-unrouted.component';
+import { AdminCategoriaFormUnroutedComponent } from './components/categoria/admin-categoria-form-unrouted/admin-categoria-form-unrouted.component';
+import { AdminCategoriaNewRoutedComponent } from './components/categoria/admin-categoria-new-routed/admin-categoria-new-routed.component';
+import { AdminCategoriaPlistRoutedComponent } from './components/categoria/admin-categoria-plist-routed/admin-categoria-plist-routed.component';
+import { AdminCategoriaViewRoutedComponent } from './components/categoria/admin-categoria-view-routed/admin-categoria-view-routed.component';
 //--
 @NgModule({
   declarations: [
@@ -143,7 +150,13 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
    AdminUsuarioSelectionUnroutedComponent,
    AdminStandSelectionUnroutedComponent,
    LoginRoutedComponent,
-   LogoutRoutedComponent
+   LogoutRoutedComponent,
+   AdminCategoriaDetailUnroutedComponent,
+   AdminCategoriaPlistUnroutedComponent,
+   AdminCategoriaFormUnroutedComponent,
+   AdminCategoriaNewRoutedComponent,
+   AdminCategoriaPlistRoutedComponent,
+   AdminCategoriaViewRoutedComponent
   ],
   imports: [
     
@@ -167,7 +180,8 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
    ToolbarModule,
    MatSelectModule,
    ReactiveFormsModule,
-   SplitButtonModule
+   SplitButtonModule, 
+  
   ],
   providers: [
     DialogService,
@@ -181,6 +195,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
    CryptoService,
   SessionAjaxService,
   MediaService,
+  CategoriaAjaxService,
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 
   ],

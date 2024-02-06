@@ -1,0 +1,52 @@
+<!-- admin-partida-plist-unrouted.component.html -->
+
+<div class="container mt-4">
+  <div *ngIf="oPage">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th (click)="doOrder('id')">ID</th>
+          <th (click)="doOrder('nombre')">nombre</th>
+          <th (click)="doOrder('stands')">Stands</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let categoria of oPage.content">
+          <td>{{ categoria.id }}</td>
+          <td>{{ categoria.nombre }}</td>
+          <td>{{ categoria?.stands }}</td>
+          
+          <td>
+            <button class="btn btn-primary" (click)="doView(categoria)"><i class="fa-solid fa-circle-info"></i></button>
+            <button class="btn btn-primary" [routerLink]="['/admin','categoria','view',categoria.id]"><i class="fa-solid fa-eye"></i></button>
+            <button class="btn btn-danger" (click)="doRemove(categoria)"><i class="fa-solid fa-trash"></i></button>
+
+              <button class="btn btn-warning"  [routerLink]="['/admin','categoria','edit',categoria.id]"><i class="fa-solid fa-pen-to-square"></i></button>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
+        [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+    </div>
+  </div>
+  <div *ngIf="status" class="alert alert-danger mt-3">
+    <p>{{ status.message }}</p>
+  </div>
+</div>
+<p-confirmDialog #cd [style]="{ width: '30vw' }">
+  <ng-template pTemplate="header">
+    <h5><i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem"></i> Confirmación de Eliminación</h5>
+  </ng-template>
+  <ng-template pTemplate="message">
+    <div class="container d-flex align-items-center justify-content-center">
+      <!-- Aquí puedes agregar el contenido del mensaje de confirmación si es necesario -->
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <p>¿Estás seguro de que quieres eliminar esta categoria</p>
+    <button class="btn btn-primary mx-1" pButton icon="pi pi-times" (click)="cd.reject()"> No</button>
+    <button class="btn btn-danger mx-1" pButton icon="pi pi-check" (click)="cd.accept()"> Sí</button>
+  </ng-template>
+</p-confirmDialog>

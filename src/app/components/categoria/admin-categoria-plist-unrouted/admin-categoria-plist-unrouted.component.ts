@@ -1,37 +1,32 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
+import { ConfirmEventType, ConfirmationService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Subject, debounceTime, of, switchMap } from 'rxjs';
+import { ICategoria, ICategoriaPage } from 'src/app/model/model.interfaces';
+import { CategoriaAjaxService } from 'src/app/service/categoria.ajax.service.service';
+import { AdminCategoriaDetailUnroutedComponent } from '../admin-categoria-detail-unrouted/admin-categoria-detail-unrouted.component';
 
 
-import { Subject, of } from 'rxjs';
-
-
-
-import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
-import { debounceTime, switchMap } from 'rxjs/operators';
-import { IDetallePartida, IDetallePartidaPage } from 'src/app/model/model.interfaces';
-import { AdminDetallePartidaDetailUnroutedComponent } from '../admin-detallePartida-detail-unrouted/admin-detallePartida-detail-unrouted.component';
 @Component({
-  selector: 'app-admin-detallePartida-plist-unrouted',
-  templateUrl: './admin-detallePartida-plist-unrouted.component.html',
-  styleUrls: ['./admin-detallePartida-plist-unrouted.component.css'],
-  providers: [ConfirmationService, MessageService]
+  selector: 'app-admin-categoria-plist-unrouted',
+  templateUrl: './admin-categoria-plist-unrouted.component.html',
+  styleUrls: ['./admin-categoria-plist-unrouted.component.css']
 })
-export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
+export class AdminCategoriaPlistUnroutedComponent implements OnInit {
 
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
 
-  oPage: IDetallePartidaPage | undefined ;
+  oPage: ICategoriaPage | undefined ;
   orderField: string = "id";
   orderDirection: string = "asc";
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
   status: HttpErrorResponse | null = null;
-  oDetallePartidaToRemove: IDetallePartida | null = null;
+  oCategoriaToRemove: ICategoria | null = null;
 
   constructor(
-    private oDetallePartidaAjaxService: DetallePartidaAjaxService,
+    private oCategoriaAjaxService: CategoriaAjaxService,
     public oDialogService: DialogService,
     private oCconfirmationService: ConfirmationService,
    
@@ -50,13 +45,13 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
 
   search(filterValue: string): void {
     if (filterValue && filterValue.length >= 3) {
-      this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows ?? 10, this.oPaginatorState.first, 'id', 'asc')
+      this.oCategoriaAjaxService.getPage(this.oPaginatorState.rows ?? 10, this.oPaginatorState.first, 'id', 'asc')
         .pipe(
           debounceTime(500),
-          switchMap((data: IDetallePartidaPage) => of(data))
+          switchMap((data: ICategoriaPage) => of(data))
         )
         .subscribe(
-          (data: IDetallePartidaPage) => {
+          (data: ICategoriaPage) => {
             this.oPage = data;
           },
           (error: any) => {
@@ -64,9 +59,9 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
           }
         );
     } else {
-      this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.first, 'id', 'asc')
+      this.oCategoriaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.first, 'id', 'asc')
         .subscribe(
-          (data: IDetallePartidaPage) => {
+          (data: ICategoriaPage) => {
             this.oPage = data;
           },
           (error: any) => {
@@ -82,8 +77,8 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
   }
 
   getPage(): void {
-    this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
-      next: (data: IDetallePartidaPage) => {
+    this.oCategoriaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
+      next: (data: ICategoriaPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
       },
@@ -107,23 +102,23 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
 
   ref: DynamicDialogRef | undefined;
 
-  doView(u: IDetallePartida) {
-    this.ref = this.oDialogService.open(AdminDetallePartidaDetailUnroutedComponent, {
+  doView(u: ICategoria) {
+    this.ref = this.oDialogService.open(AdminCategoriaDetailUnroutedComponent, {
         data: {
             id: u.id
         },
-        header: 'Vista Detalle Partida ' , // Establece el encabezado directamente
+        header: 'Vista Categoria ' , // Establece el encabezado directamente
         width: '50%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
         maximizable: false
     });
 }
-  doRemove(u: IDetallePartida) {
-    this.oDetallePartidaToRemove = u;
+  doRemove(u: ICategoria) {
+    this.oCategoriaToRemove = u;
     this.oCconfirmationService.confirm({
       accept: () => {
-        this.oDetallePartidaAjaxService.removeOne(this.oDetallePartidaToRemove?.id).subscribe({
+        this.oCategoriaAjaxService.removeOne(this.oCategoriaToRemove?.id).subscribe({
           next: () => {
             this.getPage();
           },

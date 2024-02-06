@@ -2,7 +2,7 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ConfirmationService, ConfirmEventType } from 'primeng/api';
+import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
 import { IStand, IStandPage } from 'src/app/model/model.interfaces';
@@ -14,7 +14,8 @@ import { AdminStandDetailUnroutedComponent } from '../admin-stand-detail-unroute
 @Component({
   selector: 'app-admin-stand-plist-unrouted',
   templateUrl: './admin-stand-plist-unrouted.component.html',
-  styleUrls: ['./admin-stand-plist-unrouted.component.css']
+  styleUrls: ['./admin-stand-plist-unrouted.component.css'],
+  providers: [ConfirmationService, MessageService]
 })
 export class AdminStandPlistUnroutedComponent implements OnInit {
 

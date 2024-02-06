@@ -1,3 +1,4 @@
+
 // ataque-stand.model.ts
 
 export interface Sort {
@@ -71,6 +72,7 @@ export interface IEntity {
     aguante: string;
     acierto: string;
     desarollo :string;
+    categoria:ICategoria;
   }
   export interface IStandPage extends IPage<IStand> {
 }
@@ -83,6 +85,9 @@ export type formOperation = 'EDIT' | 'NEW';
     username: string;
     password: string;
     role: boolean;
+    opiniones?:number;
+    stands?:number;
+    partidas?:number;
   }
   export interface IUserPage extends IPage<IUser> {
 }
@@ -106,3 +111,9 @@ export interface IToken {
 export interface SessionEvent {
   type: string;
 }
+
+export interface ICategoria extends IEntity {
+  nombre: string;
+  stands?:number;
+}
+export interface ICategoriaPage extends IPage<ICategoria> {}
