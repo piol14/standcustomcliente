@@ -17,11 +17,20 @@ export class OpinionAjaxService {
         return this.httpClient.get<IOpinion>(`${this.apiUrl}/${id}`);
     }
 
-    getPage(size: number | undefined, page: number | undefined, orderField: string, orderDirection: string): Observable<IOpinionPage> {
+    getPage(size: number | undefined, page: number | undefined, orderField: string, orderDirection: string, id_usuario: number , id_stand: number): Observable<IOpinionPage> {
+      
+        let strUrlUser = "";
         if (!size) size = 10;
         if (!page) page = 0;
-        
-        return this.httpClient.get<IOpinionPage>(`${this.apiUrl}?size=${size}&page=${page}&sort=${orderField},${orderDirection}`);
+        if (id_usuario > 0) {
+            strUrlUser = "&usuario=" + id_usuario;
+        }
+    
+        let strUrlstand = "";
+        if (id_stand > 0) {
+          strUrlstand = "&stand=" + id_stand;
+        }
+        return this.httpClient.get<IOpinionPage>(this.apiUrl + "?size=" + size + "&page=" + page + "&sort=" + orderField + "," + orderDirection + strUrlUser + strUrlstand );
     }
 
     removeOne(id: number | undefined): Observable<number> {

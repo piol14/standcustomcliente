@@ -99,6 +99,7 @@ import { AdminCategoriaFormUnroutedComponent } from './components/categoria/admi
 import { AdminCategoriaNewRoutedComponent } from './components/categoria/admin-categoria-new-routed/admin-categoria-new-routed.component';
 import { AdminCategoriaPlistRoutedComponent } from './components/categoria/admin-categoria-plist-routed/admin-categoria-plist-routed.component';
 import { AdminCategoriaViewRoutedComponent } from './components/categoria/admin-categoria-view-routed/admin-categoria-view-routed.component';
+
 //--
 @NgModule({
   declarations: [
@@ -181,6 +182,7 @@ import { AdminCategoriaViewRoutedComponent } from './components/categoria/admin-
    MatSelectModule,
    ReactiveFormsModule,
    SplitButtonModule, 
+   
   
   ],
   providers: [

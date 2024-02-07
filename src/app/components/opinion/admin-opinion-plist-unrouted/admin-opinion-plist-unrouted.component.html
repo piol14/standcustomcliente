@@ -1,4 +1,19 @@
 <!-- admin-opinion-plist-unrouted.component.html -->
+<p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!"
+[rows]="oPaginatorState.rows!" [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 50]"
+class="mx-2"></p-paginator>
+<h3 *ngIf="id_usuario > 0; else noFilter">
+  ({{ id_usuario }} - {{ oUsuario?.nombre }})
+  <a type="button" class="btn btn-primary " [routerLink]="['/admin', 'opinion', 'plist']">Reset filter</a>
+</h3>
+
+<h3 *ngIf="id_stand > 0; else noFilter">
+  ({{ id_stand }} - {{ oStand?.nombre }})
+  <a type="button" class="btn btn-primary " [routerLink]="['/admin', 'opinion', 'plist']">Reset filter</a>
+</h3>
+<ng-template #noFilter>
+         
+          </ng-template>
 
 <div class="container mt-4">
   <div *ngIf="oPage">

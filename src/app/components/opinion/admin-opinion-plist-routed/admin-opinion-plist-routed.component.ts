@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationService, MessageService } from 'primeng/api'; // Ajusta la ruta del servicio
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { OpinionAjaxService } from 'src/app/service/opinion.ajax.service.service';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-admin-opinion-plist-routed',
   templateUrl: './admin-opinion-plist-routed.component.html',
@@ -16,13 +16,19 @@ export class AdminOpinionPlistRoutedComponent implements OnInit {
   bLoading = false;
   loadingProgress = 0;
   forceReload = new Subject<boolean>();
-
+ id_usuario: number ;
+  id_stand: number ;
   constructor(
+    private ActivatedRoute: ActivatedRoute,
     private oOpinionAjaxService: OpinionAjaxService,
     private oMatSnackBar: MatSnackBar,
     private MessageService: MessageService,
     private oConfirmationService: ConfirmationService
-  ) {}
+  ) {
+    this.id_usuario = parseInt(this.ActivatedRoute.snapshot.paramMap.get("idusuario") ?? "0");
+    this.id_stand= parseInt(this.ActivatedRoute.snapshot.paramMap.get("idstand") ?? "0");
+    console.log(this.id_usuario);
+  }
 
   ngOnInit() {}
 

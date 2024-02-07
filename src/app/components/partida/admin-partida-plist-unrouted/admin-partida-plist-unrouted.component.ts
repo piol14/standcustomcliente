@@ -89,6 +89,7 @@ export class AdminPartidaPlistUnroutedComponent implements OnInit {
       next: (data: IPartidaPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
+        
       },
       error: (error: HttpErrorResponse) => {
         this.status = error;
