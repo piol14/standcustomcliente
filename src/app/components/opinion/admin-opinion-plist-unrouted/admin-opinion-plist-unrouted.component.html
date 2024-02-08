@@ -34,7 +34,16 @@ class="mx-2"></p-paginator>
           <td>{{ opinion.usuario.nombre }}</td>
           <td>{{ opinion.descripcion }}</td>
           <td>{{ opinion.numero_estrellas }}</td>
-          <td>{{ opinion.stand.nombre }}</td>
+          <td class="text-center">
+            <a [routerLink]="['/admin','opinion','plist','byusuario',opinion.usuario.id]">({{opinion.usuario.id}})
+              {{opinion.usuario.nombre}}
+              </a>
+          </td>
+          <td class="text-center">
+            <a [routerLink]="['/admin','opinion','plist','bystand',opinion.stand.id]">({{opinion.stand.id}})
+              {{opinion.stand.nombre}}
+            </a>
+          </td>
           <td>
             <button class="btn btn-primary" [routerLink]="['/admin','opinion','view',opinion.id]"><i class="fa-solid fa-eye"> </i></button>
             
