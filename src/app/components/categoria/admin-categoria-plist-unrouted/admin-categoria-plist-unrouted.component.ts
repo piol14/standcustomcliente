@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { ConfirmEventType, ConfirmationService } from 'primeng/api';
+import { ConfirmEventType, ConfirmationService, MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
 import { Subject, debounceTime, of, switchMap } from 'rxjs';
@@ -12,7 +12,8 @@ import { AdminCategoriaDetailUnroutedComponent } from '../admin-categoria-detail
 @Component({
   selector: 'app-admin-categoria-plist-unrouted',
   templateUrl: './admin-categoria-plist-unrouted.component.html',
-  styleUrls: ['./admin-categoria-plist-unrouted.component.css']
+  styleUrls: ['./admin-categoria-plist-unrouted.component.css'],
+  providers: [ConfirmationService, MessageService]
 })
 export class AdminCategoriaPlistUnroutedComponent implements OnInit {
 

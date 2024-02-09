@@ -99,6 +99,7 @@ import { AdminCategoriaFormUnroutedComponent } from './components/categoria/admi
 import { AdminCategoriaNewRoutedComponent } from './components/categoria/admin-categoria-new-routed/admin-categoria-new-routed.component';
 import { AdminCategoriaPlistRoutedComponent } from './components/categoria/admin-categoria-plist-routed/admin-categoria-plist-routed.component';
 import { AdminCategoriaViewRoutedComponent } from './components/categoria/admin-categoria-view-routed/admin-categoria-view-routed.component';
+import { AdminCategoriaEditRoutedComponent } from './components/categoria/admin-categoria-edit-routed/admin-categoria-edit-routed.component';
 
 //--
 @NgModule({
@@ -157,7 +158,8 @@ import { AdminCategoriaViewRoutedComponent } from './components/categoria/admin-
    AdminCategoriaFormUnroutedComponent,
    AdminCategoriaNewRoutedComponent,
    AdminCategoriaPlistRoutedComponent,
-   AdminCategoriaViewRoutedComponent
+   AdminCategoriaViewRoutedComponent,
+   AdminCategoriaEditRoutedComponent
   ],
   imports: [
     

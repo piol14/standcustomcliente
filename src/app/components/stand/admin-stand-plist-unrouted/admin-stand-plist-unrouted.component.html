@@ -8,6 +8,7 @@
           <th (click)="doOrder('id')">ID</th>
           <th (click)="doOrder('nombre')">Nombre</th>
           <th (click)="doOrder('descripcion')">Descripción</th>
+          <th (click)="doOrder('imagen')">Imagen</th>
           <th (click)="doOrder('velocidad')">Velocidad</th>
           <th (click)="doOrder('alcance')">Alcance</th>
           <th (click)="doOrder('poder')">Poder</th>
@@ -23,10 +24,11 @@
         <tr *ngFor="let stand of oStandPage.content">
           <td>{{ stand.id }}</td>
           <td>{{ stand.nombre }}</td>
+          
+          <td>{{ stand.descripcion }}</td>
           <td>
             <img [src]="stand.imagen" alt="Imagen del stand">
           </td>
-          <td>{{ stand.descripcion }}</td>
           <td>{{ stand.velocidad }}</td>
          <td>  {{stand.desarollo}}</td>
           <td>{{ stand.alcance }}</td>

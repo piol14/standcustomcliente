@@ -49,9 +49,7 @@ export class AdminCategoriaFormUnroutedComponent implements OnInit {
 
   initializeForm(oCategoria: ICategoria) {
     this.categoriaForm = this.oFormBuilder.group({
-      usuario:this.oFormBuilder.group({
-        id: [oCategoria.id, Validators.required],
-      }),
+      id: [oCategoria.id],
       nombre: [oCategoria.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       
     });
@@ -70,7 +68,7 @@ export class AdminCategoriaFormUnroutedComponent implements OnInit {
             this.oCategoria = data;
             this.initializeForm(this.oCategoria);
             this.oMatSnackBar.open('La categoria se ha creado correctamente', '', { duration: 2000 });
-            this.oRouter.navigate(['/admin', 'detalle-partida', 'view',data]);
+            this.oRouter.navigate(['/admin', 'categoria', 'view',data]);
           },
           error: (error: HttpErrorResponse) => {
             this.status = error;
@@ -84,7 +82,7 @@ export class AdminCategoriaFormUnroutedComponent implements OnInit {
             this.oCategoria = data;
             this.initializeForm(this.oCategoria);
             this.oMatSnackBar.open('La categoria se ha actualizado correctamente', '', { duration: 2000 });
-            this.oRouter.navigate(['/admin', 'detalle-partida', 'view', this.oCategoria.id]);
+            this.oRouter.navigate(['/admin', 'categoria', 'view', this.oCategoria.id]);
           },
           error: (error: HttpErrorResponse) => {
             this.status = error;
