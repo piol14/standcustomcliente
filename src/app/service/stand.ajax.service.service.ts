@@ -21,11 +21,14 @@ export class StandAjaxService {
   
 
 
-    getPage(size: number | undefined, page: number | undefined, orderField: string, orderDirection: string): Observable<IStandPage> {
+    getPage(size: number | undefined, page: number | undefined, orderField: string, orderDirection: string, id_usuario: number): Observable<IStandPage> {
+        let strUrlUser = "";
         if (!size) size = 10;
         if (!page) page = 0;
-        
-        return this.oHttpClient.get<IStandPage>(this.sUrl + "?size=" + size + "&page=" + page + "&sort=" + orderField + "," + orderDirection);
+        if (id_usuario > 0) {
+            strUrlUser = "&usuario=" + id_usuario;
+        }
+        return this.oHttpClient.get<IStandPage>(this.sUrl + "?size=" + size + "&page=" + page + "&sort=" + orderField + "," + orderDirection+ strUrlUser);
     }
     
 

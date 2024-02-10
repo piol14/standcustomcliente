@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
 import { IStand, IStandPage } from 'src/app/model/model.interfaces';
@@ -11,7 +11,7 @@ import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
   styleUrls: ['./admin-stand-selection-unrouted.component.css']
 })
 export class AdminStandSelectionUnroutedComponent implements OnInit {
-
+  @Input() id_usuario: number = 0;
   oStandToRemove: IStand | null = null;
   oPage: IStandPage | undefined;
   orderField: string = "id";
@@ -38,7 +38,7 @@ export class AdminStandSelectionUnroutedComponent implements OnInit {
   
 
   getPage(): void {
-    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
+    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection, this.id_usuario).subscribe({
       next: (data: IStandPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;

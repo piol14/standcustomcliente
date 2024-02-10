@@ -5,6 +5,7 @@ import { ConfirmationService, MessageService } from 'primeng/api'; // Ajusta la 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin-stand-plist-routed',
@@ -13,19 +14,24 @@ import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
   providers: [ConfirmationService, MessageService]
 })
 export class AdminStandPlistRoutedComponent implements OnInit {
-
+  id_usuario: number ;
   bLoading = false;
   loadingProgress = 0;
   forceReload = new Subject<boolean>();
 
   constructor(
+    private ActivatedRoute: ActivatedRoute,
     private oStandAjaxService: StandAjaxService,
     private oMatSnackBar: MatSnackBar,
     private MessageService: MessageService,
     private oConfirmationService: ConfirmationService
-  ) {}
+  ) {
+    this.id_usuario = parseInt(this.ActivatedRoute.snapshot.paramMap.get("idusuario") ?? "0");
 
-  ngOnInit() {}
+  }
+
+  ngOnInit() {
+  }
 
   doGenerateRandom(amount: number) {
     this.bLoading = true;

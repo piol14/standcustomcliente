@@ -11,7 +11,7 @@ import { Subject, of } from 'rxjs';
 
 import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
 import { debounceTime, switchMap } from 'rxjs/operators';
-import { IDetallePartida, IDetallePartidaPage } from 'src/app/model/model.interfaces';
+import { IDetallePartida, IDetallePartidaPage, IPartida, IStand, IUser } from 'src/app/model/model.interfaces';
 import { AdminDetallePartidaDetailUnroutedComponent } from '../admin-detallePartida-detail-unrouted/admin-detallePartida-detail-unrouted.component';
 @Component({
   selector: 'app-admin-detallePartida-plist-unrouted',
@@ -22,8 +22,13 @@ import { AdminDetallePartidaDetailUnroutedComponent } from '../admin-detallePart
 export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
 
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
-
+  @Input() id_usuario: number = 0;
+  @Input() id_stand: number = 0;
+  @Input() id_partida: number = 0;
   oPage: IDetallePartidaPage | undefined ;
+  oUsuario:IUser | null = null;
+  oStand: IStand | null = null;
+  oPartida: IPartida | null = null; 
   orderField: string = "id";
   orderDirection: string = "asc";
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
@@ -50,7 +55,7 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
 
   search(filterValue: string): void {
     if (filterValue && filterValue.length >= 3) {
-      this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows ?? 10, this.oPaginatorState.first, 'id', 'asc')
+      this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows ?? 10, this.oPaginatorState.first, 'id', 'asc',this.id_usuario,this.id_stand,this.id_partida)
         .pipe(
           debounceTime(500),
           switchMap((data: IDetallePartidaPage) => of(data))
@@ -64,7 +69,7 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
           }
         );
     } else {
-      this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.first, 'id', 'asc')
+      this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.first, 'id', 'asc', this.id_usuario,this.id_stand,this.id_partida)
         .subscribe(
           (data: IDetallePartidaPage) => {
             this.oPage = data;
@@ -82,7 +87,7 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
   }
 
   getPage(): void {
-    this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
+    this.oDetallePartidaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection, this.id_usuario,this.id_stand,this.id_partida).subscribe({
       next: (data: IDetallePartidaPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;

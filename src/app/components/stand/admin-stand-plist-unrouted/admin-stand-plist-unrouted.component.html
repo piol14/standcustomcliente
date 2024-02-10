@@ -1,5 +1,12 @@
 <!-- admin-stand-plist-unrouted.component.html -->
+<h3 *ngIf="id_usuario > 0; else noFilter">
+  ({{ id_usuario }} - {{ oUsuario?.nombre }})
+  <a type="button" class="btn btn-primary " [routerLink]="['/admin', 'stand', 'plist']">Reset filter</a>
+</h3>
 
+<ng-template #noFilter>
+         
+</ng-template>
 <div class="container mt-4">
   <div *ngIf="oStandPage">
     <table class="table table-striped">
@@ -35,7 +42,11 @@
           <td>{{ stand.poder }}</td>
           <td>{{ stand.aguante }}</td>
           <td>{{ stand.acierto }}</td>
-          <td>{{ stand.usuario?.username}}</td>
+          <td class="text-center">
+            <a [routerLink]="['/admin','stand','plist','byusuario',stand.usuario.id]">({{stand.usuario.id}})
+              {{stand.usuario.nombre}}
+              </a>
+          </td>
           
           <td>
             <button class="btn btn-primary" (click)="doView(stand)"><i class="fa-solid fa-circle-info">

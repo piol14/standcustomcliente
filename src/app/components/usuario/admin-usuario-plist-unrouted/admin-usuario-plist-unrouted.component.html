@@ -16,6 +16,7 @@
           <th (click)="doOrder('email')">Email</th>
           <th (click)="doOrder('username')">Usuario</th>
           <th (click)="doOrder('role')">Rol</th>
+   
           <th>Acciones</th>
         </tr>
       </thead>
@@ -28,6 +29,7 @@
           <td>{{ user.email }}</td>
           <td>{{ user.username }}</td>
           <td>{{ user.role ? 'Admin' : 'Usuario' }}</td>
+         
           <td>
             <!-- Botones de acciones -->
             <button class="btn btn-primary" (click)="doView(user)"><i class="fa-solid fa-circle-info"></i></button>

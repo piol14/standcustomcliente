@@ -54,13 +54,13 @@ export const routes: Routes = [
     {path: 'admin/stand/view/:id', component:AdminStandViewRoutedComponent},
     {path: 'admin/stand/new', component:AdminStandNewRoutedComponent},
     {path: 'admin/stand/edit/:id', component:AdminStandEditRoutedComponent},
-
+    { path: 'admin/stand/plist/byusuario/:idusuario', component: AdminStandPlistRoutedComponent },
 
     {path: 'admin/opinion/plist', component: AdminOpinionPlistRoutedComponent},
     {path: 'admin/opinion/view/:id', component:AdminOpinionViewRoutedComponent},
     { path: 'admin/opinion/new', component: AdminOpinionNewRoutedComponent },
     { path: 'admin/opinion/plist/byusuario/:idusuario', component: AdminOpinionPlistRoutedComponent },
-    { path: 'admin/opinion/plist/bystand/:idproducto', component: AdminOpinionPlistRoutedComponent },
+    { path: 'admin/opinion/plist/bystand/:idstand', component: AdminOpinionPlistRoutedComponent },
     {path: 'admin/partida/plist', component: AdminPartidaPlistRoutedComponent},
     { path: 'admin/opinion/edit/:id', component: AdminOpinionEditRoutedComponent },
     {path: 'admin/partida/view/:id', component: AdminPartidaViewRoutedComponent},
@@ -72,8 +72,9 @@ export const routes: Routes = [
     {path: 'admin/detallePartida/view/:id', component: AdminDetallePartidaViewRoutedComponent},
     {path: 'admin/detallePartida/edit/:id', component: AdminDetallePartidaEditRoutedComponent},
     {path: 'admin/detallePartida/new', component: AdminDetallePartidaNewRoutedComponent},
-   
-   
+    { path: 'admin/detallePartida/plist/byusuario/:idusuario', component: AdminDetallePartidaPlistRoutedComponent },
+    { path: 'admin/detallePartida/plist/bystand/:idstand', component: AdminDetallePartidaPlistRoutedComponent },
+    { path: 'admin/detallePartida/plist/bypartida/:idpartida', component: AdminDetallePartidaPlistRoutedComponent },
 ] 
 
 @NgModule({

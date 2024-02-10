@@ -1,4 +1,26 @@
 <!-- admin-partida-plist-unrouted.component.html -->
+<h3 *ngIf="id_usuario > 0; else noFilter">
+  ({{ id_usuario }} - {{ oUsuario?.nombre }})
+  <a type="button" class="btn btn-primary " [routerLink]="['/admin', 'detallePartida', 'plist']">Reset filter</a>
+</h3>
+
+<h3 *ngIf="id_stand > 0; else noFilter">
+  ({{ id_stand }} - {{ oStand?.nombre }})
+  <a type="button" class="btn btn-primary " [routerLink]="['/admin', 'detallePartida', 'plist']">Reset filter</a>
+</h3>
+
+
+<h3 *ngIf="id_partida > 0; else noFilter">
+  ({{ id_partida }} - {{ oPartida?.usuario?.nombre }})
+  <a type="button" class="btn btn-primary " [routerLink]="['/admin', 'detallePartida', 'plist']">Reset filter</a>
+</h3>
+<ng-template #noFilter>
+         
+          </ng-template>
+
+<ng-template #noFilter>
+         
+          </ng-template>
 
 <div class="container mt-4">
   <div *ngIf="oPage">
@@ -15,10 +37,22 @@
       <tbody>
         <tr *ngFor="let detallePartida of oPage.content">
           <td>{{ detallePartida.id }}</td>
-          <td>{{ detallePartida.usuario.nombre }}</td>
-          <td>{{ detallePartida.stand.nombre }}</td>
-          <td>{{ detallePartida.partida.id }}</td>
-          <td>
+          <td class="text-center">
+            <a [routerLink]="['/admin','detallePartida','plist','byusuario',detallePartida.usuario.id]">({{detallePartida.usuario.id}})
+              {{detallePartida.usuario.nombre}}
+              </a>
+          </td>
+          <td class="text-center">
+            <a [routerLink]="['/admin','detallePartida','plist','bystand',detallePartida.stand.id]">({{detallePartida.stand.id}})
+              {{detallePartida.stand.nombre}}
+            </a>
+          </td>
+          <td class="text-center">
+            <a [routerLink]="['/admin','detallePartida','plist','bypartida',detallePartida.partida.id]">({{detallePartida.partida.id}})
+              
+             
+              </a>
+          </td>
             <button class="btn btn-primary" (click)="doView(detallePartida)"><i class="fa-solid fa-circle-info"></i></button>
             <button class="btn btn-primary" [routerLink]="['/admin','detallePartida','view',detallePartida.id]"><i class="fa-solid fa-eye"></i></button>
             <button class="btn btn-danger" (click)="doRemove(detallePartida)"><i class="fa-solid fa-trash"></i></button>

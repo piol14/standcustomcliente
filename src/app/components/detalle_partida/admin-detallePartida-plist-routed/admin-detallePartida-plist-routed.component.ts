@@ -1,8 +1,10 @@
+
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationService, MessageService } from 'primeng/api'; // Ajusta la ruta del servicio
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
 
 @Component({
@@ -16,13 +18,19 @@ export class AdminDetallePartidaPlistRoutedComponent implements OnInit {
   bLoading = false;
   loadingProgress = 0;
   forceReload = new Subject<boolean>();
-
+  id_usuario: number ;
+  id_stand: number ;
+  id_partida: number;
   constructor(
     private oDetallePartidaAjaxService: DetallePartidaAjaxService,
     private oMatSnackBar: MatSnackBar,
     private MessageService: MessageService,
-    private oConfirmationService: ConfirmationService
-  ) {}
+    private oConfirmationService: ConfirmationService,
+    private ActivatedRoute: ActivatedRoute,
+  ) {  this.id_usuario = parseInt(this.ActivatedRoute.snapshot.paramMap.get("idusuario") ?? "0");
+  this.id_stand= parseInt(this.ActivatedRoute.snapshot.paramMap.get("idstand") ?? "0");4
+  this.id_partida= parseInt(this.ActivatedRoute.snapshot.paramMap.get("idpartida") ?? "0");}
+
 
   ngOnInit() {}
 

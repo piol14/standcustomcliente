@@ -15,12 +15,24 @@ export class DetallePartidaAjaxService {
     return this.httpClient.get<IDetallePartida>(`${this.apiUrl}/${id}`);
   }
 
-  getPage(size: number | undefined, page: number | undefined, orderField: string, orderDirection: string): Observable<IDetallePartidaPage> {
+  getPage(size: number | undefined, page: number | undefined, orderField: string, orderDirection: string, id_usuario: number , id_stand: number, id_partida:number): Observable<IDetallePartidaPage> {
+    let strUrlUser = "";
     if (!size) size = 10;
     if (!page) page = 0;
+    if (id_usuario > 0) {
+        strUrlUser = "&usuario=" + id_usuario;
+    }
 
-    const url = `${this.apiUrl}?size=${size}&page=${page}&sort=${orderField},${orderDirection}`;
-    return this.httpClient.get<IDetallePartidaPage>(url);
+    let strUrlstand = "";
+    if (id_stand > 0) {
+      strUrlstand = "&stand=" + id_stand;
+    }
+
+    let strUrlpartida = "";
+    if (id_partida > 0) {
+      strUrlpartida = "&partida=" + id_partida;
+    }
+    return this.httpClient.get<IDetallePartidaPage>(this.apiUrl + "?size=" + size + "&page=" + page + "&sort=" + orderField + "," + orderDirection + strUrlUser + strUrlstand  + strUrlpartida);
   }
 
   removeOne(id: number | undefined): Observable<number> {
