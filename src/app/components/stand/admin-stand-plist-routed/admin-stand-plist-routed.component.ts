@@ -15,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AdminStandPlistRoutedComponent implements OnInit {
   id_usuario: number ;
+  id_categoria: number = 0;
   bLoading = false;
   loadingProgress = 0;
   forceReload = new Subject<boolean>();
@@ -27,7 +28,7 @@ export class AdminStandPlistRoutedComponent implements OnInit {
     private oConfirmationService: ConfirmationService
   ) {
     this.id_usuario = parseInt(this.ActivatedRoute.snapshot.paramMap.get("idusuario") ?? "0");
-
+    this.id_categoria = parseInt(this.ActivatedRoute.snapshot.paramMap.get("idcategoria") ?? "0");
   }
 
   ngOnInit() {

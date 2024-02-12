@@ -1,4 +1,4 @@
-import { IStand, IUser } from './../../../model/model.interfaces';
+import { ICategoria, ICategoriaPage, IStand, IUser } from './../../../model/model.interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -20,14 +20,22 @@ export class UserStandPlistUnroutedComponent implements OnInit {
 
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
   @Input() id_usuario: number = 0;
+  categoria: ICategoria[] = [];
+  stand: IStand[] = [];
+  oPage: ICategoriaPage | undefined;
+  @Input() id_categoria: number = 0;
+  value: string = '';
   oStandPage: IStandPage | undefined;
   orderField: string = "id";
+  standsPorPagina: number = 8;
   orderDirection: string = "asc";
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
   status: HttpErrorResponse | null = null;
   oStandToRemove: IStand | null = null;
   oUsuario: IUser | null = null;
-
+  oCategoria: ICategoria | null = null;
+  idCategoriaFiltrada: number | null = null;
+  filtrandoPorCategoria: boolean = false;
   constructor(
     private oStandAjaxService: StandAjaxService,
     public oDialogService: DialogService,
@@ -45,7 +53,12 @@ export class UserStandPlistUnroutedComponent implements OnInit {
       }
     });
   }
-
+  filtrarPorCategoria(idCategoria: number): void {
+    this.id_categoria = idCategoria;
+    this.getPage(); 
+    this.idCategoriaFiltrada = idCategoria;
+    this.filtrandoPorCategoria = true;
+  }
   doRemove(stand: IStand) {
     this.oConfirmationService.confirm({
       message: '¿Estás seguro de que quieres eliminar este elemento?',
@@ -95,7 +108,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
   }
 
   getPage(): void {
-    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection, this.id_usuario).subscribe({
+    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection, this.id_usuario, this.id_categoria).subscribe({
       next: (data: IStandPage) => {
         this.oStandPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
@@ -105,6 +118,35 @@ export class UserStandPlistUnroutedComponent implements OnInit {
       }
     });
   }
+  quitarFiltro(): void {
+    this.value = ''; // Limpiar el valor del filtro de búsqueda
+    console.log(this.value);
+    
+    this.oStandAjaxService.getPage(
+        this.standsPorPagina,
+        this.oPaginatorState.page,
+        this.orderField,
+        this.orderDirection,
+        0,
+        0 
+    ).subscribe({
+        next: (data: IStandPage) => {
+            this.oPage = data;
+            this.oPaginatorState.pageCount = data.totalPages;
+            this.stand = data.content;
+            console.log(this.stand);
+        },
+        error: (error: HttpErrorResponse) => {
+            this.status = error;
+        }
+    });
+    
+    this.id_categoria = 0; // Restablecer el valor de id_categoria a 0
+    console.log(this.id_categoria);
+    
+    this.filtrandoPorCategoria = false; // Desactivar la bandera de filtrado por categoría
+    console.log(this.filtrandoPorCategoria);
+}
 
 }
 

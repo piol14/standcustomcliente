@@ -29,14 +29,14 @@
       <tbody>
         <tr *ngFor="let opinion of oPage.content">
           <td>{{ opinion.id }}</td>
-          <td>{{ opinion.usuario.nombre }}</td>
+         <td> <a [routerLink]="['/admin','opinion','plist','byusuario',opinion.usuario.id]">({{opinion.usuario.id}})
+            {{opinion.usuario.nombre}}
+            </a>
+        </td>
           <td>{{ opinion.descripcion }}</td>
           <td>{{ opinion.numero_estrellas }}</td>
-          <td class="text-center">
-            <a [routerLink]="['/admin','opinion','plist','byusuario',opinion.usuario.id]">({{opinion.usuario.id}})
-              {{opinion.usuario.nombre}}
-              </a>
-          </td>
+          
+          
           <td class="text-center">
             <a [routerLink]="['/admin','opinion','plist','bystand',opinion.stand.id]">({{opinion.stand.id}})
               {{opinion.stand.nombre}}

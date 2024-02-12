@@ -56,7 +56,7 @@ export const routes: Routes = [
     {path: 'admin/stand/new', component:AdminStandNewRoutedComponent},
     {path: 'admin/stand/edit/:id', component:AdminStandEditRoutedComponent},
     { path: 'admin/stand/plist/byusuario/:idusuario', component: AdminStandPlistRoutedComponent },
-
+    { path: 'admin/stand/plist/bycategoria/:idcategoria', component: AdminStandPlistRoutedComponent },  
     {path: 'admin/opinion/plist', component: AdminOpinionPlistRoutedComponent},
     {path: 'admin/opinion/view/:id', component:AdminOpinionViewRoutedComponent},
     { path: 'admin/opinion/new', component: AdminOpinionNewRoutedComponent },

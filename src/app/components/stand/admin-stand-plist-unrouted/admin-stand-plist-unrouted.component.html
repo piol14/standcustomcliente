@@ -3,7 +3,10 @@
   ({{ id_usuario }} - {{ oUsuario?.nombre }})
   <a type="button" class="btn btn-primary " [routerLink]="['/admin', 'stand', 'plist']">Reset filter</a>
 </h3>
-
+<h3 *ngIf="id_categoria > 0; else noFilter">
+  ({{ id_categoria }} - {{ oCategoria?.nombre }})
+  <a type="button" class="btn btn-primary " [routerLink]="['/admin', 'stand', 'plist']">Reset filter</a>
+</h3>
 <ng-template #noFilter>
          
 </ng-template>
@@ -23,6 +26,7 @@
           <th (click)="doOrder('acierto')">Acierto</th>
           <th (click)="doOrder('potencial_de_desarollo')">Potencial de Desarollo</th>
           <th (click)="doOrder('usuario')">Creador</th>
+          <th (click)="doOrder('usuario')">Categoria</th>
           <!-- Agrega más encabezados según sea necesario -->
           <th>Acciones</th>
         </tr>
@@ -47,7 +51,11 @@
               {{stand.usuario.nombre}}
               </a>
           </td>
-          
+          <td class="text-center">
+            <a [routerLink]="['/admin','stand','plist','bycategoria',stand.categoria.id]">({{stand.categoria.id}})
+              {{stand.categoria.nombre}}
+              </a>
+          </td>
           <td>
             <button class="btn btn-primary" (click)="doView(stand)"><i class="fa-solid fa-circle-info">
             </i></button>

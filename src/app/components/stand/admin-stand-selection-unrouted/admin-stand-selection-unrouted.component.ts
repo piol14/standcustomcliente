@@ -12,6 +12,7 @@ import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
 })
 export class AdminStandSelectionUnroutedComponent implements OnInit {
   @Input() id_usuario: number = 0;
+  @Input() id_categoria: number = 0;
   oStandToRemove: IStand | null = null;
   oPage: IStandPage | undefined;
   orderField: string = "id";
@@ -38,7 +39,7 @@ export class AdminStandSelectionUnroutedComponent implements OnInit {
   
 
   getPage(): void {
-    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection, this.id_usuario).subscribe({
+    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection, this.id_usuario, this.id_categoria).subscribe({
       next: (data: IStandPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;

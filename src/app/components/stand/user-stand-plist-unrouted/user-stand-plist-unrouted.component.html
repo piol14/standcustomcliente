@@ -1,4 +1,21 @@
 <!-- admin-stand-plist-unrouted.component.html -->
+
+<div class="container mt-4">
+  <div *ngIf="status" class="alert alert-danger mt-3">
+    <p>{{ status.message }}</p>
+  </div>
+  <div *ngIf="oPage">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-secondary" *ngFor="let categoria of oPage.content" (click)="filtrarPorCategoria(categoria.id)">
+        {{ categoria.nombre }}
+      </button>
+    </div>
+  </div>
+</div>
+  <!-- Botón para quitar el filtro -->
+  <button *ngIf="filtrandoPorCategoria" pButton type="button" (click)="quitarFiltro()"
+    class="btn btn-primary">Quitar filtro</button>
+
 <div class="container mt-4">
   <div class="row">
     <div *ngFor="let stand of oStandPage?.content" class="col-md-4 mb-4">

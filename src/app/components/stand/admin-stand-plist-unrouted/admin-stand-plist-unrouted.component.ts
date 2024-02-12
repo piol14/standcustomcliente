@@ -5,7 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
-import { IStand, IStandPage, IUser } from 'src/app/model/model.interfaces';
+import { ICategoria, IStand, IStandPage, IUser } from 'src/app/model/model.interfaces';
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
 import { Subject } from 'rxjs/internal/Subject';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,6 +21,7 @@ export class AdminStandPlistUnroutedComponent implements OnInit {
 
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
   @Input() id_usuario: number = 0;
+  @Input () id_categoria: number = 0;
   oStandPage: IStandPage | undefined;
   orderField: string = "id";
   orderDirection: string = "asc";
@@ -28,7 +29,7 @@ export class AdminStandPlistUnroutedComponent implements OnInit {
   status: HttpErrorResponse | null = null;
   oStandToRemove: IStand | null = null;
   oUsuario: IUser | null = null;
-
+  oCategoria:ICategoria | null = null;
   constructor(
     private oStandAjaxService: StandAjaxService,
     public oDialogService: DialogService,
@@ -96,7 +97,7 @@ export class AdminStandPlistUnroutedComponent implements OnInit {
   }
 
   getPage(): void {
-    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection, this.id_usuario).subscribe({
+    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection, this.id_usuario, this.id_categoria).subscribe({
       next: (data: IStandPage) => {
         this.oStandPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
