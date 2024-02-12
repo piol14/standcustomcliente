@@ -100,6 +100,9 @@ import { AdminCategoriaNewRoutedComponent } from './components/categoria/admin-c
 import { AdminCategoriaPlistRoutedComponent } from './components/categoria/admin-categoria-plist-routed/admin-categoria-plist-routed.component';
 import { AdminCategoriaViewRoutedComponent } from './components/categoria/admin-categoria-view-routed/admin-categoria-view-routed.component';
 import { AdminCategoriaEditRoutedComponent } from './components/categoria/admin-categoria-edit-routed/admin-categoria-edit-routed.component';
+import { UserStandPlistUnroutedComponent } from './components/stand/user-stand-plist-unrouted/user-stand-plist-unrouted.component';
+import { HomeRoutedComponent } from './components/shared/home-routed/home-routed.component';
+import { UserCategoriaPlistUnroutedComponent } from './components/categoria/user-categoria-plist-unrouted/user-categoria-plist-unrouted.component';
 
 //--
 @NgModule({
@@ -153,13 +156,17 @@ import { AdminCategoriaEditRoutedComponent } from './components/categoria/admin-
    AdminStandSelectionUnroutedComponent,
    LoginRoutedComponent,
    LogoutRoutedComponent,
+   HomeRoutedComponent,
    AdminCategoriaDetailUnroutedComponent,
    AdminCategoriaPlistUnroutedComponent,
    AdminCategoriaFormUnroutedComponent,
    AdminCategoriaNewRoutedComponent,
    AdminCategoriaPlistRoutedComponent,
    AdminCategoriaViewRoutedComponent,
-   AdminCategoriaEditRoutedComponent
+   AdminCategoriaEditRoutedComponent, 
+   UserStandPlistUnroutedComponent,
+   UserCategoriaPlistUnroutedComponent
+   
   ],
   imports: [
     

@@ -1,0 +1,10 @@
+<div class="container mt-4">
+  <div *ngIf="status" class="alert alert-danger mt-3">
+    <p>{{ status.message }}</p>
+  </div>
+  <div *ngIf="oPage">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-secondary" *ngFor="let categoria of oPage.content" >{{ categoria.nombre }}</button>
+    </div>
+  </div>
+</div>

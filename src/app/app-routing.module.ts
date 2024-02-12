@@ -50,6 +50,7 @@ export const routes: Routes = [
     {path: 'admin/categoria/new', component:AdminCategoriaNewRoutedComponent},
     {path: 'admin/categoria/edit/:id', component:AdminCategoriaEditRoutedComponent},
 
+    {path: 'admin/categoria/plist/bystand/:idcategoria', component: AdminStandPlistRoutedComponent},
     {path: 'admin/stand/plist', component: AdminStandPlistRoutedComponent},
     {path: 'admin/stand/view/:id', component:AdminStandViewRoutedComponent},
     {path: 'admin/stand/new', component:AdminStandNewRoutedComponent},

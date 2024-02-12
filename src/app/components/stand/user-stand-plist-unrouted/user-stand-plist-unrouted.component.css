@@ -1,0 +1,17 @@
+/* admin-stand-plist-unrouted.component.css */
+.card-img-top {
+    max-height: 400px;
+    max-width: 100px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+    object-fit: cover;
+    /* Escala la imagen para que ocupe todo el espacio disponible sin distorsionarse */
+  }
+  .card{
+    display: flex;
+    justify-content: center; /* Centra horizontalmente la imagen */
+    align-items: center; /* Centra verticalmente la imagen */
+     /* Altura fija del contenedor para centrar la imagen */
+  }
+  .btn-primary {
+    background-color: #365486;
+    border-color: #365486;
+}
