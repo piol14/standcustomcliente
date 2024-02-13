@@ -46,7 +46,7 @@ export interface IEntity {
     
     usuario: IUser;
     descripcion: string;
-    numero_estrellas: number;
+   
     stand: IStand;
   }
   export interface IOpinionPage extends IPage<IOpinion> {

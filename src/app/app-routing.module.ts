@@ -30,6 +30,8 @@ import { AdminCategoriaNewRoutedComponent } from './components/categoria/admin-c
 import { AdminCategoriaPlistRoutedComponent } from './components/categoria/admin-categoria-plist-routed/admin-categoria-plist-routed.component';
 import { AdminCategoriaViewRoutedComponent } from './components/categoria/admin-categoria-view-routed/admin-categoria-view-routed.component';
 import { AdminCategoriaEditRoutedComponent } from './components/categoria/admin-categoria-edit-routed/admin-categoria-edit-routed.component';
+import { UserStandViewRoutedComponent } from './components/stand/user-stand-view-routed/user-stand-view-routed.component';
+import { UserOpinionNewRoutedComponent } from './components/opinion/user-opinion-new-routed/user-opinion-new-routed.component';
 export const routes: Routes = [
 
   { path: '', component: HomeRoutedComponent },
@@ -53,6 +55,7 @@ export const routes: Routes = [
     {path: 'admin/categoria/plist/bystand/:idcategoria', component: AdminStandPlistRoutedComponent},
     {path: 'admin/stand/plist', component: AdminStandPlistRoutedComponent},
     {path: 'admin/stand/view/:id', component:AdminStandViewRoutedComponent},
+    {path: 'user/stand/view/:id', component:UserStandViewRoutedComponent},
     {path: 'admin/stand/new', component:AdminStandNewRoutedComponent},
     {path: 'admin/stand/edit/:id', component:AdminStandEditRoutedComponent},
     { path: 'admin/stand/plist/byusuario/:idusuario', component: AdminStandPlistRoutedComponent },
@@ -62,6 +65,7 @@ export const routes: Routes = [
     { path: 'admin/opinion/new', component: AdminOpinionNewRoutedComponent },
     { path: 'admin/opinion/plist/byusuario/:idusuario', component: AdminOpinionPlistRoutedComponent },
     { path: 'admin/opinion/plist/bystand/:idstand', component: AdminOpinionPlistRoutedComponent },
+    { path: 'user/opinion/new', component: UserOpinionNewRoutedComponent },
     {path: 'admin/partida/plist', component: AdminPartidaPlistRoutedComponent},
     { path: 'admin/opinion/edit/:id', component: AdminOpinionEditRoutedComponent },
     {path: 'admin/partida/view/:id', component: AdminPartidaViewRoutedComponent},

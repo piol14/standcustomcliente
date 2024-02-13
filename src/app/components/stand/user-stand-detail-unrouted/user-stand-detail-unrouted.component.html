@@ -1,0 +1,58 @@
+<div *ngIf="status == null">
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Detalles del Stand -->
+        <div class="card shadow-lg">
+          <!-- Encabezado -->
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Detalles del Stand</h5>
+          </div>
+          <!-- Cuerpo -->
+          <div class="card-body">
+            <!-- Imagen y descripción -->
+            <div class="row">
+              <div class="col-md-4">
+                <img class="img-fluid rounded" [src]="oStand.imagen" alt="Imagen del stand">
+              </div>
+              <div class="col-md-8">
+                <h5 class="card-title">{{ oStand.nombre }}</h5>
+                <p class="card-text">{{ oStand.descripcion }}</p>
+                <div class="mt-4">
+                  <h6>Características:</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item">Velocidad: {{ oStand.velocidad }}</li>
+                    <li class="list-group-item">Alcance: {{ oStand.alcance }}</li>
+                    <li class="list-group-item">Poder: {{ oStand.poder }}</li>
+                    <li class="list-group-item">Aguante: {{ oStand.aguante }}</li>
+                    <li class="list-group-item">Acierto: {{ oStand.acierto }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Pie de la tarjeta con el botón de Crear Opinión -->
+          <div class="card-footer">
+            <button class="btn btn-primary"  [routerLink]="['/user', 'opinion', 'new']">Crear Opinión</button>
+          </div>
+        </div>
+
+        <!-- Campo de texto para crear opinión -->
+        <div class="mt-3">
+          <!-- <textarea class="form-control" rows="3" placeholder="Escribe tu opinión aquí..." [(ngModel)]="nuevaOpinion"></textarea> -->
+        </div>
+
+        <!-- Área para mostrar las valoraciones -->
+        <div class="mt-4">
+          <h5>Valoraciones de otros usuarios:</h5>
+          <ul class="list-group">
+           <!-- <li class="list-group-item" *ngFor="let valoracion of valoraciones">{{ valoracion.opinion }}</li> -->
+          </ul>
+        </div>
+
+        <!-- Canvas para el gráfico -->
+        <canvas id="myCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

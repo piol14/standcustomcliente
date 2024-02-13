@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h2 class="mb-0">¡Comparte tu Opinión!</h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="opinionForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="descripcion">Descripción:</label>
+          <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Cuéntanos qué piensas..." required></textarea>
+        </div>
+       
+        
+           
+        
+     
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary" [disabled]="!opinionForm.valid">¡Enviar Opinión!</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

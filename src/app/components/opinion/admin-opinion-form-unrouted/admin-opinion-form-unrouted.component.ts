@@ -41,7 +41,7 @@ export class AdminOpinionFormUnroutedComponent implements OnInit {
         id: [oOpinion.usuario?.id, Validators.required],
       }),
       descripcion: [oOpinion.descripcion, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      numero_estrellas: [oOpinion.numero_estrellas, [Validators.required, Validators.min(1), Validators.max(5)]],
+    
       stand:this.oFormBuilder.group({
         id: [oOpinion.stand?.id, Validators.required],
       }),
