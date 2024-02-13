@@ -35,7 +35,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MenuUnroutedComponent } from './components/shared/menu-unrouted/menu-unrouted.component';
 import { AppComponent } from './app.component';
 import { PaginatorModule } from 'primeng/paginator';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { AdminStandPlistRoutedComponent } from './components/stand/admin-stand-plist-routed/admin-stand-plist-routed.component';
 import { AdminStandPlistUnroutedComponent } from './components/stand/admin-stand-plist-unrouted/admin-stand-plist-unrouted.component';
 import { StandAjaxService } from './service/stand.ajax.service.service';
@@ -199,13 +199,13 @@ import { UserOpinionNewRoutedComponent } from './components/opinion/user-opinion
    MatSelectModule,
    ReactiveFormsModule,
    SplitButtonModule, 
-   
   
   ],
   providers: [
     DialogService,
     UserAjaxService,
    StandAjaxService,
+   DynamicDialogConfig,
   
    OpinionAjaxService,
    PartidaAjaxService,
