@@ -96,16 +96,17 @@ export class UserOpinionFormUnroutedComponent implements OnInit {
     if (this.opinionForm.valid) {
       const opinion = this.opinionForm.value;
       opinion.usuario = this.usuario;
-      console.log( "iD USUARIO: " + opinion.usuario)
+      console.log( "iD USUARIO: " + opinion.usuario.id)
       opinion.stand = this.stand;
-      console.log("ID PRODUCTO" + opinion.stand)
+      console.log("ID PRODUCTO" + opinion.stand.id)
   
       this.oOpinionAjaxService.newOne(this.opinionForm.value).subscribe({
         next: (data: any) => {
           this.oOpinion = data;
           this.initializeForm(this.oOpinion);
           this.oMatSnackBar.open('La opinión se ha creado correctamente', '', { duration: 2000 });
-          this.oRouter.navigate(['/admin', 'opinion', 'view', this.oOpinion]);
+          this.oMatSnackBar.dismiss();
+          this.oRouter.navigate(['/user', 'stand', 'view',this.stand?.id]);
         },
         error: (error: HttpErrorResponse) => {
           this.status = error;

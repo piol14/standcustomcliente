@@ -1,43 +1,42 @@
-<div *ngIf="status != null">
-  <div class="d-flex justify-content-center my-3">
+<!-- Mensaje de error -->
+<div *ngIf="status != null" class="error-message-container">
+  <div class="d-flex justify-content-center my-2">
     <div class="alert alert-danger" role="alert">
-      {{ status!.error.message }} - {{ status!.message }}
+      {{ status!.error }} - {{ status!.message }}
     </div>
   </div>
 </div>
 
+<!-- Contenedor principal -->
 <div class="container mt-4">
   <div class="row justify-content-center">
+    <!-- Lista de opiniones -->
     <div class="col-lg-9">
       <div class="row">
         <div class="col-lg-12" *ngFor="let opinion of page?.content">
           <div class="card mb-3">
-            
-              <div class="card-header">{{ opinion.usuario.username }}
-            </div>
+            <div class="card-header">{{ opinion.usuario.username }}</div>
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
-               
                 <div class="message">{{ opinion.descripcion }}</div>
+                <!-- Botón para borrar opinión -->
+                <button *ngIf="isUsuarioOpinion(opinion)" (click)="borrarOpinion(opinion.id)" type="button" class="btn btn-primary btn-lg mt-3">Borrar valoración</button>
               </div>
             </div>
           </div>
-              <button *ngIf="isUsuarioOpinion(opinion)" (click)="borrarOpinion(opinion.id)" type="button" class="btn btn-primary btn-lg mt-3">Borrar valoración</button>
-            </div>
-          </div>
         </div>
-      
+      </div>
+    </div>
 
+    <!-- Formulario para crear nueva opinión -->
     <div class="col-lg-3">
       <div class="crearopiniones">
-        
         <h1 class="mb-4">Opina sobre el stand</h1>
-        <p>¡Queremos conocer tu opinión sobre los  stands al estilo de JoJo's Bizarre Adventure! Tu valoracion ayuda a los usuarios y ayuda a la comunidad .</p>
+        <p>¡Queremos conocer tu opinión sobre los stands al estilo de JoJo's Bizarre Adventure! Tu valoración ayuda a los usuarios y a la comunidad.</p>
         <button type="button" class="btn btn-primary btn-lg mt-3" (click)="postNuevaOpinion()">Hacer valoración</button>
         <div class="info mt-4">
-          <p>Todas las opiniones son revisadas antes de ser publicadas. Cualquier opinion inapropiada es borrada por un administrador</p>
+          <p>Todas las opiniones son revisadas antes de ser publicadas. Cualquier opinión inapropiada será borrada por un administrador.</p>
         </div>
-        
       </div>
     </div>
   </div>

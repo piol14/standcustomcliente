@@ -1,0 +1,50 @@
+/* Estilos para el mensaje de error */
+.error-message-container {
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para la lista de opiniones y el formulario */
+  .card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    font-weight: bold;
+  }
+  
+  .message {
+    margin-right: 10px;
+  }
+  
+  .crearopiniones {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .info {
+    margin-top: 20px;
+  }
+  
+  .btn-lg {
+    font-size: 1.25rem;
+  }
+  .card {
+    /* Limitar el ancho máximo de las tarjetas */
+    max-width: 100%; /* Puedes ajustar este valor según tus necesidades */
+  }
+  
+  .card-header, .message {
+    /* Permitir que el texto se ajuste automáticamente a la siguiente línea y se envuelva */
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+  
+  .card-body {
+    /* Ajustar el padding para permitir más espacio para el texto */
+    padding: 1rem;
+  }
+  

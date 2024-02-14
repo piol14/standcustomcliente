@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-user-stand-view-routed',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class UserStandViewRoutedComponent implements OnInit {
 
   id: number = 1;
- 
+  forceReload: Subject<boolean> = new Subject<boolean>();
   constructor(
     private oActivatedRoute: ActivatedRoute
   ) {
