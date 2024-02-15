@@ -28,7 +28,26 @@
           <mat-error *ngIf="hasError('nombre', 'maxlength')">El nombre no puede tener más de 255 caracteres</mat-error>
         </mat-form-field>
       </div>
-
+      <div formGroupName="usuario">
+        <mat-form-field [style.width.px]="100">
+          <mat-label>Usuario:</mat-label>
+          <input matInput formControlName="id" placeholder="ID" required readonly>
+        </mat-form-field>
+        <button class="btn btn-primary btn-search" type="button" (click)=" onShowUsuarioSelection()">
+          <i class="pi pi-search"></i> Buscar Usuario
+        </button>
+      </div>
+      <div formGroupName="categoria">
+        <mat-form-field [style.width.px]="100">
+          <mat-label>Categoria:</mat-label>
+          <input matInput formControlName="id" placeholder="ID" required readonly>
+        </mat-form-field>
+        <button class="btn btn-primary btn-search" type="button" (click)="onShowCategoriaSelection()">
+          <i class="pi pi-search"></i> Buscar Categoria
+        </button>
+        
+      </div>
+      
       <div class="form-group">
         <label for="imagen">Imagen:</label>
         <input type="file" (change)="onFileSelected($event)" accept="image/*" required>
@@ -110,6 +129,7 @@
         <button mat-raised-button color="primary" type="submit" [disabled]="!standForm.valid">Guardar Stand</button>
       </div>
       </div>
+      
     </form>
-  </div>
+  
 </div>

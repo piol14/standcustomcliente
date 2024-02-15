@@ -1,3 +1,4 @@
+import { SessionAjaxService } from './../../../service/session.ajax.service.service';
 import { ICategoria, ICategoriaPage, IStand, IUser } from './../../../model/model.interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
@@ -11,6 +12,7 @@ import { Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoriaAjaxService } from 'src/app/service/categoria.ajax.service.service';
 import { UserStandDetailUnroutedComponent } from '../user-stand-detail-unrouted/user-stand-detail-unrouted.component';
+import { UserStandFormUnroutedComponent } from '../user-stand-form-unrouted/user-stand-form-unrouted.component';
 
 @Component({
   selector: 'app-user-stand-plist-unrouted',
@@ -22,7 +24,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
 
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
   @Input() id_usuario: number = 0;
-  @Input() id_categoria: number = 0;
+  @Input() id_categoria: number = 9;
   categoria: ICategoria[] = [];
   stand: IStand[] = [];
   oPage: ICategoriaPage | undefined;
@@ -40,12 +42,13 @@ export class UserStandPlistUnroutedComponent implements OnInit {
   
  
   oStandToRemove: IStand | null = null;
-  oUsuario: IUser | null = null;
+  usuario: IUser | null = null;
   oCategoria: ICategoria | null = null;
   idCategoriaFiltrada: number | null = null;
   filtrandoPorCategoria: boolean = false;
 
   constructor(
+    private SessionAjaxService: SessionAjaxService,
     private oCategoriaAjaxService: CategoriaAjaxService,
     private oStandAjaxService: StandAjaxService,
     public oDialogService: DialogService,
@@ -60,6 +63,15 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     if (this.id_categoria > 0) {
       this.getCategorias();
     }
+ this.SessionAjaxService.getSessionUser()?.subscribe({
+      next: (usuario: IUser) => {
+        this.usuario = usuario;
+        this.id_usuario = usuario.id;
+      },
+      error: (err: HttpErrorResponse) => {
+        this.status = err;
+      }
+    });
   }
   filtrarPorCategoria(idCategoria: number): void {
     console.log(idCategoria);
@@ -162,7 +174,33 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     this.getPage(); 
   }
   
-    
+  postNuevoStand(): void {
+    if (this.SessionAjaxService.isSessionActive()) {
 
+      this.ref = this.oDialogService.open(UserStandFormUnroutedComponent, {
+        data: {
+          
+          id_usuario: this.id_usuario
+          
+        },
+        header: 'Nuevo Stand',
+        width: '40%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: false
+      });
+
+      this.ref.onClose.subscribe({
+        next: (v) => {
+          if (v) {
+            this.getPage();
+          }
+        }
+      })
+   
+    }
+  }
 }
+
+
 

@@ -108,6 +108,8 @@ import { UserStandViewRoutedComponent } from './components/stand/user-stand-view
 import { UserOpinionFormUnroutedComponent } from './components/opinion/user-opinion-form-unrouted/user-opinion-form-unrouted.component';
 import { UserOpinionNewRoutedComponent } from './components/opinion/user-opinion-new-routed/user-opinion-new-routed.component';
 import { UserOpinionPlistUnroutedComponent } from './components/opinion/user-opinion-plist-unrouted/user-opinion-plist-unrouted.component';
+import { AdminCategoriaSelectionUnroutedComponent } from './components/categoria/admin-categoria-selection-unrouted/admin-categoria-selection-unrouted.component';
+import { UserStandFormUnroutedComponent } from './components/stand/user-stand-form-unrouted/user-stand-form-unrouted.component';
 
 //--
 @NgModule({
@@ -176,7 +178,9 @@ import { UserOpinionPlistUnroutedComponent } from './components/opinion/user-opi
    AdminOpinionNewRoutedComponent,
    UserOpinionFormUnroutedComponent,
    UserOpinionNewRoutedComponent,
-   UserOpinionPlistUnroutedComponent
+   AdminCategoriaSelectionUnroutedComponent,
+   UserOpinionPlistUnroutedComponent,
+   UserStandFormUnroutedComponent,
   ],
   imports: [
     

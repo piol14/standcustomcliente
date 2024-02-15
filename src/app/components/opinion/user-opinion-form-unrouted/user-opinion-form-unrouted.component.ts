@@ -46,9 +46,12 @@ export class UserOpinionFormUnroutedComponent implements OnInit {
     private messageService: MessageService // Add the missing parameter with the correct type
   ) {
     this.id_usuario = this.oDynamicDialogConfig.data.id_usuario;
-    console.log(this.id_usuario)
-    this.id_stand = this.oDynamicDialogConfig.data.id_producto;
+    console.log("IDSTAND" + this.id_usuario)
+
+    this.id_stand = this.oDynamicDialogConfig.data.id_stand;
+    console.log("IDSTAND" + this.id_stand)
     this.initializeForm(this.oOpinion);
+
   }
 
  

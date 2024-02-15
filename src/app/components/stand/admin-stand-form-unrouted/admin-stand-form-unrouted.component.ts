@@ -3,10 +3,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { IStand, formOperation } from 'src/app/model/model.interfaces'; // Asegúrate de importar el modelo correcto
+import { IStand, IUser, formOperation } from 'src/app/model/model.interfaces'; // Asegúrate de importar el modelo correcto
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MediaService } from 'src/app/service/media.service';
+import { AdminUsuarioSelectionUnroutedComponent } from '../../usuario/admin-usuario-selection-unrouted/admin-usuario-selection-unrouted.component';
+import { AdminCategoriaSelectionUnroutedComponent } from '../../categoria/admin-categoria-selection-unrouted/admin-categoria-selection-unrouted.component';
 
 @Component({
   selector: 'app-admin-stand-form-unrouted',
@@ -44,7 +46,13 @@ export class AdminStandFormUnroutedComponent implements OnInit {
       aguante: [oStand.aguante || 'D'],     // Default value 'D' if oStand.aguante is falsy
       acierto: [oStand.acierto || 'D'],  
       imagen: [oStand.imagen, Validators.required],
-     desarollo: [oStand.desarollo || 'D']
+     desarollo: [oStand.desarollo || 'D'],
+     usuario:this.formBuilder.group({
+      id: [oStand.usuario?.id, Validators.required],
+    }),
+    categoria:this.formBuilder.group({
+      id: [oStand.categoria?.id, Validators.required],
+    }),
       // Agrega aquí los demás campos según tu modelo
     });
   }
@@ -120,5 +128,37 @@ export class AdminStandFormUnroutedComponent implements OnInit {
       });
 }
   }
+  onShowUsuarioSelection() {
+    this.oDynamicDialogRef = this.oDialogService.open(AdminUsuarioSelectionUnroutedComponent, {
+      header: 'Select a User', // Reemplazar con el texto deseado
+      width: '80%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true
+    });
+  
+  this.oDynamicDialogRef.onClose.subscribe((oUser: IUser) => {
+    if (oUser) {
+      this.oStand.usuario = oUser;
+      this.standForm.controls['usuario'].patchValue({ id: oUser.id })
+    }
+  });
+}
+onShowCategoriaSelection() {
+  this.oDynamicDialogRef = this.oDialogService.open(AdminCategoriaSelectionUnroutedComponent, {
+    header: 'Seleccionar una Categoría',
+    width: '80%',
+    contentStyle: { overflow: 'auto' },
+    baseZIndex: 10000,
+    maximizable: true
+  });
+
+  this.oDynamicDialogRef.onClose.subscribe((categoria: any) => {
+    if (categoria) {
+      this.oStand.categoria = categoria;
+      this.standForm.controls['categoria'].patchValue({ id: categoria.id });
+    }
+  });
+}
 
 }

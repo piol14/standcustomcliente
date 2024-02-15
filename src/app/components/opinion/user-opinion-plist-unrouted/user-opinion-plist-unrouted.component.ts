@@ -126,10 +126,11 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
 
       this.ref = this.DialogService.open(UserOpinionFormUnroutedComponent, {
         data: {
-          id_producto: this.id_stand,
-          id_usuario: this.id_usuario
+          id_stand: this.id_stand,
+          id_usuario: this.id_usuario,
           
         },
+        
         header: 'Nueva valoración',
         width: '40%',
         contentStyle: { overflow: 'auto' },
