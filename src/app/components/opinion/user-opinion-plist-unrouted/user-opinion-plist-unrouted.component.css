@@ -46,5 +46,10 @@
   .card-body {
     /* Ajustar el padding para permitir más espacio para el texto */
     padding: 1rem;
+   
   }
+  .btn-primary {
+    background-color: #365486;
+    border-color: #365486;
+}
   

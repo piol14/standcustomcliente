@@ -6,8 +6,11 @@
     <div class="card-body">
       <form [formGroup]="opinionForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
+          
           <label for="descripcion">Descripción:</label>
+         
           <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Cuéntanos qué piensas..." required></textarea>
+          <mat-error *ngIf="hasError('imagen', 'required')">Campo obligatorio</mat-error>
         </div>
        
         

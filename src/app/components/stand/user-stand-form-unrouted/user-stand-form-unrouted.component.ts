@@ -92,17 +92,18 @@ export class UserStandFormUnroutedComponent implements OnInit {
     if (this.standForm.valid) {
       const stand = this.standForm.value;
       stand.usuario = this.usuario;
-      console.log( "iD USUARIO: " + stand.usuario.id)
-      stand.categoria.id = this.id_categoria;
-      console.log("ID PRODUCTO" + stand.categoria.id)
+      stand.categoria = { id: 9 }; // Initialize categoria object with id 9
+      console.log("iD USUARIO: " + stand.usuario.id);
+      console.log("ID CATEGORIA: " + stand.categoria.id);
   
-      this.standService.newOne(this.standForm.value).subscribe({
+      // Use 'stand' object instead of 'this.standForm.value'
+      this.standService.newOne(stand).subscribe({
         next: (data: any) => {
           this.oStand = data;
           this.initializeForm(this.oStand);
           this.snackBar.open('La opinión se ha creado correctamente', '', { duration: 2000 });
           this.snackBar.dismiss();
-          this.router.navigate(['/user', 'stand', 'plist']);
+          this.router.navigate(['/home']);
         },
         error: (error: HttpErrorResponse) => {
           this.status = error;
@@ -111,6 +112,7 @@ export class UserStandFormUnroutedComponent implements OnInit {
       });
     }
   }
+  
 
 
   onFileSelected(event: any) {

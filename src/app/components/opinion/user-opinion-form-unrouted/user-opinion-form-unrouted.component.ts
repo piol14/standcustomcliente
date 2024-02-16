@@ -94,7 +94,9 @@ export class UserOpinionFormUnroutedComponent implements OnInit {
       descripcion: [oOpinion.descripcion, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
     });
   }
-
+  public hasError = (controlName: string, errorName: string) => {
+    return this.opinionForm.controls[controlName].hasError(errorName);
+  }
   onSubmit() {
     if (this.opinionForm.valid) {
       const opinion = this.opinionForm.value;

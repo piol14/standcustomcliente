@@ -56,13 +56,23 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     private oMatSnackBar: MatSnackBar
   ) { }
 
-  ngOnInit() {
-   
-    this.getPage();
-    this.getCategorias();
-    if (this.id_categoria > 0) {
-      this.getCategorias();
+
+ ngOnInit() {
+  this.getPage();
+  this.forceReload.subscribe({
+    next: (v) => {
+      if (v) {
+        this.getPage();
+      }
     }
+  });
+  this.getCategorias(); // Llama siempre a getCategorias() al inicializar el componente
+
+  if (this.id_categoria > 0) {
+    this.getCategorias(); // Si id_categoria es mayor que 0, llama nuevamente a getCategorias()
+  }
+
+
  this.SessionAjaxService.getSessionUser()?.subscribe({
       next: (usuario: IUser) => {
         this.usuario = usuario;

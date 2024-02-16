@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PaginatorState } from 'primeng/paginator';
+import { Subject } from 'rxjs';
 import { SessionAjaxService } from 'src/app/service/session.ajax.service.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SessionAjaxService } from 'src/app/service/session.ajax.service.service
   styleUrls: ['./home-routed.component.css']
 })
 export class HomeRoutedComponent implements OnInit {
-
+  forceReload = new Subject<boolean>();
   oPage: any = [];
   orderField: string = "id";
   orderDirection: string = "asc";

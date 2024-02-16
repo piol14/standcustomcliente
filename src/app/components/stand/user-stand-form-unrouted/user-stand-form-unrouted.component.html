@@ -43,6 +43,7 @@
       <div class="form-group input-container">
         <mat-form-field [style.width.px]="350">
           <mat-label>Velocidad:</mat-label>
+          <mat-error *ngIf="hasError('imagen', 'required')">Campo obligatorio</mat-error>
           <mat-select formControlName="velocidad" placeholder="Velocidad">
             <mat-option *ngFor="let option of ['A', 'B', 'C', 'D', 'E']" [value]="option">
               {{ option }}
