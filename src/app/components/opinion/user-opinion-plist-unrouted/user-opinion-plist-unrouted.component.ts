@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, Input, OnInit } from '@angular/core';
 import { UserOpinionFormUnroutedComponent } from '../user-opinion-form-unrouted/user-opinion-form-unrouted.component';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -7,13 +8,14 @@ import { SessionAjaxService } from 'src/app/service/session.ajax.service.service
 import { OpinionAjaxService } from 'src/app/service/opinion.ajax.service.service';
 import { Subject } from 'rxjs';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { ConfirmationService, ConfirmEventType } from 'primeng/api';
 
-import { ConfirmationService, MessageService } from 'primeng/api';
+import {  MessageService } from 'primeng/api';
 @Component({
   selector: 'app-user-opinion-plist-unrouted',
   templateUrl: './user-opinion-plist-unrouted.component.html',
   styleUrls: ['./user-opinion-plist-unrouted.component.css'],
-  providers: [ MessageService, ConfirmationService, DialogService] // Add the providers to the component
+  providers: [ MessageService, ConfirmationService] // Add the providers to the component
 })
 export class UserOpinionPlistUnroutedComponent implements OnInit {
 
@@ -37,9 +39,10 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
   constructor(
     private oOpinionAjaxService: OpinionAjaxService,
     private oSessionAjaxService: SessionAjaxService,
-    private ConfirmationService: ConfirmationService,
+    private confirmationService: ConfirmationService,
     private MessageService: MessageService,
     private DialogService: DialogService,
+    private MatSnackBar: MatSnackBar
 
   ) { }
 
@@ -100,26 +103,31 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
   }
 
   borrarOpinion(id_opinion: number) {
-    this.ConfirmationService.confirm({
-   
+    console.log(id_opinion);
+  
+    this.confirmationService.confirm({
       message: '¿Estás seguro de que quieres borrar la valoración?',
       accept: () => {
-        console.log(id_opinion);
         this.oOpinionAjaxService.removeOne(id_opinion).subscribe({
           next: () => {
             this.getOpiniones();
-            this.MessageService.add({ severity: 'success', summary: 'Success', detail: 'La valoración ha sido eliminada' });
+            this.MatSnackBar.open('La opinión ha sido eliminada', 'Cerrar', {
+              duration: 2000,
+            });
             console.log(this.usuario?.id);
           },
           error: (err: HttpErrorResponse) => {
             this.status = err;
-            this.MessageService.add({ severity: 'error', summary: 'Error', detail: 'La valoración no se ha podido eliminar' });
+            this.MatSnackBar.open('La opinión no se ha podido eliminar', 'Cerrar', {
+              duration: 2000,
+            });
           }
-        })
+        });
       }
     });
-    
   }
+  
+  
 
   postNuevaOpinion(): void {
     if (this.id_stand > 0 && this.oSessionAjaxService.isSessionActive()) {

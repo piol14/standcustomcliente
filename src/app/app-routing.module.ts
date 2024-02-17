@@ -32,12 +32,14 @@ import { AdminCategoriaViewRoutedComponent } from './components/categoria/admin-
 import { AdminCategoriaEditRoutedComponent } from './components/categoria/admin-categoria-edit-routed/admin-categoria-edit-routed.component';
 import { UserStandViewRoutedComponent } from './components/stand/user-stand-view-routed/user-stand-view-routed.component';
 import { UserOpinionNewRoutedComponent } from './components/opinion/user-opinion-new-routed/user-opinion-new-routed.component';
+import { JugarUserPlistRoutedComponent } from './components/jugar/jugar-user-plist-routed/jugar-user-plist-routed.component';
 export const routes: Routes = [
 
   { path: '', component: HomeRoutedComponent },
   { path: 'home', component: HomeRoutedComponent },
   { path: 'login', component: LoginRoutedComponent },
   { path: 'logout', component: LogoutRoutedComponent },
+  { path: 'jugar', component: JugarUserPlistRoutedComponent },
     { path: 'admin/usuario/plist', component: AdminUsuarioPlistRoutedComponent },
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
     { path: 'admin/usuario/view/:id', component: AdminUsuarioViewRoutedComponent },    

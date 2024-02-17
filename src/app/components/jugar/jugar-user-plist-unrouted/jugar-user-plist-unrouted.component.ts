@@ -1,30 +1,22 @@
-import { SessionAjaxService } from './../../../service/session.ajax.service.service';
-import { ICategoria, ICategoriaPage, IStand, IUser } from './../../../model/model.interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmationService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
-import { IStandPage } from 'src/app/model/model.interfaces';
-import { AdminStandDetailUnroutedComponent } from '../admin-stand-detail-unrouted/admin-stand-detail-unrouted.component';
-import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
-import { ConfirmationService } from 'primeng/api';
 import { Subject } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ICategoria, IStand, ICategoriaPage, IStandPage, IUser } from 'src/app/model/model.interfaces';
 import { CategoriaAjaxService } from 'src/app/service/categoria.ajax.service.service';
-import { UserStandDetailUnroutedComponent } from '../user-stand-detail-unrouted/user-stand-detail-unrouted.component';
-import { UserStandFormUnroutedComponent } from '../user-stand-form-unrouted/user-stand-form-unrouted.component';
-import {  MessageService } from 'primeng/api';
-
-import { ConfirmEventType } from 'primeng/api';
+import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
+import { UserStandDetailUnroutedComponent } from '../../stand/user-stand-detail-unrouted/user-stand-detail-unrouted.component';
+import { SessionAjaxService } from 'src/app/service/session.ajax.service.service';
 
 @Component({
-  selector: 'app-user-stand-plist-unrouted',
-  templateUrl: './user-stand-plist-unrouted.component.html',
-  styleUrls: ['./user-stand-plist-unrouted.component.css'],
-  providers: [  ConfirmationService]
+  selector: 'app-jugar-user-plist-unrouted',
+  templateUrl: './jugar-user-plist-unrouted.component.html',
+  styleUrls: ['./jugar-user-plist-unrouted.component.css']
 })
-export class UserStandPlistUnroutedComponent implements OnInit {
-
+export class JugarUserPlistUnroutedComponent implements OnInit {
 
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
   @Input() id_usuario: number = 0;
@@ -193,33 +185,4 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     this.getPage(); 
   }
   
-  postNuevoStand(): void {
-    if (this.SessionAjaxService.isSessionActive()) {
-
-      this.ref = this.oDialogService.open(UserStandFormUnroutedComponent, {
-        data: {
-          
-          id_usuario: this.id_usuario
-          
-        },
-        header: 'Nuevo Stand',
-        width: '40%',
-        contentStyle: { overflow: 'auto' },
-        baseZIndex: 10000,
-        maximizable: false
-      });
-
-      this.ref.onClose.subscribe({
-        next: (v) => {
-          if (v) {
-            this.getPage();
-          }
-        }
-      })
-   
-    }
-  }
 }
-
-
-

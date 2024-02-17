@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ConfirmationService } from 'primeng/api';
 import { PaginatorState } from 'primeng/paginator';
 import { Subject } from 'rxjs';
 import { SessionAjaxService } from 'src/app/service/session.ajax.service.service';
@@ -7,7 +8,8 @@ import { SessionAjaxService } from 'src/app/service/session.ajax.service.service
 @Component({
   selector: 'app-home-routed',
   templateUrl: './home-routed.component.html',
-  styleUrls: ['./home-routed.component.css']
+  styleUrls: ['./home-routed.component.css'],
+  providers: [ ConfirmationService ]
 })
 export class HomeRoutedComponent implements OnInit {
   forceReload = new Subject<boolean>();
