@@ -49,5 +49,6 @@ export class PartidaAjaxService {
         return this.httpClient.post<number>(`${this.apiUrl}/populate/${amount}`, null);
     }
   
-
+    
 }
+

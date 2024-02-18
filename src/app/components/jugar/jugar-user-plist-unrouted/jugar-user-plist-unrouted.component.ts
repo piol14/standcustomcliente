@@ -1,15 +1,18 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfirmationService } from 'primeng/api';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { PaginatorState } from 'primeng/paginator';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { ICategoria, IStand, ICategoriaPage, IStandPage, IUser } from 'src/app/model/model.interfaces';
+
+import { ICategoria, IStand, IUser, IPartida, IDetallePartida, IStandPage, ICategoriaPage } from 'src/app/model/model.interfaces';
 import { CategoriaAjaxService } from 'src/app/service/categoria.ajax.service.service';
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
-import { UserStandDetailUnroutedComponent } from '../../stand/user-stand-detail-unrouted/user-stand-detail-unrouted.component';
 import { SessionAjaxService } from 'src/app/service/session.ajax.service.service';
+import { PartidaAjaxService } from 'src/app/service/partida.ajax.service.service';
+import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
+import { PaginatorState } from 'primeng/paginator';
+import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-jugar-user-plist-unrouted',
@@ -17,12 +20,11 @@ import { SessionAjaxService } from 'src/app/service/session.ajax.service.service
   styleUrls: ['./jugar-user-plist-unrouted.component.css']
 })
 export class JugarUserPlistUnroutedComponent implements OnInit {
-
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
   @Input() id_usuario: number = 0;
   @Input() id_categoria: number = 9;
   categoria: ICategoria[] = [];
-  stand: IStand[] = [];
+  standPage: IStand[] = [];
   oPage: ICategoriaPage | undefined;
   
   orderField: string = "id";
@@ -39,17 +41,23 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
  
   oStandToRemove: IStand | null = null;
   usuario: IUser | null = null;
+  stand: IStand | null = null;
+  partida: IPartida |null = null ;
   oCategoria: ICategoria | null = null;
-  idCategoriaFiltrada: number | null = null;
+  detallePartida: IDetallePartida= {} as IDetallePartida;
+    idCategoriaFiltrada: number | null = null;
   filtrandoPorCategoria: boolean = false;
-
+oPartida:IPartida= {} as IPartida;
   constructor(
     private SessionAjaxService: SessionAjaxService,
     private oCategoriaAjaxService: CategoriaAjaxService,
     private oStandAjaxService: StandAjaxService,
     public oDialogService: DialogService,
     private oConfirmationService: ConfirmationService,
-    private oMatSnackBar: MatSnackBar
+    private oMatSnackBar: MatSnackBar,
+    private DetallePartidaAjaxService: DetallePartidaAjaxService,
+    private PartidaAjaxService: PartidaAjaxService,
+    private router: Router,
   ) { }
 
 
@@ -113,18 +121,7 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
   }
 
   ref: DynamicDialogRef | undefined;
-  doView(u: IStand) {
-    this.ref = this.oDialogService.open(UserStandDetailUnroutedComponent, {
-        data: {
-            id: u.id
-        },
-        header: 'Vista Stand', // Establece el encabezado directamente
-        width: '50%',
-        contentStyle: { overflow: 'auto' },
-        baseZIndex: 10000,
-        maximizable: false
-    });
-}
+  
 
   onPageChange(event: PaginatorState) {
     this.oPaginatorState.rows = event.rows;
@@ -170,7 +167,7 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
       next: (data: IStandPage) => {
         this.oStandPage = data;
         this.oPaginatorState.pageCount = data.totalPages;
-        this.stand = data.content;
+        this.standPage = data.content;
       },
       error: (error: HttpErrorResponse) => {
         this.status = error;
@@ -184,5 +181,35 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
     this.filtrandoPorCategoria = false;
     this.getPage(); 
   }
-  
+  crearTodo(): void {
+    const partida: IPartida = {
+      id:this.oPartida.id,
+      fecha: "ola",
+      usuario: this.usuario
+    };
+
+    this.PartidaAjaxService.newOne(partida).subscribe({
+      next: (partida: IPartida) => {
+        const detallePartidaUsuario: IDetallePartida = {
+          id:this.detallePartida.id,
+          usuario: this.usuario!,
+          stand: this.stand!,
+          partida:this.oPartida
+        };
+
+        this.DetallePartidaAjaxService.newOne(detallePartidaUsuario).subscribe({
+          next: () => {
+            this.oMatSnackBar?.open('El stand se ha creado correctamente', '', { duration: 2000 });
+            this.router.navigate(['/home']);
+          },
+          error: () => {
+            this.oMatSnackBar?.open('Error al crear el detalle de partida para el usuario', '', { duration: 2000 });
+          }
+        });
+      },
+      error: () => {
+        this.oMatSnackBar?.open('Error al crear la partida', '', { duration: 2000 });
+      }
+    });
+  }
 }
