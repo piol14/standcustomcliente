@@ -12,20 +12,25 @@ import { PartidaAjaxService } from 'src/app/service/partida.ajax.service.service
 import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.service.service';
 import { PaginatorState } from 'primeng/paginator';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { UserAjaxService } from 'src/app/service/user.ajax.service.service';
 
 @Component({
   selector: 'app-jugar-user-plist-unrouted',
   templateUrl: './jugar-user-plist-unrouted.component.html',
-  styleUrls: ['./jugar-user-plist-unrouted.component.css']
+  styleUrls: ['./jugar-user-plist-unrouted.component.css'],
+  providers: [ConfirmationService, MessageService]
 })
 export class JugarUserPlistUnroutedComponent implements OnInit {
+  @Input() id: number = 1;
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
-  @Input() id_usuario: number = 0;
+  @Input() id_usuario_plist: number = 0;
   @Input() id_categoria: number = 9;
   categoria: ICategoria[] = [];
   standPage: IStand[] = [];
   oPage: ICategoriaPage | undefined;
+  id_usuario: number | undefined;
+  id_stand: number | undefined;
   
   orderField: string = "id";
   orderDirection: string = "asc";
@@ -50,18 +55,49 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
 oPartida:IPartida= {} as IPartida;
   constructor(
     private SessionAjaxService: SessionAjaxService,
+    private oUserAjaxService: UserAjaxService,
+    private oStandAjaxService:StandAjaxService,
     private oCategoriaAjaxService: CategoriaAjaxService,
-    private oStandAjaxService: StandAjaxService,
+   private messageService: MessageService,
     public oDialogService: DialogService,
     private oConfirmationService: ConfirmationService,
     private oMatSnackBar: MatSnackBar,
     private DetallePartidaAjaxService: DetallePartidaAjaxService,
     private PartidaAjaxService: PartidaAjaxService,
     private router: Router,
-  ) { }
+    private oDynamicDialogConfig: DynamicDialogConfig
+  ) { this.id_usuario = this.oDynamicDialogConfig.data?.id_usuario;
+    this.id_stand = this.oDynamicDialogConfig.data?.id_stand;
+   }
 
 
  ngOnInit() {
+  if(this.id_usuario !== undefined) {
+    this.oUserAjaxService.getOne(this.id_usuario).subscribe({
+      next:(usuario: IUser) => {
+        this.usuario = usuario;
+        console.log(this.usuario)
+      },
+      error: (error) => {
+        this.status = error
+        this.messageService.add({ severity: 'error',detail: 'No se puede crear la valoración',  life: 2000});
+      }
+    });
+  
+  }
+  
+  if(this.id_stand !== undefined) {
+    this.oStandAjaxService.getOne(this.id_stand).subscribe({
+      next:(stand: IStand) => {
+        this.stand = stand;
+        console.log(this.stand)
+      },
+      error: (error) => {
+        this.status = error
+        this.messageService.add({ severity: 'error', detail: 'Aceptar',  life: 2000});
+      }
+    });
+  }
   this.getPage();
   this.forceReload.subscribe({
     next: (v) => {
@@ -80,7 +116,7 @@ oPartida:IPartida= {} as IPartida;
  this.SessionAjaxService.getSessionUser()?.subscribe({
       next: (usuario: IUser) => {
         this.usuario = usuario;
-        this.id_usuario = usuario.id;
+        this.id_usuario_plist = usuario.id;
       },
       error: (err: HttpErrorResponse) => {
         this.status = err;
@@ -161,7 +197,7 @@ oPartida:IPartida= {} as IPartida;
       this.oPaginatorState.page, 
       this.orderField, 
       this.orderDirection, 
-      this.id_usuario, 
+      this.id_usuario_plist, 
       this.id_categoria
     ).subscribe({
       next: (data: IStandPage) => {
@@ -182,34 +218,45 @@ oPartida:IPartida= {} as IPartida;
     this.getPage(); 
   }
   crearTodo(): void {
-    const partida: IPartida = {
-      id:this.oPartida.id,
-      fecha: "ola",
+    // Creamos la partida con los datos necesarios
+    const nuevaPartida: IPartida = {
+      id:this.id,
+      fecha: "ola", // Aquí deberías proporcionar la fecha real
       usuario: this.usuario
     };
-
-    this.PartidaAjaxService.newOne(partida).subscribe({
+  
+    // Llamamos al servicio para crear la partida
+    this.PartidaAjaxService.newOne(nuevaPartida).subscribe({
       next: (partida: IPartida) => {
-        const detallePartidaUsuario: IDetallePartida = {
-          id:this.detallePartida.id,
-          usuario: this.usuario!,
-          stand: this.stand!,
-          partida:this.oPartida
-        };
-
-        this.DetallePartidaAjaxService.newOne(detallePartidaUsuario).subscribe({
+        // Almacenamos la partida recién creada
+        this.oPartida = partida;
+      },
+        // Creamos el detalle de partida con los datos necesarios
+        
+      });
+      const nuevoDetallePartida: IDetallePartida = {
+        id:this.id,
+        usuario: this.usuario!,
+        stand: this.stand!,
+        partida: nuevaPartida // Asignamos la partida recién creada
+      }
+        // Llamamos al servicio para crear el detalle de partida
+        this.DetallePartidaAjaxService.newOne(nuevoDetallePartida).subscribe({
           next: () => {
+            // Manejo de éxito
             this.oMatSnackBar?.open('El stand se ha creado correctamente', '', { duration: 2000 });
             this.router.navigate(['/home']);
           },
           error: () => {
+            // Manejo de error
             this.oMatSnackBar?.open('Error al crear el detalle de partida para el usuario', '', { duration: 2000 });
           }
         });
-      },
+      
       error: () => {
+        // Manejo de error
         this.oMatSnackBar?.open('Error al crear la partida', '', { duration: 2000 });
       }
-    });
+   
   }
 }
