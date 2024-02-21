@@ -73,13 +73,13 @@ export class UserStandFormUnroutedComponent implements OnInit {
       id: [oStand.id],
       nombre: [oStand.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       descripcion: [oStand.descripcion, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      velocidad: [oStand.velocidad || 'D'], // Default value 'D' if oStand.velocidad is falsy
-      alcance: [oStand.alcance || 'D'],     // Default value 'D' if oStand.alcance is falsy
-      poder: [oStand.poder || 'D'],         // Default value 'D' if oStand.poder is falsy
-      aguante: [oStand.aguante || 'D'],     // Default value 'D' if oStand.aguante is falsy
-      acierto: [oStand.acierto || 'D'],  
+      velocidad: [oStand.velocidad, [Validators.required,Validators.maxLength(1)] ], // Default value 'D' if oStand.velocidad is falsy
+      alcance: [oStand.alcance, [Validators.required,Validators.maxLength(1)] ],     // Default value 'D' if oStand.alcance is falsy
+      poder: [oStand.poder, [Validators.required,Validators.maxLength(1)] ],         // Default value 'D' if oStand.poder is falsy
+      aguante: [oStand.aguante, [Validators.required,Validators.maxLength(1)] ],     // Default value 'D' if oStand.aguante is falsy
+      acierto: [oStand.acierto, [Validators.required,Validators.maxLength(1)]],  
       imagen: [oStand.imagen, Validators.required],
-     desarollo: [oStand.desarollo || 'D']
+     desarollo: [oStand.desarollo, [Validators.required,Validators.maxLength(1)]]
       // Agrega aquí los demás campos según tu modelo
     });
   }

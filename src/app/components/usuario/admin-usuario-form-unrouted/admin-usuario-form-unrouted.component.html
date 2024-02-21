@@ -5,10 +5,12 @@
     </div>
   </div>
 </div>
-
 <div *ngIf="status == null">
-  <div class="col-12">
+  <div class="col-12 text-center">
+    
+<h2>Formulario de Usuario</h2>  
     <div class="d-flex justify-content-center my-3">
+      
       <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <mat-form-field [style.width.px]="250" *ngIf="operation == 'EDIT'">
@@ -59,8 +61,8 @@
     
 
         <mat-radio-group aria-label="Tipo de usuario" formControlName="role" required>
-          <mat-radio-button [value]="true">Admin</mat-radio-button>
-          <mat-radio-button [value]="false">Usuario</mat-radio-button>
+          <mat-radio-button [value]="false">Admin</mat-radio-button>
+          <mat-radio-button [value]="true">Usuario</mat-radio-button>
           <mat-error *ngIf="hasError('role', 'required')">Tipo de usuario es obligatorio</mat-error>
         </mat-radio-group>
 

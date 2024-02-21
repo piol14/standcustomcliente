@@ -91,6 +91,7 @@ export class UserOpinionFormUnroutedComponent implements OnInit {
 
   initializeForm(oOpinion: IOpinion) {
     this.opinionForm = this.oFormBuilder.group({
+      
       descripcion: [oOpinion.descripcion, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
     });
   }

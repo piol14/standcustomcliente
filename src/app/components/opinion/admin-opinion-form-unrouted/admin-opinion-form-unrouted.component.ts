@@ -37,6 +37,7 @@ export class AdminOpinionFormUnroutedComponent implements OnInit {
 
   initializeForm(oOpinion: IOpinion) {
     this.opinionForm = this.oFormBuilder.group({
+      id: [oOpinion.id],
       usuario:this.oFormBuilder.group({
         id: [oOpinion.usuario?.id, Validators.required],
       }),

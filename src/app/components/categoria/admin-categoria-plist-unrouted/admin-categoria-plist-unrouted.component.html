@@ -7,7 +7,7 @@
         <tr>
           <th (click)="doOrder('id')">ID</th>
           <th (click)="doOrder('nombre')">nombre</th>
-          <th (click)="doOrder('stands')">Stands</th>
+    
           <th>Acciones</th>
         </tr>
       </thead>
@@ -15,12 +15,6 @@
         <tr *ngFor="let categoria of oPage.content">
           <td>{{ categoria.id }}</td>
           <td>{{ categoria.nombre }}</td>
-          <td class="text-center">
-            <ng-container *ngIf="categoria && categoria.stands !== undefined">
-              <a [routerLink]="['/admin','stand','plist','bycategoria',categoria.id]" *ngIf="categoria.stands > 0">{{categoria.stands}}</a>
-              <span *ngIf="categoria.stands  == 0">0</span>
-            </ng-container>
-          </td>
           
           <td>
             <button class="btn btn-primary" (click)="doView(categoria)"><i class="fa-solid fa-circle-info"></i></button>

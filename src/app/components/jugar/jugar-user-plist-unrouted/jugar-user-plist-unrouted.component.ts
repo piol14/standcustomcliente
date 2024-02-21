@@ -217,10 +217,10 @@ oPartida:IPartida= {} as IPartida;
     this.filtrandoPorCategoria = false;
     this.getPage(); 
   }
-  crearTodo(): void {
+  crearTodo(stand: IStand): void {
     // Creamos la partida con los datos necesarios
     const nuevaPartida: IPartida = {
-      id:this.id,
+      id: this.id,
       fecha: "ola", // Aquí deberías proporcionar la fecha real
       usuario: this.usuario
     };
@@ -230,16 +230,16 @@ oPartida:IPartida= {} as IPartida;
       next: (partida: IPartida) => {
         // Almacenamos la partida recién creada
         this.oPartida = partida;
-      },
+        var partidacreada: IPartida= {} as IPartida;
+        partidacreada=nuevaPartida;
         // Creamos el detalle de partida con los datos necesarios
-        
-      });
-      const nuevoDetallePartida: IDetallePartida = {
-        id:this.id,
-        usuario: this.usuario!,
-        stand: this.stand!,
-        partida: nuevaPartida // Asignamos la partida recién creada
-      }
+        const nuevoDetallePartida: IDetallePartida = {
+          id: this.id,
+          usuario: this.usuario!,
+          stand: stand, // Utilizamos el stand pasado como parámetro
+          partida: partidacreada // Asignamos la partida recién creada
+        };
+  
         // Llamamos al servicio para crear el detalle de partida
         this.DetallePartidaAjaxService.newOne(nuevoDetallePartida).subscribe({
           next: () => {
@@ -252,11 +252,11 @@ oPartida:IPartida= {} as IPartida;
             this.oMatSnackBar?.open('Error al crear el detalle de partida para el usuario', '', { duration: 2000 });
           }
         });
-      
+      },
       error: () => {
         // Manejo de error
         this.oMatSnackBar?.open('Error al crear la partida', '', { duration: 2000 });
       }
-   
+    });
   }
 }

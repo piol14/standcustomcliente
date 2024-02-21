@@ -36,11 +36,10 @@ export class AdminPartidaFormUnroutedComponent implements OnInit {
 
   initializeForm(oPartida: IPartida) {
     this.partidaForm = this.formBuilder.group({
-      fecha: [oPartida.fecha, Validators.required],
-      usuario:this.formBuilder.group({
-        id: [oPartida.usuario?.id, Validators.required],
+      fecha: [oPartida.fecha, Validators.required]
+     
       // Agrega más campos según sea necesario
-    })
+  
     });
   }
 

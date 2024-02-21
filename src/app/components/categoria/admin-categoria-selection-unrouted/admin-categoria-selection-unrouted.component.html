@@ -12,14 +12,14 @@
       <tr>
         <th (click)="doOrder('id')">Id</th>
         <th (click)="doOrder('nombre')">Nombre</th>
-        <th (click)="doOrder('stands')">Stands</th>
+        
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of oPage?.content" class="align-middle">
         <td class="text-end"><strong>{{ item.id }}</strong></td>
         <td>{{ item.nombre }}</td>
-        <td>{{ item.stands }}</td>
+       
         <!-- Asegúrate de ajustar esto según la estructura de tu modelo -->
         <td class="text-center">
           <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">

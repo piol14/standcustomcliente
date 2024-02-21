@@ -27,7 +27,7 @@
           
         
           <p class="card-text">Creador: {{ stand.usuario.nombre }}</p>
-          <button class="btn btn-primary" (click)=" crearTodo()">Jugar con ese stand</button>
+          <button class="btn btn-primary" (click)=" crearTodo(stand)">Jugar con ese stand</button>
           <button *ngIf="isUsuarioStand(stand)" (click)="borrarStand(stand.id)" type="button" class="btn btn-warning btn-lg mt-3">Borrar Stand</button>
         </div>
       </div>

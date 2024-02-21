@@ -1,17 +1,35 @@
 /* admin-stand-plist-unrouted.component.css */
+
 .card-img-top {
-    max-height: 400px;
-    max-width: 100px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
-    object-fit: cover;
-    /* Escala la imagen para que ocupe todo el espacio disponible sin distorsionarse */
-  }
-  .card{
-    display: flex;
-    justify-content: center; /* Centra horizontalmente la imagen */
-    align-items: center; /* Centra verticalmente la imagen */
-     /* Altura fija del contenedor para centrar la imagen */
-  }
-  .btn-primary {
-    background-color: #365486;
-    border-color: #365486;
+  max-height: 400px;
+  max-width: 100px;/* Ajustado la anchura al 100% del contenedor */
+  object-fit: cover; /* Escala la imagen para que ocupe todo el espacio disponible sin distorsionarse */
+}
+
+.card {
+  display: flex;
+  flex-direction: column; /* Ajustado el diseño de la tarjeta a columna */
+  align-items: center; /* Centrado vertical de los elementos */
+  margin-bottom: 20px; /* Añadido un margen inferior para separar las tarjetas */
+  padding: 15px; /* Añadido un relleno interno */
+  border-radius: 10px; /* Agregado un radio de borde */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Agregado sombra para resaltar la tarjeta */
+  transition: transform 0.3s ease; /* Agregado transición para efecto al pasar el ratón */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Efecto de levantar la tarjeta al pasar el ratón */
+}
+
+.btn-primary {
+  background-color: #365486;
+  border-color: #365486;
+}
+.btn-warning{
+  background-color: #FFA732;
+  border-color: #FFA732;
+}
+.btn-danger{
+  background-color: #EF4040;
+  border-color: #EF4040;
 }

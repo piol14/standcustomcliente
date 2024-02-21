@@ -25,7 +25,7 @@ import { ConfirmEventType } from 'primeng/api';
 })
 export class UserStandPlistUnroutedComponent implements OnInit {
 
-
+ 
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
   @Input() id_usuario: number = 0;
   @Input() id_categoria: number = 9;
@@ -43,7 +43,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
  
   standsPorPagina: number = 8;
 
-  
+  strUserName: string = "";
  
   oStandToRemove: IStand | null = null;
   usuario: IUser | null = null;
@@ -70,6 +70,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
       }
     }
   });
+  
   this.getCategorias(); // Llama siempre a getCategorias() al inicializar el componente
 
   if (this.id_categoria > 0) {
@@ -78,6 +79,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
 
 
  this.SessionAjaxService.getSessionUser()?.subscribe({
+
       next: (usuario: IUser) => {
         this.usuario = usuario;
         this.id_usuario = usuario.id;
@@ -101,24 +103,25 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     return this.usuario !== null && stand.usuario.id === this.usuario.id;
    
   }
+  isAdministrador(): boolean {
+
+    return this.usuario !== null && this.usuario.role === false;
+  }
   borrarStand(id_stand: number) {
-    this.oConfirmationService.confirm({
-      message: '¿Estás seguro de que quieres eliminar este elemento?',
-      accept: () => {
-        this.oStandAjaxService.removeOne(id_stand).subscribe({
-          next: () => {
-            this.getPage();
-            this.oMatSnackBar.open('El elemento ha sido eliminado exitosamente', '', { duration: 2000 });
-          },
-          error: (error: HttpErrorResponse) => {
-            this.status = error;
-            this.oMatSnackBar.open('Error al eliminar el elemento', '', { duration: 2000 });
-            // Puedes manejar el error según tus necesidades
-          }
-        });
+    this.oStandAjaxService.removeOne(id_stand).subscribe({
+      next: () => {
+        // Restablecer el filtro de categoría y actualizar la página de stands
+        this.quitarFiltro();
+        this.getPage();
+        this.oMatSnackBar.open('El stand ha sido eliminado exitosamente', '', { duration: 2000 });
+      },
+      error: () => {
+        this.oMatSnackBar.open('Error al eliminar el elemento', '', { duration: 2000 });
       }
     });
   }
+  
+
 
   ref: DynamicDialogRef | undefined;
   doView(u: IStand) {
@@ -203,10 +206,11 @@ export class UserStandPlistUnroutedComponent implements OnInit {
           
         },
         header: 'Nuevo Stand',
-        width: '40%',
+        width: '80%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
-        maximizable: false
+        maximizable: false,
+       
       });
 
       this.ref.onClose.subscribe({

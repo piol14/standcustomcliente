@@ -43,7 +43,7 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
     private MessageService: MessageService,
     private DialogService: DialogService,
     private MatSnackBar: MatSnackBar
-
+  
   ) { }
 
   ngOnInit() {
@@ -75,7 +75,10 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
   }
 
 
+  isAdministrador(): boolean {
 
+    return this.usuario !== null && this.usuario.role === false;
+  }
  
 
   getOpiniones() {
@@ -105,9 +108,8 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
   borrarOpinion(id_opinion: number) {
     console.log(id_opinion);
   
-    this.confirmationService.confirm({
-      message: '¿Estás seguro de que quieres borrar la valoración?',
-      accept: () => {
+   
+    
         this.oOpinionAjaxService.removeOne(id_opinion).subscribe({
           next: () => {
             this.getOpiniones();
@@ -123,8 +125,8 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
             });
           }
         });
-      }
-    });
+      
+   
   }
   
   
@@ -148,6 +150,7 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
 
       this.ref.onClose.subscribe({
         next: (v) => {
+          this.getOpiniones();
           if (v) {
             this.getOpiniones();
           }

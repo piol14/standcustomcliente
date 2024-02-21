@@ -7,18 +7,8 @@
       <label for="fecha">Fecha:</label>
       <input type="text" id="fecha" formControlName="fecha" class="form-control" placeholder="Ingrese la fecha" required>
     </div>
-    <div formGroupName="usuario">
-      <div class="form-group">
-        <mat-form-field [style.width.px]="100">
-          <mat-label>Ganador:</mat-label>
-          <input matInput formControlName="id" placeholder="ID" required readonly>
-        </mat-form-field>
-        <button class="btn btn-primary btn-search" type="button" (click)="onShowUsuarioSelection()">
-          <i class="pi pi-search"></i> Buscar Usuario
-        </button>
-       
-      </div>
-    </div>
+   
+   
 
     <div class="text-center mt-5">
       <button type="submit" class="btn btn-primary btn-save" [disabled]="!partidaForm.valid">Guardar</button>

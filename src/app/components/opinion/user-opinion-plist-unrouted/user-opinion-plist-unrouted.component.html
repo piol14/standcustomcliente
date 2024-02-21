@@ -20,7 +20,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="message">{{ opinion.descripcion }}</div>
                 <!-- Botón para borrar opinión -->
-                <button *ngIf="isUsuarioOpinion(opinion)" (click)="borrarOpinion(opinion.id)" type="button" class="btn btn-primary btn-lg mt-3">Borrar valoración</button>
+                <button *ngIf="isUsuarioOpinion(opinion)||  isAdministrador()" (click)="borrarOpinion(opinion.id)" type="button" class="btn btn-primary btn-lg mt-3">Borrar valoración</button>
               </div>
             </div>
           </div>

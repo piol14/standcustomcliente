@@ -1,3 +1,4 @@
+     /* admin-opinion-plist-unrouted.component.css */
 .fa-solid {
     color: #ffffff;
     } .fa-solid {
@@ -8,7 +9,7 @@
             color: #ffffff;
             }
         
-            /* admin-opinion-plist-unrouted.component.css */
+       
         
         .container {
             margin-top: 4rem;
@@ -102,5 +103,17 @@
             background-color: #EF4040;
             border-color: #EF4040;
         }
-        /* Add more styles as needed */
-        
+       
+        .small-image {
+            max-width: 100px; /* Ancho máximo de la imagen */
+            max-height: 100px; /* Altura máxima de la imagen */
+          }
+          .small-table {
+            font-size: 0.8rem; /* Reducir el tamaño de fuente */
+          }
+          
+          .small-table th,
+          .small-table td {
+            padding: 0.5rem; /* Reducir el espaciado entre celdas */
+          }
+          
