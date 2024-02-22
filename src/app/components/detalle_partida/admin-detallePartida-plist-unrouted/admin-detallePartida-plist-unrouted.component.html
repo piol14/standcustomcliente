@@ -1,84 +1,80 @@
-<!-- admin-partida-plist-unrouted.component.html -->
-<h3 *ngIf="id_usuario > 0; else noFilter">
-  ({{ id_usuario }} - {{ oUsuario?.nombre }})
-  <a type="button" class="btn btn-primary " [routerLink]="['/admin', 'detallePartida', 'plist']">Reset filter</a>
-</h3>
-
-<h3 *ngIf="id_stand > 0; else noFilter">
-  ({{ id_stand }} - {{ oStand?.nombre }})
-  <a type="button" class="btn btn-primary " [routerLink]="['/admin', 'detallePartida', 'plist']">Reset filter</a>
-</h3>
-
-
-<h3 *ngIf="id_partida > 0; else noFilter">
-  ({{ id_partida }} - {{ oPartida?.usuario?.nombre }})
-  <a type="button" class="btn btn-primary " [routerLink]="['/admin', 'detallePartida', 'plist']">Reset filter</a>
-</h3>
-<ng-template #noFilter>
-         
-          </ng-template>
-
-<ng-template #noFilter>
-         
-          </ng-template>
-
 <div class="container mt-4">
-  <div *ngIf="oPage">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th (click)="doOrder('id')">ID</th>
-          <th (click)="doOrder('usuario')">Usuario</th>
-          <th (click)="doOrder('stand')">Stand</th>
-          <th (click)="doOrder('stand')">Partida</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let detallePartida of oPage.content">
-          <td>{{ detallePartida.id }}</td>
-          <td class="text-center">
-            <a [routerLink]="['/admin','detallePartida','plist','byusuario',detallePartida.usuario.id]">({{detallePartida.usuario.id}})
-              {{detallePartida.usuario.nombre}}
-              </a>
-          </td>
-          <td class="text-center">
-            <a [routerLink]="['/admin','detallePartida','plist','bystand',detallePartida.stand.id]">({{detallePartida.stand.id}})
-              {{detallePartida.stand.nombre}}
-            </a>
-          </td>
-          <td class="text-center">
-            <a [routerLink]="['/admin','detallePartida','plist','bypartida',detallePartida.partida.id]">({{detallePartida.partida.id}})
-              
-             
-              </a>
-          </td>
-          <td>
-            <button class="btn btn-primary" (click)="doView(detallePartida)"><i class="fa-solid fa-circle-info"></i></button>
-            <button class="btn btn-primary" [routerLink]="['/admin','detallePartida','view',detallePartida.id]"><i class="fa-solid fa-eye"></i></button>
-            <button class="btn btn-danger" (click)="doRemove(detallePartida)"><i class="fa-solid fa-trash"></i></button>
+  <div class="row justify-content-center">
+    <div class="col-md-auto">
+      <h3 *ngIf="id_usuario > 0; else noFilter" class="my-3">
+        ({{ id_usuario }} - {{ oUsuario?.nombre }})
+        <a type="button" class="btn btn-primary ml-2" [routerLink]="['/admin', 'detallePartida', 'plist']">Resetear filtro</a>
+      </h3>
 
-              <button class="btn btn-warning"  [routerLink]="['/admin','detallePartida','edit',detallePartida.id]"><i class="fa-solid fa-pen-to-square"></i></button>
-            </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="d-flex justify-content-center">
-      <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
-        [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+      <h3 *ngIf="id_stand > 0; else noFilter" class="my-3">
+        ({{ id_stand }} - {{ oStand?.nombre }})
+        <a type="button" class="btn btn-primary ml-2" [routerLink]="['/admin', 'detallePartida', 'plist']">Resetear filtro</a>
+      </h3>
+
+      <h3 *ngIf="id_partida > 0; else noFilter" class="my-3">
+        ({{ id_partida }} - {{ oPartida?.usuario?.nombre }})
+        <a type="button" class="btn btn-primary ml-2" [routerLink]="['/admin', 'detallePartida', 'plist']">Resetear filtro</a>
+      </h3>
+      <ng-template #noFilter>
+        <!-- Esto se mostrará si no hay filtro activo -->
+      </ng-template>
     </div>
   </div>
-  <div *ngIf="status" class="alert alert-danger mt-3">
-    <p>{{ status.message }}</p>
+
+  <div *ngIf="oPage" class="row justify-content-center">
+    <div class="col-md-10">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th (click)="doOrder('id')">ID</th>
+            <th (click)="doOrder('usuario')">Usuario</th>
+            <th (click)="doOrder('stand')">Stand</th>
+            <th (click)="doOrder('partida')">Partida</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detallePartida of oPage.content">
+            <td>{{ detallePartida.id }}</td>
+            <td class="text-center">
+              <a [routerLink]="['/admin','detallePartida','plist','byusuario',detallePartida.usuario.id]">
+                ({{detallePartida.usuario.id}}) {{detallePartida.usuario.nombre}}
+              </a>
+            </td>
+            <td class="text-center">
+              <a [routerLink]="['/admin','detallePartida','plist','bystand',detallePartida.stand.id]">
+                ({{detallePartida.stand.id}}) {{detallePartida.stand.nombre}}
+              </a>
+            </td>
+            <td class="text-center">
+              <a [routerLink]="['/admin','detallePartida','plist','bypartida',detallePartida.partida.id]">
+                ({{detallePartida.partida.id}})
+              </a>
+            </td>
+            <td>
+              <button class="btn btn-primary" (click)="doView(detallePartida)"><i class="fa-solid fa-circle-info"></i></button>
+              <button class="btn btn-primary" [routerLink]="['/admin','detallePartida','view',detallePartida.id]"><i class="fa-solid fa-eye"></i></button>
+              <button class="btn btn-danger" (click)="doRemove(detallePartida)"><i class="fa-solid fa-trash"></i></button>
+              <button class="btn btn-warning" [routerLink]="['/admin','detallePartida','edit',detallePartida.id]"><i class="fa-solid fa-pen-to-square"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
+          [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+      </div>
+    </div>
   </div>
 </div>
+
 <p-confirmDialog #cd [style]="{ width: '30vw' }">
   <ng-template pTemplate="header">
     <h5><i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem"></i> Confirmación de Eliminación</h5>
   </ng-template>
   <ng-template pTemplate="message">
     <div class="container d-flex align-items-center justify-content-center">
-      <!-- Aquí puedes agregar el contenido del mensaje de confirmación si es necesario -->
+   
     </div>
   </ng-template>
   <ng-template pTemplate="footer">

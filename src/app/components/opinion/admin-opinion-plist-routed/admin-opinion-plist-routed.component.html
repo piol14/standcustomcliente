@@ -1,24 +1,26 @@
-
 <div class="container">
-    <div *ngIf="bLoading" class="progress card m-5">
-      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+  <div class="row justify-content-center">
+    <div class="col-lg-8"> 
+      <div *ngIf="bLoading" class="progress card mt-5 mb-3"> 
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
            aria-valuenow="loadingProgress + '%'" aria-valuemin="0" aria-valuemax="100"
            [style.width]="loadingProgress + '%'">
-        {{ loadingProgress }}%
+          {{ loadingProgress }}%
+        </div>
+      </div>
+      <h1 class="my-5 text-center ">Opiniones</h1> 
+      <div class="text-center mb-3"> 
+        <div class="btn-group" role="group">
+          <a class="btn btn-warning mx-1" (click)="doGenerateRandom(10)">+10</a>
+          <a class="btn btn-warning mx-1" (click)="doGenerateRandom(100)">+100</a>
+          <a class="btn btn-warning mx-1" (click)="doGenerateRandom(1000)">+1000</a>
+          <a class="btn btn-danger mx-1" (click)="doEmpty($event)">Empty List</a>
+          <a class="btn btn-primary mx-1" [routerLink]="['/admin','opinion','new']">Crear Opinion</a>
+        </div>
       </div>
     </div>
-  
-  
-    <h1 class="my-5">  Opiniones </h1>
-      <div class="p-toolbar-group-start justify-content-center">
-        <a class="btn btn-warning mx-1" (click)="doGenerateRandom(10)">+10</a>
-        <a class="btn btn-warning mx-1" (click)="doGenerateRandom(100)">+100</a>
-        <a class="btn btn-warning mx-1" (click)="doGenerateRandom(1000)">+1000</a>
-        <a class="btn btn-danger mx-1" (click)="doEmpty($event)">Empty List</a>
-        <a class="btn btn-primary mx-1" [routerLink]="['/admin','opinion','new']">Crear Opinion</a>
-
-      </div>
-
-<app-admin-opinion-plist-unrouted [forceReload]="forceReload" [id_usuario]="id_usuario"
-[id_stand]="id_stand" *ngIf="!bLoading" ></app-admin-opinion-plist-unrouted>
+  </div>
+  <app-admin-opinion-plist-unrouted [forceReload]="forceReload" [id_usuario]="id_usuario"
+    [id_stand]="id_stand" *ngIf="!bLoading"></app-admin-opinion-plist-unrouted>
+</div>
 <p-confirmPopup></p-confirmPopup>

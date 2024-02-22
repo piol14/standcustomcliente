@@ -1,34 +1,38 @@
 <footer>
-  <div class="container">
-      <div class="footer-content">
-          <h3>Haz que tu próximo evento sea inolvidable con nuestros stands personalizados</h3>
-          <p>Contáctanos ahora para transformar tu visión en realidad.</p>
-          <ul class="contact-info">
-              <li><i class="fas fa-map-marker-alt"></i> Dirección de tu empresa</li>
-              <li><i class="fas fa-phone"></i> Teléfono: [Número de teléfono]</li>
-              <li><i class="fas fa-envelope"></i> Email: [Correo electrónico]</li>
-          </ul>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="footer-content">
+            <h3>Haz que tu próximo evento sea inolvidable con nuestros stands personalizados</h3>
+            <p>Contáctanos ahora para transformar tu visión en realidad.</p>
+            <ul class="contact-info">
+              <li><i class="fas fa-phone"></i> Teléfono: 12345678</li>
+              <li><i class="fas fa-envelope"></i> Email: standcustom@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="navigation-links">
+            <h3>Mapa de Navegación</h3>
+            <ul>
+              <!-- Coloca aquí los enlaces de navegación -->
+              <li><a href="/home" *ngIf="strUserName && oSessionUser?.role==false">Home</a></li>
+              <li><a href="/login" *ngIf="!strUserName">Login</a></li>
+              <li><a href="/logout" *ngIf="strUserName">Cerrar Sesión</a></li>
+              <!-- Agrega los demás enlaces según sea necesario -->
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="navigation-links">
-          <h3>Mapa de Navegación</h3>
-          <ul>
-            <li><a href="/home" *ngIf="strUserName && oSessionUser?.role==false" >Home</a></li>
-            <li><a href="/login" *ngIf="!strUserName" >Login</a></li>
-            <li><a href="/logout" *ngIf="strUserName" >Cerrar Sesion</a></li>
-              <li><a href="/admin/stand/plist" *ngIf="strUserName && oSessionUser?.role==false" >Stands</a></li>
-              <li><a href="/admin/stand/new" *ngIf="strUserName && oSessionUser?.role==false"> Nuevo Stand</a></li>
-              <li><a href="/admin/usuario/plist" *ngIf="strUserName && oSessionUser?.role==false">Usuarios</a></li>
-              <li><a href="/admin/usuario/new" *ngIf="strUserName && oSessionUser?.role==false">Nuevo Usuario</a></li>
-              <li><a href="/admin/partida/plist" *ngIf="strUserName && oSessionUser?.role==false">Partidas</a></li>
-              <li><a href="/admin/partida/new" *ngIf="strUserName && oSessionUser?.role==false">Nueva Partida</a></li>
-              <li><a href="/admin/detallePartida/plist" *ngIf="strUserName && oSessionUser?.role==false">Detalles de Partida</a></li>
-              <li><a href="/admin/detallePartida/new" *ngIf="strUserName && oSessionUser?.role==false">Nuevo Detalle de Partida</a></li>
-              <li><a href="/admin/categoria/plist"*ngIf="strUserName && oSessionUser?.role==false">Categorías</a></li>
-              <li><a href="/admin/categoria/new" *ngIf="strUserName && oSessionUser?.role==false"> Nueva Categoria</a></li>
-          </ul>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p>&copy; 2024 - StandCustom. Todos los derechos reservados.</p>
+          </div>
+        </div>
       </div>
-  </div>
-  <div class="footer-bottom">
-      <p>&copy; 2024 - Nombre de tu empresa. Todos los derechos reservados.</p>
-  </div>
-</footer>
+    </div>
+  </footer>
+  

@@ -1,20 +1,23 @@
 <div class="container mt-4">
-  <h2>Formulario de Categoría</h2>
-  <form [formGroup]="categoriaForm" (ngSubmit)="onSubmit()">
+  <h2 class="text-center">Formulario de Categoría</h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <form [formGroup]="categoriaForm" (ngSubmit)="onSubmit()">
 
-
-    <div class="form-group input-container">
-      <mat-form-field [style.width.px]="350">
-        <mat-label>Nombre:</mat-label>
-        <input matInput formControlName="nombre" placeholder="Nombre" required>
-        <mat-hint align="end">(Entre 3 y 255 caracteres)</mat-hint>
-        <mat-error *ngIf="hasError('nombre', 'required')">Nombre es obligatorio</mat-error>
-        <mat-error *ngIf="hasError('nombre', 'minlength')">El nombre debe tener al menos 3 caracteres</mat-error>
-        <mat-error *ngIf="hasError('nombre', 'maxlength')">El nombre no puede tener más de 255 caracteres</mat-error>
-      </mat-form-field>
+        <div class="form-group input-container">
+          <mat-form-field>
+            <mat-label>Nombre:</mat-label>
+            <input matInput formControlName="nombre" placeholder="Nombre" required>
+            <mat-hint align="end">(Entre 3 y 255 caracteres)</mat-hint>
+            <mat-error *ngIf="hasError('nombre', 'required')">Nombre es obligatorio</mat-error>
+            <mat-error *ngIf="hasError('nombre', 'minlength')">El nombre debe tener al menos 3 caracteres</mat-error>
+            <mat-error *ngIf="hasError('nombre', 'maxlength')">El nombre no puede tener más de 255 caracteres</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="text-center mt-3">
+          <button type="submit" class="btn btn-primary" [disabled]="!categoriaForm.valid">Guardar</button>
+        </div>
+      </form>
     </div>
-    <div class="text-center mt-5">
-      <button type="submit" class="btn btn-primary" [disabled]="!categoriaForm.valid">Guardar</button>
-    </div>
-  </form>
+  </div>
 </div>

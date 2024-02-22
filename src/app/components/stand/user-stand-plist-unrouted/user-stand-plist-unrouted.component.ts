@@ -215,6 +215,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
 
       this.ref.onClose.subscribe({
         next: (v) => {
+          this.getPage();
           if (v) {
             this.getPage();
           }

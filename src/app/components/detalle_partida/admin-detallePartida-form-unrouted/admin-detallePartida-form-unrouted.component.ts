@@ -79,7 +79,7 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
             this.oDetallePartida = data;
             this.initializeForm(this.oDetallePartida);
             this.oMatSnackBar.open('El detalle de la partida se ha creado correctamente', '', { duration: 2000 });
-            this.oRouter.navigate(['/admin', 'detalle-partida', 'view',data]);
+            this.oRouter.navigate(['/admin', 'detallePartida', 'view',data]);
           },
           error: (error: HttpErrorResponse) => {
             this.status = error;
@@ -93,7 +93,7 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
             this.oDetallePartida = data;
             this.initializeForm(this.oDetallePartida);
             this.oMatSnackBar.open('El detalle de la partida se ha actualizado correctamente', '', { duration: 2000 });
-            this.oRouter.navigate(['/admin', 'detalle-partida', 'view', this.oDetallePartida.id]);
+            this.oRouter.navigate(['/admin', 'detallePartida', 'view', this.oDetallePartida.id]);
           },
           error: (error: HttpErrorResponse) => {
             this.status = error;

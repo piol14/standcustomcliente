@@ -1,31 +1,28 @@
-<!-- admin-partida-plist-unrouted.component.html -->
-
 <div class="container mt-4">
   <div *ngIf="oPage">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th (click)="doOrder('id')">ID</th>
-          <th (click)="doOrder('fecha')">Fecha</th>
-         
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let partida of oPage.content">
-          <td>{{ partida.id }}</td>
-          <td>{{ partida.fecha }}</td>
-         
-          <td>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th (click)="doOrder('id')">ID</th>
+            <th (click)="doOrder('fecha')">Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let partida of oPage.content">
+            <td>{{ partida.id }}</td>
+            <td>{{ partida.fecha }}</td>
+            <td>
               <button class="btn btn-primary" (click)="doView(partida)"><i class="fa-solid fa-circle-info"></i></button>
               <button class="btn btn-primary" [routerLink]="['/admin','partida','view',partida.id]"><i class="fa-solid fa-eye"></i></button>
-                <button class="btn btn-warning" [routerLink]="['/admin','partida','edit',partida.id]"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="btn btn-danger" (click)="doRemove(partida)"><i class="fa-solid fa-trash"> </i></button>
-
-          </td>
-        </tr>
-      </tbody>
-    </table>
+              <button class="btn btn-warning" [routerLink]="['/admin','partida','edit',partida.id]"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button class="btn btn-danger" (click)="doRemove(partida)"><i class="fa-solid fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="d-flex justify-content-center">
       <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
         [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
@@ -35,6 +32,7 @@
     <p>{{ status.message }}</p>
   </div>
 </div>
+
 <p-confirmDialog #cd [style]="{ width: '30vw' }">
   <ng-template pTemplate="header">
     <h5><i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem"></i> Confirmación de Eliminación</h5>

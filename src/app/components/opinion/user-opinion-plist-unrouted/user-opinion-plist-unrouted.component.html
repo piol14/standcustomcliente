@@ -1,4 +1,4 @@
-<!-- Mensaje de error -->
+
 <div *ngIf="status != null" class="error-message-container">
   <div class="d-flex justify-content-center my-2">
     <div class="alert alert-danger" role="alert">
@@ -7,11 +7,11 @@
   </div>
 </div>
 
-<!-- Contenedor principal -->
+
 <div class="container mt-4">
   <div class="row justify-content-center">
-    <!-- Lista de opiniones -->
-    <div class="col-lg-9">
+    
+    <div class="col-lg-8 col-md-12">
       <div class="row">
         <div class="col-lg-12" *ngFor="let opinion of page?.content">
           <div class="card mb-3">
@@ -28,8 +28,8 @@
       </div>
     </div>
 
-    <!-- Formulario para crear nueva opinión -->
-    <div class="col-lg-3">
+ 
+    <div class="col-lg-4 col-md-12">
       <div class="crearopiniones">
         <h1 class="mb-4">Opina sobre el stand</h1>
         <p>¡Queremos conocer tu opinión sobre los stands al estilo de JoJo's Bizarre Adventure! Tu valoración ayuda a los usuarios y a la comunidad.</p>

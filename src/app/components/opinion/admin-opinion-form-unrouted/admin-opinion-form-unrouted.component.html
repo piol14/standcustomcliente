@@ -1,34 +1,50 @@
 <div class="container mt-4">
-  <h2>Formulario de Opinión</h2>
-  <form [formGroup]="opinionForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <div formGroupName="usuario">
-      <mat-form-field [style.width.px]="100">
-        <mat-label>Usuario:</mat-label>
-        <input matInput formControlName="id" placeholder="ID" required readonly>
-      </mat-form-field>
-      <button class="btn btn-primary btn-search" type="button" (click)="onShowUsuarioSelection()">
-        <i class="pi pi-search"></i> Buscar Usuario
-      </button>
+  <div class="d-flex justify-content-center">
+    <div>
+      <h2 class="text-center mb-4">Formulario de Opinión</h2>
+      <form [formGroup]="opinionForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <div formGroupName="usuario">
+                <mat-form-field>
+                  <mat-label>Usuario:</mat-label>
+                  <input matInput formControlName="id" placeholder="ID" required readonly>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <button class="btn btn-primary btn-search" type="button" (click)="onShowUsuarioSelection()">
+                <i class="pi pi-search"></i> Buscar Usuario
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="descripcion">Descripción:</label>
+          <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Ingrese la descripción" required></textarea>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <div formGroupName="stand">
+                <mat-form-field>
+                  <mat-label>Stand:</mat-label>
+                  <input matInput formControlName="id" placeholder="ID" required readonly>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <button class="btn btn-primary" type="button" (click)="onShowStandSelection()">
+                <i class="pi pi-search"></i> Buscar Stand
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+          <button type="submit" class="btn btn-primary" [disabled]="!opinionForm.valid">Guardar</button>
+        </div>
+      </form>
     </div>
-    </div>
-    <div class="form-group">
-      <label for="descripcion">Descripción:</label>
-      <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Ingrese la descripción" required></textarea>
-    </div>
-    <div formGroupName="stand">
-      <div class="form-group">
-        <mat-form-field [style.width.px]="100">
-          <mat-label>Stand:</mat-label>
-          <input matInput formControlName="id" placeholder="ID" required readonly>
-        </mat-form-field>
-        <button class="btn btn-primary" type="button" (click)="onShowStandSelection()">
-          <i class="pi pi-search"></i> Buscar Stand
-        </button>
-      </div>
-    </div>
-    <div class="text-center mt-5">
-      <button type="submit" class="btn btn-primary" [disabled]="!opinionForm.valid">Guardar</button>
-    </div>
-  </form>
+  </div>
 </div>

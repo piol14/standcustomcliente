@@ -1,30 +1,28 @@
-<!-- admin-partida-plist-unrouted.component.html -->
-
 <div class="container mt-4">
   <div *ngIf="oPage">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th (click)="doOrder('id')">ID</th>
-          <th (click)="doOrder('nombre')">nombre</th>
-    
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let categoria of oPage.content">
-          <td>{{ categoria.id }}</td>
-          <td>{{ categoria.nombre }}</td>
-          
-          <td>
-            <button class="btn btn-primary" (click)="doView(categoria)"><i class="fa-solid fa-circle-info"></i></button>
-            <button class="btn btn-primary" [routerLink]="['/admin','categoria','view',categoria.id]"><i class="fa-solid fa-eye"></i></button>
-            <button class="btn btn-danger" (click)="doRemove(categoria)"><i class="fa-solid fa-trash"></i></button>
-
-              <button class="btn btn-warning"  [routerLink]="['/admin','categoria','edit',categoria.id]"><i class="fa-solid fa-pen-to-square"></i></button>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-responsive"> <!-- Agrega esta clase para hacer la tabla responsive en dispositivos móviles -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th (click)="doOrder('id')">ID</th>
+            <th (click)="doOrder('nombre')">Nombre</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let categoria of oPage.content">
+            <td>{{ categoria.id }}</td>
+            <td>{{ categoria.nombre }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="doView(categoria)"><i class="fa-solid fa-circle-info"></i></button>
+              <button class="btn btn-primary" [routerLink]="['/admin','categoria','view',categoria.id]"><i class="fa-solid fa-eye"></i></button>
+              <button class="btn btn-danger" (click)="doRemove(categoria)"><i class="fa-solid fa-trash"></i></button>
+              <button class="btn btn-warning" [routerLink]="['/admin','categoria','edit',categoria.id]"><i class="fa-solid fa-pen-to-square"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="d-flex justify-content-center">
       <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
         [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
@@ -44,7 +42,7 @@
     </div>
   </ng-template>
   <ng-template pTemplate="footer">
-    <p>¿Estás seguro de que quieres eliminar esta categoria</p>
+    <p>¿Estás seguro de que quieres eliminar esta categoría?</p> <!-- Corregí la ortografía -->
     <button class="btn btn-primary mx-1" pButton icon="pi pi-times" (click)="cd.reject()"> No</button>
     <button class="btn btn-danger mx-1" pButton icon="pi pi-check" (click)="cd.accept()"> Sí</button>
   </ng-template>
