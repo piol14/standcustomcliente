@@ -20,7 +20,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="message">{{ opinion.descripcion }}</div>
                 <!-- Botón para borrar opinión -->
-                <button *ngIf="isUsuarioOpinion(opinion)||  isAdministrador()" (click)="borrarOpinion(opinion.id)" type="button" class="btn btn-primary btn-lg mt-3">Borrar valoración</button>
+                <button *ngIf="isUsuarioOpinion(opinion)||  isAdministrador()" (click)="borrarOpinion(opinion.id)" type="button" class="btn btn-danger btn-lg mt-3"><i class="fa-solid fa-trash"></i></button>
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@
     <div class="col-lg-4 col-md-12">
       <div class="crearopiniones">
         <h1 class="mb-4">Opina sobre el stand</h1>
-        <p>¡Queremos conocer tu opinión sobre los stands al estilo de JoJo's Bizarre Adventure! Tu valoración ayuda a los usuarios y a la comunidad.</p>
+        <p>¡Queremos conocer tu opinión sobre los stands al estilo de JoJo's Bizarre Adventure! </p>
         <button type="button" class="btn btn-primary btn-lg mt-3" (click)="postNuevaOpinion()">Hacer valoración</button>
         <div class="info mt-4">
           <p>Todas las opiniones son revisadas antes de ser publicadas. Cualquier opinión inapropiada será borrada por un administrador.</p>

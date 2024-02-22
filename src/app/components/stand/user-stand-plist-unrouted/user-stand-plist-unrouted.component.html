@@ -5,16 +5,10 @@
   <div class="container mt-4">
     <h1 class="text-center">STANDCUSTOM</h1>
     <p class="lead text-center">Aqui encontraras una cantidad infinita de stands y infinidad de posibilidades</p>
-  <div *ngIf="oPage">
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-secondary btn-lg mt-3 mb-3" *ngFor="let categoria of oPage.content" (click)="filtrarPorCategoria(categoria.id)">
-        {{ categoria.nombre }}
-      </button>
+
       
-      <button *ngIf="filtrandoPorCategoria" pButton type="button" (click)="quitarFiltro()" class="btn btn-primary">Quitar filtro</button>
-    </div>
-  </div>
-</div>
+      
+   
 
 <button type="button" class="btn btn-primary btn-lg mt-3 mb-3" (click)="postNuevoStand()">Crear stand</button>
 
@@ -25,7 +19,7 @@
         <img [src]="stand.imagen" class="card-img-top" alt="Imagen del stand">
         <div class="card-body">
           <h5 class="card-title">{{ stand.nombre }}</h5>
-          <p class="card-text">Creador: {{ stand.usuario.nombre }}</p>
+          <p class="card-text">Creador: {{ stand.usuario.username }}</p>
           <button class="btn btn-primary mb-2" [routerLink]="['/user', 'stand', 'view', stand.id]">Ver Stand</button>
           
           <button *ngIf="(isUsuarioStand(stand) || isAdministrador())" (click)="borrarStand(stand.id)" type="button" class="btn btn-danger btn-lg mt-3 mb-3"><i class="fa-solid fa-trash"></i></button>  

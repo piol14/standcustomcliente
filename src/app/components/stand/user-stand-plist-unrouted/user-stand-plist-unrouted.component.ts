@@ -164,12 +164,12 @@ export class UserStandPlistUnroutedComponent implements OnInit {
   }
 
   getPage(): void {
-    // Si no hay ninguna categoría seleccionada, restablece id_categoria a 0
+
     if (!this.filtrandoPorCategoria) {
       this.id_categoria = 0;
     }
   
-    // Luego, realiza la solicitud de la página de stands
+   
     this.oStandAjaxService.getPage(
       this.oPaginatorState.rows, 
       this.oPaginatorState.page, 
