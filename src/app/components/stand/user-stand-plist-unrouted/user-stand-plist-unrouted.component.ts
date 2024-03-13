@@ -57,7 +57,9 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     private oStandAjaxService: StandAjaxService,
     public oDialogService: DialogService,
     private oConfirmationService: ConfirmationService,
-    private oMatSnackBar: MatSnackBar
+    private oMatSnackBar: MatSnackBar,
+    public oDynamicDialogRef: DynamicDialogRef,
+    
   ) { }
 
 
@@ -205,6 +207,8 @@ export class UserStandPlistUnroutedComponent implements OnInit {
           id_usuario: this.id_usuario
           
         },
+        
+
         header: 'Nuevo Stand',
         width: '80%',
         contentStyle: { overflow: 'auto' },
@@ -212,6 +216,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
         maximizable: false,
        
       });
+
 
       this.ref.onClose.subscribe({
         next: (v) => {

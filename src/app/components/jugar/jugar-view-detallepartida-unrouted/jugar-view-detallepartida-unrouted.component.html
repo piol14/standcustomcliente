@@ -1,0 +1,31 @@
+<div *ngIf="status == null">
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card shadow-lg">
+          <!-- Encabezado -->
+          <div class="card-header bg-primary text-white" id="header">
+            <h5 class="mb-0">Detalles de la Partida</h5>
+          </div>
+          <!-- Cuerpo -->
+          <div class="card-body">
+            <div class="row">
+              <!-- Detalles del jugador -->
+              <div class="col-md-6">
+                <div class="text-center mb-4">
+                  <h6>{{ oDetallePartida.usuario.nombre }}</h6>
+                  <img class="img-fluid rounded" [src]="oDetallePartida.stand.imagen" alt="Imagen del stand">
+                  <!-- Mostrar el valor numérico de aguante utilizando la función getAguanteNumerico() -->
+                  <div class="vida-container">
+                    <span class="vida-barra" [style.width]="(getAguanteNumerico(oDetallePartida.stand.aguante) / 3) + '%'"></span>
+                  </div>
+                  <p>{{ getAguanteNumerico(oDetallePartida.stand.aguante) }} / 300</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

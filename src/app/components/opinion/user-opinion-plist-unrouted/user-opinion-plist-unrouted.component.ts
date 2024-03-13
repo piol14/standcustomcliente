@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, Input, OnInit } from '@angular/core';
 import { UserOpinionFormUnroutedComponent } from '../user-opinion-form-unrouted/user-opinion-form-unrouted.component';
@@ -42,8 +43,8 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private MessageService: MessageService,
     private DialogService: DialogService,
-    private MatSnackBar: MatSnackBar
-  
+    private MatSnackBar: MatSnackBar,
+    private Router :Router
   ) { }
 
   ngOnInit() {
@@ -150,13 +151,15 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
 
       this.ref.onClose.subscribe({
         next: (v) => {
-          this.getOpiniones();
           if (v) {
             this.getOpiniones();
           }
         }
       })
    
+    }else {
+  this.MatSnackBar.open('Debes estar logueado para valorar un producto', 'Aceptar', { duration: 3000 });
+  this.Router.navigate(['/login']);
     }
   }
 }

@@ -35,7 +35,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MenuUnroutedComponent } from './components/shared/menu-unrouted/menu-unrouted.component';
 import { AppComponent } from './app.component';
 import { PaginatorModule } from 'primeng/paginator';
-import { DialogService, DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AdminStandPlistRoutedComponent } from './components/stand/admin-stand-plist-routed/admin-stand-plist-routed.component';
 import { AdminStandPlistUnroutedComponent } from './components/stand/admin-stand-plist-unrouted/admin-stand-plist-unrouted.component';
 import { StandAjaxService } from './service/stand.ajax.service.service';
@@ -113,6 +113,8 @@ import { UserStandFormUnroutedComponent } from './components/stand/user-stand-fo
 import { FooterUnroutedComponent } from './components/shared/footer-unrouted/footer-unrouted.component';
 import { JugarUserPlistRoutedComponent } from './components/jugar/jugar-user-plist-routed/jugar-user-plist-routed.component';
 import { JugarUserPlistUnroutedComponent } from './components/jugar/jugar-user-plist-unrouted/jugar-user-plist-unrouted.component';
+import { JugarViewDetallepartidaUnroutedComponent } from './components/jugar/jugar-view-detallepartida-unrouted/jugar-view-detallepartida-unrouted.component';
+import { JugarNewDetallepartidaRoutedComponent } from './components/jugar/jugar-new-detallepartida-routed/jugar-new-detallepartida-routed.component';
 
 //--
 @NgModule({
@@ -186,7 +188,9 @@ import { JugarUserPlistUnroutedComponent } from './components/jugar/jugar-user-p
    UserStandFormUnroutedComponent,
    FooterUnroutedComponent,
    JugarUserPlistRoutedComponent,
-   JugarUserPlistUnroutedComponent
+   JugarUserPlistUnroutedComponent,
+   JugarViewDetallepartidaUnroutedComponent,
+   JugarNewDetallepartidaRoutedComponent
   ],
   imports: [
     
@@ -211,14 +215,14 @@ import { JugarUserPlistUnroutedComponent } from './components/jugar/jugar-user-p
    MatSelectModule,
    ReactiveFormsModule,
    SplitButtonModule, 
-  
+ 
   ],
   providers: [
     DialogService,
     UserAjaxService,
    StandAjaxService,
    DynamicDialogConfig,
-  
+   DynamicDialogRef,
    OpinionAjaxService,
    PartidaAjaxService,
    ConfirmationService,

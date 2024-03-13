@@ -49,6 +49,8 @@ export class PartidaAjaxService {
         return this.httpClient.post<number>(`${this.apiUrl}/populate/${amount}`, null);
     }
   
-    
+    getLastCreatedId() {
+        return this.httpClient.get<number>('/partida/last');
+      }
 }
 

@@ -31,7 +31,6 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
   oPage: ICategoriaPage | undefined;
   id_usuario: number | undefined;
   id_stand: number | undefined;
-  
   orderField: string = "id";
   orderDirection: string = "asc";
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
@@ -39,26 +38,24 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
   oCategoriaToRemove: ICategoria | null = null;
   value: string = '';
   oStandPage: IStandPage | undefined;
- 
   standsPorPagina: number = 8;
-
-  
- 
   oStandToRemove: IStand | null = null;
   usuario: IUser | null = null;
   stand: IStand | null = null;
   partida: IPartida |null = null ;
   oCategoria: ICategoria | null = null;
   detallePartida: IDetallePartida= {} as IDetallePartida;
-    idCategoriaFiltrada: number | null = null;
+  idCategoriaFiltrada: number | null = null;
   filtrandoPorCategoria: boolean = false;
-oPartida:IPartida= {} as IPartida;
+  oPartida:IPartida= {} as IPartida;
+  lastCreatedId: number = 0; // Property to store the last created ID
+
   constructor(
     private SessionAjaxService: SessionAjaxService,
     private oUserAjaxService: UserAjaxService,
     private oStandAjaxService:StandAjaxService,
     private oCategoriaAjaxService: CategoriaAjaxService,
-   private messageService: MessageService,
+    private messageService: MessageService,
     public oDialogService: DialogService,
     private oConfirmationService: ConfirmationService,
     private oMatSnackBar: MatSnackBar,
@@ -66,54 +63,61 @@ oPartida:IPartida= {} as IPartida;
     private PartidaAjaxService: PartidaAjaxService,
     private router: Router,
     private oDynamicDialogConfig: DynamicDialogConfig
-  ) { this.id_usuario = this.oDynamicDialogConfig.data?.id_usuario;
+  ) { 
+    this.id_usuario = this.oDynamicDialogConfig.data?.id_usuario;
     this.id_stand = this.oDynamicDialogConfig.data?.id_stand;
-   }
+  }
 
-
- ngOnInit() {
-  if(this.id_usuario !== undefined) {
-    this.oUserAjaxService.getOne(this.id_usuario).subscribe({
-      next:(usuario: IUser) => {
-        this.usuario = usuario;
-        console.log(this.usuario)
+  ngOnInit() {
+    this.PartidaAjaxService.getLastCreatedId().subscribe({
+      next: (lastId: number) => {
+        this.lastCreatedId = lastId;
       },
-      error: (error) => {
-        this.status = error
-        this.messageService.add({ severity: 'error',detail: 'No se puede crear la valoración',  life: 2000});
+      error: (error: HttpErrorResponse) => {
+        console.error('Error fetching last created ID:', error);
       }
     });
-  
-  }
-  
-  if(this.id_stand !== undefined) {
-    this.oStandAjaxService.getOne(this.id_stand).subscribe({
-      next:(stand: IStand) => {
-        this.stand = stand;
-        console.log(this.stand)
-      },
-      error: (error) => {
-        this.status = error
-        this.messageService.add({ severity: 'error', detail: 'Aceptar',  life: 2000});
-      }
-    });
-  }
-  this.getPage();
-  this.forceReload.subscribe({
-    next: (v) => {
-      if (v) {
-        this.getPage();
-      }
+
+    if(this.id_usuario !== undefined) {
+      this.oUserAjaxService.getOne(this.id_usuario).subscribe({
+        next:(usuario: IUser) => {
+          this.usuario = usuario;
+          console.log(this.usuario)
+        },
+        error: (error) => {
+          this.status = error
+          this.messageService.add({ severity: 'error',detail: 'No se puede crear la valoración',  life: 2000});
+        }
+      });
     }
-  });
-  this.getCategorias(); // Llama siempre a getCategorias() al inicializar el componente
 
-  if (this.id_categoria > 0) {
-    this.getCategorias(); // Si id_categoria es mayor que 0, llama nuevamente a getCategorias()
-  }
+    if(this.id_stand !== undefined) {
+      this.oStandAjaxService.getOne(this.id_stand).subscribe({
+        next:(stand: IStand) => {
+          this.stand = stand;
+          console.log(this.stand)
+        },
+        error: (error) => {
+          this.status = error
+          this.messageService.add({ severity: 'error', detail: 'Aceptar',  life: 2000});
+        }
+      });
+    }
+    this.getPage();
+    this.forceReload.subscribe({
+      next: (v) => {
+        if (v) {
+          this.getPage();
+        }
+      }
+    });
+    this.getCategorias(); // Llama siempre a getCategorias() al inicializar el componente
 
+    if (this.id_categoria > 0) {
+      this.getCategorias(); // Si id_categoria es mayor que 0, llama nuevamente a getCategorias()
+    }
 
- this.SessionAjaxService.getSessionUser()?.subscribe({
+    this.SessionAjaxService.getSessionUser()?.subscribe({
       next: (usuario: IUser) => {
         this.usuario = usuario;
         this.id_usuario_plist = usuario.id;
@@ -123,6 +127,7 @@ oPartida:IPartida= {} as IPartida;
       }
     });
   }
+
   filtrarPorCategoria(idCategoria: number): void {
     console.log(idCategoria);
     this.id_categoria = idCategoria;
@@ -133,10 +138,11 @@ oPartida:IPartida= {} as IPartida;
     this.filtrandoPorCategoria = true;
     console.log(idCategoria);
   }
+
   isUsuarioStand(stand: IStand): boolean {
-    return this.usuario !== null && stand.usuario.id === this.usuario.id;
-   
+    return this.usuario !== null && stand.usuario.id === this.usuario.id;  
   }
+
   borrarStand(id_stand: number) {
     this.oConfirmationService.confirm({
       message: '¿Estás seguro de que quieres eliminar este elemento?',
@@ -157,13 +163,13 @@ oPartida:IPartida= {} as IPartida;
   }
 
   ref: DynamicDialogRef | undefined;
-  
 
   onPageChange(event: PaginatorState) {
     this.oPaginatorState.rows = event.rows;
     this.oPaginatorState.page = event.page;
     this.getPage();
   }
+
   getCategorias(): void {
     this.oCategoriaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.first, 'id', 'asc').subscribe({
       next: (data: ICategoriaPage) => {
@@ -211,21 +217,24 @@ oPartida:IPartida= {} as IPartida;
     });
   }
   
-  
   quitarFiltro(): void {
     this.id_categoria = 0; 
     this.filtrandoPorCategoria = false;
     this.getPage(); 
   }
+
   crearTodo(stand: IStand): void {
-    // Creamos la partida con los datos necesarios
+    // Increment last created ID
+    this.lastCreatedId++;
+
+    // Create new partida with incremented ID
     const nuevaPartida: IPartida = {
-      id: this.id,
-      fecha: "ola", // Aquí deberías proporcionar la fecha real
+      id: this.lastCreatedId, // Use the incremented ID
+      fecha: "ola", // Replace with actual date
       usuario: this.usuario
     };
-  
-    // Llamamos al servicio para crear la partida
+
+    // Call service to create the partida
     this.PartidaAjaxService.newOne(nuevaPartida).subscribe({
       next: (partida: IPartida) => {
         // Almacenamos la partida recién creada
@@ -234,7 +243,7 @@ oPartida:IPartida= {} as IPartida;
         partidacreada=nuevaPartida;
         // Creamos el detalle de partida con los datos necesarios
         const nuevoDetallePartida: IDetallePartida = {
-          id: this.id,
+          id: this.lastCreatedId, // Use the incremented ID
           usuario: this.usuario!,
           stand: stand, // Utilizamos el stand pasado como parámetro
           partida: partidacreada // Asignamos la partida recién creada
@@ -244,8 +253,8 @@ oPartida:IPartida= {} as IPartida;
         this.DetallePartidaAjaxService.newOne(nuevoDetallePartida).subscribe({
           next: () => {
             // Manejo de éxito
-            this.oMatSnackBar?.open('El stand se ha creado correctamente', '', { duration: 2000 });
-            this.router.navigate(['/home']);
+            this.oMatSnackBar?.open('El detalle partida se ha creado correctamente', '', { duration: 2000 });
+            this.router.navigate(['/jugar',this.detallePartida.id]);
           },
           error: () => {
             // Manejo de error

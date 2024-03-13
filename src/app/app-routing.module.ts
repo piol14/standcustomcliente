@@ -33,6 +33,7 @@ import { AdminCategoriaEditRoutedComponent } from './components/categoria/admin-
 import { UserStandViewRoutedComponent } from './components/stand/user-stand-view-routed/user-stand-view-routed.component';
 import { UserOpinionNewRoutedComponent } from './components/opinion/user-opinion-new-routed/user-opinion-new-routed.component';
 import { JugarUserPlistRoutedComponent } from './components/jugar/jugar-user-plist-routed/jugar-user-plist-routed.component';
+import { JugarNewDetallepartidaRoutedComponent } from './components/jugar/jugar-new-detallepartida-routed/jugar-new-detallepartida-routed.component';
 export const routes: Routes = [
 
   { path: '', component: HomeRoutedComponent },
@@ -45,8 +46,7 @@ export const routes: Routes = [
     { path: 'admin/usuario/view/:id', component: AdminUsuarioViewRoutedComponent },    
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
     { path: 'admin/usuario/edit/:id', component: AdminUsuarioEditRoutedComponent },
-
-
+    { path: 'jugar/:id', component: JugarNewDetallepartidaRoutedComponent },
 
 
     {path: 'admin/categoria/plist', component: AdminCategoriaPlistRoutedComponent},

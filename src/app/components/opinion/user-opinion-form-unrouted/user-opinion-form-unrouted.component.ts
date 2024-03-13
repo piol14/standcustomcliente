@@ -25,7 +25,7 @@ export class UserOpinionFormUnroutedComponent implements OnInit {
   opinionForm!: FormGroup;
   oOpinion: IOpinion= {} as IOpinion;
   status: HttpErrorResponse | null = null;
-  oDynamicDialogRef: DynamicDialogRef | undefined;
+
   opinion: IOpinion = { usuario: { id: 0 }, stand: { id: 0 } } as IOpinion;
 
   id_usuario: number | undefined;
@@ -43,6 +43,7 @@ export class UserOpinionFormUnroutedComponent implements OnInit {
     public oDialogService: DialogService,
     private sessionService: SessionAjaxService,
     public oDynamicDialogConfig: DynamicDialogConfig,
+    public oDynamicDialogRef: DynamicDialogRef,
     private messageService: MessageService // Add the missing parameter with the correct type
   ) {
     this.id_usuario = this.oDynamicDialogConfig.data.id_usuario;
@@ -111,7 +112,7 @@ export class UserOpinionFormUnroutedComponent implements OnInit {
           this.oOpinion = data;
           this.initializeForm(this.oOpinion);
           this.oMatSnackBar.open('La opinión se ha creado correctamente', '', { duration: 2000 });
-          this.oMatSnackBar.dismiss();
+          this.oDynamicDialogRef.close(data);
           this.oRouter.navigate(['/user', 'stand', 'view',this.stand?.id]);
         },
         error: (error: HttpErrorResponse) => {

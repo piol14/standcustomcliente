@@ -25,7 +25,7 @@ export class UserStandFormUnroutedComponent implements OnInit {
   standForm!: FormGroup;
   oStand: IStand = {} as IStand;
   status: HttpErrorResponse | null = null;
-  oDynamicDialogRef: DynamicDialogRef | undefined;
+  
   id_usuario: number | undefined;
   id_categoria: number | undefined;
   usuario: IUser | undefined;
@@ -40,6 +40,7 @@ export class UserStandFormUnroutedComponent implements OnInit {
     public oDynamicDialogConfig: DynamicDialogConfig,
     private messageService: MessageService ,
     private oUserAjaxService: UserAjaxService,
+    public oDynamicDialogRef: DynamicDialogRef,
   ) {
     this.initializeForm(this.oStand);
     this.id_usuario = this.oDynamicDialogConfig.data.id_usuario;
@@ -98,13 +99,14 @@ export class UserStandFormUnroutedComponent implements OnInit {
   
       // Use 'stand' object instead of 'this.standForm.value'
       this.standService.newOne(stand).subscribe({
-        next: (data: any) => {
+        next: (data: IStand) => {
           this.oStand = data;
           this.initializeForm(this.oStand);
           this.snackBar.open('La opinión se ha creado correctamente', '', { duration: 2000 });
-          this.snackBar.dismiss();
+          this.oDynamicDialogRef.close(data);
           this.router.navigate(['/home']);
         },
+        
         error: (error: HttpErrorResponse) => {
           this.status = error;
           this.snackBar.open('Error al crear la opinión', '', { duration: 2000 });
