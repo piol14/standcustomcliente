@@ -6,17 +6,33 @@
     <div class="card-body">
       <form [formGroup]="opinionForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          
+
           <label for="descripcion">Descripción:</label>
-         
-          <textarea id="descripcion" formControlName="descripcion" class="form-control" placeholder="Cuéntanos qué piensas..." required></textarea>
-          <mat-error *ngIf="hasError('imagen', 'required')">Campo obligatorio</mat-error>
+
+          <textarea id="descripcion" formControlName="descripcion" class="form-control"
+            placeholder="Cuéntanos qué piensas..." required></textarea>
+          <div *ngIf="opinionForm.controls['descripcion'].dirty && 
+          opinionForm.controls['descripcion'].errors?.['required']" class="text-danger">
+            La descripción es requerida
+          </div>
+          <div *ngIf="opinionForm.controls['descripcion'].dirty && 
+          opinionForm.controls['descripcion'].errors?.['minlength']" class="text-danger">
+            Debes escribir más texto
+          </div>
+          <div *ngIf="opinionForm.controls['descripcion'].dirty && 
+          opinionForm.controls['descripcion'].errors?.['maxlength']" class="text-danger">
+            Debes escribir menos texto
+          </div>
+
+
+
+
         </div>
-       
-        
-           
-        
-     
+
+
+
+
+
         <div class="text-center mt-4">
           <button type="submit" class="btn btn-primary" [disabled]="!opinionForm.valid">¡Enviar Opinión!</button>
         </div>
