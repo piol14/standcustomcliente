@@ -245,7 +245,7 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
         const nuevoDetallePartida: IDetallePartida = {
           id: this.lastCreatedId, // Use the incremented ID
           usuario: this.usuario!,
-          stand: stand, // Utilizamos el stand pasado como parámetro
+            stand: stand, // Utilizamos el stand pasado como parámetro
           partida: partidacreada // Asignamos la partida recién creada
         };
   

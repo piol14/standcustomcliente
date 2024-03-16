@@ -102,11 +102,10 @@ export class UserOpinionFormUnroutedComponent implements OnInit {
   onSubmit() {
     if (this.opinionForm.valid) {
       const opinion = this.opinionForm.value;
-      opinion.usuario = this.usuario;
-      console.log( "iD USUARIO: " + opinion.usuario.id)
-      opinion.stand = this.stand;
-      console.log("ID PRODUCTO" + opinion.stand.id)
-  
+      const usuarioId = this.usuario?.id;  
+      const opinionId = this.stand?.id;    
+      opinion.usuario = { id: usuarioId }; 
+      opinion.stand = { id: opinionId };
       this.oOpinionAjaxService.newOne(this.opinionForm.value).subscribe({
         next: (data: any) => {
           this.oOpinion = data;

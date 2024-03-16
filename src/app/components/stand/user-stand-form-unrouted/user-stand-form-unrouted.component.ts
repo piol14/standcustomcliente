@@ -92,10 +92,9 @@ export class UserStandFormUnroutedComponent implements OnInit {
   onSubmit() {
     if (this.standForm.valid) {
       const stand = this.standForm.value;
-      stand.usuario = this.usuario;
+      const usuarioId = this.usuario?.id; // Obtener solo el ID del usuario
+      stand.usuario = { id: usuarioId }; // Crear un objeto con solo el ID del usuario
       stand.categoria = { id: 9 }; // Initialize categoria object with id 9
-      console.log("iD USUARIO: " + stand.usuario.id);
-      console.log("ID CATEGORIA: " + stand.categoria.id);
   
       // Use 'stand' object instead of 'this.standForm.value'
       this.standService.newOne(stand).subscribe({
@@ -106,7 +105,6 @@ export class UserStandFormUnroutedComponent implements OnInit {
           this.oDynamicDialogRef.close(data);
           this.router.navigate(['/home']);
         },
-        
         error: (error: HttpErrorResponse) => {
           this.status = error;
           this.snackBar.open('Error al crear la opinión', '', { duration: 2000 });
