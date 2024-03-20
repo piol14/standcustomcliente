@@ -6,6 +6,8 @@
           <tr>
             <th (click)="doOrder('id')">ID</th>
             <th (click)="doOrder('nombre')">Nombre</th>
+            <th (click)="doOrder('stands')">Stands</th> <!-- Corregí la ortografía --> 
+            <th (click)="doOrder('acciones')">Acciones</th> <!-- Corregí la ortografía --> 
             <th>Acciones</th>
           </tr>
         </thead>
@@ -14,11 +16,15 @@
             <td>{{ categoria.id }}</td>
             <td>{{ categoria.nombre }}</td>
             <td>
+            <a [routerLink]="['/admin','stand','plist','bycategoria',categoria.id]" *ngIf="categoria.stands" >{{categoria.stands}}</a>
+              <span *ngIf="categoria.stands==0">0</span>
+            <td>
+            </td>
               <button class="btn btn-primary" (click)="doView(categoria)"><i class="fa-solid fa-circle-info"></i></button>
               <button class="btn btn-primary" [routerLink]="['/admin','categoria','view',categoria.id]"><i class="fa-solid fa-eye"></i></button>
               <button class="btn btn-danger" (click)="doRemove(categoria)"><i class="fa-solid fa-trash"></i></button>
               <button class="btn btn-warning" [routerLink]="['/admin','categoria','edit',categoria.id]"><i class="fa-solid fa-pen-to-square"></i></button>
-            </td>
+            
           </tr>
         </tbody>
       </table>

@@ -12,7 +12,7 @@
           <th (click)="doOrder('email')">Email</th>
           <th (click)="doOrder('username')">Usuario</th>
           <th (click)="doOrder('role')">Rol</th>
-   
+          <th (click)="doOrder('role')">Stands</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -25,7 +25,11 @@
           <td>{{ user.email }}</td>
           <td>{{ user.username }}</td>
           <td>{{ user.role ? 'Usuario' : 'Admin' }}</td>
-         
+          <td>
+            <a [routerLink]="['/admin','usuario','plist','bystand',user.id]" *ngIf="user.stands" >{{user.stands}}</a>
+              <span *ngIf="user.stands==0">0</span>
+            <td>
+            </td>
           <td>
             <!-- Botones de acciones -->
             <button class="btn btn-primary" (click)="doView(user)"><i class="fa-solid fa-circle-info"></i></button>
