@@ -46,6 +46,7 @@ export const routes: Routes = [
     { path: 'admin/usuario/view/:id', component: AdminUsuarioViewRoutedComponent },    
     { path: 'admin/usuario/new', component: AdminUsuarioNewRoutedComponent },
     { path: 'admin/usuario/edit/:id', component: AdminUsuarioEditRoutedComponent },
+    { path: 'admin/usuario/plist/bystand/:id', component: AdminStandPlistRoutedComponent },
     { path: 'jugar/:id', component: JugarNewDetallepartidaRoutedComponent },
 
 
