@@ -41,3 +41,23 @@
     </div>
   </div>
 </div>
+<p-confirmDialog>
+  
+  <ng-template pTemplate="header">
+    <div class="p-d-flex p-ai-center">
+      <i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem; color: #f76c6c;"></i>
+      <h5 class="p-m-0">Confirmación de Eliminación</h5>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="message">
+    <div class="p-text-center">
+      <p>¿Estás seguro de que quieres eliminar este stand?</p>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="p-d-flex p-jc-center">
+      <button pButton type="button" icon="pi pi-times" label="No" class="p-button-text p-button-danger p-mx-2" (click)="cd.reject()"></button>
+      <button pButton type="button" icon="pi pi-check" label="Sí" class="p-button-text p-button-success p-mx-2" (click)="cd.accept()"></button>
+    </div>
+  </ng-template>
+</p-confirmDialog>

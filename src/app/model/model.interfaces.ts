@@ -116,4 +116,11 @@ export interface ICategoria extends IEntity {
   nombre: string;
   stands?:number;
 }
+
 export interface ICategoriaPage extends IPage<ICategoria> {}
+
+export interface IFavorito extends IEntity{
+  usuario: IUser;
+  stand: IStand;
+}
+export interface IFavoritoPage extends IPage<IFavorito> {}

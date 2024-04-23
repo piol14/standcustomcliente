@@ -115,6 +115,8 @@ import { JugarUserPlistRoutedComponent } from './components/jugar/jugar-user-pli
 import { JugarUserPlistUnroutedComponent } from './components/jugar/jugar-user-plist-unrouted/jugar-user-plist-unrouted.component';
 import { JugarViewDetallepartidaUnroutedComponent } from './components/jugar/jugar-view-detallepartida-unrouted/jugar-view-detallepartida-unrouted.component';
 import { JugarNewDetallepartidaRoutedComponent } from './components/jugar/jugar-new-detallepartida-routed/jugar-new-detallepartida-routed.component';
+import { AdminFavoritoDetailUnroutedComponent } from './components/favoritos/admin-favorito-detail-unrouted/admin-favorito-detail-unrouted.component';
+import { AdminFavoritoPlistUnroutedComponent } from './components/favoritos/admin-favorito-plist-unrouted/admin-favorito-plist-unrouted.component';
 
 //--
 @NgModule({
@@ -190,7 +192,9 @@ import { JugarNewDetallepartidaRoutedComponent } from './components/jugar/jugar-
    JugarUserPlistRoutedComponent,
    JugarUserPlistUnroutedComponent,
    JugarViewDetallepartidaUnroutedComponent,
-   JugarNewDetallepartidaRoutedComponent
+   JugarNewDetallepartidaRoutedComponent,
+   AdminFavoritoDetailUnroutedComponent,
+   AdminFavoritoPlistUnroutedComponent
   ],
   imports: [
     

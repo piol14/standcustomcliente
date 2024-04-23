@@ -59,7 +59,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     private oConfirmationService: ConfirmationService,
     private oMatSnackBar: MatSnackBar,
     public oDynamicDialogRef: DynamicDialogRef,
-    
+    private confirmationService: ConfirmationService
   ) { }
 
 
@@ -110,15 +110,20 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     return this.usuario !== null && this.usuario.role === false;
   }
   borrarStand(id_stand: number) {
-    this.oStandAjaxService.removeOne(id_stand).subscribe({
-      next: () => {
-        // Restablecer el filtro de categoría y actualizar la página de stands
-        this.quitarFiltro();
-        this.getPage();
-        this.oMatSnackBar.open('El stand ha sido eliminado exitosamente', '', { duration: 2000 });
-      },
-      error: () => {
-        this.oMatSnackBar.open('Error al eliminar el elemento', '', { duration: 2000 });
+    this.confirmationService.confirm({
+      message: '¿Estás seguro de que deseas eliminar este stand?',
+      accept: () => {
+        this.oStandAjaxService.removeOne(id_stand).subscribe({
+          next: () => {
+            // Restablecer el filtro de categoría y actualizar la página de stands
+            this.quitarFiltro();
+            this.getPage();
+            this.oMatSnackBar.open('El stand ha sido eliminado exitosamente', '', { duration: 2000 });
+          },
+          error: () => {
+            this.oMatSnackBar.open('Error al eliminar el elemento', '', { duration: 2000 });
+          }
+        });
       }
     });
   }

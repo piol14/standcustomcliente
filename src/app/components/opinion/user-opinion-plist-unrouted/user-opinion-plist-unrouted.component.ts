@@ -110,7 +110,10 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
     console.log(id_opinion);
   
    
-    
+    this.confirmationService.confirm({
+      message: '¿Estás seguro de que quieres eliminar este usuario?',
+      accept: () => {
+
         this.oOpinionAjaxService.removeOne(id_opinion).subscribe({
           next: () => {
             this.getOpiniones();
@@ -127,7 +130,8 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
           }
         });
       
-   
+      }
+    })
   }
   
   

@@ -14,7 +14,7 @@
               <div class="col-md-6">
                 <div class="text-center mb-4">
                   <h6>{{ oDetallePartida.usuario.nombre }}</h6>
-                  <img class="img-fluid rounded" [src]="oDetallePartida.stand.imagen" alt="Imagen del stand">
+                  <img class="img-fluid rounded" [src]="oDetallePartida.stand.imagen" >
                   <!-- Mostrar el valor numérico de aguante utilizando la función getAguanteNumerico() -->
                   <div class="vida-container">
                     <span class="vida-barra" [style.width]="(getAguanteNumerico(oDetallePartida.stand.aguante) / 3) + '%'"></span>
