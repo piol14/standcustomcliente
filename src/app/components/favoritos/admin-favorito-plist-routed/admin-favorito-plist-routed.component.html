@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8"> 
+      <div *ngIf="bLoading" class="progress card mt-5 mb-3"> 
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+             [style.width]="loadingProgress + '%'">
+          {{ loadingProgress }}%
+        </div>
+      </div>
+      <h1 class="my-5 text-center">Favoritos </h1> 
+      <div class="text-center mb-3"> 
+        <div class="btn-group" role="group">
+          <a class="btn btn-warning mx-1" (click)="doGenerateRandom(10)">+10</a>
+          <a class="btn btn-warning mx-1" (click)="doGenerateRandom(100)">+100</a>
+          <a class="btn btn-warning mx-1" (click)="doGenerateRandom(1000)">+1000</a>
+          <a class="btn btn-danger mx-1" (click)="doEmpty($event)">Empty List</a>
+          <a class="btn btn-primary mx-1" [routerLink]="['/admin','favorito','new']">Crear Favorito</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-admin-favorito-plist-unrouted [forceReload]="forceReload" *ngIf="!bLoading"></app-admin-favorito-plist-unrouted>
+</div>

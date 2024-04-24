@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IFavorito, IFavorito as  IFavoritoPage } from '../model/model.interfaces';
+import { IFavorito,  IFavoritoPage } from '../model/model.interfaces';
 import { API_URL } from '../environment/environment';
 
 @Injectable()

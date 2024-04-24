@@ -117,6 +117,11 @@ import { JugarViewDetallepartidaUnroutedComponent } from './components/jugar/jug
 import { JugarNewDetallepartidaRoutedComponent } from './components/jugar/jugar-new-detallepartida-routed/jugar-new-detallepartida-routed.component';
 import { AdminFavoritoDetailUnroutedComponent } from './components/favoritos/admin-favorito-detail-unrouted/admin-favorito-detail-unrouted.component';
 import { AdminFavoritoPlistUnroutedComponent } from './components/favoritos/admin-favorito-plist-unrouted/admin-favorito-plist-unrouted.component';
+import { AdminFavoritoPlistRoutedComponent } from './components/favoritos/admin-favorito-plist-routed/admin-favorito-plist-routed.component';
+import { FavoritoAjaxService } from './service/favorito.ajax.service.service';
+import { AdminFavoritoNewRoutedComponent } from './components/favoritos/admin-favorito-new-routed/admin-favorito-new-routed.component';
+import { AdminFavoritoFormUnroutedComponent } from './components/favoritos/admin-favorito-form-unrouted/admin-favorito-form-unrouted.component';
+import { AdminFavoritoEditRoutedComponent } from './components/favoritos/admin-favorito-edit-routed/admin-favorito-edit-routed.component';
 
 //--
 @NgModule({
@@ -194,7 +199,11 @@ import { AdminFavoritoPlistUnroutedComponent } from './components/favoritos/admi
    JugarViewDetallepartidaUnroutedComponent,
    JugarNewDetallepartidaRoutedComponent,
    AdminFavoritoDetailUnroutedComponent,
-   AdminFavoritoPlistUnroutedComponent
+   AdminFavoritoPlistUnroutedComponent,
+   AdminFavoritoPlistRoutedComponent,
+   AdminFavoritoNewRoutedComponent,
+   AdminFavoritoFormUnroutedComponent,
+   AdminFavoritoEditRoutedComponent
   ],
   imports: [
     
@@ -235,6 +244,7 @@ import { AdminFavoritoPlistUnroutedComponent } from './components/favoritos/admi
   SessionAjaxService,
   MediaService,
   CategoriaAjaxService,
+  FavoritoAjaxService,
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 
   ],

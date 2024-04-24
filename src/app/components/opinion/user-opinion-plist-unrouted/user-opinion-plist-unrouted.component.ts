@@ -108,12 +108,10 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
 
   borrarOpinion(id_opinion: number) {
     console.log(id_opinion);
-  
-   
-    this.confirmationService.confirm({
-      message: '¿Estás seguro de que quieres eliminar este usuario?',
-      accept: () => {
 
+    this.confirmationService.confirm({
+      message: '¿Estás seguro de que quieres eliminar esta opinión?',
+      accept: () => {
         this.oOpinionAjaxService.removeOne(id_opinion).subscribe({
           next: () => {
             this.getOpiniones();
@@ -127,12 +125,16 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
             this.MatSnackBar.open('La opinión no se ha podido eliminar', 'Cerrar', {
               duration: 2000,
             });
-          }
+          },
         });
-      
+      },
+      reject: () => {
+        // Lógica para manejar si el usuario rechaza la eliminación
+        console.log('La eliminación de la opinión ha sido cancelada');
       }
-    })
+    });
   }
+
   
   
 

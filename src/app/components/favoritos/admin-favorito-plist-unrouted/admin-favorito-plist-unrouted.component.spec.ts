@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { AdminFavoritoEditUnroutedComponent } from './admin-favorito-edit-unrouted.component';
+import { AdminFavoritoPlistUnroutedComponent } from './admin-favorito-plist-unrouted.component';
 
-describe('AdminFavoritoEditUnroutedComponent', () => {
-  let component: AdminFavoritoEditUnroutedComponent;
-  let fixture: ComponentFixture<AdminFavoritoEditUnroutedComponent>;
+describe('AdminFavoritoPlistUnroutedComponent', () => {
+  let component: AdminFavoritoPlistUnroutedComponent;
+  let fixture: ComponentFixture<AdminFavoritoPlistUnroutedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminFavoritoEditUnroutedComponent ]
+      declarations: [ AdminFavoritoPlistUnroutedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminFavoritoEditUnroutedComponent);
+    fixture = TestBed.createComponent(AdminFavoritoPlistUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

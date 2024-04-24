@@ -34,6 +34,9 @@ import { UserStandViewRoutedComponent } from './components/stand/user-stand-view
 import { UserOpinionNewRoutedComponent } from './components/opinion/user-opinion-new-routed/user-opinion-new-routed.component';
 import { JugarUserPlistRoutedComponent } from './components/jugar/jugar-user-plist-routed/jugar-user-plist-routed.component';
 import { JugarNewDetallepartidaRoutedComponent } from './components/jugar/jugar-new-detallepartida-routed/jugar-new-detallepartida-routed.component';
+import { AdminFavoritoPlistRoutedComponent } from './components/favoritos/admin-favorito-plist-routed/admin-favorito-plist-routed.component';
+import { AdminFavoritoNewRoutedComponent } from './components/favoritos/admin-favorito-new-routed/admin-favorito-new-routed.component';
+import { AdminFavoritoEditRoutedComponent } from './components/favoritos/admin-favorito-edit-routed/admin-favorito-edit-routed.component';
 export const routes: Routes = [
 
   { path: '', component: HomeRoutedComponent },
@@ -55,7 +58,12 @@ export const routes: Routes = [
     {path: 'admin/categoria/view/:id', component:AdminCategoriaViewRoutedComponent},
     {path: 'admin/categoria/new', component:AdminCategoriaNewRoutedComponent},
     {path: 'admin/categoria/edit/:id', component:AdminCategoriaEditRoutedComponent},
+    {path: 'admin/categoria/plist', component: AdminCategoriaPlistRoutedComponent},
 
+    {path: 'admin/favorito/plist', component: AdminFavoritoPlistRoutedComponent},
+    {path: 'admin/favorito/view/:id', component:AdminCategoriaViewRoutedComponent},
+    {path: 'admin/favorito/new', component:AdminFavoritoNewRoutedComponent},
+    {path: 'admin/favorito/edit/:id', component:AdminFavoritoEditRoutedComponent},
     {path: 'admin/categoria/plist/bystand/:idcategoria', component: AdminStandPlistRoutedComponent},
     {path: 'admin/stand/plist', component: AdminStandPlistRoutedComponent},
     {path: 'admin/stand/view/:id', component:AdminStandViewRoutedComponent},

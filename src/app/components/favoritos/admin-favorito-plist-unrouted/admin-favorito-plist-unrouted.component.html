@@ -8,23 +8,21 @@
             <th (click)="doOrder('nombre')">Nombre</th>
             <th (click)="doOrder('stands')">Stands</th> <!-- Corregí la ortografía --> 
             <th (click)="doOrder('acciones')">Acciones</th> <!-- Corregí la ortografía --> 
-            <th>Acciones</th>
+            
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let categoria of oPage.content">
-            <td>{{ categoria.id }}</td>
-            <td>{{ categoria.nombre }}</td>
-            <td>
-            <a [routerLink]="['/admin','stand','plist','bycategoria',categoria.id]" *ngIf="categoria.stands" >{{categoria.stands}}</a>
-              <span *ngIf="categoria.stands==0">0</span>
-            <td>
+          <tr *ngFor="let favorito of oPage.content">
+            <td>{{ favorito.id }}</td>
+           
+            <td>{{ favorito.usuario.id }} {{ favorito.usuario.nombre }}</td>
+            <td> {{ favorito.stand.id }} {{ favorito.stand.nombre }}</td>
+           <td>
+              <button class="btn btn-primary" (click)="doView(favorito)"><i class="fa-solid fa-circle-info"></i></button>
+              <button class="btn btn-primary" [routerLink]="['/admin','favorito','view',favorito.id]"><i class="fa-solid fa-eye"></i></button>
+              <button class="btn btn-danger" (click)="doRemove(favorito)"><i class="fa-solid fa-trash"></i></button>
+              <button class="btn btn-warning" [routerLink]="['/admin','favorito','edit',favorito.id]"><i class="fa-solid fa-pen-to-square"></i></button>
             </td>
-              <button class="btn btn-primary" (click)="doView(categoria)"><i class="fa-solid fa-circle-info"></i></button>
-              <button class="btn btn-primary" [routerLink]="['/admin','categoria','view',categoria.id]"><i class="fa-solid fa-eye"></i></button>
-              <button class="btn btn-danger" (click)="doRemove(categoria)"><i class="fa-solid fa-trash"></i></button>
-              <button class="btn btn-warning" [routerLink]="['/admin','categoria','edit',categoria.id]"><i class="fa-solid fa-pen-to-square"></i></button>
-            
           </tr>
         </tbody>
       </table>
@@ -48,7 +46,7 @@
     </div>
   </ng-template>
   <ng-template pTemplate="footer">
-    <p>¿Estás seguro de que quieres eliminar esta categoría?</p> <!-- Corregí la ortografía -->
+    <p>¿Estás seguro de que quieres eliminar este favorito ?</p> <!-- Corregí la ortografía -->
     <button class="btn btn-primary mx-1" pButton icon="pi pi-times" (click)="cd.reject()"> No</button>
     <button class="btn btn-danger mx-1" pButton icon="pi pi-check" (click)="cd.accept()"> Sí</button>
   </ng-template>
