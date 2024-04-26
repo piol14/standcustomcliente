@@ -14,10 +14,24 @@ export class FavoritoAjaxService {
   getOne(id: number): Observable<IFavorito> {
     return this.httpClient.get<IFavorito>(`${this.apiUrl}/${id}`);
   }
-
-  getPage(size: number | undefined, page: number | undefined, orderField: string, orderDirection: string): Observable<IFavoritoPage> {
-    if (!size) size = 10;
-    if (!page) page = 0;
+  getFavoritoPageByStand(standId: number, page: number, size: number, sort: string, direction: string): Observable<IFavoritoPage> {
+    return this.httpClient.get<IFavoritoPage>(this.apiUrl + '/bystand/' + standId + '?size=' + size + '&page=' + page + '&sort=' + sort + ',' + direction);
+}
+getFavoritoPageByUsuario(userId: number, page: number, size: number, sort: string, direction: string): Observable<IFavoritoPage> {
+    return this.httpClient.get<IFavoritoPage>(this.apiUrl + '/byusuario/' + userId + '?size=' + size + '&page=' + page + '&sort=' + sort + ',' + direction);
+}
+  getPage(size: number | undefined, page: number | undefined, orderField: string, orderDirection: string,  id_usuario: number , id_stand: number): Observable<IFavoritoPage> {
+    let strUrlUser = "";
+        if (!size) size = 10;
+        if (!page) page = 0;
+        if (id_usuario > 0) {
+            strUrlUser = "&usuario=" + id_usuario;
+        }
+    
+        let strUrlstand = "";
+        if (id_stand > 0) {
+          strUrlstand = "&stand=" + id_stand;
+        }
 
     const url = `${this.apiUrl}?size=${size}&page=${page}&sort=${orderField},${orderDirection}`;
     return this.httpClient.get<IFavoritoPage>(url);

@@ -52,10 +52,14 @@
   <ng-template pTemplate="message">
     <div class="p-text-center">
       <p>¿Estás seguro de que quieres eliminar este stand?</p>
+      <button class="btn btn-primary mx-1" pButton icon="pi pi-times"(click)="cd.reject()"> No</button>
+      <button class="btn btn-danger mx-1" pButton icon="pi pi-check"(click)="cd.accept()"> Sí</button>
     </div>
+
   </ng-template>
   <ng-template pTemplate="footer">
     <div class="p-d-flex p-jc-center">
+      
     </div>
   </ng-template>
 </p-confirmDialog>

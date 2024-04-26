@@ -1,55 +1,128 @@
 /* Estilos para el mensaje de error */
 .error-message-container {
-    margin-bottom: 20px;
-  }
-  
-  /* Estilos para la lista de opiniones y el formulario */
-  .card {
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-header {
-    font-weight: bold;
-  }
-  
-  .message {
-    margin-right: 10px;
-  }
-  
-  .crearopiniones {
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  
-  .info {
-    margin-top: 20px;
-  }
-  
-  .btn-lg {
-    font-size: 1.25rem;
-  }
-  .card {
-    /* Limitar el ancho máximo de las tarjetas */
-    max-width: 100%; /* Puedes ajustar este valor según tus necesidades */
-  }
-  
-  .card-header, .message {
-    /* Permitir que el texto se ajuste automáticamente a la siguiente línea y se envuelva */
-    word-wrap: break-word;
-    white-space: pre-wrap;
-  }
-  
-  .card-body {
-    /* Ajustar el padding para permitir más espacio para el texto */
-    padding: 1rem;
-   
-  }
-  .btn-primary {
-    background-color: #365486;
-    border-color: #365486;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8d7da;
+  border-radius: 10px;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
 }
-  
+
+/* Estilos para las tarjetas de opinión */
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.message {
+  margin-right: 10px;
+}
+
+/* Estilos para el formulario de creación de opiniones */
+.crearopiniones {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.info {
+  margin-top: 20px;
+}
+
+/* Ajustes de tamaño para los botones */
+.btn-lg {
+  font-size: 1.25rem;
+}
+
+/* Estilos personalizados para el botón de enviar opinión */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+/* Limitar el ancho máximo de las tarjetas */
+/* Estilos para las tarjetas de opinión */
+.card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.message {
+  margin-right: 10px;
+}
+
+/* Ajustes de tamaño para los botones */
+.btn-lg {
+  font-size: 1.25rem;
+}
+
+/* Estilos personalizados para el botón de enviar opinión */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+/* Limitar el ancho máximo de las tarjetas */
+.card {
+  max-width: 100%;
+}
+
+/* Permitir que el texto se ajuste automáticamente a la siguiente línea y se envuelva */
+.card-header, .message {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}

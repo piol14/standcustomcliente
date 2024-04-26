@@ -23,7 +23,7 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
   @Input() id_stand: number = 0;
   @Input() id_usuario: number = 0;
-
+  cd: any;
 
 
   page: IOpinionPage   | undefined;
@@ -107,7 +107,7 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
   }
 
   borrarOpinion(id_opinion: number) {
-    console.log(id_opinion);
+   
 
     this.confirmationService.confirm({
       message: '¿Estás seguro de que quieres eliminar esta opinión?',
@@ -148,7 +148,7 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
           
         },
         
-        header: 'Nueva valoración',
+       
         width: '40%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,

@@ -64,6 +64,8 @@ export const routes: Routes = [
     {path: 'admin/favorito/view/:id', component:AdminCategoriaViewRoutedComponent},
     {path: 'admin/favorito/new', component:AdminFavoritoNewRoutedComponent},
     {path: 'admin/favorito/edit/:id', component:AdminFavoritoEditRoutedComponent},
+    {path: 'admin/favorito/plist/bystand/:idstand', component: AdminStandPlistRoutedComponent},
+    {path: 'admin/favorito/plist/byusuario/:idusuario', component: AdminFavoritoPlistRoutedComponent},
     {path: 'admin/categoria/plist/bystand/:idcategoria', component: AdminStandPlistRoutedComponent},
     {path: 'admin/stand/plist', component: AdminStandPlistRoutedComponent},
     {path: 'admin/stand/view/:id', component:AdminStandViewRoutedComponent},

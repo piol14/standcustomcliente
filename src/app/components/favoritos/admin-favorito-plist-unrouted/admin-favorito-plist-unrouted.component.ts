@@ -23,7 +23,8 @@ export class AdminFavoritoPlistUnroutedComponent {
     oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
     status: HttpErrorResponse | null = null;
     oFavoritoToRemove: IFavorito | null = null;
-
+    @Input() id_usuario: number = 0;
+    @Input() id_stand: number = 0;
     constructor(
         private oFavoritoAjaxService: FavoritoAjaxService,
         public oDialogService: DialogService,
@@ -75,7 +76,7 @@ export class AdminFavoritoPlistUnroutedComponent {
     }
 
     getPage(): void {
-        this.oFavoritoAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
+        this.oFavoritoAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection, this.id_usuario, this.id_stand) .subscribe({
           next: (data: IFavoritoPage) => {
             this.oPage = data;
             this.oPaginatorState.pageCount = data.totalPages;
