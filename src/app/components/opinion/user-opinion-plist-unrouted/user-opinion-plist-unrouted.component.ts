@@ -1,3 +1,4 @@
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, Input, OnInit } from '@angular/core';
@@ -23,7 +24,7 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
   @Input() id_stand: number = 0;
   @Input() id_usuario: number = 0;
-  cd: any;
+  
 
 
   page: IOpinionPage   | undefined;
@@ -44,7 +45,8 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
     private MessageService: MessageService,
     private DialogService: DialogService,
     private MatSnackBar: MatSnackBar,
-    private Router :Router
+    private Router :Router,
+    private ConfirmDialogModule: ConfirmDialogModule
   ) { }
 
   ngOnInit() {
@@ -120,8 +122,8 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
             });
             console.log(this.usuario?.id);
           },
-          error: (err: HttpErrorResponse) => {
-            this.status = err;
+          error: () => {
+         
             this.MatSnackBar.open('La opinión no se ha podido eliminar', 'Cerrar', {
               duration: 2000,
             });

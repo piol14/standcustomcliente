@@ -1,5 +1,5 @@
 import { SessionAjaxService } from './../../../service/session.ajax.service.service';
-import { ICategoria, ICategoriaPage, IStand, IUser } from './../../../model/model.interfaces';
+import { ICategoria, ICategoriaPage, IFavorito, IStand, IUser } from './../../../model/model.interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -16,6 +16,8 @@ import { UserStandFormUnroutedComponent } from '../user-stand-form-unrouted/user
 import {  MessageService } from 'primeng/api';
 
 import { ConfirmEventType } from 'primeng/api';
+import { FavoritoAjaxService } from 'src/app/service/favorito.ajax.service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-stand-plist-unrouted',
@@ -25,14 +27,15 @@ import { ConfirmEventType } from 'primeng/api';
 })
 export class UserStandPlistUnroutedComponent implements OnInit {
 
- 
+  @Input() id: number = 0;
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
   @Input() id_usuario: number = 0;
   @Input() id_categoria: number = 9;
+  @Input() id_stand: number = 0;
   categoria: ICategoria[] = [];
   stand: IStand[] = [];
   oPage: ICategoriaPage | undefined;
-  
+  favorito: boolean = false;
   orderField: string = "id";
   orderDirection: string = "asc";
   oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
@@ -51,15 +54,17 @@ export class UserStandPlistUnroutedComponent implements OnInit {
   idCategoriaFiltrada: number | null = null;
   filtrandoPorCategoria: boolean = false;
 
+
   constructor(
     private SessionAjaxService: SessionAjaxService,
     private oCategoriaAjaxService: CategoriaAjaxService,
+    private oFavoritoAjaxService: FavoritoAjaxService,
     private oStandAjaxService: StandAjaxService,
     public oDialogService: DialogService,
-    private oConfirmationService: ConfirmationService,
     private oMatSnackBar: MatSnackBar,
     public oDynamicDialogRef: DynamicDialogRef,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private router: Router 
   ) { }
 
 
@@ -234,7 +239,46 @@ export class UserStandPlistUnroutedComponent implements OnInit {
    
     }
   }
-}
+  postNuevoFavorito(id_stand:number): void {
+   if(this.favorito==false){
+      // Crear el usuario con el id correspondiente
+      const usuario: IUser = { id: this.id_usuario } as IUser;
+      // Crear el stand con el id correspondiente
+      const stand: IStand= { id: id_stand } as IStand;
+      // Crear el favorito con el usuario y el stand
+      const favorito: IFavorito = { id: this.id ,usuario: usuario, stand: stand };
+  
+      // Llamar al servicio para crear el nuevo favorito
+      this.oFavoritoAjaxService.newOne(favorito).subscribe({
+        next: () => {
+          this.oMatSnackBar.open('Stand marcado como favorito', 'Aceptar', { duration: 3000 });
+          this.favorito=true;
+        },
+        error: (error: HttpErrorResponse) => {
+          console.error('Error al marcar el stand como favorito:', error);
+          this.oMatSnackBar.open('Error al marcar el stand como favorito', 'Aceptar', { duration: 3000 });
+        }
+      });
+    }
+    else{
+      this.oFavoritoAjaxService.removeOne(this.id).subscribe({
+        next: () => {
+          this.oMatSnackBar.open('Stand eliminado de favoritos', 'Aceptar', { duration: 3000 });
+          this.favorito = false;
+        },
+        error: (error: HttpErrorResponse) => {
+          console.error('Error al eliminar el stand de favoritos:', error);
+          this.oMatSnackBar.open('Error al eliminar el stand de favoritos', 'Aceptar', { duration: 3000 });
+        }
+      });
+    }
+    }
+  }
+
+
+
+
+
 
 
 

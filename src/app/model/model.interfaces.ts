@@ -120,6 +120,7 @@ export interface ICategoria extends IEntity {
 export interface ICategoriaPage extends IPage<ICategoria> {}
 
 export interface IFavorito extends IEntity{
+  
   usuario: IUser;
   stand: IStand;
 }

@@ -23,6 +23,7 @@
           <button class="btn btn-primary mb-2" [routerLink]="['/user', 'stand', 'view', stand.id]">Ver Stand</button>
           
           <button *ngIf="(isUsuarioStand(stand) || isAdministrador())" (click)="borrarStand(stand.id)" type="button" class="btn btn-danger btn-lg mt-3 mb-3"><i class="fa-solid fa-trash"></i></button>  
+          <button *ngIf="(isUsuarioStand(stand) || isAdministrador())" (click)=" postNuevoFavorito(stand.id)" type="button" class="btn btn-warning btn-lg mt-3 mb-3"><i class="fa-solid fa-trash"></i></button>  
       </div>
     </div>
   </div>
