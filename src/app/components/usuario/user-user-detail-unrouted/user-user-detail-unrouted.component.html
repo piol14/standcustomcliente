@@ -1,0 +1,66 @@
+<div class="container mt-4">
+  <div *ngIf="status != null" class="d-flex justify-content-center my-3">
+    <div class="alert alert-danger" role="alert">
+      {{ status!.error.message }} - {{ status!.message }}
+    </div>
+  </div>
+
+  <div *ngIf="status == null" class="card">
+    <div class="card-header bg-primary text-white">
+      <h5 class="card-title">Mis Datos</h5>
+    </div>
+    <div class="card-body">
+     
+       
+      <div class="row mb-3">
+        <div class="col-sm-3">
+          <strong>Nombre:</strong>
+        </div>
+        <div class="col-sm-9">
+          {{ oUser.nombre }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3">
+          <strong>Teléfono:</strong>
+        </div>
+        <div class="col-sm-9">
+          {{ oUser.telefono }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3">
+          <strong>Email:</strong>
+        </div>
+        <div class="col-sm-9">
+          {{ oUser.email }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3">
+          <strong>Usuario:</strong>
+        </div>
+        <div class="col-sm-9">
+          {{ oUser.username }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3">
+          <strong>Favoritos:</strong>
+        </div>
+        <div class="col-sm-9">
+          {{ oUser.favoritos }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3">
+          <strong>Stands::</strong>
+        </div>
+        <div class="col-sm-9">
+          {{ oUser.stands }}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

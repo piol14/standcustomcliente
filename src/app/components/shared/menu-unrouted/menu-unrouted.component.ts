@@ -1,10 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { IUser, SessionEvent } from 'src/app/model/model.interfaces';
 import { SessionAjaxService } from 'src/app/service/session.ajax.service.service';
 import { UserAjaxService } from 'src/app/service/user.ajax.service.service';
+import { UserUserDetailUnroutedComponent } from '../../usuario/user-user-detail-unrouted/user-user-detail-unrouted.component';
 
 @Component({
   selector: 'app-menu-unrouted',
@@ -59,5 +60,21 @@ export class MenuUnroutedComponent implements OnInit {
         }
       }
     });
+  }
+  doSessionUserView($event: Event) {
+    if (this.oSessionUser) {
+      let ref: DynamicDialogRef | undefined;
+      ref = this.oDialogService.open(UserUserDetailUnroutedComponent, {
+        data: {
+          id: this.oSessionUser.id
+        },
+        header: "Perfil de usuario",
+        width: '40%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: false
+      });
+    }
+    return false;
   }
 }

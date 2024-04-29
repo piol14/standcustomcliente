@@ -88,6 +88,7 @@ export type formOperation = 'EDIT' | 'NEW';
     opiniones?:number;
     stands?:number;
     partidas?:number;
+    favoritos?:number;
   }
   export interface IUserPage extends IPage<IUser> {
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFavorito,  IFavoritoPage } from '../model/model.interfaces';
@@ -59,5 +59,13 @@ getFavoritoPageByUsuario(userId: number, page: number, size: number, sort: strin
 
   empty(): Observable<number> {
     return this.httpClient.delete<number>(`${this.apiUrl}/empty`);
+  }
+
+  verificarFavoritoRepetido(usuarioId: number, standId: number): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${this.apiUrl}/repetido/${usuarioId}/${standId}`);
+  }
+
+  obtenerFavoritoRepetidoId(usuarioId: number, standId: number): Observable<number> {
+    return this.httpClient.get<number>(`${this.apiUrl}/repetido/${usuarioId}/${standId}/id`);
   }
 }

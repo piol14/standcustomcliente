@@ -26,6 +26,8 @@ import { Router } from '@angular/router';
   providers: [  ConfirmationService]
 })
 export class UserStandPlistUnroutedComponent implements OnInit {
+  favoritos: { [key: number]: boolean } = {};
+
 
   @Input() id: number = 0;
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
@@ -76,8 +78,9 @@ export class UserStandPlistUnroutedComponent implements OnInit {
         this.getPage();
       }
     }
+    
   });
-  
+  this.actualizarFavoritosDesdeLocalStorage();
   this.getCategorias(); // Llama siempre a getCategorias() al inicializar el componente
 
   if (this.id_categoria > 0) {
@@ -109,6 +112,14 @@ export class UserStandPlistUnroutedComponent implements OnInit {
   isUsuarioStand(stand: IStand): boolean {
     return this.usuario !== null && stand.usuario.id === this.usuario.id;
    
+  }
+  private actualizarFavoritosDesdeLocalStorage(): void {
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith('favorito_')) {
+        const id_stand = Number(key.split('_')[1]);
+        this.favoritos[id_stand] = true;
+      }
+    });
   }
   isAdministrador(): boolean {
 
@@ -239,46 +250,66 @@ export class UserStandPlistUnroutedComponent implements OnInit {
    
     }
   }
-  postNuevoFavorito(id_stand:number): void {
-   if(this.favorito==false){
-      // Crear el usuario con el id correspondiente
-      const usuario: IUser = { id: this.id_usuario } as IUser;
-      // Crear el stand con el id correspondiente
-      const stand: IStand= { id: id_stand } as IStand;
-      // Crear el favorito con el usuario y el stand
-      const favorito: IFavorito = { id: this.id ,usuario: usuario, stand: stand };
+  postNuevoFavorito(id_stand: number): void {
+    // Actualizar el estado de los favoritos primero
+    this.favoritos[id_stand] = !this.favoritos[id_stand];
   
-      // Llamar al servicio para crear el nuevo favorito
-      this.oFavoritoAjaxService.newOne(favorito).subscribe({
-        next: () => {
-          this.oMatSnackBar.open('Stand marcado como favorito', 'Aceptar', { duration: 3000 });
-          this.favorito=true;
-        },
-        error: (error: HttpErrorResponse) => {
-          console.error('Error al marcar el stand como favorito:', error);
-          this.oMatSnackBar.open('Error al marcar el stand como favorito', 'Aceptar', { duration: 3000 });
+    this.oFavoritoAjaxService.verificarFavoritoRepetido(this.id_usuario, id_stand).subscribe({
+      next: (favorito: boolean) => {
+        if (favorito) {
+          this.oFavoritoAjaxService.obtenerFavoritoRepetidoId(this.id_usuario, id_stand).subscribe({
+            next: (favoritoId: number) => {
+              this.eliminarFavoritoRepetido(favoritoId);
+         
+            },
+            error: (error: HttpErrorResponse) => {
+              console.error('Error al obtener el ID del favorito repetido:', error);
+              this.oMatSnackBar.open('Error al obtener el ID del favorito repetido', 'Aceptar', { duration: 3000 });
+            }
+          });
+        } else {
+          this.crearNuevoFavorito(id_stand);
+        ;
         }
-      });
-    }
-    else{
-      this.oFavoritoAjaxService.removeOne(this.id).subscribe({
-        next: () => {
-          this.oMatSnackBar.open('Stand eliminado de favoritos', 'Aceptar', { duration: 3000 });
-          this.favorito = false;
-        },
-        error: (error: HttpErrorResponse) => {
-          console.error('Error al eliminar el stand de favoritos:', error);
-          this.oMatSnackBar.open('Error al eliminar el stand de favoritos', 'Aceptar', { duration: 3000 });
-        }
-      });
-    }
-    }
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error('Error al verificar el favorito repetido:', error);
+        this.oMatSnackBar.open('Error al verificar el favorito repetido', 'Aceptar', { duration: 3000 });
+      }
+    });
   }
+  
+  
+  private crearNuevoFavorito(id_stand: number): void {
+    const usuario: IUser = { id: this.id_usuario } as IUser;
+    const stand: IStand = { id: id_stand } as IStand;
+    const favorito: IFavorito = { usuario: usuario, stand: stand } as IFavorito;
+  
+    this.oFavoritoAjaxService.newOne(favorito).subscribe({
+      next: () => {
+        this.oMatSnackBar.open('Stand marcado como favorito', 'Aceptar', { duration: 3000 });
+        this.favoritos[id_stand] = true; // Actualiza el estado de favorito
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error('Error al marcar el stand como favorito:', error);
+        this.oMatSnackBar.open('Error al marcar el stand como favorito', 'Aceptar', { duration: 3000 });
+      }
+    });
+    
+  }
+  
+  private eliminarFavoritoRepetido(favoritoId: number): void {
+    this.oFavoritoAjaxService.removeOne(favoritoId).subscribe({
+      next: () => {
+        this.oMatSnackBar.open('Stand eliminado de favoritos', 'Aceptar', { duration: 3000 });
+        this.favoritos[this.id_stand] = false; // Actualiza el estado de favorito
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error('Error al eliminar el stand de favoritos:', error);
+        this.oMatSnackBar.open('Error al eliminar el stand de favoritos', 'Aceptar', { duration: 3000 });
+      }
 
-
-
-
-
-
-
-
+    });
+    
+  }
+}  

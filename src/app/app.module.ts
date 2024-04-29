@@ -122,6 +122,7 @@ import { FavoritoAjaxService } from './service/favorito.ajax.service.service';
 import { AdminFavoritoNewRoutedComponent } from './components/favoritos/admin-favorito-new-routed/admin-favorito-new-routed.component';
 import { AdminFavoritoFormUnroutedComponent } from './components/favoritos/admin-favorito-form-unrouted/admin-favorito-form-unrouted.component';
 import { AdminFavoritoEditRoutedComponent } from './components/favoritos/admin-favorito-edit-routed/admin-favorito-edit-routed.component';
+import { UserUserDetailUnroutedComponent } from './components/usuario/user-user-detail-unrouted/user-user-detail-unrouted.component';
 
 //--
 @NgModule({
@@ -203,7 +204,8 @@ import { AdminFavoritoEditRoutedComponent } from './components/favoritos/admin-f
    AdminFavoritoPlistRoutedComponent,
    AdminFavoritoNewRoutedComponent,
    AdminFavoritoFormUnroutedComponent,
-   AdminFavoritoEditRoutedComponent
+   AdminFavoritoEditRoutedComponent,
+   UserUserDetailUnroutedComponent
   ],
   imports: [
     
