@@ -107,7 +107,7 @@ export class AdminPartidaFormUnroutedComponent implements OnInit {
   
   this.oDynamicDialogRef.onClose.subscribe((oUser: IUser) => {
     if (oUser) {
-      this.oPartida.usuario = oUser;
+      
       this.partidaForm.controls['usuario'].patchValue({ id: oUser.id })
     }
   });

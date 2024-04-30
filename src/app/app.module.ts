@@ -123,6 +123,7 @@ import { AdminFavoritoNewRoutedComponent } from './components/favoritos/admin-fa
 import { AdminFavoritoFormUnroutedComponent } from './components/favoritos/admin-favorito-form-unrouted/admin-favorito-form-unrouted.component';
 import { AdminFavoritoEditRoutedComponent } from './components/favoritos/admin-favorito-edit-routed/admin-favorito-edit-routed.component';
 import { UserUserDetailUnroutedComponent } from './components/usuario/user-user-detail-unrouted/user-user-detail-unrouted.component';
+import { AdminFavoritoViewRoutedComponent } from './components/favoritos/admin-favorito-view-routed/admin-favorito-view-routed.component';
 
 //--
 @NgModule({
@@ -205,7 +206,8 @@ import { UserUserDetailUnroutedComponent } from './components/usuario/user-user-
    AdminFavoritoNewRoutedComponent,
    AdminFavoritoFormUnroutedComponent,
    AdminFavoritoEditRoutedComponent,
-   UserUserDetailUnroutedComponent
+   UserUserDetailUnroutedComponent,
+   AdminFavoritoViewRoutedComponent
   ],
   imports: [
     

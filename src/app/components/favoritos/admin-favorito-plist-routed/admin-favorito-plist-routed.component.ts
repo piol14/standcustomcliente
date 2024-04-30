@@ -13,7 +13,8 @@ import { FavoritoAjaxService } from 'src/app/service/favorito.ajax.service.servi
 
 })
 export class AdminFavoritoPlistRoutedComponent implements OnInit {
-
+  id_usuario: number=0 ;
+  id_stand: number = 0;
   bLoading = false;
   loadingProgress = 0;
   forceReload = new Subject<boolean>();
@@ -40,11 +41,11 @@ export class AdminFavoritoPlistRoutedComponent implements OnInit {
         clearInterval(intervalId);
         this.oFavoritoAjaxService.generateRandom(amount).subscribe({
           next: (oResponse: number) => {
-            this.MessageService.add({ severity: 'success', detail: 'Ahora hay ' + oResponse + ' categorias', life: 2000 });
+            this.MessageService.add({ severity: 'success', detail: 'Ahora hay ' + oResponse + ' favoritos', life: 2000 });
             this.bLoading = false;
           },
           error: (oError: HttpErrorResponse) => {
-            this.MessageService.add({ severity: 'error', detail: 'Error generando categorias: ' + oError.message, life: 2000 });
+            this.MessageService.add({ severity: 'error', detail: 'Error generando favoritos: ' + oError.message, life: 2000 });
             this.bLoading = false;
           }
         });
@@ -62,12 +63,12 @@ export class AdminFavoritoPlistRoutedComponent implements OnInit {
       accept: () => {
         this.oFavoritoAjaxService.empty().subscribe({
           next: (oResponse: number) => {
-            this.oMatSnackBar.open('Ahora hay   ' + oResponse + ' categorias', '', { duration: 2000 });
+            this.oMatSnackBar.open('Ahora hay   ' + oResponse + ' favoritos', '', { duration: 2000 });
             this.bLoading = false;
             this.forceReload.next(true);
           },
           error: (oError: HttpErrorResponse) => {
-            this.oMatSnackBar.open('Error vaciando las categorias: ' + oError.message, '', { duration: 2000 });
+            this.oMatSnackBar.open('Error vaciando los favoritos: ' + oError.message, '', { duration: 2000 });
             this.bLoading = false;
           },
         });

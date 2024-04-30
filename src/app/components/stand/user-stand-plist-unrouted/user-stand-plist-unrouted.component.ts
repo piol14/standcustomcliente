@@ -113,13 +113,21 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     return this.usuario !== null && stand.usuario.id === this.usuario.id;
    
   }
+  esFavorito(stand: IStand): boolean {
+    return stand.id in this.favoritos && this.favoritos[stand.id];
+  }
+  
   private actualizarFavoritosDesdeLocalStorage(): void {
-    Object.keys(localStorage).forEach(key => {
-      if (key.startsWith('favorito_')) {
-        const id_stand = Number(key.split('_')[1]);
+    // Recorrer todas las claves del almacenamiento local
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('favorito_')) {
+        // Obtener el id del stand desde la clave
+        const id_stand = Number(key.split('_')[6]);
+        // Marcar el stand como favorito en el componente
         this.favoritos[id_stand] = true;
       }
-    });
+    }
   }
   isAdministrador(): boolean {
 
@@ -255,29 +263,28 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     this.favoritos[id_stand] = !this.favoritos[id_stand];
   
     this.oFavoritoAjaxService.verificarFavoritoRepetido(this.id_usuario, id_stand).subscribe({
-      next: (favorito: boolean) => {
-        if (favorito) {
-          this.oFavoritoAjaxService.obtenerFavoritoRepetidoId(this.id_usuario, id_stand).subscribe({
-            next: (favoritoId: number) => {
-              this.eliminarFavoritoRepetido(favoritoId);
-         
-            },
-            error: (error: HttpErrorResponse) => {
-              console.error('Error al obtener el ID del favorito repetido:', error);
-              this.oMatSnackBar.open('Error al obtener el ID del favorito repetido', 'Aceptar', { duration: 3000 });
+        next: (favorito: boolean) => {
+            if (favorito) {
+                this.oFavoritoAjaxService.obtenerFavoritoRepetidoId(this.id_usuario, id_stand).subscribe({
+                    next: (favoritoId: number) => {
+                        this.eliminarFavoritoRepetido(favoritoId);
+                    },
+                    error: (error: HttpErrorResponse) => {
+                        console.error('Error al obtener el ID del favorito repetido:', error);
+                        this.oMatSnackBar.open('Error al obtener el ID del favorito repetido', 'Aceptar', { duration: 3000 });
+                    }
+                });
+            } else {
+                this.crearNuevoFavorito(id_stand);
             }
-          });
-        } else {
-          this.crearNuevoFavorito(id_stand);
-        ;
+        },
+        error: (error: HttpErrorResponse) => {
+            console.error('Error al verificar el favorito repetido:', error);
+            this.oMatSnackBar.open('Error al verificar el favorito repetido', 'Aceptar', { duration: 3000 });
         }
-      },
-      error: (error: HttpErrorResponse) => {
-        console.error('Error al verificar el favorito repetido:', error);
-        this.oMatSnackBar.open('Error al verificar el favorito repetido', 'Aceptar', { duration: 3000 });
-      }
     });
-  }
+}
+
   
   
   private crearNuevoFavorito(id_stand: number): void {

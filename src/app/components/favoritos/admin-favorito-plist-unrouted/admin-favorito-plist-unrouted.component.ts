@@ -4,7 +4,7 @@ import { ConfirmationService, ConfirmEventType } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
 import { Subject, debounceTime, switchMap, of } from 'rxjs';
-import { IFavorito, IFavoritoPage } from 'src/app/model/model.interfaces';
+import { IFavorito, IFavoritoPage, IStand, IUser } from 'src/app/model/model.interfaces';
 import { FavoritoAjaxService } from 'src/app/service/favorito.ajax.service.service';
 import { AdminFavoritoDetailUnroutedComponent } from '../admin-favorito-detail-unrouted/admin-favorito-detail-unrouted.component';
 
@@ -16,7 +16,8 @@ import { AdminFavoritoDetailUnroutedComponent } from '../admin-favorito-detail-u
 })
 export class AdminFavoritoPlistUnroutedComponent {
     @Input() forceReload: Subject<boolean> = new Subject<boolean>();
-
+    oStand : IStand | null = null;
+    oUsuario: IUser | null = null;
     oPage: IFavoritoPage | undefined;
     orderField: string = "id";
     orderDirection: string = "asc";
@@ -109,7 +110,7 @@ export class AdminFavoritoPlistUnroutedComponent {
             data: {
                 id: u.id
             },
-            header: 'Vista Categoria ', // Establece el encabezado directamente
+            header: 'Vista Favorito ', // Establece el encabezado directamente
             width: '50%',
             contentStyle: { overflow: 'auto' },
             baseZIndex: 10000,

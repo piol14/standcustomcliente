@@ -55,7 +55,7 @@ export interface IEntity {
   export interface IPartida extends IEntity{
    
     fecha: string;
-    usuario: IUser | null;
+   
   }
   export interface IPartidaPage extends IPage<IPartida> {
   }

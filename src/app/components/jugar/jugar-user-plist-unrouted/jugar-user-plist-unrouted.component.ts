@@ -231,7 +231,7 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
     const nuevaPartida: IPartida = {
       id: this.lastCreatedId, // Use the incremented ID
       fecha: "ola", // Replace with actual date
-      usuario: this.usuario
+    
     };
 
     // Call service to create the partida

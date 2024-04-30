@@ -1,3 +1,21 @@
+
+
+    <div *ngIf="id_usuario > 0 || id_stand > 0" class="mt-3">
+      <h3>
+        <span *ngIf="id_usuario > 0">
+          ({{ id_usuario }} - {{ oUsuario?.nombre }})
+        </span>
+        <span *ngIf="id_stand > 0">
+          ({{ id_stand }} - {{ oStand?.nombre }})
+        </span>
+        <a type="button" class="btn btn-primary" [routerLink]="['/admin','favorito','plist']">Reset filter</a>
+      </h3>
+    </div>
+
+    <ng-template #noFilter>
+         
+    </ng-template>
+
 <div class="container mt-4">
   <div *ngIf="oPage">
     <div class="table-responsive"> <!-- Agrega esta clase para hacer la tabla responsive en dispositivos móviles -->
@@ -5,7 +23,7 @@
         <thead>
           <tr>
             <th (click)="doOrder('id')">ID</th>
-            <th (click)="doOrder('nombre')">Nombre</th>
+            <th (click)="doOrder('usuario')">Usuario</th>
             <th (click)="doOrder('stands')">Stands</th> <!-- Corregí la ortografía --> 
             <th (click)="doOrder('acciones')">Acciones</th> <!-- Corregí la ortografía --> 
             
@@ -14,9 +32,17 @@
         <tbody>
           <tr *ngFor="let favorito of oPage.content">
             <td>{{ favorito.id }}</td>
-           
-            <td>{{ favorito.usuario.id }} {{ favorito.usuario.nombre }}</td>
-            <td> {{ favorito.stand.id }} {{ favorito.stand.nombre }}</td>
+           <td>
+            <a [routerLink]="['/admin','favorito','plist','byusuario',favorito.usuario.id]">({{favorito.usuario.id}})
+              {{favorito.usuario.nombre}}
+              </a>
+            </td>
+
+            <td>
+              <a [routerLink]="['/admin','favorito','plist','bystand',favorito.stand.id]">({{favorito.stand.id}})
+                {{favorito.stand.nombre}}
+              </a>
+            </td>
            <td>
               <button class="btn btn-primary" (click)="doView(favorito)"><i class="fa-solid fa-circle-info"></i></button>
               <button class="btn btn-primary" [routerLink]="['/admin','favorito','view',favorito.id]"><i class="fa-solid fa-eye"></i></button>
