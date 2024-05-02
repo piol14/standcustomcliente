@@ -3,6 +3,7 @@ import { Component, Input, OnInit, Optional } from '@angular/core';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { IStand } from 'src/app/model/model.interfaces';
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
+import { StandPrintAjaxService } from 'src/app/service/standPrint.ajax.service.service';
 
 @Component({
   selector: 'app-user-stand-detail-unrouted',
@@ -18,6 +19,7 @@ export class UserStandDetailUnroutedComponent implements OnInit {
 
   constructor(
     private oStandAjaxService: StandAjaxService,
+    private oStandPrintAjaxService: StandPrintAjaxService,
     @Optional() public ref:DynamicDialogRef,
     @Optional() public config:DynamicDialogConfig
   ) {     
@@ -45,5 +47,7 @@ export class UserStandDetailUnroutedComponent implements OnInit {
     })
 
   }
-
+  onPrintUser = (id_stand: number) => {
+    this.oStandPrintAjaxService.printStandStats(id_stand);
+  }
 }

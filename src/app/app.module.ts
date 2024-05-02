@@ -124,6 +124,7 @@ import { AdminFavoritoFormUnroutedComponent } from './components/favoritos/admin
 import { AdminFavoritoEditRoutedComponent } from './components/favoritos/admin-favorito-edit-routed/admin-favorito-edit-routed.component';
 import { UserUserDetailUnroutedComponent } from './components/usuario/user-user-detail-unrouted/user-user-detail-unrouted.component';
 import { AdminFavoritoViewRoutedComponent } from './components/favoritos/admin-favorito-view-routed/admin-favorito-view-routed.component';
+import { StandPrintAjaxService } from './service/standPrint.ajax.service.service';
 
 //--
 @NgModule({
@@ -250,6 +251,7 @@ import { AdminFavoritoViewRoutedComponent } from './components/favoritos/admin-f
   CategoriaAjaxService,
   FavoritoAjaxService,
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  StandPrintAjaxService,
 
   ],
   bootstrap: [AppComponent]
