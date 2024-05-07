@@ -28,12 +28,12 @@
         }
         
         .table th {
-            background-color: #662549;
+            background-color: #9550cf;
             color: #fff;
             cursor: pointer;
         }
         .table td {
-            background-color: #ecd4d4;
+            background-color: #e8e5fe;
         }
         .table th:hover {
             background-color: rgb(124, 49, 64);
