@@ -46,8 +46,8 @@
            <td>
               <button class="btn btn-primary" (click)="doView(favorito)"><i class="fa-solid fa-circle-info"></i></button>
               <button class="btn btn-primary" [routerLink]="['/admin','favorito','view',favorito.id]"><i class="fa-solid fa-eye"></i></button>
-              <button class="btn btn-danger" (click)="doRemove(favorito)"><i class="fa-solid fa-trash"></i></button>
-              <button class="btn btn-warning" [routerLink]="['/admin','favorito','edit',favorito.id]"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button class="btn btn-primary" (click)="doRemove(favorito)"><i class="fa-solid fa-trash"></i></button>
+              <button class="btn btn-primary" [routerLink]="['/admin','favorito','edit',favorito.id]"><i class="fa-solid fa-pen-to-square"></i></button>
             </td>
           </tr>
         </tbody>

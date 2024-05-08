@@ -1,5 +1,5 @@
 .navbar{
-    background-color: #2196f3;
+    background-color: #26105d;
     color: #fff;
     font-family: 'Roboto', sans-serif;
     font-size: 1.2em;
@@ -10,3 +10,17 @@
  
 
 }
+.nav-link{
+    color: #fff;
+   
+}
+.navbar-brand{
+    color: #fff;
+    
+}
+.navbar-nav .nav-item .nav-link.active {
+    color: #ad9f9f; /* Cambia el color a tu preferencia */
+    font-weight: bold; /* Cambia el estilo de fuente a tu preferencia */
+    /* Otros estilos que desees aplicar */
+  }
+  

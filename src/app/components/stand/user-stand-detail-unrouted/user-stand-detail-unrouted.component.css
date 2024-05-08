@@ -1,20 +1,15 @@
 .btn-primary {
-    background-color: #365486;
-    border-color: #365486;
+    background-color: #26105d;
+    border-color: #26105d;
 }
-.bg-primary{
-    background-color: #365486;
-    border-color: #365486;
 
-}
-#header{
-    background-color: #365486;
-    border-color: #365486;
- 
-}
+
 .card-body{
-    background-color: #F39F5A;
+    background-color: #DAD4EA;
 }
 .list-group-item{
-    background-color: #FDF0D1;
+    background-color: #dad4ea81;
+}
+.bg-primary{
+    background-color:#26105d ;
 }

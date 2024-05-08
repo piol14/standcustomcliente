@@ -1,12 +1,5 @@
 .btn-primary {
-    background-color: #365486;
-    border-color: #365486;
-}
-.btn-warning{
-    background-color: #FFA732;
-    border-color: #FFA732;
-}
-.btn-danger{
-    background-color: #EF4040;
-    border-color: #EF4040;
-}
+    background-color: #26105d;
+    border-color: #26105d;
+    border-radius: 5px;
+} 

@@ -5,3 +5,6 @@
 @import "primeng/resources/primeng.min.css";
 @import 'primeicons/primeicons.css';
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
+body {
+    background-color: #cac4e8; /* Cambia este valor al color de fondo que desees */
+}

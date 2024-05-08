@@ -47,8 +47,8 @@
             
               <button class="btn btn-primary" (click)="doView(opinion)"><i class="fa-solid fa-circle-info"></i></button>
               
-                <button class="btn btn-warning" [routerLink]="['/admin','opinion','edit',opinion.id]"><i class="fa-solid fa-pen-to-square"></i></button>
-                  <button class="btn btn-danger" (click)="doRemove(opinion)"><i class="fa-solid fa-trash"></i></button>
+                <button class="btn btn-primary" [routerLink]="['/admin','opinion','edit',opinion.id]"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="btn btn-primary" (click)="doRemove(opinion)"><i class="fa-solid fa-trash"></i></button>
             <!-- Agrega más acciones según sea necesario -->
           </td>
         </tr>

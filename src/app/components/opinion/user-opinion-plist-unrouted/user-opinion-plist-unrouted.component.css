@@ -34,7 +34,7 @@
 
 /* Estilos para el formulario de creación de opiniones */
 .crearopiniones {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -81,8 +81,8 @@
 }
 
 .card-header {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
+  background-color: #dbdae0;
+  border-bottom: 1px solid #d9d6eb;
   padding: 20px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
