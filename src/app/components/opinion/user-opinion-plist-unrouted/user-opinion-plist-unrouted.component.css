@@ -34,7 +34,7 @@
 
 /* Estilos para el formulario de creación de opiniones */
 .crearopiniones {
-  background-color: #ffffff;
+  background-color:#DAD4EA;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -52,13 +52,13 @@
 
 /* Estilos personalizados para el botón de enviar opinión */
 .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #26105d;
+    border-color: #26105d;
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: #26105d;
+  border-color: #26105d;
 }
 
 .btn-primary:focus {
@@ -102,15 +102,6 @@
 }
 
 /* Estilos personalizados para el botón de enviar opinión */
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
 
 .btn-primary:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);

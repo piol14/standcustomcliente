@@ -62,7 +62,7 @@ export class AdminDetallePartidaPlistRoutedComponent implements OnInit {
   doEmpty($event: Event) {
     this.oConfirmationService.confirm({
       target: $event.target as EventTarget,
-      message: 'Remove all detallePartidas?',
+      message: 'Borrar todos los detallePartidas?',
       icon: 'pi pi-exclamation-triangle',
       acceptLabel: 'Yes',
       rejectLabel: 'No',

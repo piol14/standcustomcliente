@@ -42,9 +42,10 @@
             routerLink="/admin/partida/plist" *ngIf="strUserName && oSessionUser?.role==false">Partida</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/detalle_partida')"
-            routerLink="/admin/detallePartida/plist" *ngIf="strUserName && oSessionUser?.role==false">Detalle Partida</a>
-        </li>
+          
+            <a class="nav-link" [class.active]="strUrl.startsWith('/admin/detallePartida')"
+              routerLink="/admin/detallePartida/plist" *ngIf="strUserName && oSessionUser?.role==false">Detalle Partida</a>
+          </li>
       </ul>
 
       <ul class="navbar-nav ms-auto">

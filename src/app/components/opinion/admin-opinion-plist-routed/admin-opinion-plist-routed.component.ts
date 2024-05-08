@@ -60,7 +60,7 @@ export class AdminOpinionPlistRoutedComponent implements OnInit {
   doEmpty($event: Event) {
     this.oConfirmationService.confirm({
       target: $event.target as EventTarget,
-      message: 'Remove all opinions?',
+      message: 'Borrar todas las opiniones?',
       icon: 'pi pi-exclamation-triangle',
       acceptLabel: 'Yes',
       rejectLabel: 'No',

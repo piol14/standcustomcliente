@@ -65,7 +65,7 @@ export class AdminStandPlistRoutedComponent implements OnInit {
   doEmpty($event: Event) {
     this.oConfirmationService.confirm({
       target: $event.target as EventTarget,
-      message: 'Remove all stands?',
+      message: 'Borrar todos los stands?',
       icon: 'pi pi-exclamation-triangle',
       acceptLabel: 'Yes',
       rejectLabel: 'No',

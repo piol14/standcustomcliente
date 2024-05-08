@@ -54,7 +54,7 @@ export class AdminPartidaPlistRoutedComponent implements OnInit {
   doEmpty($event: Event) {
     this.oConfirmationService.confirm({
       target: $event.target as EventTarget,
-      message: 'Remove all partidas?',
+      message: 'Borrar todas las partidas?',
       icon: 'pi pi-exclamation-triangle',
       acceptLabel: 'Yes',
       rejectLabel: 'No',

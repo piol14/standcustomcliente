@@ -55,7 +55,7 @@ export class AdminUsuarioPlistRoutedComponent implements OnInit {
   doEmpty($event: Event) {
     this.oConfirmationService.confirm({
       target: $event.target as EventTarget,
-      message: 'Remove all users?',
+      message: 'Borrar todos los usuarios?',
       icon: 'pi pi-exclamation-triangle',
       acceptLabel: 'Yes',
       rejectLabel: 'No',
