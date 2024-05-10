@@ -15,7 +15,6 @@
             <td>{{ partida.fecha }}</td>
             <td>
               <button class="btn btn-primary" (click)="doView(partida)"><i class="fa-solid fa-circle-info"></i></button>
-              <button class="btn btn-primary" [routerLink]="['/admin','partida','view',partida.id]"><i class="fa-solid fa-eye"></i></button>
               <button class="btn btn-primary" [routerLink]="['/admin','partida','edit',partida.id]"><i class="fa-solid fa-pen-to-square"></i></button>
               <button class="btn btn-primary" (click)="doRemove(partida)"><i class="fa-solid fa-trash"></i></button>
             </td>

@@ -203,8 +203,7 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
       this.oPaginatorState.page, 
       this.orderField, 
       this.orderDirection, 
-      this.id_usuario_plist, 
-      this.id_categoria
+      
     ).subscribe({
       next: (data: IStandPage) => {
         this.oStandPage = data;

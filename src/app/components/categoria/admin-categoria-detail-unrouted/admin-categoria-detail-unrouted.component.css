@@ -1,42 +1,100 @@
-/* Estilos para las tablas */
+
+.fa-solid {
+  color: #ffffff;
+}
+
+.fa-solid {
+  color: #ffffff;
+}
+
+.fa-solid {
+  color: #ffffff;
+}
+
+/* admin-opinion-plist-unrouted.component.css */
+
+.container {
+  margin-top: 4rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
 .table th {
-  background-color: #662549;; /* Púrpura */
-  color: #ecf0f1; /* Blanco */
+  background-color: #26105d;
+  color: #fff;
+  cursor: pointer;
 }
 
 .table td {
-  background-color: #ecd4d4; /* Azul */
-  color: #fff; /* Blanco */
-  border: 1px solid #ecd4d4; /* Azul más oscuro */
-  border-radius: 5px;
+  background-color: #dad4ea;
 }
 
-.custom-table {
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-  border: 2px solid #34495e; /* Gris azulado */
-  border-radius: 10px;
+.table th:hover {
+  background-color: #2b2964;
 }
 
-/* Estilos para el contenedor */
-.container {
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+.btn {
+  margin-right: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.alert {
+  margin-top: 1rem;
+}
+
+.p-confirmDialog {
+  width: 30vw;
+}
+
+.p-confirmDialog .p-dialog {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.p-confirmDialog .p-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: none;
+}
+
+.p-confirmDialog .p-dialog-header h5 {
+  margin: 0;
+}
+
+.p-confirmDialog .p-dialog-message {
   text-align: center;
 }
 
-/* Espaciado */
-.my-3 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+.p-confirmDialog .p-dialog-footer {
+  text-align: center;
 }
 
-/* Estilos para las alertas */
-.alert {
-  background-color: #c0392b; /* Rojo oscuro */
-  color: #fff; /* Blanco */
-  border: 1px solid #922b21; /* Rojo más oscuro */
-  border-radius: 5px;
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
+.p-button {
+  margin: 0 0.5rem;
+}
+
+
+
+.btn-primary {
+  background-color: #7e1f60;
+  border-color: #7e1f60;
 }

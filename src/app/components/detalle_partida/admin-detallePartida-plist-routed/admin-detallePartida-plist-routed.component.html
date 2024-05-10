@@ -19,6 +19,7 @@
       </div>
     </div>
   </div>
-  <app-admin-detallePartida-plist-unrouted [forceReload]="forceReload" *ngIf="!bLoading"></app-admin-detallePartida-plist-unrouted>
+  <app-admin-detallePartida-plist-unrouted [forceReload]="forceReload" *ngIf="!bLoading"  [id_usuario]="id_usuario"
+  [id_stand]="id_stand" [id_partida]="id_partida"></app-admin-detallePartida-plist-unrouted>
   <p-confirmPopup></p-confirmPopup>
 </div>

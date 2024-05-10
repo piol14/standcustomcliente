@@ -10,7 +10,12 @@ export class DetallePartidaAjaxService {
   private apiUrl: string = API_URL + '/detallePartida';
 
   constructor(private httpClient: HttpClient) {}
-
+  getDetallePartidaPageByStand(standId: number, page: number, size: number, sort: string, direction: string): Observable<IDetallePartidaPage> {
+    return this.httpClient.get<IDetallePartidaPage>(this.apiUrl + '/bystand/' + standId + '?size=' + size + '&page=' + page + '&sort=' + sort + ',' + direction);
+}
+getOpinionPageByUsuario(userId: number, page: number, size: number, sort: string, direction: string): Observable<IDetallePartidaPage> {
+    return this.httpClient.get<IDetallePartidaPage>(this.apiUrl + '/byusuario/' + userId + '?size=' + size + '&page=' + page + '&sort=' + sort + ',' + direction);
+}
   getOne(id: number): Observable<IDetallePartida> {
     return this.httpClient.get<IDetallePartida>(`${this.apiUrl}/${id}`);
   }

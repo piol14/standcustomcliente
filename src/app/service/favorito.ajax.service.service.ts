@@ -33,8 +33,8 @@ getFavoritoPageByUsuario(userId: number, page: number, size: number, sort: strin
           strUrlstand = "&stand=" + id_stand;
         }
 
-    const url = `${this.apiUrl}?size=${size}&page=${page}&sort=${orderField},${orderDirection}`;
-    return this.httpClient.get<IFavoritoPage>(url);
+        return this.httpClient.get<IFavoritoPage>(this.apiUrl + "?size=" + size + "&page=" + page + "&sort=" + orderField + "," + orderDirection + strUrlUser + strUrlstand );
+  
   }
 
   removeOne(id: number | undefined): Observable<number> {

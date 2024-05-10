@@ -1,28 +1,25 @@
+<h3 *ngIf="id_usuario > 0; else noFilter" class="my-3">
+  ({{ id_usuario }} - {{ oUsuario?.nombre }})
+  <a type="button" class="btn btn-primary ml-2" [routerLink]="['/admin', 'detallePartida', 'plist']">Resetear filtro</a>
+</h3>
+
+<h3 *ngIf="id_stand > 0; else noFilter" class="my-3">
+  ({{ id_stand }} - {{ oStand?.nombre }})
+  <a type="button" class="btn btn-primary ml-2" [routerLink]="['/admin', 'detallePartida', 'plist']">Resetear filtro</a>
+</h3>
+
+<h3 *ngIf="id_partida > 0; else noFilter" class="my-3">
+  ({{ id_partida }} )
+  <a type="button" class="btn btn-primary ml-2" [routerLink]="['/admin', 'detallePartida', 'plist']">Resetear filtro</a>
+</h3>
+
+<ng-template #noFilter>
+  <!-- Esto se mostrará si no hay filtro activo -->
+</ng-template>
+
 <div class="container mt-4">
   <div class="row justify-content-center">
-    <div class="col-md-auto">
-      <h3 *ngIf="id_usuario > 0; else noFilter" class="my-3">
-        ({{ id_usuario }} - {{ oUsuario?.nombre }})
-        <a type="button" class="btn btn-primary ml-2" [routerLink]="['/admin', 'detallePartida', 'plist']">Resetear filtro</a>
-      </h3>
-
-      <h3 *ngIf="id_stand > 0; else noFilter" class="my-3">
-        ({{ id_stand }} - {{ oStand?.nombre }})
-        <a type="button" class="btn btn-primary ml-2" [routerLink]="['/admin', 'detallePartida', 'plist']">Resetear filtro</a>
-      </h3>
-
-      <h3 *ngIf="id_partida > 0; else noFilter" class="my-3">
-        ({{ id_partida }} )
-        <a type="button" class="btn btn-primary ml-2" [routerLink]="['/admin', 'detallePartida', 'plist']">Resetear filtro</a>
-      </h3>
-      <ng-template #noFilter>
-        <!-- Esto se mostrará si no hay filtro activo -->
-      </ng-template>
-    </div>
-  </div>
-
-  <div *ngIf="oPage" class="row justify-content-center">
-    <div class="col-md-10">
+    <div *ngIf="oPage" class="col-md-10">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -37,31 +34,30 @@
           <tr *ngFor="let detallePartida of oPage.content">
             <td>{{ detallePartida.id }}</td>
             <td class="text-center">
-              <a [routerLink]="['/admin','detallePartida','plist','byusuario',detallePartida.usuario.id]">
+              <a [routerLink]="['/admin','detallePartida','plist','byusuario',detallePartida.usuario.id]" aria-label="Ver detalles del usuario">
                 ({{detallePartida.usuario.id}}) {{detallePartida.usuario.nombre}}
               </a>
             </td>
             <td class="text-center">
-              <a [routerLink]="['/admin','detallePartida','plist','bystand',detallePartida.stand.id]">
+              <a [routerLink]="['/admin','detallePartida','plist','bystand',detallePartida.stand.id]" aria-label="Ver detalles del stand">
                 ({{detallePartida.stand.id}}) {{detallePartida.stand.nombre}}
               </a>
             </td>
             <td class="text-center">
-              <a [routerLink]="['/admin','detallePartida','plist','bypartida',detallePartida.partida.id]">
+              <a [routerLink]="['/admin','detallePartida','plist','bypartida',detallePartida.partida.id]" aria-label="Ver detalles de la partida">
                 ({{detallePartida.partida.id}})
               </a>
             </td>
             <td>
-              <button class="btn btn-primary" (click)="doView(detallePartida)"><i class="fa-solid fa-circle-info"></i></button>
-              <button class="btn btn-primary" [routerLink]="['/admin','detallePartida','view',detallePartida.id]"><i class="fa-solid fa-eye"></i></button>
-              <button class="btn btn-primary" (click)="doRemove(detallePartida)"><i class="fa-solid fa-trash"></i></button>
-              <button class="btn btn-primary" [routerLink]="['/admin','detallePartida','edit',detallePartida.id]"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button class="btn btn-primary" (click)="doView(detallePartida)" aria-label="Ver"><i class="fa-solid fa-circle-info"></i></button>
+              <button class="btn btn-primary" (click)="doRemove(detallePartida)" aria-label="Eliminar"><i class="fa-solid fa-trash"></i></button>
+              <button class="btn btn-primary" [routerLink]="['/admin','detallePartida','edit',detallePartida.id]" aria-label="Editar"><i class="fa-solid fa-pen-to-square"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
       <div class="d-flex justify-content-center">
-        <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!"
+        <p-paginator (onPageChange)="onPageChang($event)" [first]="oPaginatorState.first || 0" [rows]="oPaginatorState.rows || 10"
           [totalRecords]="oPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
       </div>
     </div>
@@ -74,7 +70,7 @@
   </ng-template>
   <ng-template pTemplate="message">
     <div class="container d-flex align-items-center justify-content-center">
-   
+      <!-- Aquí puedes agregar cualquier mensaje adicional -->
     </div>
   </ng-template>
   <ng-template pTemplate="footer">

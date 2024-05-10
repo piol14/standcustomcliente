@@ -1,0 +1,49 @@
+/* admin-user-form.component.css */
+
+.container {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  .input-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .mat-form-field-infix {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Añade estilos para el botón de búsqueda */
+  .btn-search {
+    margin-left: 10px;
+  }
+  
+  /* Estilo para el botón de guardar */
+  .btn-save {
+    margin-top: 20px;
+  }
+  
+  /* Añade un estilo para el texto de usuario ID */
+  .user-id-text {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+.btn-primary {
+  background-color: #7e1f60;
+  border-color: #7e1f60;
+}

@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { FavoritoAjaxService } from 'src/app/service/favorito.ajax.service.service';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-admin-favorito-plist-routed',
   templateUrl: './admin-favorito-plist-routed.component.html',
@@ -20,13 +20,18 @@ export class AdminFavoritoPlistRoutedComponent implements OnInit {
   forceReload = new Subject<boolean>();
 
   constructor(
+    private ActivatedRoute: ActivatedRoute,
     private oFavoritoAjaxService: FavoritoAjaxService,
     private oMatSnackBar: MatSnackBar,
     private MessageService: MessageService,
     private oConfirmationService: ConfirmationService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.id_usuario = parseInt(this.ActivatedRoute.snapshot.paramMap.get("idusuario") ?? "0");
+    this.id_stand= parseInt(this.ActivatedRoute.snapshot.paramMap.get("idstand") ?? "0");
+  }
 
   doGenerateRandom(amount: number) {
     this.bLoading = true;

@@ -40,7 +40,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
   favorito: boolean = false;
   orderField: string = "id";
   orderDirection: string = "asc";
-  oPaginatorState: PaginatorState = { first: 0, rows: 10, page: 0, pageCount: 0 };
+  oPaginatorState: PaginatorState = { first: 0, rows: 12, page: 0, pageCount: 0 };
   status: HttpErrorResponse | null = null;
   oCategoriaToRemove: ICategoria | null = null;
   value: string = '';
@@ -80,12 +80,6 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     }
     
   });
-  this.actualizarFavoritosDesdeLocalStorage();
-  this.getCategorias(); // Llama siempre a getCategorias() al inicializar el componente
-
-  if (this.id_categoria > 0) {
-    this.getCategorias(); // Si id_categoria es mayor que 0, llama nuevamente a getCategorias()
-  }
 
 
  this.SessionAjaxService.getSessionUser()?.subscribe({
@@ -206,8 +200,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
       this.oPaginatorState.page, 
       this.orderField, 
       this.orderDirection, 
-      this.id_usuario, 
-      this.id_categoria
+      
     ).subscribe({
       next: (data: IStandPage) => {
         this.oStandPage = data;

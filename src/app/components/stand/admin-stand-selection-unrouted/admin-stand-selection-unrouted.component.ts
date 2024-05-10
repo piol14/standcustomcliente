@@ -39,7 +39,7 @@ export class AdminStandSelectionUnroutedComponent implements OnInit {
   
 
   getPage(): void {
-    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection, this.id_usuario, this.id_categoria).subscribe({
+    this.oStandAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.page, this.orderField, this.orderDirection).subscribe({
       next: (data: IStandPage) => {
         this.oPage = data;
         this.oPaginatorState.pageCount = data.totalPages;

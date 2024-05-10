@@ -13,8 +13,8 @@
           <th (click)="doOrder('username')">Usuario</th>
           <th (click)="doOrder('role')">Rol</th>
           <th (click)="doOrder('stands')">Stands</th>
-          <th (click)="doOrder('opinion')">Opiniones</th>
-          <th (click)="doOrder('partida')">Opiniones</th>
+          <th (click)="doOrder('opiniones')">Opiniones</th>
+          <th (click)="doOrder('favoritos')">Favoritos</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -39,11 +39,12 @@
               
                 <a [routerLink]="['/admin','partida','plist','byusuario',user.id]" *ngIf="user.partidas" >{{user.partidas}}</a>
                   <span *ngIf="user.partidas==0">0</span>
+                  <a [routerLink]="['/admin','favorito','plist','byusuario',user.id]" *ngIf="user.favoritos" >{{user.favoritos}}</a>
+                  <span *ngIf="user.partidas==0">0</span>
               </td>
               <td>
             <!-- Botones de acciones -->
             <button class="btn btn-primary" (click)="doView(user)"><i class="fa-solid fa-circle-info"></i></button>
-            <button class="btn btn-primary" [routerLink]="['/admin','usuario','view',user.id]"><i class="fa-solid fa-eye"></i></button>
             <button class="btn btn-primary" [routerLink]="['/admin','usuario','edit',user.id]"><i class="fa-solid fa-pen-to-square"></i></button>
             <button class="btn btn-primary" (click)="doRemove(user)"><i class="fa-solid fa-trash"></i></button>
           </td>
