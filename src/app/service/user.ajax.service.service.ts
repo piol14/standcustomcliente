@@ -64,5 +64,11 @@ export class UserAjaxService {
         return this.oHttpClient.delete<number>(this.sUrl + "/empty");
     }
 
+    signUp(nuevoUsuario: IUser): Observable<number> {
+        return this.oHttpClient.post<number>(this.sUrl + "/signup", nuevoUsuario);
+      }
+      confirmAccount(token: string, pass:string): Observable<string> {
 
+        return this.oHttpClient.get<string>(this.sUrl + "/confirm-account?token=" + token + "&password=" + pass);
+      }
 }
