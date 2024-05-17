@@ -1,0 +1,13 @@
+.btn-warning {
+    background-color: #7e1f60;
+    border-color: #7e1f60;
+    color: #ffffff;
+}
+.btn-primary {
+    background-color: #26105d;
+    color: #ffffff;
+}
+.btn-warning:active,
+.btn-primary:active {
+    background-color: inherit;
+}

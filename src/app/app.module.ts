@@ -125,6 +125,8 @@ import { AdminFavoritoEditRoutedComponent } from './components/favoritos/admin-f
 import { UserUserDetailUnroutedComponent } from './components/usuario/user-user-detail-unrouted/user-user-detail-unrouted.component';
 import { AdminFavoritoViewRoutedComponent } from './components/favoritos/admin-favorito-view-routed/admin-favorito-view-routed.component';
 import { StandPrintAjaxService } from './service/standPrint.ajax.service.service';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { SendEmailComponent } from './components/send-email/send-email.component';
 
 //--
 @NgModule({
@@ -208,7 +210,9 @@ import { StandPrintAjaxService } from './service/standPrint.ajax.service.service
    AdminFavoritoFormUnroutedComponent,
    AdminFavoritoEditRoutedComponent,
    UserUserDetailUnroutedComponent,
-   AdminFavoritoViewRoutedComponent
+   AdminFavoritoViewRoutedComponent,
+   ChangePasswordComponent,
+    SendEmailComponent,
   ],
   imports: [
     

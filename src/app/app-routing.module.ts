@@ -38,6 +38,8 @@ import { AdminFavoritoPlistRoutedComponent } from './components/favoritos/admin-
 import { AdminFavoritoNewRoutedComponent } from './components/favoritos/admin-favorito-new-routed/admin-favorito-new-routed.component';
 import { AdminFavoritoEditRoutedComponent } from './components/favoritos/admin-favorito-edit-routed/admin-favorito-edit-routed.component';
 import { AdminFavoritoViewRoutedComponent } from './components/favoritos/admin-favorito-view-routed/admin-favorito-view-routed.component';
+import { SendEmailComponent } from './components/send-email/send-email.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 export const routes: Routes = [
 
   { path: '', component: HomeRoutedComponent },
@@ -86,7 +88,9 @@ export const routes: Routes = [
     {path: 'admin/partida/view/:id', component: AdminPartidaViewRoutedComponent},
     { path: 'admin/partida/new', component: AdminPartidaNewRoutedComponent },
     { path: 'admin/partida/edit/:id', component: AdminPartidaEditRoutedComponent },
-   
+    { path: 'sendemail', component: SendEmailComponent },
+  { path: 'changepassword/:tokenPassword', component: ChangePasswordComponent },
+
 
     {path: 'admin/detallePartida/plist', component: AdminDetallePartidaPlistRoutedComponent},
     {path: 'admin/detallePartida/view/:id', component: AdminDetallePartidaViewRoutedComponent},

@@ -14,7 +14,9 @@ export class CategoriaAjaxService {
   getOne(id: number): Observable<ICategoria> {
     return this.httpClient.get<ICategoria>(`${this.apiUrl}/${id}`);
   }
-
+  findByNombre(nombre: string): Observable<ICategoria> {
+    return this.httpClient.get<ICategoria>(`${this.apiUrl}/nombre/${nombre}`);
+  }
   getPage(size: number | undefined, page: number | undefined, orderField: string, orderDirection: string): Observable<ICategoriaPage> {
     if (!size) size = 10;
     if (!page) page = 0;

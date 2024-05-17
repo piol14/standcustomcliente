@@ -1,0 +1,60 @@
+.container {
+  margin-top: 10px;
+}
+
+.login-form-container {
+  border: 2px solid #0E21A0; /* Borde azul */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 0px 10px #0E21A0; /* Sombra */
+  max-width: 400px; /* Ancho máximo del contenedor */
+}
+
+.full-width {
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: #7e1f60;
+  border-color: #7e1f60;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #5a1543;
+  border-color: #5a1543;
+}
+
+.card-title {
+  color: #7e1f60;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-error {
+  color: #ff0000;
+  font-size: 14px;
+}
+
+.card-body {
+  padding: 20px;
+}
+body {
+    background-color: #cac4e8; /* Cambia este valor al color de fondo que desees */
+}

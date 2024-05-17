@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Recuperar Contraseña</h2>
+          <p class="text-center">Ingrese su correo electrónico para recuperar su contraseña</p>
+          <form [formGroup]="sendEmailForm" (ngSubmit)="onSubmit()" class="d-flex flex-column align-items-center">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Correo Electrónico</mat-label>
+              <input matInput placeholder="Ingrese su correo electrónico" formControlName="mailTo">
+              <mat-error *ngIf="sendEmailForm.get('mailTo')?.hasError('required')">El correo electrónico es obligatorio</mat-error>
+              <mat-error *ngIf="sendEmailForm.get('mailTo')?.hasError('email')">Ingrese un correo electrónico válido</mat-error>
+            </mat-form-field>
+            <button type="submit" class="btn btn-primary btn-lg mt-3">Enviar correo</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
