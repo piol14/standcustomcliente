@@ -6,31 +6,16 @@
     <h1 class="text-center">STANDCUSTOM</h1>
     <p class="lead text-center">Aquí encontrarás una cantidad infinita de stands y una infinidad de posibilidades</p>
 
-    <!-- Filtros -->
-    <!-- <div *ngIf="id_usuario > 0 || id_stand > 0" class="mt-3">
-      <h3>
-        <span *ngIf="id_usuario > 0">
-          ({{ id_usuario }} - {{ oUsuario?.nombre }})
-        </span>
-        <span *ngIf="id_categoria > 0">
-          ({{ id_categoria }} - {{ oCategoria?.nombre }})
-        </span>
-        <a type="button" class="btn btn-primary" [routerLink]="['/home']">Reset filter</a>
-      </h3>
-    </div> -->
-
-    <!-- Botón para crear un nuevo stand -->
     <button type="button" class="btn btn-primary btn-lg mt-3 mb-3" (click)="postNuevoStand()">Crear stand</button>
 
     <div class="container mt-4">
       <div class="row">
-        <!-- Bucle para mostrar las tarjetas de los stands -->
-        <div *ngFor="let stand of oStandPage?.content" class="col-md-4 mb-4">
-          <div class="card position-relative"> <!-- Añadir la clase position-relative -->
-            <button *ngIf="favoritos[stand.id]" (click)="postNuevoFavorito(stand.id)" type="button" class="btn btn-warning btn-lg mt-3 mb-3 position-absolute top-0 end-0"> <!-- Añadir las clases position-absolute, top-0 y end-0 -->
+        <div *ngFor="let stand of oStandPage?.content" class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card position-relative">
+            <button *ngIf="favoritos[stand.id]" (click)="postNuevoFavorito(stand.id)" type="button" class="btn btn-warning btn-lg position-absolute top-0 end-0 mt-3 me-3">
               <i class="fa fa-star" aria-hidden="true"></i>
             </button>
-            <button *ngIf="!favoritos[stand.id]" (click)="postNuevoFavorito(stand.id)" type="button" class="btn btn-warning btn-lg mt-3 mb-3 position-absolute top-0 end-0"> <!-- Añadir las clases position-absolute, top-0 y end-0 -->
+            <button *ngIf="!favoritos[stand.id]" (click)="postNuevoFavorito(stand.id)" type="button" class="btn btn-warning btn-lg position-absolute top-0 end-0 mt-3 me-3">
               <i class="fa-regular fa-star"></i>
             </button>
             <img [src]="stand.imagen" class="card-img-top" alt="Imagen del stand">
@@ -38,7 +23,9 @@
               <h5 class="card-title">{{ stand.nombre }}</h5>
               <p class="card-text">Creador: {{ stand.usuario.username }}</p>
               <button class="btn btn-primary mb-2" [routerLink]="['/user', 'stand', 'view', stand.id]">Ver Stand</button>
-              <button *ngIf="(isUsuarioStand(stand) || isAdministrador())" (click)="borrarStand(stand.id)" type="button" class="btn btn-danger btn-lg mt-3 mb-3"><i class="fa-solid fa-trash"></i></button>
+              <button *ngIf="(isUsuarioStand(stand) || isAdministrador())" (click)="borrarStand(stand.id)" type="button" class="btn btn-danger btn-lg mt-3 mb-3">
+                <i class="fa-solid fa-trash"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -56,20 +43,20 @@
 
   <p-confirmDialog #cd [style]="{ 'width': '30vw', 'border-radius': '8px' }">
     <ng-template pTemplate="header">
-      <div class="p-d-flex p-ai-center">
-        <i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem; color: #f76c6c;"></i>
-        <h5 class="p-m-0">Confirmación de Eliminación</h5>
+      <div class="d-flex align-items-center">
+        <i class="pi pi-exclamation-triangle me-3" style="font-size: 2rem; color: #f76c6c;"></i>
+        <h5 class="m-0">Confirmación de Eliminación</h5>
       </div>
     </ng-template>
     <ng-template pTemplate="message">
-      <div class="p-text-center">
+      <div class="text-center">
         <p>¿Estás seguro de que quieres eliminar este stand?</p>
       </div>
     </ng-template>
     <ng-template pTemplate="footer">
-      <div class="p-d-flex p-jc-center">
-        <button pButton type="button" icon="pi pi-times" label="No" class="p-button-text p-button-danger p-mx-2" (click)="cd.reject()"></button>
-        <button pButton type="button" icon="pi pi-check" label="Sí" class="p-button-text p-button-success p-mx-2" (click)="cd.accept()"></button>
+      <div class="d-flex justify-content-center">
+        <button pButton type="button" icon="pi pi-times" label="No" class="p-button-text p-button-danger mx-2" (click)="cd.reject()"></button>
+        <button pButton type="button" icon="pi pi-check" label="Sí" class="p-button-text p-button-success mx-2" (click)="cd.accept()"></button>
       </div>
     </ng-template>
   </p-confirmDialog>

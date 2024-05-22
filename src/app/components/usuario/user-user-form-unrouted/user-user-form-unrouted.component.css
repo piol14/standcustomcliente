@@ -1,0 +1,29 @@
+.custom-border-color {
+    border-color: #5a82a4; /* Color azul personalizado para el borde */
+  }
+  
+  .custom-heading {
+    color: #5a82a4; /* Color azul personalizado para los encabezados */
+  }
+  
+  .custom-label {
+    color: #5a82a4; /* Color azul personalizado para las etiquetas */
+  }
+  
+  .custom-input {
+    border-color: #5a82a4; /* Color azul personalizado para los bordes de entrada */
+  }
+  
+  .custom-form {
+    background-color: #f8f9fa; /* Color de fondo gris claro para el formulario */
+  }
+  
+  .btn-custom-color {
+    background-color: #5a82a4; /* Color azul personalizado para el botón */
+    color: white;
+  }
+  
+  .btn-custom-color:hover {
+    background-color: #426e8c; /* Un tono más oscuro para el hover */
+  }
+  

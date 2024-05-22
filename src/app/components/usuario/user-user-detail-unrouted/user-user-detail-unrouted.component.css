@@ -1,0 +1,18 @@
+.custom-color {
+    background-color: #7e1f60; /* Color verde personalizado */
+    color: white;
+  }
+  .custom-border-color {
+    border-color: #7e1f60; /* Color verde personalizado para el borde */
+  }
+  .profile-header {
+    background-color:#7e1f60; /* Color verde personalizado */
+  }
+  .btn-custom-color {
+    background-color:#7e1f60; /* Color verde personalizado */
+    color: white;
+    border: none;
+  }
+  .btn-custom-color:hover {
+    background-color:#7e1f60; /* Un tono más oscuro para el hover */
+  }

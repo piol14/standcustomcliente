@@ -40,6 +40,8 @@ import { AdminFavoritoEditRoutedComponent } from './components/favoritos/admin-f
 import { AdminFavoritoViewRoutedComponent } from './components/favoritos/admin-favorito-view-routed/admin-favorito-view-routed.component';
 import { SendEmailComponent } from './components/send-email/send-email.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { UserUserPerfilUnroutedComponent } from './components/usuario/user-user-perfil-unrouted/user-user-perfil-unrouted.component';
+import { UserUserPerfilRoutedComponent } from './components/usuario/user-user-perfil-routed/user-user-perfil-routed.component';
 export const routes: Routes = [
 
   { path: '', component: HomeRoutedComponent },
@@ -83,6 +85,7 @@ export const routes: Routes = [
     { path: 'admin/opinion/plist/byusuario/:idusuario', component: AdminOpinionPlistRoutedComponent },
     { path: 'admin/opinion/plist/bystand/:idstand', component: AdminOpinionPlistRoutedComponent },
     { path: 'user/opinion/new', component: UserOpinionNewRoutedComponent },
+    { path: 'perfil', component: UserUserPerfilRoutedComponent },
     {path: 'admin/partida/plist', component: AdminPartidaPlistRoutedComponent},
     { path: 'admin/opinion/edit/:id', component: AdminOpinionEditRoutedComponent },
     {path: 'admin/partida/view/:id', component: AdminPartidaViewRoutedComponent},
@@ -91,7 +94,7 @@ export const routes: Routes = [
     { path: 'sendemail', component: SendEmailComponent },
   { path: 'changepassword/:tokenPassword', component: ChangePasswordComponent },
 
-
+  { path: 'changepassword/:tokenPassword', component: ChangePasswordComponent },
     {path: 'admin/detallePartida/plist', component: AdminDetallePartidaPlistRoutedComponent},
     {path: 'admin/detallePartida/view/:id', component: AdminDetallePartidaViewRoutedComponent},
     {path: 'admin/detallePartida/edit/:id', component: AdminDetallePartidaEditRoutedComponent},

@@ -16,7 +16,12 @@ export class MenuUnroutedComponent implements OnInit {
   strUserName: string = "";
   oSessionUser: IUser | null = null;
   strUrl: string = "";
-  
+  showMenu: boolean= false;
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+ 
+  }
   constructor(
     private oSessionService: SessionAjaxService,
     public oDialogService: DialogService,

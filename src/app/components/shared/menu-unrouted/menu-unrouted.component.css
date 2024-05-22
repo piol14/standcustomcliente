@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     background-color: #26105d;
     color: #fff;
     font-family: 'Roboto', sans-serif;
@@ -6,21 +6,28 @@
     font-weight: 300;
     margin-bottom: 0;
     padding: 0;
- 
- 
+}
 
-}
-.nav-link{
+.nav-link {
     color: #fff;
-   
 }
-.navbar-brand{
+
+.navbar-brand {
     color: #fff;
-    
 }
+
 .navbar-nav .nav-item .nav-link.active {
     color: #ad9f9f; /* Cambia el color a tu preferencia */
     font-weight: bold; /* Cambia el estilo de fuente a tu preferencia */
     /* Otros estilos que desees aplicar */
-  }
-  
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+#boton{
+    background-color: #26105d;
+}

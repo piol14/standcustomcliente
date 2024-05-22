@@ -1,66 +1,55 @@
+
 <div class="container mt-4">
   <div *ngIf="status != null" class="d-flex justify-content-center my-3">
     <div class="alert alert-danger" role="alert">
-      {{ status!.error.message }} - {{ status!.message }}
+      <strong>Error:</strong> {{ status!.error.message }} - {{ status!.message }}
     </div>
   </div>
 
-  <div *ngIf="status == null" class="card">
-    <div class="card-header bg-primary text-white">
-      <h5 class="card-title">Mis Datos</h5>
+  <div *ngIf="status == null" class="profile-container p-4 shadow-lg rounded custom-border-color">
+    <div class="profile-header text-center p-4 rounded-top">
+      <img src="https://via.placeholder.com/100" class="rounded-circle mb-3" alt="Avatar">
+      <h2>{{ oUser.nombre }}</h2>
+      <p class="lead">{{ oUser.username }}</p>
     </div>
-    <div class="card-body">
-     
-       
+
+    <div class="profile-details bg-light p-4 rounded-bottom">
       <div class="row mb-3">
-        <div class="col-sm-3">
-          <strong>Nombre:</strong>
-        </div>
-        <div class="col-sm-9">
-          {{ oUser.nombre }}
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-sm-3">
-          <strong>Teléfono:</strong>
+        <div class="col-sm-3 text-end">
+          <strong><i class="fas fa-phone-alt me-2"></i>Teléfono:</strong>
         </div>
         <div class="col-sm-9">
           {{ oUser.telefono }}
         </div>
       </div>
       <div class="row mb-3">
-        <div class="col-sm-3">
-          <strong>Email:</strong>
+        <div class="col-sm-3 text-end">
+          <strong><i class="fas fa-envelope me-2"></i>Email:</strong>
         </div>
         <div class="col-sm-9">
           {{ oUser.email }}
         </div>
       </div>
       <div class="row mb-3">
-        <div class="col-sm-3">
-          <strong>Usuario:</strong>
-        </div>
-        <div class="col-sm-9">
-          {{ oUser.username }}
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-sm-3">
-          <strong>Favoritos:</strong>
+        <div class="col-sm-3 text-end">
+          <strong><i class="fas fa-star me-2"></i>Favoritos:</strong>
         </div>
         <div class="col-sm-9">
           {{ oUser.favoritos }}
         </div>
       </div>
       <div class="row mb-3">
-        <div class="col-sm-3">
-          <strong>Stands::</strong>
+        <div class="col-sm-3 text-end">
+          <strong><i class="fas fa-dice-d20 me-2"></i>Stands:</strong>
         </div>
         <div class="col-sm-9">
           {{ oUser.stands }}
         </div>
       </div>
-      
+      <div class="text-center mt-4">
+        <button class="btn btn-primary mb-2" (click)="EditarPerfil()">Editar Perfil</button>
+      </div>
     </div>
   </div>
 </div>
+

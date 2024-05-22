@@ -1,21 +1,21 @@
 <div *ngIf="status == null">
   <div class="container mt-4">
     <div class="row justify-content-center">
-      <div class="col-lg-10"> <!-- Aumenté el tamaño del div a col-lg-10 -->
+      <div class="col-12 col-lg-10"> <!-- Aumenté el tamaño del div a col-lg-10 y agregué col-12 para pantallas pequeñas -->
         <!-- Detalles del Stand -->
         <div class="card shadow-lg">
           <!-- Encabezado -->
-          <div class="card-header bg-primary text-white"id="header">
+          <div class="card-header bg-primary text-white" id="header">
             <h5 class="mb-0">Detalles del Stand</h5>
           </div>
           <!-- Cuerpo -->
           <div class="card-body">
             <!-- Imagen y descripción -->
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-12 col-md-4 mb-3 mb-md-0"> <!-- mb-3 para margen inferior en pantallas pequeñas -->
                 <img class="img-fluid rounded" [src]="oStand.imagen" alt="Imagen del stand">
               </div>
-              <div class="col-md-8">
+              <div class="col-12 col-md-8">
                 <h5 class="card-title">{{ oStand.nombre }}</h5>
                 <p class="card-text">{{ oStand.descripcion }}</p>
                 <div class="mt-4">
@@ -28,15 +28,11 @@
                     <li class="list-group-item">Acierto: {{ oStand.acierto }}</li>
                   </ul>
                 </div>
-                <button class="btn btn-primary" (click)="onPrintUser(oStand.id)">PDF</button>
+                <button class="btn btn-primary mt-3" (click)="onPrintUser(oStand.id)">PDF</button> <!-- mt-3 para margen superior -->
               </div>
             </div>
           </div>
-         
-
-       
-
-      
+        </div>
       </div>
     </div>
   </div>

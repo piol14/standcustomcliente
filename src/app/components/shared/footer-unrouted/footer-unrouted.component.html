@@ -1,47 +1,42 @@
 <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="footer-content">
+          <h3>Haz que tu próximo evento sea inolvidable con nuestros stands personalizados</h3>
+          <p>Contáctanos ahora para transformar tu visión en realidad.</p>
+          <ul class="contact-info">
+            <li><i class="fas fa-phone"></i> Teléfono: 12345678</li>
+            <li><i class="fas fa-envelope"></i> Email: standcustom@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="navigation-links">
+          <h3>Mapa de Navegación</h3>
+          <ul>
+            <li><a href="/home" *ngIf="strUserName ">Home</a></li>
+            <li><a href="/admin/usuario/plist" *ngIf="strUserName && oSessionUser?.role==false">Usuarios</a></li>
+            <li><a href="/admin/categoria/plist" *ngIf="strUserName && oSessionUser?.role==false">Categoria</a></li>
+            <li><a href="/admin/stand/plist" *ngIf="strUserName && oSessionUser?.role==false">Stand</a></li>
+            <li><a href="/admin/opinion/plist" *ngIf="strUserName && oSessionUser?.role==false">Opiniones</a></li>
+            <li><a href="/admin/favorito/plist" *ngIf="strUserName && oSessionUser?.role==false">Favoritos</a></li>
+            <li><a href="/admin/partida/plist" *ngIf="strUserName && oSessionUser?.role==false"> Partida</a></li>
+            <li><a href="/admin/detallePartida/plist" *ngIf="strUserName && oSessionUser?.role==false"> Detalle Partida</a></li>
+            <li><a href="/login" *ngIf="!strUserName">Login</a></li>
+            <li><a href="/logout" *ngIf="strUserName">Cerrar Sesión</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
-          <div class="footer-content">
-            <h3>Haz que tu próximo evento sea inolvidable con nuestros stands personalizados</h3>
-            <p>Contáctanos ahora para transformar tu visión en realidad.</p>
-            <ul class="contact-info">
-              <li><i class="fas fa-phone"></i> Teléfono: 12345678</li>
-              <li><i class="fas fa-envelope"></i> Email: standcustom@gmail.com</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="navigation-links">
-            <h3>Mapa de Navegación</h3>
-            <ul>
-              <!-- Coloca aquí los enlaces de navegación -->
-              <li><a href="/home" *ngIf="strUserName ">Home</a></li>
-              <li><a href="/admin/usuario/plist" *ngIf="strUserName && oSessionUser?.role==false">Usuarios</a></li>
-              <li><a href="/admin/categoria/plist" *ngIf="strUserName && oSessionUser?.role==false">Categoria</a></li>
-                <li><a href="/admin/stand/plist" *ngIf="strUserName && oSessionUser?.role==false">Stand</a></li>
-                <li><a href="/admin/opinion/plist" *ngIf="strUserName && oSessionUser?.role==false">Opiniones</a></li>
-                <li><a href="/admin/favorito/plist" *ngIf="strUserName && oSessionUser?.role==false">Favoritos</a></li>
-                <li><a href="/admin/partida/plist" *ngIf="strUserName && oSessionUser?.role==false"> Partida</a></li>
-                <li><a href="/admin/detallePartida/plist" *ngIf="strUserName && oSessionUser?.role==false"> Detalle Partida</a></li>
-              <li><a href="/login" *ngIf="!strUserName">Login</a></li>
-
-              <li><a href="/logout" *ngIf="strUserName">Cerrar Sesión</a></li>
-            
-              <!-- Agrega los demás enlaces según sea necesario -->
-            </ul>
-          </div>
+        <div class="col-md-12">
+          <p>&copy; 2024 - StandCustom. Todos los derechos reservados.</p>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <p>&copy; 2024 - StandCustom. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
+  </div>
+</footer>

@@ -1,8 +1,10 @@
+import { SessionAjaxService } from 'src/app/service/session.ajax.service.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit, Optional } from '@angular/core';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
 import { IUser } from 'src/app/model/model.interfaces';
 import { UserAjaxService } from 'src/app/service/user.ajax.service.service';
+import { UserUserFormUnroutedComponent } from '../user-user-form-unrouted/user-user-form-unrouted.component';
 
 @Component({
   selector: 'app-user-user-detail-unrouted',
@@ -14,8 +16,10 @@ export class UserUserDetailUnroutedComponent implements OnInit {
 
   oUser: IUser = {} as IUser;
   status: HttpErrorResponse | null = null;
-
+  @Input() id_usuario: number = 0;
   constructor(
+    private SessionAjaxService: SessionAjaxService,
+    private DialogService: DialogService,
     private oUserAjaxService: UserAjaxService,
     @Optional() public ref:DynamicDialogRef,
     @Optional() public config:DynamicDialogConfig
@@ -44,5 +48,23 @@ export class UserUserDetailUnroutedComponent implements OnInit {
     })
 
   }
+  EditarPerfil(): void {
+    if (this.SessionAjaxService.isSessionActive()) {
+      this.ref = this.DialogService.open(UserUserFormUnroutedComponent, {
+        data: {
+          id: this.id_usuario  // Pasa el ID del usuario a editar
+        },
+        header: 'Editar perfil',
+        width: '80%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: false,
+      });
+    }
+    
+ 
+  }
+  }
+  
+  
 
-}

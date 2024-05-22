@@ -1,62 +1,50 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="/home">StandCustom</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button (click)="toggleMenu()" #menuButton class="text-white focus:outline-none d-block d-lg-none" id="boton">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div [ngClass]="{'collapse': !showMenu, 'navbar-collapse': true}" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
         <!-- Opciones del menú sin considerar la sesión del usuario -->
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="strUrl=='/home'||strUrl=='/'" aria-current="page"
-            routerLink="/home">Home</a>
+        <li class="nav-item" *ngIf="strUserName">
+          <a class="nav-link" (click)="showMenu = false" [class.active]="strUrl=='/home'||strUrl=='/'" aria-current="page" routerLink="/home">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="strUrl.startsWith('/jugar')"
-            routerLink="/jugar" *ngIf="strUserName && oSessionUser?.role==false">Jugar</a>
+        <li class="nav-item" *ngIf="strUserName && oSessionUser?.role === false">
+          <a class="nav-link" [class.active]="strUrl.startsWith('/jugar')" routerLink="/jugar">Jugar</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/usuario')"
-            routerLink="/admin/usuario/plist" *ngIf="strUserName && oSessionUser?.role==false">Usuarios</a>
+        <li class="nav-item" *ngIf="strUserName && oSessionUser?.role === false">
+          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/usuario')" routerLink="/admin/usuario/plist">Usuarios</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/categoria')"
-            routerLink="/admin/categoria/plist" *ngIf="strUserName && oSessionUser?.role==false">Categoría</a>
+        <li class="nav-item" *ngIf="strUserName && oSessionUser?.role === false">
+          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/categoria')" routerLink="/admin/categoria/plist">Categoría</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/stand')"
-            routerLink="/admin/stand/plist" *ngIf="strUserName && oSessionUser?.role==false">Stand</a>
+        <li class="nav-item" *ngIf="strUserName && oSessionUser?.role === false">
+          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/stand')" routerLink="/admin/stand/plist">Stand</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/opinion')"
-            routerLink="/admin/opinion/plist" *ngIf="strUserName && oSessionUser?.role==false">Opiniones</a>
+        <li class="nav-item" *ngIf="strUserName && oSessionUser?.role === false">
+          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/opinion')" routerLink="/admin/opinion/plist">Opiniones</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/favorito')"
-            routerLink="/admin/favorito/plist" *ngIf="strUserName && oSessionUser?.role==false">Favoritos</a>
+        <li class="nav-item" *ngIf="strUserName && oSessionUser?.role === false">
+          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/favorito')" routerLink="/admin/favorito/plist">Favoritos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/partida')"
-            routerLink="/admin/partida/plist" *ngIf="strUserName && oSessionUser?.role==false">Partida</a>
+        <li class="nav-item" *ngIf="strUserName && oSessionUser?.role === false">
+          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/partida')" routerLink="/admin/partida/plist">Partida</a>
         </li>
-        <li class="nav-item">
-          
-            <a class="nav-link" [class.active]="strUrl.startsWith('/admin/detallePartida')"
-              routerLink="/admin/detallePartida/plist" *ngIf="strUserName && oSessionUser?.role==false">Detalle Partida</a>
-          </li>
+        <li class="nav-item" *ngIf="strUserName && oSessionUser?.role === false">
+          <a class="nav-link" [class.active]="strUrl.startsWith('/admin/detallePartida')" routerLink="/admin/detallePartida/plist">Detalle Partida</a>
+        </li>
       </ul>
 
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" (click)="doSessionUserView($event)"  >{{strUserName}}</a>
+        <li class="nav-item" *ngIf="strUserName">
+          <a class="nav-link" [routerLink]="['/perfil']">{{strUserName}}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login" *ngIf="!strUserName">Iniciar Sesión</a>
+        <li class="nav-item" *ngIf="!strUserName">
+          <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/logout" *ngIf="strUserName">Cerrar Sesión</a>
+        <li class="nav-item" *ngIf="strUserName">
+          <a class="nav-link" routerLink="/logout">Cerrar Sesión</a>
         </li>
       </ul>
     </div>

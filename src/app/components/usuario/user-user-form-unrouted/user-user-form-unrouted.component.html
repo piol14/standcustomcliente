@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <div *ngIf="status != null" class="d-flex justify-content-center my-3">
+    <div class="alert alert-danger" role="alert">
+      <strong>Error:</strong> {{ status!.error.message }} - {{ status!.message }}
+    </div>
+  </div>
+
+  <div *ngIf="status == null" class="profile-container p-4 shadow-lg rounded custom-border-color">
+    <div class="col-12 text-center">
+      <h2 class="custom-heading">Formulario de Usuario</h2>  
+      <div class="d-flex justify-content-center my-4">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="custom-form">
+          <div class="mb-3">
+            <label for="nombre" class="form-label custom-label">Nombre:</label>
+            <input type="text" class="form-control custom-input" id="nombre" formControlName="nombre" placeholder="Nombre" required>
+            <div *ngIf="hasError('nombre', 'required')" class="invalid-feedback">Nombre es obligatorio</div>
+            <div *ngIf="hasError('nombre', 'minlength')" class="invalid-feedback">El nombre debe tener al menos 3 caracteres</div>
+            <div *ngIf="hasError('nombre', 'maxlength')" class="invalid-feedback">El nombre no puede tener más de 255 caracteres</div>
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label custom-label">Teléfono:</label>
+            <input type="text" class="form-control custom-input" id="telefono" formControlName="telefono" placeholder="Teléfono" required>
+            <div *ngIf="hasError('telefono', 'required')" class="invalid-feedback">Teléfono es obligatorio</div>
+            <div *ngIf="hasError('telefono', 'minlength')" class="invalid-feedback">El teléfono debe tener al menos 3 caracteres</div>
+            <div *ngIf="hasError('telefono', 'maxlength')" class="invalid-feedback">El teléfono no puede tener más de 255 caracteres</div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label custom-label">Email:</label>
+            <input type="email" class="form-control custom-input" id="email" formControlName="email" placeholder="Email" required>
+            <div *ngIf="hasError('email', 'required')" class="invalid-feedback">Email es obligatorio</div>
+            <div *ngIf="hasError('email', 'email')" class="invalid-feedback">El formato del email no es válido</div>
+          </div>
+          <div class="mb-3">
+            <label for="username" class="form-label custom-label">Username:</label>
+            <input type="text" class="form-control custom-input" id="username" formControlName="username" placeholder="Username" required>
+            <div *ngIf="hasError('username', 'required')" class="invalid-feedback">Username es obligatorio</div>
+            <div *ngIf="hasError('username', 'minlength')" class="invalid-feedback">El username debe tener al menos 6 caracteres</div>
+            <div *ngIf="hasError('username', 'maxlength')" class="invalid-feedback">El username no puede tener más de 15 caracteres</div>
+            <div *ngIf="hasError('username', 'pattern')" class="invalid-feedback">Caracteres no permitidos en el username</div>
+          </div>
+         
+          <div class="text-center mt-5">
+            <button type="submit" class="btn btn-custom-color" (click)="onSubmit()" [disabled]="!userForm.valid">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

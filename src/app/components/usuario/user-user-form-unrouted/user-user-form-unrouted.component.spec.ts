@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { UserStandNewRoutedComponent } from './user-stand-new-routed.component';
+import { UserUserFormUnroutedComponent } from './user-user-form-unrouted.component';
 
-describe('UserStandNewRoutedComponent', () => {
-  let component: UserStandNewRoutedComponent;
-  let fixture: ComponentFixture<UserStandNewRoutedComponent>;
+describe('UserUserFormUnroutedComponent', () => {
+  let component: UserUserFormUnroutedComponent;
+  let fixture: ComponentFixture<UserUserFormUnroutedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserStandNewRoutedComponent ]
+      declarations: [ UserUserFormUnroutedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserStandNewRoutedComponent);
+    fixture = TestBed.createComponent(UserUserFormUnroutedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

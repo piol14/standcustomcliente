@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-user-user-perfil-unrouted',
-  templateUrl: './user-user-perfil-unrouted.component.html',
-  styleUrls: ['./user-user-perfil-unrouted.component.css']
+  selector: 'app-admin-usuario-perfil-routed',
+  templateUrl: './user-user-perfil-routed.component.html',
+  styleUrls: ['./user-user-perfil-routed.component.css']
 })
-export class UserUserPerfilUnroutedComponent implements OnInit {
+export class UserUserPerfilRoutedComponent implements OnInit {
 
   id: number = 1;
 
@@ -18,7 +18,4 @@ export class UserUserPerfilUnroutedComponent implements OnInit {
 
   ngOnInit() {
   }
-
-
-
 }
