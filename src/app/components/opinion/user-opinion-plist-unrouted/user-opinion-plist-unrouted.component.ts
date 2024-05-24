@@ -17,7 +17,7 @@ import {  MessageService } from 'primeng/api';
   selector: 'app-user-opinion-plist-unrouted',
   templateUrl: './user-opinion-plist-unrouted.component.html',
   styleUrls: ['./user-opinion-plist-unrouted.component.css'],
-  providers: [ MessageService, ConfirmationService] // Add the providers to the component
+  providers: [ MessageService, ConfirmationService]
 })
 export class UserOpinionPlistUnroutedComponent implements OnInit {
 
@@ -131,7 +131,7 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
         });
       },
       reject: () => {
-        // Lógica para manejar si el usuario rechaza la eliminación
+        
         console.log('La eliminación de la opinión ha sido cancelada');
       }
     });

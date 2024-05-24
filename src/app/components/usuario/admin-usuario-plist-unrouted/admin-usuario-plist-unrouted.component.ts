@@ -1,4 +1,3 @@
-// admin-user-plist-unrouted.component.ts
 
 import { Component, Input, OnInit } from '@angular/core';
 import { ConfirmationService, ConfirmEventType } from 'primeng/api';
@@ -88,7 +87,7 @@ export class AdminUsuarioPlistUnroutedComponent implements OnInit {
         data: {
             id: u.id
         },
-        header: 'Vista Usuario', // Establece el encabezado directamente
+        header: 'Vista Usuario', 
         width: '50%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
@@ -146,9 +145,9 @@ export class AdminUsuarioPlistUnroutedComponent implements OnInit {
 
 private showSnackBar(message: string) {
     this.snackBar.open(message, 'Cerrar', {
-        duration: 3000, // Duración en milisegundos
-        horizontalPosition: 'center', // Posición horizontal del Snackbar
-        verticalPosition: 'bottom' // Posición vertical del Snackbar
+        duration: 3000, 
+        horizontalPosition: 'center', 
+        verticalPosition: 'bottom' 
     });
 }
 }

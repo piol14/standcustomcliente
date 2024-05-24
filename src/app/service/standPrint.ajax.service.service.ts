@@ -12,7 +12,7 @@ export class StandPrintAjaxService {
     printStandStats(standId: number): void {
         this.standAjaxService.getOne(standId).subscribe({
             next: (oStandToPrint: IStand) => {
-                // Obtener los valores de cada estadística del stand
+                
                 const power = this.mapLetterToNumber(oStandToPrint.poder);
                 const speed = this.mapLetterToNumber(oStandToPrint.velocidad);
                 const range = this.mapLetterToNumber(oStandToPrint.alcance);
@@ -20,34 +20,34 @@ export class StandPrintAjaxService {
                 const precision = this.mapLetterToNumber(oStandToPrint.acierto);
                 const potential = this.mapLetterToNumber(oStandToPrint.desarollo);
     
-                // Create a canvas element to draw the radar chart
+               
                 const canvas = document.createElement('canvas');
                 canvas.width = 300;
                 canvas.height = 300;
                 const ctx = canvas.getContext('2d');
     
-                if (ctx) { // Verificar si ctx no es nulo
-                    // Draw the radar chart
+                if (ctx) { 
+                   
                     this.drawRadarChart(ctx, power, speed, range, durability, precision, potential);
     
-                    // Convert the canvas to a base64 encoded image
+                  
                     const imageData = canvas.toDataURL();
     
-                    // Create a new jsPDF instance
+                 
                     const doc = new jsPDF();
     
-                    // Add the image to the PDF with adjusted size and position
+                 
                     doc.addImage(imageData, 'PNG', 10, 10, 180, 180);
     
-                    // Add labels for each statistic
+                 
                     this.addStatsLabels(doc, power, speed, range, durability, precision, potential);
     
-                    // Add stand information
+                  
                     doc.text(`Stand: ${oStandToPrint.nombre}`, 10, 200);
                     doc.text(`User: ${oStandToPrint.usuario.username}`, 10, 210);
                     doc.text(`Description: ${oStandToPrint.descripcion}`, 10, 220);
     
-                    doc.save('stand_stats.pdf'); // Save the PDF
+                    doc.save('stand_stats.pdf');
                 } else {
                     console.error('Canvas context is null');
                 }
@@ -69,9 +69,9 @@ export class StandPrintAjaxService {
             const y = centerY + radius * Math.sin(angle * i);
             const label = labels[i] + ': ' + stats[i];
             
-            // Calcular el desplazamiento horizontal y vertical para centrar el texto justo arriba del vértice
+
             const xOffset = doc.getStringUnitWidth(label) / 2;
-            const yOffset = 10; // Ajuste vertical para posicionar el texto justo arriba del vértice
+            const yOffset = 10; 
             
             doc.text(label, x - xOffset, y - radius - yOffset);
         }
@@ -93,7 +93,7 @@ export class StandPrintAjaxService {
             case 'E':
                 return 0;
             default:
-                return 0; // Otra letra desconocida, se asume el valor más bajo
+                return 0; 
         }
     }
     
@@ -127,7 +127,7 @@ export class StandPrintAjaxService {
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         ctx.lineTo(x, y);
-        ctx.strokeStyle = '#f00'; // You can change the color based on the value if needed
+        ctx.strokeStyle = '#f00'; 
         ctx.stroke();
     
         ctx.fillStyle = '#f00';

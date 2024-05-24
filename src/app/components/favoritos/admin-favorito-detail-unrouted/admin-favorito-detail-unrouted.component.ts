@@ -3,7 +3,7 @@ import { Component, Input, OnInit, Optional } from '@angular/core';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { IFavorito } from 'src/app/model/model.interfaces';
 
-import { FavoritoAjaxService } from 'src/app/service/favorito.ajax.service.service'; // Corregido el import
+import { FavoritoAjaxService } from 'src/app/service/favorito.ajax.service.service';
 
 @Component({
   selector: 'app-admin-favorito-detail-unrouted',
@@ -16,7 +16,7 @@ export class AdminFavoritoDetailUnroutedComponent implements OnInit {
   oFavorito: IFavorito = {} as IFavorito;
   status: HttpErrorResponse | null = null;
   constructor(
-    private oFavoritoAjaxService: FavoritoAjaxService, // Corregido el servicio inyectado
+    private oFavoritoAjaxService: FavoritoAjaxService, 
     @Optional() public ref:DynamicDialogRef,
     @Optional() public config:DynamicDialogConfig
   ) {     

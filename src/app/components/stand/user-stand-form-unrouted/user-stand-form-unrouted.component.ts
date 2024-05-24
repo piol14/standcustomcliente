@@ -8,7 +8,7 @@ import { DynamicDialogRef, DialogService, DynamicDialogConfig } from 'primeng/dy
 import { ICategoria, IStand, IUser, formOperation } from 'src/app/model/model.interfaces';
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
 import { MediaService } from 'src/app/service/media.service';
-import { MessageService } from 'primeng/api'; // Import the MessageService
+import { MessageService } from 'primeng/api';
 import { CategoriaAjaxService } from 'src/app/service/categoria.ajax.service.service';
 
 @Component({
@@ -40,7 +40,7 @@ export class UserStandFormUnroutedComponent implements OnInit {
     public oDynamicDialogConfig: DynamicDialogConfig,
     private messageService: MessageService,
     private oUserAjaxService: UserAjaxService,
-    private categoriaAjaxService: CategoriaAjaxService, // Inject the CategoriaAjaxService
+    private categoriaAjaxService: CategoriaAjaxService, 
     public oDynamicDialogRef: DynamicDialogRef,
   ) {
     this.initializeForm(this.oStand);
@@ -87,16 +87,16 @@ export class UserStandFormUnroutedComponent implements OnInit {
   onSubmit() {
     if (this.standForm.valid) {
       const stand = this.standForm.value;
-      const usuarioId = this.usuario?.id; // Obtener solo el ID del usuario
-      stand.usuario = { id: usuarioId }; // Crear un objeto con solo el ID del usuario
+      const usuarioId = this.usuario?.id; 
+      stand.usuario = { id: usuarioId };
       
-      // Buscar la categoría por nombre antes de enviar el formulario
-      const nombreCategoria = 'Custom'; // Nombre de la categoría a buscar
+      
+      const nombreCategoria = 'Custom'; 
       this.categoriaAjaxService.findByNombre(nombreCategoria).subscribe({
         next: (categoria: ICategoria) => {
           if (categoria) {
-            stand.categoria = { id: categoria.id }; // Asignar el ID de la categoría encontrada
-            // Use 'stand' object instead of 'this.standForm.value'
+            stand.categoria = { id: categoria.id }; 
+           
             this.standService.newOne(stand).subscribe({
               next: (data: IStand) => {
                 this.oStand = data;
@@ -129,7 +129,7 @@ export class UserStandFormUnroutedComponent implements OnInit {
       formData.append("file", file);
       this.MediaService.uploadFile(formData).subscribe({
         next: (response) => {
-          this.selectedImageUrl = response.url; // Asignar la URL del archivo seleccionado
+          this.selectedImageUrl = response.url; 
           this.oStand.imagen = response.url;
           this.standForm.controls['imagen'].patchValue(response.url);
         },

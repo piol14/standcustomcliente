@@ -33,7 +33,7 @@ export class SignUpComponent implements OnInit {
       telefono: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern('^[0-9]+$')]],
       direccion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15), Validators.pattern('^[a-zA-Z0-9]+$')]],
-      password: ['', [Validators.required, Validators.minLength(6)]] // Agrega validación para la contraseña
+      password: ['', [Validators.required, Validators.minLength(6)]] 
     });
   }
 
@@ -43,8 +43,8 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     console.log("Funcionas");
     if (this.registerForm.valid) {
-      const formData = { ...this.registerForm.value }; // Clonamos el objeto para no modificar el original
-      formData.password = this.cryptoService.getSHA256(formData.password); // Hasheamos la contraseña
+      const formData = { ...this.registerForm.value }; 
+      formData.password = this.cryptoService.getSHA256(formData.password); 
 
       this.usuarioService.signUp(formData).subscribe({
         next: (userId: number) => {

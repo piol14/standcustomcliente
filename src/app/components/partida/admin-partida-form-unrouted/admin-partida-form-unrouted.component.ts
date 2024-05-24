@@ -1,4 +1,4 @@
-// admin-partida-form.component.ts
+
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { IPartida, IUser, formOperation } from 'src/app/model/model.interfaces';  // Asegúrate de importar el modelo correcto
+import { IPartida, IUser, formOperation } from 'src/app/model/model.interfaces';  
 import { PartidaAjaxService } from 'src/app/service/partida.ajax.service.service';
 import { AdminUsuarioSelectionUnroutedComponent } from '../../usuario/admin-usuario-selection-unrouted/admin-usuario-selection-unrouted.component';
 
@@ -38,8 +38,7 @@ export class AdminPartidaFormUnroutedComponent implements OnInit {
     this.partidaForm = this.formBuilder.group({
       fecha: [oPartida.fecha, Validators.required]
      
-      // Agrega más campos según sea necesario
-  
+     
     });
   }
 
@@ -98,7 +97,7 @@ export class AdminPartidaFormUnroutedComponent implements OnInit {
   }
   onShowUsuarioSelection() {
     this.oDynamicDialogRef = this.oDialogService.open(AdminUsuarioSelectionUnroutedComponent, {
-      header: 'Select a User', // Reemplazar con el texto deseado
+      header: 'Select a User',
       width: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,

@@ -1,8 +1,8 @@
 .mat-select-dialog {
     position: fixed;
-  z-index: 10002; /* Ajusta el valor según sea necesario para que esté por encima del diálogo */
-  top: 50px; /* Ajusta la posición superior según sea necesario */
-  left: calc(50% - 200px); /* Ajusta la posición izquierda según sea necesario */
-  width: 400px; /* Ajusta el ancho según sea necesario *//* Ajusta el valor según sea necesario para que esté por encima del diálogo */
+  z-index: 10002; 
+  top: 50px;
+  left: calc(50% - 200px); 
+  width: 400px; 
   }
   

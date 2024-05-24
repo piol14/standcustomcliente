@@ -1,4 +1,3 @@
-// admin-stand-plist-unrouted.component.ts
 
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -60,7 +59,7 @@ export class AdminStandPlistUnroutedComponent implements OnInit {
           error: (error: HttpErrorResponse) => {
             this.status = error;
             this.oMatSnackBar.open('Error al eliminar el elemento', '', { duration: 2000 });
-            // Puedes manejar el error según tus necesidades
+           
           }
         });
       }
@@ -72,7 +71,7 @@ export class AdminStandPlistUnroutedComponent implements OnInit {
         data: {
             id: u.id
         },
-        header: 'Vista Stand', // Establece el encabezado directamente
+        header: 'Vista Stand', 
         width: '50%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,

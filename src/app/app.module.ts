@@ -19,7 +19,7 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 //--
 
-//Sin esto da error!
+
 
 
 
@@ -53,7 +53,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminOpinionDetailUnroutedComponent } from './components/opinion/admin-opinion-detail-unrouted/admin-opinion-detail-unrouted.component';
 import { AdminPartidaDetailUnroutedComponent } from './components/partida/admin-partida-detail-unrouted/admin-partida-detail-unrouted.component';
 import { AdminDetallePartidaDetailUnroutedComponent } from './components/detalle_partida/admin-detallePartida-detail-unrouted/admin-detallePartida-detail-unrouted.component';
-import { ConfirmEventType } from 'primeng/api'; // Importa ConfirmationService de primeng/api
+import { ConfirmEventType } from 'primeng/api';  
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { AdminStandDetailUnroutedComponent } from './components/stand/admin-stand-detail-unrouted/admin-stand-detail-unrouted.component';

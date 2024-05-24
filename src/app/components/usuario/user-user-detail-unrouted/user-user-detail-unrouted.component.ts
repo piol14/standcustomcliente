@@ -52,7 +52,7 @@ export class UserUserDetailUnroutedComponent implements OnInit {
     if (this.SessionAjaxService.isSessionActive()) {
       this.ref = this.DialogService.open(UserUserFormUnroutedComponent, {
         data: {
-          id: this.id_usuario  // Pasa el ID del usuario a editar
+          id: this.id_usuario 
         },
         header: 'Editar perfil',
         width: '80%',

@@ -110,7 +110,7 @@ export class AdminFavoritoPlistUnroutedComponent {
             data: {
                 id: u.id
             },
-            header: 'Vista Favorito ', // Establece el encabezado directamente
+            header: 'Vista Favorito ', 
             width: '50%',
             contentStyle: { overflow: 'auto' },
             baseZIndex: 10000,
@@ -128,12 +128,12 @@ export class AdminFavoritoPlistUnroutedComponent {
                     },
                     error: (error: any) => {
                         console.error(error);
-                        // Aquí puedes manejar el error de otra manera si es necesario
+                     
                     }
                 });
             },
             reject: (type: ConfirmEventType) => {
-                // Manejar el rechazo si es necesario
+                
             }
         });
     }

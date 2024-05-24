@@ -108,7 +108,7 @@ export class AdminCategoriaPlistUnroutedComponent implements OnInit {
         data: {
             id: u.id
         },
-        header: 'Vista Categoria ' , // Establece el encabezado directamente
+        header: 'Vista Categoria ' ,  
         width: '50%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
@@ -125,12 +125,12 @@ export class AdminCategoriaPlistUnroutedComponent implements OnInit {
           },
           error: (error: any) => {
             console.error(error);
-            // Aquí puedes manejar el error de otra manera si es necesario
+          
           }
         });
       },
       reject: (type: ConfirmEventType) => {
-        // Manejar el rechazo si es necesario
+        
       }
     });
   }

@@ -79,7 +79,7 @@ export class UserCategoriaPlistUnroutedComponent implements OnInit {
   getCategorias(): void {
     this.oCategoriaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.first, 'id', 'asc').subscribe({
       next: (data: ICategoriaPage) => {
-        this.oPage = data; // Almacena la página de categorías obtenida del servicio en la variable oPage
+        this.oPage = data;
       },
       error: (error: HttpErrorResponse) => {
         this.status = error;
@@ -95,7 +95,7 @@ export class UserCategoriaPlistUnroutedComponent implements OnInit {
         data: {
             id: u.id
         },
-        header: 'Vista Categoria ' , // Establece el encabezado directamente
+        header: 'Vista Categoria ' ,
         width: '50%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,

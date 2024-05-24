@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { IStand, IUser, formOperation } from 'src/app/model/model.interfaces'; // Asegúrate de importar el modelo correcto
+import { IStand, IUser, formOperation } from 'src/app/model/model.interfaces'; 
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MediaService } from 'src/app/service/media.service';
@@ -26,7 +26,7 @@ export class AdminStandFormUnroutedComponent implements OnInit {
   oDynamicDialogRef: DynamicDialogRef | undefined;
   constructor(
     private formBuilder: FormBuilder,
-    private standService: StandAjaxService, // Asegúrate de usar el servicio correcto
+    private standService: StandAjaxService, 
     private router: Router,
     private snackBar: MatSnackBar,
     public oDialogService: DialogService,
@@ -40,10 +40,10 @@ export class AdminStandFormUnroutedComponent implements OnInit {
       id: [oStand.id],
       nombre: [oStand.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       descripcion: [oStand.descripcion, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      velocidad: [oStand.velocidad || 'D'], // Default value 'D' if oStand.velocidad is falsy
-      alcance: [oStand.alcance || 'D'],     // Default value 'D' if oStand.alcance is falsy
-      poder: [oStand.poder || 'D'],         // Default value 'D' if oStand.poder is falsy
-      aguante: [oStand.aguante || 'D'],     // Default value 'D' if oStand.aguante is falsy
+      velocidad: [oStand.velocidad || 'D'],
+      alcance: [oStand.alcance || 'D'],     
+      poder: [oStand.poder || 'D'],         
+      aguante: [oStand.aguante || 'D'],  
       acierto: [oStand.acierto || 'D'],  
       imagen: [oStand.imagen, Validators.required],
      desarollo: [oStand.desarollo || 'D'],
@@ -53,7 +53,7 @@ export class AdminStandFormUnroutedComponent implements OnInit {
     categoria:this.formBuilder.group({
       id: [oStand.categoria?.id, Validators.required],
     }),
-      // Agrega aquí los demás campos según tu modelo
+  
     });
   }
 
@@ -117,7 +117,7 @@ export class AdminStandFormUnroutedComponent implements OnInit {
       formData.append("file", file);
       this.MediaService.uploadFile(formData).subscribe({
         next: (response) => {
-          this.selectedImageUrl = response.url; // Asignar la URL del archivo seleccionado
+          this.selectedImageUrl = response.url; 
           this.oStand.imagen = response.url;
           this.standForm.controls['imagen'].patchValue(response.url);
         },
@@ -130,7 +130,7 @@ export class AdminStandFormUnroutedComponent implements OnInit {
   }
   onShowUsuarioSelection() {
     this.oDynamicDialogRef = this.oDialogService.open(AdminUsuarioSelectionUnroutedComponent, {
-      header: 'Select a User', // Reemplazar con el texto deseado
+      header: 'Select a User', 
       width: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,

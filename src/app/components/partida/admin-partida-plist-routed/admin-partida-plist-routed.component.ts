@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfirmationService, MessageService } from 'primeng/api'; // Ajusta la ruta del servicio
+import { ConfirmationService, MessageService } from 'primeng/api'; 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { PartidaAjaxService } from 'src/app/service/partida.ajax.service.service';

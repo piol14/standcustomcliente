@@ -1,4 +1,4 @@
-// admin-opinion-form-unrouted.component.ts
+
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
@@ -22,12 +22,12 @@ export class AdminOpinionFormUnroutedComponent implements OnInit {
   @Input() operation: formOperation = 'NEW';
 
   opinionForm!: FormGroup;
-  oOpinion: IOpinion= {} as IOpinion; // Asegúrate de ajustar el tipo según tu modelo de opinión
+  oOpinion: IOpinion= {} as IOpinion; 
   status: HttpErrorResponse | null = null;
   oDynamicDialogRef: DynamicDialogRef | undefined;
   constructor(
     private oFormBuilder: FormBuilder,
-    private oOpinionAjaxService: OpinionAjaxService, // Asegúrate de importar el servicio correcto
+    private oOpinionAjaxService: OpinionAjaxService, 
     private oRouter: Router,
     private oMatSnackBar: MatSnackBar,
     public oDialogService: DialogService,
@@ -106,7 +106,7 @@ export class AdminOpinionFormUnroutedComponent implements OnInit {
 
   onShowUsuarioSelection() {
     this.oDynamicDialogRef = this.oDialogService.open(AdminUsuarioSelectionUnroutedComponent, {
-      header: 'Select a User', // Reemplazar con el texto deseado
+      header: 'Select a User', 
       width: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
@@ -123,7 +123,7 @@ export class AdminOpinionFormUnroutedComponent implements OnInit {
 
 onShowStandSelection() {
   this.oDynamicDialogRef = this.oDialogService.open(AdminStandSelectionUnroutedComponent, {
-    header: 'Selecciona un stand', // Reemplazar con el texto deseado
+    header: 'Selecciona un stand',
     width: '80%',
     contentStyle: { overflow: 'auto' },
     baseZIndex: 10000,

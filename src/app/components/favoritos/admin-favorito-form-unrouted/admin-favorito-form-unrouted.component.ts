@@ -20,12 +20,12 @@ export class AdminFavoritoFormUnroutedComponent implements OnInit {
   @Input() operation: formOperation = 'NEW';
 
   favoritoForm!: FormGroup;
-  oFavorito: IFavorito= {} as IFavorito; // Asegúrate de ajustar el tipo según tu modelo de opinión
+  oFavorito: IFavorito= {} as IFavorito; 
   status: HttpErrorResponse | null = null;
   oDynamicDialogRef: DynamicDialogRef | undefined;
   constructor(
     private oFormBuilder: FormBuilder,
-    private oFavoritoAjaxService: FavoritoAjaxService, // Asegúrate de importar el servicio correcto
+    private oFavoritoAjaxService: FavoritoAjaxService, 
     private oRouter: Router,
     private oMatSnackBar: MatSnackBar,
     public oDialogService: DialogService,
@@ -103,7 +103,7 @@ export class AdminFavoritoFormUnroutedComponent implements OnInit {
 
   onShowUsuarioSelection() {
     this.oDynamicDialogRef = this.oDialogService.open(AdminUsuarioSelectionUnroutedComponent, {
-      header: 'Select a User', // Reemplazar con el texto deseado
+      header: 'Select a User',
       width: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
@@ -120,7 +120,7 @@ export class AdminFavoritoFormUnroutedComponent implements OnInit {
 
 onShowStandSelection() {
   this.oDynamicDialogRef = this.oDialogService.open(AdminStandSelectionUnroutedComponent, {
-    header: 'Selecciona un stand', // Reemplazar con el texto deseado
+    header: 'Selecciona un stand', 
     width: '80%',
     contentStyle: { overflow: 'auto' },
     baseZIndex: 10000,

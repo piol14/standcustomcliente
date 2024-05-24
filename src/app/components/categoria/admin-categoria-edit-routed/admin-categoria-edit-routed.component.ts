@@ -16,6 +16,6 @@ export class AdminCategoriaEditRoutedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Aquí puedes agregar lógica de inicialización si es necesario
+  
   }
 }

@@ -54,14 +54,13 @@ export class OpinionAjaxService {
         return this.httpClient.put<IOpinion>(this.apiUrl, opinion);
     }
 
-    //el empty
+    
     empty(): Observable<number> {
         return this.httpClient.delete<number>(`${this.apiUrl}/empty`);
     }
-    //generateRandom
+    
     generateRandom(amount: number): Observable<number> {
         return this.httpClient.post<number>(`${this.apiUrl}/populate/${amount}`, null);
     }
-    // Puedes agregar métodos adicionales según sea necesario
-
+  
 }

@@ -4,7 +4,7 @@ import { DetallePartidaAjaxService } from 'src/app/service/detallePartida.ajax.s
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { IDetallePartida } from 'src/app/model/model.interfaces';
 
-// Definir una interfaz para el mapeo de aguante
+
 interface AguanteMap {
   [key: string]: number;
 }
@@ -24,7 +24,7 @@ export class JugarViewDetallepartidaUnroutedComponent implements OnInit {
   oDetallePartida: IDetallePartida = {} as IDetallePartida;
   status: HttpErrorResponse | null = null;
 
-  // Definir un objeto de mapeo para convertir "D" a números
+
   aguanteMap: AguanteMap = {
     'A':1000,
     'B':800,
@@ -57,9 +57,9 @@ export class JugarViewDetallepartidaUnroutedComponent implements OnInit {
     this.getOne();
   }
 
-  // Función para obtener el valor numérico del aguante
+
   getAguanteNumerico(aguante: string): number {
-    return this.aguanteMap[aguante] || 0; // Devuelve 0 si el valor no está mapeado
+    return this.aguanteMap[aguante] || 0; 
   }
 
   getOne(): void {

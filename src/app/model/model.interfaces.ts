@@ -1,5 +1,5 @@
 
-// ataque-stand.model.ts
+
 
 export interface Sort {
     empty: boolean;
@@ -41,7 +41,7 @@ export interface IEntity {
     id: number,
 }
 
-  // opinion.model.ts
+ 
   export interface IOpinion  extends IEntity {
     
     usuario: IUser;
@@ -51,7 +51,6 @@ export interface IEntity {
   }
   export interface IOpinionPage extends IPage<IOpinion> {
 }
-  // partida.model.ts
   export interface IPartida extends IEntity{
    
     fecha: string;
@@ -59,7 +58,7 @@ export interface IEntity {
   }
   export interface IPartidaPage extends IPage<IPartida> {
   }
-  // stand.model.ts
+  
   export interface IStand extends IEntity {
   
     usuario: IUser;
@@ -92,7 +91,7 @@ export type formOperation = 'EDIT' | 'NEW';
   }
   export interface IUserPage extends IPage<IUser> {
 }
-  // usuario-stand.model.ts
+  
   export interface IDetallePartida extends IEntity {
    
     usuario: IUser;

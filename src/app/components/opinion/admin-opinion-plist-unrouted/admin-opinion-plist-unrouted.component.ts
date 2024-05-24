@@ -1,4 +1,4 @@
-// admin-Opinion-plist-unrouted.component.ts
+
 
 import { Component, Input, OnInit } from '@angular/core';
 import { ConfirmationService, ConfirmEventType } from 'primeng/api';
@@ -116,7 +116,7 @@ export class AdminOpinionPlistUnroutedComponent implements OnInit {
         data: {
             id: u.id
         },
-        header: 'Vista Opinion', // Establece el encabezado directamente
+        header: 'Vista Opinion', 
         width: '50%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
@@ -134,12 +134,12 @@ export class AdminOpinionPlistUnroutedComponent implements OnInit {
           },
           error: (error: any) => {
             console.error(error);
-            // Aquí puedes manejar el error de otra manera si es necesario
+           
           }
         });
       },
       reject: (type: ConfirmEventType) => {
-        // Manejar el rechazo si es necesario
+      
       }
     });
   }

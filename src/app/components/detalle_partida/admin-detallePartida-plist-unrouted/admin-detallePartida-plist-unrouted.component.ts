@@ -81,7 +81,6 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
     }
   }
 
-
   getValue(event: any): string {
     return event.target.value;
   }
@@ -117,7 +116,7 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
         data: {
             id: u.id
         },
-        header: 'Vista Detalle Partida ' , // Establece el encabezado directamente
+        header: 'Vista Detalle Partida ' , 
         width: '50%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
@@ -134,12 +133,12 @@ export class AdminDetallePartidaPlistUnroutedComponent implements OnInit {
           },
           error: (error: any) => {
             console.error(error);
-            // Aquí puedes manejar el error de otra manera si es necesario
+            
           }
         });
       },
       reject: (type: ConfirmEventType) => {
-        // Manejar el rechazo si es necesario
+        
       }
     });
   }

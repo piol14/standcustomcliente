@@ -28,7 +28,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/app/components/shared/menu-unrouted/script.js"
+              
             ]
           },
           "configurations": {
@@ -99,8 +99,8 @@
 
     "node_modules/@popperjs/core/dist/umd/popper.min.js",
 
-    "node_modules/bootstrap/dist/js/bootstrap.min.js",
-    "src/app/components/shared/menu-unrouted/script.js"
+    "node_modules/bootstrap/dist/js/bootstrap.min.js"
+ 
             ]
           }
         }

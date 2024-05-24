@@ -1,4 +1,4 @@
-// admin-detalle-partida-form-unrouted.component.ts
+
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
@@ -106,7 +106,7 @@ export class AdminDetallePartidaFormUnroutedComponent implements OnInit {
 
   onShowUsuarioSelection() {
     this.oDynamicDialogRef = this.oDialogService.open(AdminUsuarioSelectionUnroutedComponent, {
-      header: 'Selecciona un usuario', // Reemplazar con el texto deseado
+      header: 'Selecciona un usuario',
       width: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,

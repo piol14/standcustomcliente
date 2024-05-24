@@ -41,7 +41,7 @@ export class ChangePasswordComponent implements OnInit {
       return;
     }
 
-    this.tokenPassword = this.oActivatedRoute.snapshot.paramMap.get('tokenPassword'); //Check
+    this.tokenPassword = this.oActivatedRoute.snapshot.paramMap.get('tokenPassword'); 
 
     const cryptedPassword = this.oCryptoService.getSHA256(this.updatePasswordForm.get('password')?.value);
 

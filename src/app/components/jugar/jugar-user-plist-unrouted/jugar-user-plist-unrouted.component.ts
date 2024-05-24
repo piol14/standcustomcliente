@@ -48,7 +48,7 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
   idCategoriaFiltrada: number | null = null;
   filtrandoPorCategoria: boolean = false;
   oPartida:IPartida= {} as IPartida;
-  lastCreatedId: number = 0; // Property to store the last created ID
+  lastCreatedId: number = 0; 
 
   constructor(
     private SessionAjaxService: SessionAjaxService,
@@ -111,10 +111,10 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
         }
       }
     });
-    this.getCategorias(); // Llama siempre a getCategorias() al inicializar el componente
+    this.getCategorias(); 
 
     if (this.id_categoria > 0) {
-      this.getCategorias(); // Si id_categoria es mayor que 0, llama nuevamente a getCategorias()
+      this.getCategorias(); 
     }
 
     this.SessionAjaxService.getSessionUser()?.subscribe({
@@ -155,7 +155,7 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
           error: (error: HttpErrorResponse) => {
             this.status = error;
             this.oMatSnackBar.open('Error al eliminar el elemento', '', { duration: 2000 });
-            // Puedes manejar el error según tus necesidades
+          
           }
         });
       }
@@ -173,7 +173,7 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
   getCategorias(): void {
     this.oCategoriaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.first, 'id', 'asc').subscribe({
       next: (data: ICategoriaPage) => {
-        this.oPage = data; // Almacena la página de categorías obtenida del servicio en la variable oPage
+        this.oPage = data; 
       },
       error: (error: HttpErrorResponse) => {
         this.status = error;
@@ -192,12 +192,12 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
   }
 
   getPage(): void {
-    // Si no hay ninguna categoría seleccionada, restablece id_categoria a 0
+   
     if (!this.filtrandoPorCategoria) {
       this.id_categoria = 0;
     }
   
-    // Luego, realiza la solicitud de la página de stands
+   
     this.oStandAjaxService.getPage(
       this.oPaginatorState.rows, 
       this.oPaginatorState.page, 
@@ -223,46 +223,46 @@ export class JugarUserPlistUnroutedComponent implements OnInit {
   }
 
   crearTodo(stand: IStand): void {
-    // Increment last created ID
+  
     this.lastCreatedId++;
 
-    // Create new partida with incremented ID
+ 
     const nuevaPartida: IPartida = {
-      id: this.lastCreatedId, // Use the incremented ID
-      fecha: "ola", // Replace with actual date
+      id: this.lastCreatedId, 
+      fecha: "ola", 
     
     };
 
-    // Call service to create the partida
+  
     this.PartidaAjaxService.newOne(nuevaPartida).subscribe({
       next: (partida: IPartida) => {
-        // Almacenamos la partida recién creada
+     
         this.oPartida = partida;
         var partidacreada: IPartida= {} as IPartida;
         partidacreada=nuevaPartida;
-        // Creamos el detalle de partida con los datos necesarios
+        
         const nuevoDetallePartida: IDetallePartida = {
-          id: this.lastCreatedId, // Use the incremented ID
+          id: this.lastCreatedId, 
           usuario: this.usuario!,
-            stand: stand, // Utilizamos el stand pasado como parámetro
-          partida: partidacreada // Asignamos la partida recién creada
+            stand: stand,
+          partida: partidacreada
         };
   
-        // Llamamos al servicio para crear el detalle de partida
+       
         this.DetallePartidaAjaxService.newOne(nuevoDetallePartida).subscribe({
           next: () => {
-            // Manejo de éxito
+            
             this.oMatSnackBar?.open('El detalle partida se ha creado correctamente', '', { duration: 2000 });
             this.router.navigate(['/jugar',this.detallePartida.id]);
           },
           error: () => {
-            // Manejo de error
+            
             this.oMatSnackBar?.open('Error al crear el detalle de partida para el usuario', '', { duration: 2000 });
           }
         });
       },
       error: () => {
-        // Manejo de error
+       
         this.oMatSnackBar?.open('Error al crear la partida', '', { duration: 2000 });
       }
     });

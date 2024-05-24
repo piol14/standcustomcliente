@@ -1,7 +1,7 @@
-// admin-Partida-plist-unrouted.component.ts
+
 
 import { Component, Input, OnInit } from '@angular/core';
-import { ConfirmationService, ConfirmEventType } from 'primeng/api'; // Importa ConfirmationService de primeng/api
+import { ConfirmationService, ConfirmEventType } from 'primeng/api'; 
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PaginatorState } from 'primeng/paginator';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -116,7 +116,7 @@ export class AdminPartidaPlistUnroutedComponent implements OnInit {
         data: {
             id: u.id
         },
-        header: 'Vista Partida', // Establece el encabezado directamente
+        header: 'Vista Partida', 
         width: '50%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
@@ -135,17 +135,16 @@ doRemove(u: IPartida) {
         },
         error: (error: any) => {
           console.error(error);
-          // Aquí puedes manejar el error de otra manera si es necesario
+         
         }
       });
     },
     reject: (type: ConfirmEventType) => {
-      // Manejar el rechazo si es necesario
+   
     }
   });
 }
 
-// Resto del código sin cambios...
 
 }
 

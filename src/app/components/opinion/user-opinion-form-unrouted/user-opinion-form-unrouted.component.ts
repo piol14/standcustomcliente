@@ -7,16 +7,16 @@ import { Router } from '@angular/router';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { IOpinion, formOperation, IUser, IStand } from 'src/app/model/model.interfaces';
 import { OpinionAjaxService } from 'src/app/service/opinion.ajax.service.service';
-import { SessionAjaxService } from 'src/app/service/session.ajax.service.service'; // Importa el servicio de sesión
+import { SessionAjaxService } from 'src/app/service/session.ajax.service.service'; 
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
 import { UserAjaxService } from 'src/app/service/user.ajax.service.service';
-import { MessageService } from 'primeng/api'; // Import the MessageService
+import { MessageService } from 'primeng/api'; 
 
 @Component({
   selector: 'app-user-opinion-form-unrouted',
   templateUrl: './user-opinion-form-unrouted.component.html',
   styleUrls: ['./user-opinion-form-unrouted.component.css'],
-  providers: [MessageService] // Add the provider to the component
+  providers: [MessageService] 
 })
 export class UserOpinionFormUnroutedComponent implements OnInit {
   @Input() id: number = 1;
@@ -44,7 +44,7 @@ export class UserOpinionFormUnroutedComponent implements OnInit {
     private sessionService: SessionAjaxService,
     public oDynamicDialogConfig: DynamicDialogConfig,
     public oDynamicDialogRef: DynamicDialogRef,
-    private messageService: MessageService // Add the missing parameter with the correct type
+    private messageService: MessageService 
   ) {
     this.id_usuario = this.oDynamicDialogConfig.data.id_usuario;
     console.log("IDSTAND" + this.id_usuario)

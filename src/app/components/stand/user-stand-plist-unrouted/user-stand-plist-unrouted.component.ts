@@ -112,13 +112,13 @@ export class UserStandPlistUnroutedComponent implements OnInit {
   }
   
   private actualizarFavoritosDesdeLocalStorage(): void {
-    // Recorrer todas las claves del almacenamiento local
+    
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       if (key && key.startsWith('favorito_')) {
-        // Obtener el id del stand desde la clave
+        
         const id_stand = Number(key.split('_')[6]);
-        // Marcar el stand como favorito en el componente
+       
         this.favoritos[id_stand] = true;
       }
     }
@@ -133,7 +133,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
       accept: () => {
         this.oStandAjaxService.removeOne(id_stand).subscribe({
           next: () => {
-            // Restablecer el filtro de categoría y actualizar la página de stands
+           
             this.quitarFiltro();
             this.getPage();
             this.oMatSnackBar.open('El stand ha sido eliminado exitosamente', '', { duration: 2000 });
@@ -154,7 +154,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
         data: {
             id: u.id
         },
-        header: 'Vista Stand', // Establece el encabezado directamente
+        header: 'Vista Stand', 
         width: '50%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
@@ -170,7 +170,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
   getCategorias(): void {
     this.oCategoriaAjaxService.getPage(this.oPaginatorState.rows, this.oPaginatorState.first, 'id', 'asc').subscribe({
       next: (data: ICategoriaPage) => {
-        this.oPage = data; // Almacena la página de categorías obtenida del servicio en la variable oPage
+        this.oPage = data; 
       },
       error: (error: HttpErrorResponse) => {
         this.status = error;
@@ -252,7 +252,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     }
   }
   postNuevoFavorito(id_stand: number): void {
-    // Actualizar el estado de los favoritos primero
+   
     this.favoritos[id_stand] = !this.favoritos[id_stand];
   
     this.oFavoritoAjaxService.verificarFavoritoRepetido(this.id_usuario, id_stand).subscribe({
@@ -288,7 +288,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     this.oFavoritoAjaxService.newOne(favorito).subscribe({
       next: () => {
         this.oMatSnackBar.open('Stand marcado como favorito', 'Aceptar', { duration: 3000 });
-        this.favoritos[id_stand] = true; // Actualiza el estado de favorito
+        this.favoritos[id_stand] = true; 
       },
       error: (error: HttpErrorResponse) => {
         console.error('Error al marcar el stand como favorito:', error);
@@ -302,7 +302,7 @@ export class UserStandPlistUnroutedComponent implements OnInit {
     this.oFavoritoAjaxService.removeOne(favoritoId).subscribe({
       next: () => {
         this.oMatSnackBar.open('Stand eliminado de favoritos', 'Aceptar', { duration: 3000 });
-        this.favoritos[this.id_stand] = false; // Actualiza el estado de favorito
+        this.favoritos[this.id_stand] = false; 
       },
       error: (error: HttpErrorResponse) => {
         console.error('Error al eliminar el stand de favoritos:', error);
