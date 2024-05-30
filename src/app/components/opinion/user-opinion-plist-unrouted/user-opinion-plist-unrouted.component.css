@@ -45,12 +45,12 @@
   margin-top: 20px;
 }
 
-/* Ajustes de tamaño para los botones */
+
 .btn-lg {
   font-size: 1.25rem;
 }
 
-/* Estilos personalizados para el botón de enviar opinión */
+
 .btn-primary {
   background-color: #26105d;
     border-color: #26105d;
@@ -65,8 +65,6 @@
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 
-/* Limitar el ancho máximo de las tarjetas */
-/* Estilos para las tarjetas de opinión */
 .card {
   background-color: #ffffff;
   border-radius: 15px;
@@ -96,23 +94,23 @@
   margin-right: 10px;
 }
 
-/* Ajustes de tamaño para los botones */
+
 .btn-lg {
   font-size: 1.25rem;
 }
 
-/* Estilos personalizados para el botón de enviar opinión */
+
 
 .btn-primary:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 
-/* Limitar el ancho máximo de las tarjetas */
+
 .card {
   max-width: 100%;
 }
 
-/* Permitir que el texto se ajuste automáticamente a la siguiente línea y se envuelva */
+
 .card-header, .message {
   word-wrap: break-word;
   white-space: pre-wrap;

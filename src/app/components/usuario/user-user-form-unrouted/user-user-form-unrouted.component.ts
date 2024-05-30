@@ -7,7 +7,6 @@ import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { formOperation, IUser } from 'src/app/model/model.interfaces';
 import { UserAjaxService } from 'src/app/service/user.ajax.service.service';
 
-
 @Component({
   selector: 'app-user-user-form-unrouted',
   templateUrl: './user-user-form-unrouted.component.html',
@@ -21,6 +20,7 @@ export class UserUserFormUnroutedComponent implements OnInit {
   userForm!: FormGroup;
   oUser: IUser = {} as IUser;
   status: HttpErrorResponse | null = null;
+  isSubmitting: boolean = false;
 
   constructor(
     private oFormBuilder: FormBuilder,
@@ -49,7 +49,7 @@ export class UserUserFormUnroutedComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.operation == 'EDIT') {
+    if (this.operation === 'EDIT') {
       this.oUserAjaxService.getOne(this.id).subscribe({
         next: (data: IUser) => {
           this.oUser = data;
@@ -70,33 +70,39 @@ export class UserUserFormUnroutedComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.userForm.valid) {
+    if (this.userForm.valid && !this.isSubmitting) {
+      this.isSubmitting = true;
+      const formValue = this.userForm.getRawValue(); // Para incluir controles deshabilitados
+
       if (this.operation === 'EDIT') {
-        this.oUserAjaxService.updateOne(this.userForm.value).subscribe({
+        this.oUserAjaxService.updateOne(formValue).subscribe({
           next: (data: IUser) => {
             this.oUser = data;
-            this.initializeForm(this.oUser);
             this.oMatSnackBar.open('El usuario se ha actualizado correctamente', '', { duration: 2000 });
-            this.ref.close(data);
-          
-          
-            this.oRouter.navigate(['/perfil', this.oUser.id]);
+            if (this.ref) {
+              this.ref.close(data);
+            }
+            this.oRouter.navigate(['/perfil']);
+            this.isSubmitting = false;
           },
           error: (error: HttpErrorResponse) => {
             this.status = error;
             this.oMatSnackBar.open('Error al actualizar el usuario', '', { duration: 2000 });
+            this.isSubmitting = false;
           }
         });
       } else {
-        this.oUserAjaxService.newOne(this.userForm.value).subscribe({
+        this.oUserAjaxService.newOne(formValue).subscribe({
           next: (data: IUser) => {
             this.oUser = data;
             this.oMatSnackBar.open('El usuario se ha creado correctamente', '', { duration: 2000 });
-            this.oRouter.navigate(['/perfil', this.oUser.id]);
+            this.oRouter.navigate(['/perfil']);
+            this.isSubmitting = false;
           },
           error: (error: HttpErrorResponse) => {
             this.status = error;
             this.oMatSnackBar.open('Error al crear el usuario', '', { duration: 2000 });
+            this.isSubmitting = false;
           }
         });
       }
