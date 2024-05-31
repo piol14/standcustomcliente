@@ -102,6 +102,8 @@ export const routes: Routes = [
     { path: 'admin/detallePartida/plist/byusuario/:idusuario', component: AdminDetallePartidaPlistRoutedComponent },
     { path: 'admin/detallePartida/plist/bystand/:idstand', component: AdminDetallePartidaPlistRoutedComponent },
     { path: 'admin/detallePartida/plist/bypartida/:idpartida', component: AdminDetallePartidaPlistRoutedComponent },
+    { path: '**', redirectTo: 'home', pathMatch: 'full' }
+
 ] 
 
 @NgModule({

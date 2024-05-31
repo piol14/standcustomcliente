@@ -8,11 +8,12 @@
   .profile-header {
     background-color:#7e1f60; /* Color verde personalizado */
   }
-  .btn-custom-color {
-    background-color:#7e1f60; /* Color verde personalizado */
+
+  .btn-primary:hover {
+    background-color:#7e1f60; 
+  }
+  .btn-primary{
+    background-color:#7e1f60; 
     color: white;
     border: none;
-  }
-  .btn-custom-color:hover {
-    background-color:#7e1f60; /* Un tono más oscuro para el hover */
   }
