@@ -1,26 +1,25 @@
-<div class="container">
-    <div class="row">
+<div class="container" aria-live="polite">
+  <div class="row">
       <div class="col">
-        <div *ngIf="status != null" class="d-flex justify-content-center my-3">
-          <div class="alert alert-danger" role="alert">
-            {{ status!.error.message }} - {{ status!.message }}
+          <div *ngIf="status != null" class="d-flex justify-content-center my-3" role="alert" aria-live="assertive">
+              <div class="alert alert-danger" role="alert">
+                  {{ status!.error.message }} - {{ status!.message }}
+              </div>
           </div>
-        </div>
-        <div *ngIf="status == null">
-          <table class="table table-striped table-hover custom-table">
-            <tbody>
-              <tr>
-                <th>ID</th>
-                <td>{{ oCategoria.id }}</td>
-              </tr>
-              <tr *ngIf="oCategoria.nombre">
-                <th>Nombre</th>
-                <td>{{ oCategoria.nombre }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <div *ngIf="status == null">
+              <table class="table table-striped table-hover custom-table" role="table">
+                  <tbody>
+                      <tr>
+                          <th scope="row">ID</th>
+                          <td>{{ oCategoria.id }}</td>
+                      </tr>
+                      <tr *ngIf="oCategoria.nombre">
+                          <th scope="row">Nombre</th>
+                          <td>{{ oCategoria.nombre }}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
       </div>
-    </div>
   </div>
-  
+</div>
