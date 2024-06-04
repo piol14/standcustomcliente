@@ -1,40 +1,33 @@
 <div class="container mt-4">
   <div class="card">
     <div class="card-header bg-primary text-white">
-      <h2 class="mb-0">¡Comparte tu Opinión!</h2>
+      <h2 class="mb-0" style="font-size: 1.5rem;">¡Comparte tu Opinión!</h2>
     </div>
     <div class="card-body">
       <form [formGroup]="opinionForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-
-          <label for="descripcion">Descripción:</label>
-
-          <textarea id="descripcion" formControlName="descripcion" class="form-control"
-            placeholder="Cuéntanos qué piensas..." required></textarea>
-          <div *ngIf="opinionForm.controls['descripcion'].dirty && 
-          opinionForm.controls['descripcion'].errors?.['required']" class="text-danger">
-            La descripción es requerida
+          <label for="descripcion" class="col-sm-2 col-form-label" style="font-size: 1rem;">Descripción:</label>
+          <div class="row mb-3">
+            <div class="col-sm-3 text-end">
+              <textarea id="descripcion" formControlName="descripcion" class="form-control"
+                placeholder="Cuéntanos qué piensas..." required style="font-size: 1rem;"></textarea>
+              <div *ngIf="opinionForm.controls['descripcion'].dirty && 
+              opinionForm.controls['descripcion'].errors?.['required']" class="row mb-3 text-danger" style="font-size: 0.8rem;">
+                La descripción es requerida
+              </div>
+              <div *ngIf="opinionForm.controls['descripcion'].dirty && 
+              opinionForm.controls['descripcion'].errors?.['minlength']" class="col-sm-9 text-danger" style="font-size: 0.8rem;">
+                Debes escribir más texto
+              </div>
+              <div *ngIf="opinionForm.controls['descripcion'].dirty && 
+              opinionForm.controls['descripcion'].errors?.['maxlength']" class="row mb-3 text-danger" style="font-size: 0.8rem;">
+                Debes escribir menos texto
+              </div>
+            </div>
           </div>
-          <div *ngIf="opinionForm.controls['descripcion'].dirty && 
-          opinionForm.controls['descripcion'].errors?.['minlength']" class="text-danger">
-            Debes escribir más texto
-          </div>
-          <div *ngIf="opinionForm.controls['descripcion'].dirty && 
-          opinionForm.controls['descripcion'].errors?.['maxlength']" class="text-danger">
-            Debes escribir menos texto
-          </div>
-
-
-
-
         </div>
-
-
-
-
-
         <div class="text-center mt-4">
-          <button type="submit" class="btn btn-primary" [disabled]="!opinionForm.valid">¡Enviar Opinión!</button>
+          <button type="submit" class="btn btn-primary btn-block" [disabled]="!opinionForm.valid" style="font-size: 1rem;">¡Enviar Opinión!</button>
         </div>
       </form>
     </div>

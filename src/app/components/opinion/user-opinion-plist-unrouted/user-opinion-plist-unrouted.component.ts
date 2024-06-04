@@ -147,15 +147,15 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
         data: {
           id_stand: this.id_stand,
           id_usuario: this.id_usuario,
-          
         },
-        
-       
+        styleClass: 'responsive-dialog', // Agregamos una clase CSS para el diálogo
         width: '40%',
         contentStyle: { overflow: 'auto' },
         baseZIndex: 10000,
-        maximizable: false
+        maximizable: true,
+        resizable: true
       });
+      
 
       this.ref.onClose.subscribe({
         next: (v) => {
@@ -166,7 +166,7 @@ export class UserOpinionPlistUnroutedComponent implements OnInit {
       })
    
     }else {
-  this.MatSnackBar.open('Debes estar logueado para valorar un producto', 'Aceptar', { duration: 3000 });
+  this.MatSnackBar.open('Debes estar logueado para opinar un stand', 'Aceptar', { duration: 3000 });
   this.Router.navigate(['/login']);
     }
   }

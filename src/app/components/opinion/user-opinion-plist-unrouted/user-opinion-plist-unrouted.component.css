@@ -60,6 +60,35 @@
   background-color: #26105d;
   border-color: #26105d;
 }
+.responsive-dialog {
+  /* Estilos para pantalla grande */
+  width: 40%;
+
+  /* Estilos para pantalla mediana */
+  @media (max-width: 768px) {
+    width: 60%;
+  }
+
+  /* Estilos para pantalla pequeña */
+  @media (max-width: 480px) {
+    width: 80%;
+  }
+}
+.responsive-dialog {
+  /* Estilos para pantalla grande */
+  width: 40%;
+
+  /* Estilos para pantalla mediana */
+  @media (max-width: 768px) {
+    width: 60%;
+  }
+
+  /* Estilos para pantalla pequeña */
+  @media (max-width: 480px) {
+    width: 80%;
+  }
+}
+
 
 .btn-primary:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);

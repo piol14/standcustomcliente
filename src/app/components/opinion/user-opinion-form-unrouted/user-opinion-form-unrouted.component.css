@@ -2,3 +2,15 @@
     background-color: #365486;
     border-color: #365486;
 }
+@media (max-width: 768px) {
+    .card-header h2 {
+      font-size: 1.2rem;
+    }
+    .form-control {
+      font-size: 0.9rem;
+    }
+    .btn {
+      font-size: 0.9rem;
+    }
+  }
+  
