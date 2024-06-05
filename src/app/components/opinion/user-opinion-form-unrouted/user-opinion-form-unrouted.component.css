@@ -1,6 +1,6 @@
 .btn-primary {
-    background-color: #365486;
-    border-color: #365486;
+    background-color:  #26105d;
+    border-color:  #26105d;
 }
 @media (max-width: 768px) {
     .card-header h2 {
@@ -13,4 +13,10 @@
       font-size: 0.9rem;
     }
   }
-  
+  .bg-primary{
+    background-color: #26105d;
+  }
+.btn-custom-color{
+    background-color: #7e1f60;
+    color: white;
+}

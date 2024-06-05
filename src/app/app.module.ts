@@ -130,7 +130,7 @@ import { SendEmailComponent } from './components/send-email/send-email.component
 import { UserUserPerfilRoutedComponent } from './components/usuario/user-user-perfil-routed/user-user-perfil-routed.component';
 import { UserUserPerfilUnroutedComponent } from './components/usuario/user-user-perfil-unrouted/user-user-perfil-unrouted.component';
 import { UserUserFormUnroutedComponent } from './components/usuario/user-user-form-unrouted/user-user-form-unrouted.component';
-
+import { TableModule } from 'primeng/table';
 //--
 @NgModule({
   declarations: [
@@ -244,6 +244,7 @@ import { UserUserFormUnroutedComponent } from './components/usuario/user-user-fo
    MatSelectModule,
    ReactiveFormsModule,
    SplitButtonModule, 
+   TableModule
  
   ],
   providers: [

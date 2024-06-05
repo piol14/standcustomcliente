@@ -5,4 +5,37 @@
   left: calc(50% - 200px); 
   width: 400px; 
   }
+  .custom-border-color {
+    border-color:  #26105d; /* Color azul personalizado para el borde */
+  }
   
+  .custom-heading {
+    color:  #26105d; /* Color azul personalizado para los encabezados */
+  }
+  
+  .custom-label{ 
+    color: #26105d; /* Color azul personalizado para las etiquetas */
+  }
+  
+  .custom-input {
+    border-color:  #26105d; /* Color azul personalizado para los bordes de entrada */
+  }
+  
+  .custom-form {
+    background-color: #cac4e8; /* Color de fondo gris claro para el formulario */
+  }
+  
+  .btn-custom-color {
+    background-color: #7e1f60; /* Color azul personalizado para el botón */
+    color: white;
+  }
+  
+  .btn-custom-color:hover {
+    background-color: #94216f; /* Un tono más oscuro para el hover */
+  }
+  .profile-container{
+    background-color: #cac4e8; /* Color de fondo gris claro para el formulario */
+    padding: 20px;
+    border-radius: 10px;
+
+  }

@@ -1,33 +1,26 @@
 <div class="container mt-4">
-  <div class="card">
-    <div class="card-header bg-primary text-white">
-      <h2 class="mb-0" style="font-size: 1.5rem;">¡Comparte tu Opinión!</h2>
+  <!-- Card del formulario de opinión -->
+  <div class="profile-container p-4 shadow-lg rounded custom-border-color">
+    <div class="card-header bg-primary text-white text-center">
+      <h2 class="custom-heading mb-0" style="font-size: 1.5rem;">¡Comparte tu Opinión!</h2>
     </div>
     <div class="card-body">
-      <form [formGroup]="opinionForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="descripcion" class="col-sm-2 col-form-label" style="font-size: 1rem;">Descripción:</label>
-          <div class="row mb-3">
-            <div class="col-sm-3 text-end">
-              <textarea id="descripcion" formControlName="descripcion" class="form-control"
-                placeholder="Cuéntanos qué piensas..." required style="font-size: 1rem;"></textarea>
-              <div *ngIf="opinionForm.controls['descripcion'].dirty && 
-              opinionForm.controls['descripcion'].errors?.['required']" class="row mb-3 text-danger" style="font-size: 0.8rem;">
-                La descripción es requerida
-              </div>
-              <div *ngIf="opinionForm.controls['descripcion'].dirty && 
-              opinionForm.controls['descripcion'].errors?.['minlength']" class="col-sm-9 text-danger" style="font-size: 0.8rem;">
-                Debes escribir más texto
-              </div>
-              <div *ngIf="opinionForm.controls['descripcion'].dirty && 
-              opinionForm.controls['descripcion'].errors?.['maxlength']" class="row mb-3 text-danger" style="font-size: 0.8rem;">
-                Debes escribir menos texto
-              </div>
-            </div>
+      <form [formGroup]="opinionForm" (ngSubmit)="onSubmit()" class="custom-form">
+        <div class="mb-3">
+          <label for="descripcion" class="form-label custom-label" style="font-size: 1rem;">Descripción:</label>
+          <textarea id="descripcion" formControlName="descripcion" class="form-control custom-input" placeholder="Cuéntanos qué piensas..." required style="font-size: 1rem;"></textarea>
+          <div *ngIf="opinionForm.controls['descripcion'].dirty && opinionForm.controls['descripcion'].errors?.['required']" class="invalid-feedback" style="font-size: 0.8rem;">
+            La descripción es requerida
+          </div>
+          <div *ngIf="opinionForm.controls['descripcion'].dirty && opinionForm.controls['descripcion'].errors?.['minlength']" class="invalid-feedback" style="font-size: 0.8rem;">
+            Debes escribir más texto
+          </div>
+          <div *ngIf="opinionForm.controls['descripcion'].dirty && opinionForm.controls['descripcion'].errors?.['maxlength']" class="invalid-feedback" style="font-size: 0.8rem;">
+            Debes escribir menos texto
           </div>
         </div>
         <div class="text-center mt-4">
-          <button type="submit" class="btn btn-primary btn-block" [disabled]="!opinionForm.valid" style="font-size: 1rem;">¡Enviar Opinión!</button>
+          <button type="submit" class="btn btn-custom-color" [disabled]="!opinionForm.valid" style="font-size: 1rem;">¡Enviar Opinión!</button>
         </div>
       </form>
     </div>

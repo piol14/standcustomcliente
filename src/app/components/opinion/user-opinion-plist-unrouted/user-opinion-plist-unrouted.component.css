@@ -144,3 +144,7 @@
   word-wrap: break-word;
   white-space: pre-wrap;
 }
+.btn-danger {
+  background-color: #7e1f60;
+  border-color: #7e1f60;
+}

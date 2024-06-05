@@ -101,7 +101,7 @@ export class UserStandFormUnroutedComponent implements OnInit {
               next: (data: IStand) => {
                 this.oStand = data;
                 this.initializeForm(this.oStand);
-                this.snackBar.open('La opinión se ha creado correctamente', '', { duration: 2000 });
+                this.snackBar.open('El stand se ha creado correctamente', '', { duration: 2000 });
                 this.oDynamicDialogRef.close(data);
                 this.router.navigate(['/home']);
               },

@@ -16,7 +16,7 @@
   <div class="row">
     <div *ngFor="let stand of oStandPage?.content" class="col-md-4 mb-4">
       <div class="card">
-        <img [src]="stand.imagen" class="card-img-top" alt="Imagen del stand">
+        <img [src]="stand.imagen" class="card-img-top" alt="stand.nombre">
         <div class="card-body">
           <h5 class="card-title">{{ stand.nombre }}</h5>
           <p class="card-text">Creador: {{ stand.usuario.nombre }}</p>

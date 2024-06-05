@@ -1,96 +1,85 @@
-<div *ngIf="status != null">
-  <div class="d-flex justify-content-center my-3">
+<div class="container mt-5">
+  <!-- Mensaje de error -->
+  <div *ngIf="status != null" class="d-flex justify-content-center my-3">
     <div class="alert alert-danger" role="alert">
-      {{ status!.error.message }} - {{ status!.message }}
+      <strong>Error:</strong> {{ status!.error.message }} - {{ status!.message }}
     </div>
   </div>
-</div>
-<h1 class="d-flex justify-content-center my-3"> Formulario de stand </h1>
-<div *ngIf="status == null" class="col-12">
-  
-  <div class="d-flex justify-content-center my-3">
+
+  <!-- Formulario de Usuario -->
+    <div class="col-12 text-center">
     
-    <form [formGroup]="standForm" (ngSubmit)="onSubmit()">
-      <div class="form-group input-container">
-        <mat-form-field [style.width.px]="250" *ngIf="operation == 'EDIT'">
-          <mat-label>ID:</mat-label>
-          <input matInput formControlName="id" placeholder="ID" required readonly>
-          <mat-hint align="end">(Este número no se puede cambiar)</mat-hint>
-        </mat-form-field>
+      <div class="d-flex justify-content-center my-4">
+        <form [formGroup]="standForm" (ngSubmit)="onSubmit()" class="custom-form">
+          <!-- Código del formulario de usuario -->
+        </form>
       </div>
-      <div class="form-group input-container">
-        <mat-form-field [style.width.px]="350">
-          <mat-label>Nombre:</mat-label>
-          <input matInput formControlName="nombre" placeholder="Nombre" required>
-          <mat-hint align="end">(Entre 3 y 255 caracteres)</mat-hint>
-          <mat-error *ngIf="hasError('nombre', 'required')">Nombre es obligatorio</mat-error>
-          <mat-error *ngIf="hasError('nombre', 'minlength')">El nombre debe tener al menos 3 caracteres</mat-error>
-          <mat-error *ngIf="hasError('nombre', 'maxlength')">El nombre no puede tener más de 255 caracteres</mat-error>
-        </mat-form-field>
-      </div>
-
-      <div class="form-group">
-        <label for="imagen">Imagen:</label>
-        <input type="file" (change)="onFileSelected($event)" accept="image/*" required>
-        <mat-error *ngIf="hasError('imagen', 'required')">Campo obligatorio</mat-error>
-      <div class="form-group input-container">
-        <mat-form-field [style.width.px]="350">
-          <mat-label>Descripción:</mat-label>
-          <input matInput formControlName="descripcion" placeholder="Descripción" required>
-          <!-- Añade aquí cualquier validación adicional según tus necesidades -->
-        </mat-form-field>
-      </div>
-      <div class="form-group input-container">
-        <mat-form-field [style.width.px]="350">
-          <mat-label>Velocidad:</mat-label>
-          <input matInput formControlName="velocidad" placeholder="Velocidad" pattern="[A-E]" required>
-          <mat-error *ngIf="hasError('velocidad', 'pattern')">Valor inválido. Debe ser A, B, C, D o E</mat-error>
-        </mat-form-field>
-      </div>
-      
-      <div class="form-group input-container">
-        <mat-form-field [style.width.px]="350">
-          <mat-label>Alcance:</mat-label>
-          <input matInput formControlName="alcance" placeholder="Alcance" pattern="[A-E]" required>
-          <mat-error *ngIf="hasError('alcance', 'pattern')">Valor inválido. Debe ser A, B, C, D o E</mat-error>
-        </mat-form-field>
-      </div>
-
-      <div class="form-group input-container">
-        <mat-form-field [style.width.px]="350">
-          <mat-label>Poder:</mat-label>
-          <input matInput formControlName="poder" placeholder="Poder" pattern="[A-E]" required>
-          <mat-error *ngIf="hasError('poder', 'pattern')">Valor inválido. Debe ser A, B, C, D o E</mat-error>
-        </mat-form-field>
-      </div>
-      
-      <div class="form-group input-container">
-        <mat-form-field [style.width.px]="350">
-          <mat-label>Aguante:</mat-label>
-          <input matInput formControlName="aguante" placeholder="Aguante" pattern="[A-E]" required>
-          <mat-error *ngIf="hasError('aguante', 'pattern')">Valor inválido. Debe ser A, B, C, D o E</mat-error>
-        </mat-form-field>
-      </div>
-      
-      <div class="form-group input-container">
-        <mat-form-field [style.width.px]="350">
-          <mat-label>Acierto:</mat-label>
-          <input matInput formControlName="acierto" placeholder="Acierto" pattern="[A-E]" required>
-          <mat-error *ngIf="hasError('acierto', 'pattern')">Valor inválido. Debe ser A, B, C, D o E</mat-error>
-        </mat-form-field>
-      </div>
-      <div class="form-group input-container">
-        <mat-form-field [style.width.px]="350">
-          <mat-label>Potencial de Desarrollo:</mat-label>
-          <input matInput formControlName="desarollo" placeholder="Potencial de Desarrollo" pattern="[A-E]" required>
-          <mat-error *ngIf="hasError('desarollo', 'pattern')">Valor inválido. Debe ser A, B, C, D o E</mat-error>
-        </mat-form-field>
-      </div>
+    </div>
   
-      <div class="text-center mt-5">
-        <button mat-raised-button color="primary" type="submit" [disabled]="!standForm.valid">Guardar Stand</button>
+</div>
+
+<div class="container mt-5">
+
+  <div *ngIf="status == null" class="profile-container p-4 shadow-lg rounded custom-border-color">
+    <div class="col-12 text-center">
+      <div class="d-flex justify-content-center my-4">
+        <form [formGroup]="standForm" (ngSubmit)="onSubmit()" class="custom-form">
+          <div class="mb-3" *ngIf="operation == 'EDIT'">
+            <label for="id" class="form-label custom-label">ID:</label>
+            <input type="text" class="form-control custom-input" id="id" formControlName="id" placeholder="ID" readonly>
+            <small class="form-text text-muted">(Este número no se puede cambiar)</small>
+          </div>
+          <div class="mb-3">
+            <label for="nombre" class="form-label custom-label">Nombre:</label>
+            <input type="text" class="form-control custom-input" id="nombre" formControlName="nombre" placeholder="Nombre" required>
+            <div *ngIf="hasError('nombre', 'required')" class="invalid-feedback">Nombre es obligatorio</div>
+            <div *ngIf="hasError('nombre', 'minlength')" class="invalid-feedback">El nombre debe tener al menos 3 caracteres</div>
+            <div *ngIf="hasError('nombre', 'maxlength')" class="invalid-feedback">El nombre no puede tener más de 255 caracteres</div>
+          </div>
+          <div class="mb-3">
+            <label for="imagen" class="form-label custom-label">Imagen:</label>
+            <input type="file" class="form-control custom-input" (change)="onFileSelected($event)" accept="image/*" required>
+            <div *ngIf="hasError('imagen', 'required')" class="invalid-feedback">Imagen es obligatoria</div>
+          </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label custom-label">Descripción:</label>
+            <input type="text" class="form-control custom-input" id="descripcion" formControlName="descripcion" placeholder="Descripción" required>
+          </div>
+          <div class="mb-3">
+            <label for="velocidad" class="form-label custom-label">Velocidad:</label>
+            <input type="text" class="form-control custom-input" id="velocidad" formControlName="velocidad" placeholder="Velocidad" pattern="[A-E]" required>
+            <div *ngIf="hasError('velocidad', 'pattern')" class="invalid-feedback">Valor inválido. Debe ser A, B, C, D o E</div>
+          </div>
+          <div class="mb-3">
+            <label for="alcance" class="form-label custom-label">Alcance:</label>
+            <input type="text" class="form-control custom-input" id="alcance" formControlName="alcance" placeholder="Alcance" pattern="[A-E]" required>
+            <div *ngIf="hasError('alcance', 'pattern')" class="invalid-feedback">Valor inválido. Debe ser A, B, C, D o E</div>
+          </div>
+          <div class="mb-3">
+            <label for="poder" class="form-label custom-label">Poder:</label>
+            <input type="text" class="form-control custom-input" id="poder" formControlName="poder" placeholder="Poder" pattern="[A-E]" required>
+            <div *ngIf="hasError('poder', 'pattern')" class="invalid-feedback">Valor inválido. Debe ser A, B, C, D o E</div>
+          </div>
+          <div class="mb-3">
+            <label for="aguante" class="form-label custom-label">Aguante:</label>
+            <input type="text" class="form-control custom-input" id="aguante" formControlName="aguante" placeholder="Aguante" pattern="[A-E]" required>
+            <div *ngIf="hasError('aguante', 'pattern')" class="invalid-feedback">Valor inválido. Debe ser A, B, C, D o E</div>
+          </div>
+          <div class="mb-3">
+            <label for="acierto" class="form-label custom-label">Acierto:</label>
+            <input type="text" class="form-control custom-input" id="acierto" formControlName="acierto" placeholder="Acierto" pattern="[A-E]" required>
+            <div *ngIf="hasError('acierto', 'pattern')" class="invalid-feedback">Valor inválido. Debe ser A, B, C, D o E</div>
+          </div>
+          <div class="mb-3">
+            <label for="desarollo" class="form-label custom-label">Potencial de Desarrollo:</label>
+            <input type="text" class="form-control custom-input" id="desarollo" formControlName="desarollo" placeholder="Potencial de Desarrollo" pattern="[A-E]" required>
+            <div *ngIf="hasError('desarollo', 'pattern')" class="invalid-feedback">Valor inválido. Debe ser A, B, C, D o E</div>
+          </div>
+          <div class="text-center mt-5">
+            <button type="submit" class="btn btn-custom-color" [disabled]="!standForm.valid">Guardar Stand</button>
+          </div>
+        </form>
       </div>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
