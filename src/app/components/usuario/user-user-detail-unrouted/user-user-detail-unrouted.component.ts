@@ -5,6 +5,7 @@ import { DynamicDialogConfig, DynamicDialogRef, DialogService } from 'primeng/dy
 import { IUser } from 'src/app/model/model.interfaces';
 import { UserAjaxService } from 'src/app/service/user.ajax.service.service';
 import { UserUserFormUnroutedComponent } from '../user-user-form-unrouted/user-user-form-unrouted.component';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-user-user-detail-unrouted',
@@ -17,6 +18,8 @@ export class UserUserDetailUnroutedComponent implements OnInit {
   oUser: IUser = {} as IUser;
   status: HttpErrorResponse | null = null;
   @Input() id_usuario: number = 0;
+  @Input() forceReload: Subject<boolean> = new Subject<boolean>();
+
   constructor(
     private SessionAjaxService: SessionAjaxService,
     private DialogService: DialogService,
@@ -32,10 +35,15 @@ export class UserUserDetailUnroutedComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.id);
     this.getOne();
+    this.forceReload.subscribe({
+      next: (v) => {
+        if (v) {
+          this.getOne();
+        }
+      }
+    });
   }
-
   getOne(): void {
     this.oUserAjaxService.getOne(this.id).subscribe({    
       next: (data: IUser) => {
@@ -60,11 +68,22 @@ export class UserUserDetailUnroutedComponent implements OnInit {
         baseZIndex: 10000,
         maximizable: false,
       });
+        this.ref.onClose.subscribe({
+          next: (v) => {
+            this.getOne();
+            if (v) {
+              this.getOne();
+            }
+          }
+        })
+     
+      }
+      
     }
     
  
   }
-  }
+  
   
   
 
