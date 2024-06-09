@@ -131,6 +131,8 @@ import { UserUserPerfilRoutedComponent } from './components/usuario/user-user-pe
 import { UserUserPerfilUnroutedComponent } from './components/usuario/user-user-perfil-unrouted/user-user-perfil-unrouted.component';
 import { UserUserFormUnroutedComponent } from './components/usuario/user-user-form-unrouted/user-user-form-unrouted.component';
 import { TableModule } from 'primeng/table';
+import { UserFavoritoPlistUnroutedComponent } from './components/favoritos/user-favorito-plist-unrouted/user-favorito-plist-unrouted.component';
+import { TabViewModule } from 'primeng/tabview';
 //--
 @NgModule({
   declarations: [
@@ -220,6 +222,7 @@ import { TableModule } from 'primeng/table';
     UserUserPerfilUnroutedComponent,
     UserUserDetailUnroutedComponent,
     UserUserFormUnroutedComponent,
+    UserFavoritoPlistUnroutedComponent
   ],
   imports: [
     
@@ -244,8 +247,8 @@ import { TableModule } from 'primeng/table';
    MatSelectModule,
    ReactiveFormsModule,
    SplitButtonModule, 
-   TableModule
- 
+   TableModule,
+   TabViewModule
   ],
   providers: [
     DialogService,

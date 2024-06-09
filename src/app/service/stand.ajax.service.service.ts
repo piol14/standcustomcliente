@@ -29,7 +29,9 @@ export class StandAjaxService {
       
         return this.oHttpClient.get<IStandPage>(this.sUrl + "?size=" + size + "&page=" + page + "&sort=" + orderField + "," + orderDirection+ strUrlUser + strUrlCategoria) ;
     }
-    
+    getStandPageByUsuario(userId: number, page: number, size: number, sort: string, direction: string): Observable<IStandPage> {
+        return this.oHttpClient.get<IStandPage>(this.sUrl + '/byusuario/' + userId + '?size=' + size + '&page=' + page + '&sort=' + sort + ',' + direction);
+    }
 
     removeOne(id: number | undefined): Observable<number> {
         if (id) {

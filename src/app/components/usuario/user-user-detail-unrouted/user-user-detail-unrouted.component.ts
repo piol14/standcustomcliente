@@ -17,7 +17,7 @@ export class UserUserDetailUnroutedComponent implements OnInit {
 
   oUser: IUser = {} as IUser;
   status: HttpErrorResponse | null = null;
-  @Input() id_usuario: number = 0;
+  @Input() id_usuario: number = 1;
   @Input() forceReload: Subject<boolean> = new Subject<boolean>();
 
   constructor(

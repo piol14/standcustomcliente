@@ -1,0 +1,35 @@
+<div *ngIf="status != null" class="error-message-container">
+  <div class="d-flex justify-content-center my-2">
+    <div class="alert alert-danger" role="alert">
+      {{ status!.error }} - {{ status!.message }}
+    </div>
+  </div>
+</div>
+
+<p-tabView>
+  <p-tabPanel header="Favoritos">
+    <!-- Contenido de la primera pestaña -->
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div *ngFor="let favorito of page?.content" class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card position-relative">
+            <button (click)="eliminarFavoritoRepetido(favorito.id)" type="button" class="btn btn-warning btn-lg position-absolute top-0 end-0 mt-3 me-3">
+              <i class="fa fa-star" aria-hidden="true"></i>
+            </button>
+
+            <img [src]="favorito.stand.imagen" class="card-img-top" alt="Imagen del stand">
+            <div class="card-body">
+              <h5 class="card-title">{{ favorito.stand.nombre }}</h5>
+              <p class="card-text">Creador: {{ favorito.usuario.username }}</p>
+              <button class="btn btn-primary mb-2" [routerLink]="['/user', 'stand', 'view', favorito.stand.id]">Ver Stand</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Stands">
+    <!-- Contenido de la segunda pestaña -->
+    <p>Aquí puedes poner el contenido de la segunda pestaña.</p>
+  </p-tabPanel>
+</p-tabView>
