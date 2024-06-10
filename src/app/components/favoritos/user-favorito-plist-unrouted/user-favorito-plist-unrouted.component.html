@@ -29,7 +29,22 @@
     </div>
   </p-tabPanel>
   <p-tabPanel header="Stands">
-    <!-- Contenido de la segunda pestaña -->
-    <p>Aquí puedes poner el contenido de la segunda pestaña.</p>
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div *ngFor="let stand of oPageStand?.content" class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card position-relative">
+              <i class="fa fa-star" aria-hidden="true"></i>
+            
+
+            <img [src]="stand.imagen" class="card-img-top" alt="Imagen del stand">
+            <div class="card-body">
+              <h5 class="card-title">{{ stand.nombre }}</h5>
+              <p class="card-text">Creador: {{ stand.usuario.username }}</p>
+              <button class="btn btn-primary mb-2" [routerLink]="['/user', 'stand', 'view', stand.id]">Ver Stand</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </p-tabPanel>
 </p-tabView>

@@ -43,7 +43,8 @@ export class UserUserFormUnroutedComponent implements OnInit {
       nombre: [oUser.nombre, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       telefono: [oUser.telefono, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       email: [oUser.email, [Validators.required, Validators.email]],
-      role: [oUser.role?.toString() || '', Validators.required]
+      role: [oUser.role?.toString() || '', Validators.required],
+      username: [oUser.username]
     });
   }
 

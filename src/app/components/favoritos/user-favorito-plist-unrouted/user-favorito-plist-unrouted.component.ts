@@ -85,5 +85,16 @@ export class UserFavoritoPlistUnroutedComponent implements OnInit {
       }
     });
   }
- 
+ getStands(): void {
+  const rows: number = this.paginatorState.rows ?? 0;
+  const page: number = this.paginatorState.page ?? 0;
+    this.oStandAjaxService.getStandPageByUsuario(this.id_usuario,page, rows, this.orderField, this.orderDirection).subscribe({
+      next: (data: IStandPage) => {
+        this.oPageStand = data;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.status = error;
+      }
+    });
+  }
 }
