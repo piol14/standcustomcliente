@@ -42,10 +42,12 @@ export class UserFavoritoPlistUnroutedComponent implements OnInit {
 
     ngOnInit() {
         this.getPage();
+        this.getStands();
         this.forceReload.subscribe({
             next: (v) => {
                 if (v) {
                     this.getPage();
+                    this.getStands();
                 }
             }
         });

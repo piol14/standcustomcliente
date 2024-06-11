@@ -5,7 +5,14 @@
   <div class="container mt-4">
     <h1 class="text-center">STANDCUSTOM</h1>
     <p class="lead text-center">Aquí encontrarás una cantidad infinita de stands y una infinidad de posibilidades</p>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-secondary" *ngFor="let categoria of oPage?.content" (click)="filtrarPorCategoria(categoria.id)">
+        {{ categoria.nombre }}
+      </button>
+      <button *ngIf="filtrandoPorCategoria" pButton type="button" (click)="quitarFiltro()" class="btn btn-primary">Quitar filtro</button>
+    </div>
 
+  </div>
     <button type="button" class="btn btn-primary btn-lg mt-3 mb-3" (click)="postNuevoStand()">Crear stand</button>
 
     <div class="container mt-4">
@@ -29,7 +36,7 @@
             </div>
           </div>
         </div>
-      </div>
+      
 
       <div class="d-flex justify-content-center mt-4">
         <p-paginator (onPageChange)="onPageChange($event)" [first]="oPaginatorState.first!" [rows]="oPaginatorState.rows!" [totalRecords]="oStandPage?.totalElements || 0" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
