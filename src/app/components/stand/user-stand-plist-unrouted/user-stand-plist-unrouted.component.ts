@@ -85,7 +85,9 @@ export class UserStandPlistUnroutedComponent implements OnInit {
 
   filtrarPorCategoria(idCategoria: number): void {
     this.id_categoria = idCategoria;
+    this.oPaginatorState.page = 0;
     this.filtrandoPorCategoria = true;
+    
     this.getPage();
   }
 

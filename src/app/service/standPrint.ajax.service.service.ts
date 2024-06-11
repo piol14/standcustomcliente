@@ -41,18 +41,18 @@ export class StandPrintAjaxService {
                     // Añadir la imagen del stand desde la base de datos en la esquina superior izquierda
                     if (oStandToPrint.imagen) {
                          // Calcula el ancho proporcional a la altura para mantener el aspecto original
-                        doc.addImage(oStandToPrint.imagen, 'JPEG', 160, 230, 30, 80);
+                        doc.addImage(oStandToPrint.imagen, 'JPEG', 160, 200, 30, 80);
                     }
 
                     this.addStatsLabels(doc, power, speed, range, durability, precision, potential);
 
                     doc.setFontSize(14);
                     doc.setFont('helvetica', 'normal');
-                    doc.text(`Stand: ${oStandToPrint.nombre}`, 10, 230);
-                    doc.text(`User: ${oStandToPrint.usuario.username}`, 10, 240);
-                    doc.text(`Description: ${oStandToPrint.descripcion}`, 10, 250);
-
-                    doc.save('stand_stats.pdf');
+                    doc.text(`Stand: ${oStandToPrint.nombre}`, 10, 200);
+                    doc.text(`User: ${oStandToPrint.usuario.username}`, 10, 210);
+                    doc.text(`Description: ${oStandToPrint.descripcion}`, 10, 220);
+                    const fileName = `${oStandToPrint.nombre}.pdf`;
+                    doc.save(fileName);
                 } else {
                     console.error('Canvas context is null');
                 }
@@ -65,7 +65,7 @@ export class StandPrintAjaxService {
         const stats = [power, speed, range, durability, precision, potential];
 
         const startX = 10;
-        const startY = 260;
+        const startY = 230;
         const lineHeight = 10;
 
         doc.setFontSize(12);
