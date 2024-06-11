@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 import { IStand, IUser, IFavoritoPage, IFavorito, IStandPage } from 'src/app/model/model.interfaces';
 import { FavoritoAjaxService } from 'src/app/service/favorito.ajax.service.service';
 import { StandAjaxService } from 'src/app/service/stand.ajax.service.service';
+import { SessionAjaxService } from './../../../service/session.ajax.service.service';
 
 @Component({
   selector: 'app-user-favorito-plist-unrouted',
@@ -29,6 +30,7 @@ export class UserFavoritoPlistUnroutedComponent implements OnInit {
     oFavoritoToRemove: IFavorito | null = null;
     @Input() id_usuario: number = 0;
     @Input() id_stand: number = 0;
+    usuario: IUser | null = null;
     constructor(
         private oFavoritoAjaxService: FavoritoAjaxService,
         private oStandAjaxService: StandAjaxService,
@@ -36,22 +38,35 @@ export class UserFavoritoPlistUnroutedComponent implements OnInit {
         private oMatSnackBar: MatSnackBar,
         public oDynamicDialogRef: DynamicDialogRef,
         private confirmationService: ConfirmationService,
-        private router: Router 
+        private router: Router ,
+        private SessionAjaxService: SessionAjaxService,
+
        
     ) { }
 
     ngOnInit() {
-        this.getPage();
-        this.getStands();
-        this.forceReload.subscribe({
-            next: (v) => {
-                if (v) {
-                    this.getPage();
-                    this.getStands();
-                }
-            }
-        });
+      this.getPage();
+      this.getStands(); // Aquí se corrige la llamada de getStands a getCategorias
+      this.forceReload.subscribe({
+        next: (v) => {
+          if (v) {
+            this.getPage();
+            this.getStands(); // Aquí también se corrige de getStands a getCategorias
+          }
+        }
+      });
+    
+      this.SessionAjaxService.getSessionUser()?.subscribe({
+        next: (usuario: IUser) => {
+          this.usuario = usuario;
+          this.id_usuario = usuario.id;
+        },
+        error: (err: HttpErrorResponse) => {
+          this.status = err;
+        }
+      });
     }
+    
 
   
 
@@ -99,4 +114,28 @@ export class UserFavoritoPlistUnroutedComponent implements OnInit {
       }
     });
   }
+  borrarStand(id_stand: number) {
+    this.confirmationService.confirm({
+      message: '¿Estás seguro de que deseas eliminar este stand?',
+      accept: () => {
+        this.oStandAjaxService.removeOne(id_stand).subscribe({
+          next: () => {
+          
+            this.getStands();
+            this.oMatSnackBar.open('El stand ha sido eliminado exitosamente', '', { duration: 2000 });
+          },
+          error: () => {
+            this.oMatSnackBar.open('Error al eliminar el elemento', '', { duration: 2000 });
+          }
+        });
+      }
+    });
+  }
+  isUsuarioStand(stand: IStand): boolean {
+    return this.usuario !== null && stand.usuario.id === this.usuario.id;
+  }
+  isAdministrador(): boolean {
+    return this.usuario !== null && this.usuario.role === false;
+  }
+
 }

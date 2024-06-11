@@ -40,6 +40,9 @@
               <h5 class="card-title">{{ stand.nombre }}</h5>
               <p class="card-text">Creador: {{ stand.usuario.username }}</p>
               <button class="btn btn-primary mb-2" [routerLink]="['/user', 'stand', 'view', stand.id]">Ver Stand</button>
+              <button *ngIf="(isUsuarioStand(stand) || isAdministrador())" (click)="borrarStand(stand.id)" type="button" class="btn btn-danger btn-lg mt-3 mb-3">
+                <i class="fa-solid fa-trash"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -47,3 +50,22 @@
     </div>
   </p-tabPanel>
 </p-tabView>
+<p-confirmDialog #cd [style]="{ 'width': '30vw', 'border-radius': '8px' }">
+  <ng-template pTemplate="header">
+    <div class="d-flex align-items-center">
+      <i class="pi pi-exclamation-triangle me-3" style="font-size: 2rem; color: #f76c6c;"></i>
+      <h5 class="m-0">Confirmación de Eliminación</h5>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="message">
+    <div class="text-center">
+      <p>¿Estás seguro de que quieres eliminar este stand?</p>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="d-flex justify-content-center">
+      <button pButton type="button" icon="pi pi-times" label="No" class="p-button-text p-button-danger mx-2" (click)="cd.reject()"></button>
+      <button pButton type="button" icon="pi pi-check" label="Sí" class="p-button-text p-button-success mx-2" (click)="cd.accept()"></button>
+    </div>
+  </ng-template>
+</p-confirmDialog>
