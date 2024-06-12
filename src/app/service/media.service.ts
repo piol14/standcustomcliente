@@ -12,6 +12,6 @@ constructor(
 ) { }
 
 uploadFile(formData: FormData): Observable<any>{
-  return this.http.post('http://localhost:8083/media/', formData);
+  return this.http.post('/initial/media/', formData);
 }
 }

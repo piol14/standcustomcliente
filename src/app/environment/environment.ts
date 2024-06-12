@@ -1,6 +1,6 @@
 import { HttpHeaders } from "@angular/common/http";
 
-export const API_URL: string = 'http://localhost:8083';
+export const API_URL: string = '/initial/';
 
 export const httpOptions = {
     headers: new HttpHeaders({
