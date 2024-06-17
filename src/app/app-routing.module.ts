@@ -85,7 +85,7 @@ export const routes: Routes = [
     { path: 'admin/opinion/plist/byusuario/:idusuario', component: AdminOpinionPlistRoutedComponent },
     { path: 'admin/opinion/plist/bystand/:idstand', component: AdminOpinionPlistRoutedComponent },
     { path: 'user/opinion/new', component: UserOpinionNewRoutedComponent },
-    { path: 'perfil', component: UserUserPerfilRoutedComponent },
+  { path: 'perfil', component: UserUserPerfilUnroutedComponent },
     {path: 'admin/partida/plist', component: AdminPartidaPlistRoutedComponent},
     { path: 'admin/opinion/edit/:id', component: AdminOpinionEditRoutedComponent },
     {path: 'admin/partida/view/:id', component: AdminPartidaViewRoutedComponent},
